@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Experiment &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.1.2</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Experiment</a>
+<ul class="subnav">
+</ul></li>
+    <li class="toctree-l2"><a class="nav-item" href="../data/">Data</a></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../..">&laquo; Previous</a></div>
+    <div class="next"><a href="../data/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tutorial</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="experiment"><span class="pheasant-header"><span class="header"><span class="title">Experiment</span></span></span></h1>
+<p>The first start point in Ivory is <code>ivory.Experiment</code>. This master object controls a machine learning experiment under a certain condition. Let's create your first <code>Experiment</code> instance.</p>
+<p>In your favorite directory, write a YAML file like below named <code>params_0.yaml</code>:</p>
+<div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> 
+<span class="title">params_0.yaml</span></p>
+<div class="content">
+
+<div class="pheasant-fenced-code"><div class="cell embed file"><div class="code"><pre><code class="text">experiment:
+  class: ivory.Experiment</code></pre></div></div></div>
+
+</div></div></div>
+
+<p>The <code>class</code> key notices that the <code>experiment</code> is an instance of <code>ivory.Experiment</code>.</p>
+<p>Then, in a jupyte notebook or a Python script under the same directory.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
+
+experiment = ivory.create_experiment(&#39;params_0.yaml&#39;)
+experiment</code></pre></div>
+<div class="report"><p><span class="count">[1]</span>
+<span class="start">2020-03-12 00:15:04</span> (<span class="time">1.48s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.48s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(name=&#39;ready&#39;, run_class=&#39;ivory.core.Run&#39;, shared=[], num_runs=0)</code></pre></div></div></div></div>
+
+<p>You created an <code>Experiment</code> instance. It says that its name is "ready" and its <code>run_class</code> is <code>ivory.core.Run</code>. Next, you can start the <code>Experiment</code>.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">experiment.start()
+experiment</code></pre></div>
+<div class="report"><p><span class="count">[2]</span>
+<span class="start">2020-03-12 00:15:05</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.49s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(name=&#39;2020/03/12 00:15:05&#39;, run_class=&#39;ivory.core.Run&#39;, shared=[], num_runs=0)</code></pre></div></div></div></div>
+
+<p>The name is changed to the current time.</p>
+<p><code>Experiment</code> is like an environment. Actual interesting processes such as machine learning are done by <code>Run</code>s. So, create a <code>Run</code>.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run()
+run</code></pre></div>
+<div class="report"><p><span class="count">[3]</span>
+<span class="start">2020-03-12 00:15:05</span> (<span class="time">5.01ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.49s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(name=&#39;#1&#39;, callbacks=[])</code></pre></div></div></div></div>
+
+<p>This <code>Run</code> instance was named '#1' because this is the first one for the <code>Experiment</code>.</p>
+<p>Do you want to start a run? Let's try it.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.start()</code></pre></div>
+<div class="report"><p><span class="count">[4]</span>
+<span class="start">2020-03-12 00:15:05</span> (<span class="time">105ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.60s</span>)</span></p></div></div><div class="cell jupyter error"><div class="code"><pre><code class="nohighlight">AttributeError: &#39;Run&#39; object has no attribute &#39;trainer&#39;</code></pre></div>
+      <div class="report"><pre><code class="nohighlight">AttributeError                            Traceback (most recent call last)
+&lt;ipython-input-7-c930d12f52e8&gt; in &lt;module&gt;
+----&gt; 1 run.start()
+
+~\Documents\GitHub\ivory\ivory\core\run.py in start(self)
+     37         self.on_fit_start()
+     38         try:
+---&gt; 39             self.trainer.fit(self)
+     40         finally:
+     41             self.on_fit_end()</code></pre></div></div></div></div>
+
+<p>Oops! The <code>Run</code> instance has the method indeed, but it says there is no <code>trainer</code>. Of course, we need data, model, metrics, <em>etc</em>. for machine learning. Also, we need to decide how to train the model. Following sections will explain this process step by step.</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../.." title="Ivory"><span>Previous</span></a></div>
+        <div class="next"><a href="../data/" title="Data"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

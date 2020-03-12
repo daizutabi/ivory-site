@@ -52,6 +52,7 @@
     <li class="toctree-l2"><a class="nav-item" href="../model/">Model</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../metrics/">Metrics</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../trainer/">Trainer</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../run/">Run</a></li>
 </ul></li>
                 </ul>
             </nav>
@@ -90,35 +91,35 @@
 
 <p>The <code>class</code> key notices that the <code>experiment</code> is an instance of <code>ivory.Experiment</code>.</p>
 <p>Then, in a jupyte notebook or a Python script under the same directory:</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
 
 experiment = ivory.create_experiment(&#39;params_0.yaml&#39;)
 experiment</code></pre></div>
 <div class="report"><p><span class="count">[1]</span>
-<span class="start">2020-03-12 09:48:15</span> (<span class="time">1.46s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.46s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(name=&#39;ready&#39;, run_class=&#39;ivory.core.Run&#39;, shared=[], num_runs=0)</code></pre></div></div></div>
+<span class="start">2020-03-12 13:08:18</span> (<span class="time">1.48s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.49s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(name=&#39;ready&#39;, run_class=&#39;ivory.core.Run&#39;, shared=[], num_runs=0)</code></pre></div></div></div></div>
 
 <p>You created an <code>Experiment</code> instance. It says that its name is "ready" and its <code>run_class</code> is <code>ivory.core.Run</code>. Next, you can start the <code>Experiment</code>.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">experiment.start()
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">experiment.start()
 experiment</code></pre></div>
 <div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-03-12 09:48:17</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.47s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(name=&#39;2020/03/12 09:48:17&#39;, run_class=&#39;ivory.core.Run&#39;, shared=[], num_runs=0)</code></pre></div></div></div>
+<span class="start">2020-03-12 13:08:20</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.50s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(name=&#39;2020/03/12 13:08:20&#39;, run_class=&#39;ivory.core.Run&#39;, shared=[], num_runs=0)</code></pre></div></div></div></div>
 
 <p>The name was changed to the current time.</p>
 <p>An <code>Experiment</code> instance is like an environment. Actual interesting processes such as machine learning are done by <code>Run</code>s. So, create a <code>Run</code>.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run()
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run()
 run</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-03-12 09:48:17</span> (<span class="time">6.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.47s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(name=&#39;#1&#39;, callbacks=[])</code></pre></div></div></div>
+<span class="start">2020-03-12 13:08:20</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.50s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(name=&#39;#1&#39;, callbacks=[])</code></pre></div></div></div></div>
 
 <p>This <code>Run</code> instance was named '#1' because this is the first one for the <code>Experiment</code> instance.</p>
-<p>Do you want to start this run? Let's try it.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.start()</code></pre></div>
+<p>Do you want to start this run, too? Let's try it.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.start()</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-03-12 09:48:17</span> (<span class="time">108ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.58s</span>)</span></p></div></div><div class="cell jupyter error"><div class="code"><pre><code class="nohighlight">AttributeError: &#39;Run&#39; object has no attribute &#39;trainer&#39;</code></pre></div>
+<span class="start">2020-03-12 13:08:20</span> (<span class="time">107ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.61s</span>)</span></p></div></div><div class="cell jupyter error"><div class="code"><pre><code class="nohighlight">AttributeError: &#39;Run&#39; object has no attribute &#39;trainer&#39;</code></pre></div>
       <div class="report"><pre><code class="nohighlight">AttributeError                            Traceback (most recent call last)
 &lt;ipython-input-7-c930d12f52e8&gt; in &lt;module&gt;
 ----&gt; 1 run.start()
@@ -128,9 +129,9 @@ run</code></pre></div>
      38         try:
 ---&gt; 39             self.trainer.fit(self)
      40         finally:
-     41             self.on_fit_end()</code></pre></div></div></div>
+     41             self.on_fit_end()</code></pre></div></div></div></div>
 
-<p>Oops! The <code>Run</code> instance has the method indeed, but it says there is no <code>trainer</code>. Of course, we need some data, a model, metrics, <em>etc</em>. for a particular machine learning problem. Also, we need to decide how to train the model. Following sections will explain this process step by step.</p></div>
+<p>Oops! The <code>Run</code> instance has the <code>start</code> method indeed, but it says there is no <code>trainer</code>. Of course, we need some data, a model, metrics, <em>etc</em>. for a particular machine learning problem. Also, we need to decide how to train the model. Following sections will explain this process step by step.</p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../.." title="Ivory"><span>Previous</span></a></div>

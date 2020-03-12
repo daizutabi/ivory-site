@@ -52,6 +52,7 @@
 <ul class="subnav">
 </ul></li>
     <li class="toctree-l2"><a class="nav-item" href="../trainer/">Trainer</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../run/">Run</a></li>
 </ul></li>
                 </ul>
             </nav>
@@ -114,7 +115,7 @@ class Metrics(ivory.callbacks.Metrics):
 </div></div></div>
 
 <p>There four instance methods. <code>train_evaluate</code> and <code>val_evaluate</code> are functions that called from train and validation loops. <code>evalute</code> is a customizable function for metrics at a step. You can overwrite this function, for example:</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">from typing import Dict
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">from typing import Dict
 import torch
 import ivory.torch
 
@@ -123,8 +124,8 @@ class MyMetrics(ivory.torch.Metrics):
         mse = torch.mean((output - target) ** 2).item()
         return {&#34;loss&#34;: loss.item(), &#34;mse&#34;: mse}  # Here, loss == mse</code></pre></div>
 <div class="report"><p><span class="count">[1]</span>
-<span class="start">2020-03-12 09:48:17</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.95s</span>)</span></p></div></div></div>
+<span class="start">2020-03-12 13:08:20</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.98s</span>)</span></p></div></div></div></div>
 
 <p>The last method <code>on_current_record</code> is called from <code>on_epoch_end</code> callback function. This gives you a chance to modify a current metrics for epoch (we call it a <code>record</code>.) In the above case, we add the learning rate of our optimizer in order to monitor it during a traing loop. A callback function of Ivoy takes one argument <code>run</code> which is corresponding to the current run. You can access all of the run information via this <code>run</code> instance.</p></div>
                 <footer>

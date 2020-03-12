@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Model &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.1.2</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../experiment/">Experiment</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../data/">Data</a></li>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Model</a>
+<ul class="subnav">
+</ul></li>
+    <li class="toctree-l2"><a class="nav-item" href="../metrics/">Metrics</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../trainer/">Trainer</a></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../data/">&laquo; Previous</a></div>
+    <div class="next"><a href="../metrics/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tutorial</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="model"><span class="pheasant-header"><span class="header"><span class="title">Model</span></span></span></h1>
+<p>We will train a model to predict a toy rectangle area problem. First, define a simple model with <code>hidden_sizes</code> as a hyper parameter (list of integers).</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self, hidden_sizes):
+        super().__init__()
+        layers = []
+        it = zip([2] + hidden_sizes, hidden_sizes + [1])
+        for in_features, out_features in it:
+            layers.append(nn.Linear(in_features, out_features))
+        self.layers = nn.ModuleList(layers)
+
+    def forward(self, x):
+        for layer in self.layers[:-1]:
+            x = F.relu(layer(x))
+        return self.layers[-1](x)
+
+Model([3, 4])  # Just example</code></pre></div>
+<div class="report"><p><span class="count">[1]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">7.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.80s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+  (layers): ModuleList(
+    (0): Linear(in_features=2, out_features=3, bias=True)
+    (1): Linear(in_features=3, out_features=4, bias=True)
+    (2): Linear(in_features=4, out_features=1, bias=True)
+  )
+)</code></pre></div></div></div>
+
+<p>To train this model, we need an optimizer and an optional schduler. Write them in a YAML file.</p>
+<div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> 
+<span class="title">params_c.yaml</span></p>
+<div class="content">
+
+<div class="pheasant-fenced-code"><div class="cell embed file"><div class="code"><pre><code class="text">input, target:
+  def: create_data
+  num_samples: 10000
+dataloaders:
+  class: ivory.torch.DataLoaders
+  input: $
+  target: $
+  batch_size: 32
+model:
+  class: Model
+  hidden_sizes: [10, 10]
+optimizer:
+  class: torch.optim.SGD
+  params: $.model.parameters()
+  lr: 1e-3
+scheduler:
+  class: torch.optim.lr_scheduler.ReduceLROnPlateau
+  optimizer: $
+  factor: 0.1
+  patience: 4</code></pre></div></div></div>
+
+</div></div></div>
+
+<p>An PyTorch optimizer needs model's parameters as the first argument. We can give them by $-notation with attribute accessor (<code>$.model.parameters()</code>). The rest part of this YAML file is straight forward. Now, we have other hyper parameters such as <code>lr</code> (learning rate), <code>factor</code>, or <code>patience</code>. All of these hyper parameters are written in one YAML file. This allows us to manage them easily.</p>
+<p>Again, let's create instances:</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import yaml
+from ivory.utils import to_float
+
+with open(&#39;params_c.yaml&#39;) as f:
+  yml = to_float(yaml.safe_load(f))
+params = ivory.instantiate(yml)
+params.keys()</code></pre></div>
+<div class="report"><p><span class="count">[2]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">13.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.81s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">dict_keys([&#39;input&#39;, &#39;target&#39;, &#39;dataloaders&#39;, &#39;model&#39;, &#39;optimizer&#39;, &#39;scheduler&#39;])</code></pre></div></div></div>
+
+<p>Here, a helper function <code>ivory.utils.to_float</code> converts an exponential expression such as "1e-3" to "0.001". Check the created instances</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">params[&#39;model&#39;]</code></pre></div>
+<div class="report"><p><span class="count">[3]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.81s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+  (layers): ModuleList(
+    (0): Linear(in_features=2, out_features=10, bias=True)
+    (1): Linear(in_features=10, out_features=10, bias=True)
+    (2): Linear(in_features=10, out_features=1, bias=True)
+  )
+)</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">params[&#39;optimizer&#39;]</code></pre></div>
+<div class="report"><p><span class="count">[4]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.81s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+Parameter Group 0
+    dampening: 0
+    lr: 0.001
+    momentum: 0
+    nesterov: False
+    weight_decay: 0
+)</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">params[&#39;scheduler&#39;]</code></pre></div>
+<div class="report"><p><span class="count">[5]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.82s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x22e686333c8&gt;</code></pre></div></div></div>
+
+<p>Now, we have data and a model with an optimizer so we can start to <em>train</em>.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">dataloader, _ = params[&#39;dataloaders&#39;][0]
+index, input_, target = next(iter(dataloader))
+input_[:4]</code></pre></div>
+<div class="report"><p><span class="count">[6]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.82s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[3.2481, 4.8582],
+        [4.5864, 1.1889],
+        [3.3863, 1.3553],
+        [2.9476, 3.0847]])</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">output = params[&#39;model&#39;](input_)
+output[:4]</code></pre></div>
+<div class="report"><p><span class="count">[7]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.83s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[-0.1175],
+        [-0.2202],
+        [-0.2132],
+        [-0.1453]], grad_fn=&lt;SliceBackward&gt;)</code></pre></div></div></div>
+
+<p>Calculate the first loss</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">loss = F.mse_loss(output, target)
+loss</code></pre></div>
+<div class="report"><p><span class="count">[8]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.83s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor(114.4701, grad_fn=&lt;MseLossBackward&gt;)</code></pre></div></div></div>
+
+<p>Backpropagate and update the weights.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">params[&#39;optimizer&#39;].zero_grad()
+loss.backward()
+params[&#39;optimizer&#39;].step()</code></pre></div>
+<div class="report"><p><span class="count">[9]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">99.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.93s</span>)</span></p></div></div></div>
+
+<p>Calculate the second loss after the first optimization step.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">output = params[&#39;model&#39;](input_)
+loss = F.mse_loss(output, target)
+loss</code></pre></div>
+<div class="report"><p><span class="count">[10]</span>
+<span class="start">2020-03-12 09:48:17</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.94s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor(111.4255, grad_fn=&lt;MseLossBackward&gt;)</code></pre></div></div></div>
+
+<p>To train a model, we need <em>metrics</em> to estimate the model performance. In the next section, we will introduce <code>Metrics</code> class for it.</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../data/" title="Data"><span>Previous</span></a></div>
+        <div class="next"><a href="../metrics/" title="Metrics"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

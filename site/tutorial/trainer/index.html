@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Trainer &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.1.2</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../experiment/">Experiment</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../data/">Data</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../model/">Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../metrics/">Metrics</a></li>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Trainer</a>
+<ul class="subnav">
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../metrics/">&laquo; Previous</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tutorial</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="trainer"><span class="pheasant-header"><span class="header"><span class="title">Trainer</span></span></span></h1>
+<p>Ivory's <code>ivory.torch.Trainer</code> instance manages train and validation loop.</p>
+<div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> 
+<span class="title">ivory/torch/trainer.py</span></p>
+<div class="content">
+
+<div class="pheasant-fenced-code"><div class="cell embed file"><div class="code"><pre><code class="python">from dataclasses import dataclass
+from typing import Optional
+
+import torch
+from torch.optim.lr_scheduler import ReduceLROnPlateau
+from tqdm import tqdm
+
+from ivory.torch.utils import cuda
+
+try:
+    from apex import amp
+except ImportError:
+    pass
+
+
+@dataclass
+class Trainer:
+    fold: int = 0
+    epoch: int = -1
+    global_step: int = -1
+    max_epochs: int = 1000
+    gpu: bool = False
+    amp_level: Optional[str] = None
+    verbose: int = 1
+
+    def train_step(self, model, input):
+        return model(input)
+
+    def val_step(self, model, input):
+        return model(input)
+
+    def train(self, dataloader, metrics, model, optimizer):
+        model.train()
+        if self.verbose == 1:
+            lr = optimizer.param_groups[0][&#34;lr&#34;]
+            dataloader = tqdm(dataloader, desc=f&#34;LR{lr:.1e}&#34;, leave=False)
+        for index, input, target in dataloader:
+            self.global_step += 1
+            if self.gpu:
+                input = cuda(input)
+                target = cuda(target)
+            output = self.train_step(model, input)
+            loss = metrics.train_step(index, output, target)
+            optimizer.zero_grad()
+            if self.gpu and self.amp_level:
+                with amp.scale_loss(loss, optimizer) as scaled_loss:
+                    scaled_loss.backward()
+            else:
+                loss.backward()
+            optimizer.step()
+
+    def val(self, dataloader, metrics, model):
+        model.eval()
+        if self.verbose == 1:
+            dataloader = tqdm(dataloader, desc=&#34;-Validate&#34;, leave=False)
+        with torch.no_grad():
+            for index, input, target in dataloader:
+                if self.gpu:
+                    input = cuda(input)
+                    target = cuda(target)
+                output = self.val_step(model, input)
+                metrics.val_step(index, output, target)
+
+    def fit(self, run):
+        train_loader, val_loader = run.dataloaders[self.fold]
+        if self.gpu:
+            run.model.cuda()
+            if self.amp_level:
+                run.model, run.optimizer = amp.initialize(
+                    run.model, run.optimizer, opt_level=self.amp_level
+                )
+        it = range(self.epoch + 1, self.epoch + self.max_epochs + 1)
+        for self.epoch in tqdm(it) if self.verbose == 1 else it:
+            run.on_epoch_start()
+            run.on_train_start()
+            self.train(train_loader, run.metrics, run.model, run.optimizer)
+            run.on_train_end()
+            run.on_val_start()
+            self.val(val_loader, run.metrics, run.model)
+            run.on_val_end()
+            try:
+                run.on_epoch_end()
+            except StopIteration:
+                break
+            finally:
+                if self.verbose:
+                    latest = run.metrics.latest
+                    tqdm.write(f&#34;[{run.name}] epoch={self.epoch:03d} {latest}&#34;)
+            if run.scheduler:
+                if isinstance(run.scheduler, ReduceLROnPlateau):
+                    run.scheduler.step(run.metrics.current_score)
+                else:
+                    run.scheduler.step()
+
+    def state_dict(self):
+        return {
+            &#34;fold&#34;: self.fold,
+            &#34;epoch&#34;: self.epoch,
+            &#34;global_step&#34;: self.global_step,
+        }
+
+    def load_state_dict(self, state_dict):
+        self.fold = state_dict[&#34;fold&#34;]
+        self.epoch = state_dict[&#34;epoch&#34;]
+        self.global_step = state_dict[&#34;global_step&#34;]</code></pre></div></div></div>
+
+</div></div></div></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../metrics/" title="Metrics"><span>Previous</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

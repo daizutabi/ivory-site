@@ -32,7 +32,7 @@
                 <div class="title">
                     <button class="hamburger"></button>
                     <a href="." class="site-name"> Ivory</a>
-                </div><div class="version">0.1.2</div>
+                </div><div class="version">0.2.0</div>
                 <div class="search">
                     <div role="search">
     <form id="rtd-search-form" class="wy-form" action="./search.html" method="get">
@@ -45,17 +45,12 @@
                 <ul class="root">
                     <li class="toctree-l1 current"><a class="nav-item current" href=".">Ivory</a>
 <ul class="subnav">
-<li class="toctree-l2"><a class="nav-item toc" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="nav-item toc" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#setup">Setup</a></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
 <ul class="subnav">
-    <li class="toctree-l2"><a class="nav-item" href="tutorial/experiment/">Experiment</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="tutorial/data/">Data</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="tutorial/model/">Model</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="tutorial/metrics/">Metrics</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="tutorial/trainer/">Trainer</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="tutorial/run/">Run</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="tutorial/overview/">Overview</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="tutorial/client_experiment_run/">Client, Experiment, and Run</a></li>
 </ul></li>
                 </ul>
             </nav>
@@ -63,7 +58,7 @@
     <div class="link">
         <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
     </div>
-    <div class="next"><a href="tutorial/experiment/">Next &raquo;</a></div>
+    <div class="next"><a href="tutorial/overview/">Next &raquo;</a></div>
 </div>
         </aside>
         <div id="spacer"><button class="arrow"></button></div>
@@ -80,14 +75,20 @@
 </nav>
                 <div id="content">
 <h1 id="ivory"><span class="pheasant-header"><span class="header"><span class="title">Ivory</span></span></span></h1>
-<h2 id="overview"><span class="pheasant-header"><span class="header"><span class="title">Overview</span></span></span></h2>
-<p>Ivory is a lightweight machine learning framework.</p>
-<h2 id="installation"><span class="pheasant-header"><span class="header"><span class="title">Installation</span></span></span></h2>
-<p>You can install Ivory from PyPI.</p>
+<p>Ivory is a lightweight framework for machine learning. It integrates model design, hyperparmeter tuning, and tracking. Ivory uses <a href="https://preferred.jp/en/projects/optuna/">Optuna</a> for hyperparmeter tuning and <a href="https://mlflow.org/docs/latest/tracking.html">MLflow Tracking</a> for tracking.</p>
+<p>The relationship of these libraries is like below:</p>
+<ul>
+<li>Ivory's <code>Experiment</code> = Optuna's <code>Study</code> = MLflow's <code>Experiment</code></li>
+<li>Ivory's <code>Run</code> = Optuna's <code>Trial</code> = MLflow's <code>Run</code></li>
+</ul>
+<p>Using Ivory, you can obtain the both tuning and tracking workflow at one place.</p>
+<p>Another key feature of Ivory is its model design. You can write down all of your model structure and tuning/tracking process in one YAML file. It allows us to understand the whole process at a glance.</p>
+<h2 id="setup"><span class="pheasant-header"><span class="header"><span class="title">Setup</span></span></span></h2>
+<p>Install Ivory from PyPI.</p>
 <div class="pheasant-fenced-code"><div class="cell embed terminal"><div class="code"><pre><code class="bash">$ pip install ivory</code></pre></div></div></div></div>
                 <footer>
     <div class="footer-buttons">
-        <div class="next"><a href="tutorial/experiment/" title="Experiment"><span>Next</span></a></div>
+        <div class="next"><a href="tutorial/overview/" title="Overview"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>

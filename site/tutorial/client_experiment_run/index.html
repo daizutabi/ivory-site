@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Client, Experiment, and Run &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.2.0</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../overview/">Overview</a></li>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Client, Experiment, and Run</a>
+<ul class="subnav">
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../overview/">&laquo; Previous</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tutorial</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="client-experiment-and-run"><span class="pheasant-header"><span class="header"><span class="title">Client, Experiment, and Run</span></span></span></h1>
+<p>A <code>Client</code> creates and manages an experiment and runs of the experiment.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import os
+
+import ivory
+from ivory.core.client import create_client
+
+root = os.path.dirname(ivory.__file__)
+path = os.path.join(root, &#34;../tests/params.yaml&#34;)
+client = create_client(path)
+client</code></pre></div>
+<div class="report"><p><span class="count">[1]</span>
+<span class="start">2020-03-30 21:59:42</span> (<span class="time">1.64s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.65s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Client(name=&#39;params&#39;, num_objects=3)</code></pre></div></div></div></div>
+
+<p>A client instance is a dict-like object. Let's see its contents.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for key, value in client.items():
+    print(f&#34;{key}={repr(value)}&#34;)</code></pre></div>
+<div class="report"><p><span class="count">[2]</span>
+<span class="start">2020-03-30 21:59:43</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.66s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">tracker=Tracker(tracking_uri=&#39;file:///C:/Users/daizu/Documents/GitHub/ivory/tests/mlruns&#39;, artifact_location=None)
+tuner=Tuner(storage=&#39;sqlite://&#39;, load_if_exists=True)
+experiment=Experiment(id=&#39;1&#39;, name=&#39;example&#39;, num_objects=4)</code></pre></div></div></div></div>
+
+<p>A client has an automatically created experiment. The experiment is also a dict-like object. Let's see its values.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for key, value in client.experiment.items():
+    print(f&#34;{key}={repr(value)}&#34;)</code></pre></div>
+<div class="report"><p><span class="count">[3]</span>
+<span class="start">2020-03-30 21:59:43</span> (<span class="time">8.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.67s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">data=Data(mode=&#39;train&#39;, num_samples=1000)
+objective=&lt;ivory.core.objective.Objective object at 0x000001C0B3D9E208&gt;
+tracker=Tracker(tracking_uri=&#39;file:///C:/Users/daizu/Documents/GitHub/ivory/tests/mlruns&#39;, artifact_location=None)
+tuner=Tuner(storage=&#39;sqlite://&#39;, load_if_exists=True)</code></pre></div></div></div></div>
+
+<p><code>tracker</code> and <code>tuner</code> are copied from the client. The experiment provides data to runs that will be created by the client. Let's check the source.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import inspect
+
+data = client.experiment.data
+print(inspect.getsource(data.__class__))</code></pre></div>
+<div class="report"><p><span class="count">[4]</span>
+<span class="start">2020-03-30 21:59:43</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.67s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">class Data(ivory.core.data.Data):
+    num_samples: int = 1000
+
+    def init(self):
+        self.input, self.target = create_data(self.num_samples)
+        self.target = self.target.reshape((-1, 1))
+        self.index = np.arange(len(self.input))
+        self.fold = kfold_split(self.input, n_splits=5)
+
+    def get(self, index=None):
+        if index is None:
+            return [self.index, self.input]
+        else:
+            return [self.index[index], self.input[index], self.target[index]]</code></pre></div></div></div></div>
+
+<p>You can find that the <code>init</code> function initializes its data and <code>get</code> function returns a subset of the data.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">data.init()
+data.input[:4]</code></pre></div>
+<div class="report"><p><span class="count">[5]</span>
+<span class="start">2020-03-30 21:59:43</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.68s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[2.638187 , 2.3710504],
+       [4.9634385, 2.998295 ],
+       [1.1058048, 2.9046001],
+       [2.3231244, 4.9858737]], dtype=float32)</code></pre></div></div></div></div>
+
+<p>Now, create a run.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = client.create_run()
+run</code></pre></div>
+<div class="report"><p><span class="count">[6]</span>
+<span class="start">2020-03-30 21:59:43</span> (<span class="time">258ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.94s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(id=&#39;c93c4171cad54c6fac75228c0bfd9db7&#39;, num_objects=11)</code></pre></div></div></div></div>
+
+<p>Again, a run is a dict-like object.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for key, value in run.items():
+    print(f&#34;{key}={repr(value)}&#34;)</code></pre></div>
+<div class="report"><p><span class="count">[7]</span>
+<span class="start">2020-03-30 21:59:44</span> (<span class="time">10.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1.95s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">dataloaders=DataLoaders(dataset=example.Dataset(dummy=5), fold=0, batch_size=10)
+model=Model(
+  (layers): ModuleList(
+    (0): Linear(in_features=2, out_features=100, bias=True)
+    (1): Linear(in_features=100, out_features=100, bias=True)
+    (2): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+optimizer=SGD (
+Parameter Group 0
+    dampening: 0
+    lr: 0.001
+    momentum: 0
+    nesterov: False
+    weight_decay: 0
+)
+scheduler=&lt;torch.optim.lr_scheduler.ReduceLROnPlateau object at 0x000001C0B6282848&gt;
+results=&lt;ivory.torch.results.Results object at 0x000001C0B62829C8&gt;
+metrics=Metrics()
+monitor=Monitor(metric=&#39;val_loss&#39;, mode=&#39;min&#39;)
+early_stopping=EarlyStopping(patience=8)
+trainer=Trainer(epoch=-1, max_epochs=10, global_step=-1, verbose=2, gpu=False, precision=32, amp_level=&#39;O1&#39;)
+data=Data(mode=&#39;train&#39;, num_samples=1000)
+tracking=&lt;ivory.callbacks.tracking.Tracking object at 0x000001C0B6282B48&gt;</code></pre></div></div></div></div>
+
+<p>To start the run, just call <code>start</code> method.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.start()</code></pre></div>
+<div class="report"><p><span class="count">[8]</span>
+<span class="start">2020-03-30 21:59:44</span> (<span class="time">1.61s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">3.55s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[] epoch=0 loss=12.06 val_loss=5.307 lr=0.001
+[] epoch=1 loss=5.285 val_loss=3.778 lr=0.001
+[] epoch=2 loss=3.28 val_loss=1.971 lr=0.001
+[] epoch=3 loss=1.913 val_loss=1.045 lr=0.001
+[] epoch=4 loss=1.114 val_loss=0.7286 lr=0.001
+[] epoch=5 loss=0.7734 val_loss=0.5511 lr=0.001
+[] epoch=6 loss=0.6729 val_loss=0.4973 lr=0.001
+[] epoch=7 loss=0.5802 val_loss=0.5506 lr=0.001
+[] epoch=8 loss=0.5461 val_loss=0.621 lr=0.001
+[] epoch=9 loss=0.4493 val_loss=0.3547 lr=0.001</code></pre></div></div></div></div>
+
+<p>Check the contents of the run again.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for key, value in run.items():
+    print(f&#34;{key}={repr(value)}&#34;)</code></pre></div>
+<div class="report"><p><span class="count">[9]</span>
+<span class="start">2020-03-30 21:59:45</span> (<span class="time">17.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">3.57s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">dataloaders=DataLoaders(dataset=example.Dataset(dummy=5), fold=0, batch_size=10)
+model=Model(
+  (layers): ModuleList(
+    (0): Linear(in_features=2, out_features=100, bias=True)
+    (1): Linear(in_features=100, out_features=100, bias=True)
+    (2): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+optimizer=SGD (
+Parameter Group 0
+    dampening: 0
+    lr: 0.001
+    momentum: 0
+    nesterov: False
+    weight_decay: 0
+)
+scheduler=&lt;torch.optim.lr_scheduler.ReduceLROnPlateau object at 0x000001C0B6282848&gt;
+results=&lt;ivory.torch.results.Results object at 0x000001C0B62829C8&gt;
+metrics=Metrics(loss=0.4493, val_loss=0.3547, lr=0.001)
+monitor=Monitor(metric=&#39;val_loss&#39;, mode=&#39;min&#39;)
+early_stopping=EarlyStopping(patience=8)
+trainer=Trainer(epoch=9, max_epochs=10, global_step=799, verbose=2, gpu=False, precision=32, amp_level=&#39;O1&#39;)
+data=Data(mode=&#39;train&#39;, num_samples=1000)
+tracking=&lt;ivory.callbacks.tracking.Tracking object at 0x000001C0B6282B48&gt;
+on_fit_start=Callback([&#39;trainer&#39;, &#39;tracking&#39;])
+on_epoch_start=Callback([&#39;metrics&#39;])
+on_train_start=Callback([&#39;results&#39;, &#39;metrics&#39;, &#39;trainer&#39;])
+on_train_end=Callback([&#39;results&#39;, &#39;metrics&#39;])
+on_val_start=Callback([&#39;results&#39;, &#39;metrics&#39;, &#39;trainer&#39;])
+on_val_end=Callback([&#39;results&#39;, &#39;metrics&#39;])
+on_epoch_end=Callback([&#39;metrics&#39;, &#39;monitor&#39;, &#39;early_stopping&#39;, &#39;trainer&#39;, &#39;tracking&#39;])
+on_fit_end=Callback([&#39;tracking&#39;])
+on_test_start=Callback([&#39;results&#39;, &#39;trainer&#39;])
+on_test_end=Callback([&#39;results&#39;, &#39;tracking&#39;])</code></pre></div></div></div></div>
+
+<p><code>on_XXX_start</code> and <code>on_XXX_end</code> methods were dynamically added. They are callback functions invoked by the started run instance. The <code>repr</code> of them shows that which objects will be called in order.</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../overview/" title="Overview"><span>Previous</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

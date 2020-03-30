@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Overview &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.2.0</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Overview</a>
+<ul class="subnav">
+</ul></li>
+    <li class="toctree-l2"><a class="nav-item" href="../client_experiment_run/">Client, Experiment, and Run</a></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../..">&laquo; Previous</a></div>
+    <div class="next"><a href="../client_experiment_run/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tutorial</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="overview"><span class="pheasant-header"><span class="header"><span class="title">Overview</span></span></span></h1>
+<p>In this tutorial,  as a simple toy example, we try to predict <code>area</code> of rectangles which have <code>width</code> and <code>height</code>, but they include some noises.</p>
+<p>Using Ivory, we can write some codes like below:</p>
+<div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> 
+<span class="title">example.py</span></p>
+<div class="content">
+
+<div class="pheasant-fenced-code"><div class="cell embed file"><div class="code"><pre><code class="python">from dataclasses import dataclass
+
+import numpy as np
+import torch.nn as nn
+import torch.nn.functional as F
+
+import ivory.core.data
+import ivory.torch.data
+from ivory.utils import kfold_split
+
+
+def create_data(num_samples=1000):
+    xy = 4 * np.random.rand(num_samples, 2) + 1
+    xy = xy.astype(np.float32)
+    dx = 0.1 * (np.random.rand(num_samples) - 0.5)
+    dy = 0.1 * (np.random.rand(num_samples) - 0.5)
+    z = ((xy[:, 0] + dx) * (xy[:, 1] + dy)).astype(np.float32)
+    return xy, z
+
+
+@dataclass
+class Data(ivory.core.data.Data):
+    num_samples: int = 1000
+
+    def init(self):
+        self.input, self.target = create_data(self.num_samples)
+        self.target = self.target.reshape((-1, 1))
+        self.index = np.arange(len(self.input))
+        self.fold = kfold_split(self.input, n_splits=5)
+
+    def get(self, index=None):
+        if index is None:
+            return [self.index, self.input]
+        else:
+            return [self.index[index], self.input[index], self.target[index]]
+
+
+@dataclass(repr=False)
+class Dataset(ivory.torch.data.Dataset):
+    dummy: int = 10
+
+    def __len__(self):
+        return len(self.data[0])
+
+    def get(self, index):
+        return [x[index] for x in self.data]
+
+
+class Model(nn.Module):
+    def __init__(self, hidden_sizes):
+        super().__init__()
+        layers = []
+        for in_features, out_features in zip([2] + hidden_sizes, hidden_sizes + [1]):
+            layers.append(nn.Linear(in_features, out_features))
+        self.layers = nn.ModuleList(layers)
+
+    def forward(self, x):
+        for layer in self.layers[:-1]:
+            x = F.relu(layer(x))
+        return self.layers[-1](x)
+
+
+def suggest_lr(trial):
+    trial.suggest_loguniform(&#34;lr&#34;, 1e-4, 1e-1)
+
+
+def suggest_hidden_sizes(trial, max_num_layers=3):
+    num_layers = trial.suggest_int(&#34;num_layers&#34;, 2, max_num_layers)
+    for k in range(num_layers):
+        trial.suggest_int(f&#34;hidden_sizes.{k}&#34;, 10, 30)</code></pre></div></div></div>
+
+</div></div></div>
+
+<p>Then define a learning process in on YAML file:</p>
+<div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> 
+<span class="title">params.yaml</span></p>
+<div class="content">
+
+<div class="pheasant-fenced-code"><div class="cell embed file"><div class="code"><pre><code class="yaml">client:
+  tracker:
+  tuner:
+experiment:
+  name: example
+  data:
+    class: example.Data
+    num_samples: 1000
+  objective:
+    lr: example.suggest_lr
+    hidden_sizes:
+      def: example.suggest_hidden_sizes
+      max_num_layers: 3
+    pruner:
+      class: optuna.pruners.MedianPruner
+run:
+  library: torch
+  dataloaders:
+    dataset:
+      def: example.Dataset
+      dummy: 5
+    batch_size: 10
+    fold: 0
+  model:
+    class: example.Model
+    hidden_sizes: [100, 100]
+  optimizer:
+    class: torch.optim.SGD
+    params: $.model.parameters()
+    lr: 1e-3
+  scheduler:
+    class: torch.optim.lr_scheduler.ReduceLROnPlateau
+    optimizer: $
+    factor: 0.5
+    patience: 4
+  results:
+  metrics:
+    criterion:
+      def: torch.nn.functional.mse_loss
+  monitor:
+    metric: val_loss
+  early_stopping:
+    patience: 8
+  trainer:
+    max_epochs: 10
+    verbose: 2</code></pre></div></div></div>
+
+</div></div></div>
+
+<p>In the following sections, we will see in detail step by step.</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../.." title="Ivory"><span>Previous</span></a></div>
+        <div class="next"><a href="../client_experiment_run/" title="Client, Experiment, and Run"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

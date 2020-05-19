@@ -1,0 +1,4 @@
+artifact_location: file:///C:/Users/daizu/Documents/github/ivory/docs/examples/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: torch

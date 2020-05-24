@@ -12,6 +12,7 @@ p code {
 
 .rst-content code {
     color: #3C4CE7;
+    font-size: 0.95rem !important;
 }
 
 pre {

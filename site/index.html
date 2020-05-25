@@ -117,31 +117,6 @@
                 
 <h1 id="quickstart"><span class="pheasant-header"><span class="header"><span class="title">Quickstart</span></span></span></h1>
 <p>Ivory is a lightweight framework for machine learning. It integrates model design, tracking, and hyperparmeter tuning. Ivory uses <a href="https://mlflow.org/docs/latest/tracking.html">MLflow Tracking</a> for tracking and <a href="https://preferred.jp/en/projects/optuna/">Optuna</a> for hyperparmeter tuning.</p>
-<p>The relationship of these libraries is shown in Table <a href=".#relationship">1</a>.</p>
-<div class="pheasant-header"><div class="table" id="relationship"><p class="caption"><span class="prefix">Table</span> <span class="number">1</span>
-</p>
-<div class="content"><table>
-<thead>
-<tr>
-<th>Ivory</th>
-<th>MLFlow</th>
-<th>Optuna</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Experiment</td>
-<td>Experiment</td>
-<td>Study</td>
-</tr>
-<tr>
-<td>Run</td>
-<td>Run</td>
-<td>Trial</td>
-</tr>
-</tbody>
-</table></div></div></div>
-
 <p>Using Ivory, you can tackle both tracking and tuning workflow at one place.</p>
 <p>Another key feature of Ivory is its model design. You can write down all of your model structure and tracking/tuning process in one YAML file. It allows us to understand the whole process at a glance.</p>
 <h2 id="installation"><span class="pheasant-header"><span class="header"><span class="title">Installation</span></span></span></h2>
@@ -904,5 +879,5 @@ np.mean(np.sqrt((pred - true) ** 2))  # Use any function for your metric.</code>
 
 <!--
 MkDocs version : 1.1.1
-Build Date UTC : 2020-05-24 23:12:50.809472+00:00
+Build Date UTC : 2020-05-25 02:57:29.752842+00:00
 -->

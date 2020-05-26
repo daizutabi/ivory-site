@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/daizu/Documents/github/ivory/docs/src/mlruns/1/05752604d8424859971a8847d9a6d7d2/artifacts
+end_time: 1590498260696
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 05752604d8424859971a8847d9a6d7d2
+run_uuid: 05752604d8424859971a8847d9a6d7d2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1590498260293
+status: 3
+tags: []
+user_id: daizu

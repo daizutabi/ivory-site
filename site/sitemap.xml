@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://ivory.daizutabi.net/</loc>
-     <lastmod>2020-05-25</lastmod>
+     <lastmod>2020-05-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/quickstart/</loc>
+     <lastmod>2020-05-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/tutorial/data/</loc>
+     <lastmod>2020-05-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/tutorial/instance/</loc>
+     <lastmod>2020-05-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/tutorial/model/</loc>
+     <lastmod>2020-05-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/tutorial/callbacks/</loc>
+     <lastmod>2020-05-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/tutorial/trainer/</loc>
+     <lastmod>2020-05-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

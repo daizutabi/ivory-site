@@ -1,0 +1,51 @@
+run:
+  dataloaders:
+    data:
+      class: rectangle.data.Data
+      n_splits: 4
+    dataset:
+      def: ivory.torch.data.Dataset
+    batch_size: 10
+    fold: 3
+    class: ivory.torch.data.DataLoaders
+  model:
+    class: rectangle.torch.Model
+    hidden_sizes:
+    - 100
+    - 100
+  optimizer:
+    class: torch.optim.SGD
+    params: $.model.parameters()
+    lr: 0.001
+  scheduler:
+    class: torch.optim.lr_scheduler.ReduceLROnPlateau
+    optimizer: $
+    factor: 0.5
+    patience: 4
+  results:
+    class: ivory.torch.results.Results
+  metrics:
+    criterion:
+      def: torch.nn.functional.mse_loss
+    class: ivory.torch.metrics.Metrics
+  monitor:
+    metric: val_loss
+    class: ivory.callbacks.monitor.Monitor
+  early_stopping:
+    patience: 10
+    class: ivory.callbacks.early_stopping.EarlyStopping
+  trainer:
+    epochs: 3
+    verbose: 0
+    class: ivory.torch.trainer.Trainer
+  class: ivory.torch.run.Run
+  name: run#6
+  id: 087528bad60b490f8b8afc96c00bf4e2
+experiment:
+  name: torch
+  class: ivory.core.base.Experiment
+  id: '1'
+task:
+  class: ivory.core.run.Task
+  name: task#0
+  id: 474f9abe23b44d8dabe3c416e59459de

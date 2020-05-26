@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Model Structure &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.2.1</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../instance/">Creating Instance</a></li>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Model Structure</a>
+<ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#model">Model</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#optimizer">Optimizer</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#scheduler">Scheduler</a></li>
+</ul></li>
+    <li class="toctree-l2"><a class="nav-item" href="../callbacks/">Callbacks</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../trainer/">Training a Model</a></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../instance/">&laquo; Previous</a></div>
+    <div class="next"><a href="../callbacks/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tutorial</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="model-structure"><span class="pheasant-header"><span class="header"><span class="title">Model Structure</span></span></span></h1>
+<h2 id="model"><span class="pheasant-header"><span class="header"><span class="title">Model</span></span></span></h2>
+<p>We have prepared a <code>DataLoaders</code> instance for PyTorch. Now define a MLP model that works with the <code>DataLoaders</code>.</p>
+<p>The model is defined in <code>rectangle/torch.py</code></p>
+<div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> <span class="number">4</span>
+<span class="title">rectangle/torch.py</span></p>
+<div class="content">
+
+<div class="pheasant-fenced-code"><div class="cell embed file"><div class="code"><pre><code class="python">import torch.nn as nn
+import torch.nn.functional as F
+
+
+class Model(nn.Module):
+    def __init__(self, hidden_sizes):
+        super().__init__()
+        layers = []
+        for in_features, out_features in zip([2] + hidden_sizes, hidden_sizes + [1]):
+            layers.append(nn.Linear(in_features, out_features))
+        self.layers = nn.ModuleList(layers)
+
+    def forward(self, x):
+        for layer in self.layers[:-1]:
+            x = F.relu(layer(x))
+        return self.layers[-1](x)</code></pre></div></div></div>
+
+</div></div></div>
+
+<p>We again use Ivory's <a href="../instance">instance creation system</a>.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import yaml
+
+# A helper function.
+def create(doc, name, **kwargs):
+    params = yaml.safe_load(doc)
+    return create_instance(params, name, **kwargs)
+
+doc = &#34;&#34;&#34;
+library: torch
+dataloaders:
+  data:
+    class: rectangle.data.Data
+    n_splits: 5
+  dataset:
+  fold: 0
+  batch_size: 4
+model:
+  class: rectangle.torch.Model
+  hidden_sizes: [3, 4, 5]
+&#34;&#34;&#34;
+dataloaders = create(doc, &#39;dataloaders&#39;)
+model = create(doc, &#39;model&#39;)
+model</code></pre></div>
+<div class="report"><p><span class="count">[1]</span>
+<span class="start">2020-05-26 22:05:05</span> (<span class="time">9.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">775ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+  (layers): ModuleList(
+    (0): Linear(in_features=2, out_features=3, bias=True)
+    (1): Linear(in_features=3, out_features=4, bias=True)
+    (2): Linear(in_features=4, out_features=5, bias=True)
+    (3): Linear(in_features=5, out_features=1, bias=True)
+  )
+)</code></pre></div></div></div>
+
+<p>We can uses this model as usual.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">index, input, target = next(iter(dataloaders.train))
+input</code></pre></div>
+<div class="report"><p><span class="count">[2]</span>
+<span class="start">2020-05-26 22:05:05</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">780ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[1.3698, 2.6424],
+        [2.2141, 2.1162],
+        [3.7934, 2.8792],
+        [3.3975, 4.4286]])</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">model(input)</code></pre></div>
+<div class="report"><p><span class="count">[3]</span>
+<span class="start">2020-05-26 22:05:05</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">784ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[-0.3551],
+        [-0.3327],
+        [-0.5082],
+        [-0.6298]], grad_fn=&lt;AddmmBackward&gt;)</code></pre></div></div></div>
+
+<h2 id="optimizer"><span class="pheasant-header"><span class="header"><span class="title">Optimizer</span></span></span></h2>
+<p>To train a model, we need an optimizer. For example</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import torch.optim
+
+optimizer = torch.optim.SGD(params=model.parameters(), lr=1e-3)
+optimizer</code></pre></div>
+<div class="report"><p><span class="count">[4]</span>
+<span class="start">2020-05-26 22:05:05</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">789ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+Parameter Group 0
+    dampening: 0
+    lr: 0.001
+    momentum: 0
+    nesterov: False
+    weight_decay: 0
+)</code></pre></div></div></div>
+
+<p>Now try to describe this optimizer in a dictionary style. However, the argument <code>params</code> is not a simple literal but an iterable of learnable parameters. Ivory provides "<strong><code>$</code>-notation</strong>" to tackle this problem.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
+optimizer:
+  class: torch.optim.SGD
+  params: $.model.parameters()
+  lr: 0.001
+&#34;&#34;&#34;
+optimizer = create(doc, &#39;optimizer&#39;, globals={&#39;model&#39;: model})
+optimizer</code></pre></div>
+<div class="report"><p><span class="count">[5]</span>
+<span class="start">2020-05-26 22:05:05</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">795ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+Parameter Group 0
+    dampening: 0
+    lr: 0.001
+    momentum: 0
+    nesterov: False
+    weight_decay: 0
+)</code></pre></div></div></div>
+
+<p>A "<strong><code>$</code></strong>" is a starting point to refer other instance stored in a <code>globals</code> dictionary. In this case, <code>$.model</code> is replaced by the <code>model</code> instance in <code>globals</code>, then <code>.parameters()</code> invokes a call of the <code>model.parameters()</code> method.</p>
+<h2 id="scheduler"><span class="pheasant-header"><span class="header"><span class="title">Scheduler</span></span></span></h2>
+<p>A Scheduler controls the learning rate of an optimizer.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
+scheduler:
+  class: torch.optim.lr_scheduler.ReduceLROnPlateau
+  optimizer: $
+  factor: 0.5
+  patience: 4
+&#34;&#34;&#34;
+scheduler = create(doc, &#39;scheduler&#39;, globals={&#39;optimizer&#39;: optimizer})
+scheduler</code></pre></div>
+<div class="report"><p><span class="count">[6]</span>
+<span class="start">2020-05-26 22:05:05</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">800ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x2699af7cd08&gt;</code></pre></div></div></div>
+
+<p>If a <code>$</code>-notation has no suffix, the value becomes its key itself. The following two example are equivalent:</p>
+<pre><code>optimizer: $
+optimizer: $.optimizer
+</code></pre>
+<p>Now we have had both data and model.</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../instance/" title="Creating Instance"><span>Previous</span></a></div>
+        <div class="next"><a href="../callbacks/" title="Callbacks"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/mkapi.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

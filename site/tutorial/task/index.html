@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Multiple Runs &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.2.1</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../instance/">Creating Instance</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../model/">Model Structure</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../callbacks/">Callbacks</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../trainer/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../core/">Ivory Core Entities</a></li>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Multiple Runs</a>
+<ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#task">Task</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#tracking">Tracking</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#range">Range</a></li>
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../core/">&laquo; Previous</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tutorial</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="multiple-runs"><span class="pheasant-header"><span class="header"><span class="title">Multiple Runs</span></span></span></h1>
+<h2 id="task"><span class="pheasant-header"><span class="header"><span class="title">Task</span></span></span></h2>
+<p>Ivory implements a special run type called <strong>Task</strong> which controls multiple nested runs. A task is useful for parameter search or cross validation.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
+
+client = ivory.create_client(&#34;examples&#34;)  # Set the working directory
+task = client.create_task(&#39;torch&#39;)  # Or, experiment.create_task()
+task</code></pre></div>
+<div class="report"><p><span class="count">[2]</span>
+<span class="start">2020-05-27 11:20:17</span> (<span class="time">42.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">3.46s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200527 11:20:17 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Task(id=&#39;8450051d87f9436cac3a08cc7f67cd93&#39;, name=&#39;task#0&#39;, num_objects=3)</code></pre></div></div></div>
+
+<p>The <code>Task</code> class has two methods to generate multiple runs: <code>prodcut()</code> and <code>chain()</code>. These two methods have the same functionality as <a href="https://docs.python.org/3/library/itertools.html"><code>itertools</code></a> of Python starndard library.</p>
+<h3 id="product"><span class="pheasant-header"><span class="header"><span class="title">Product</span></span></span></h3>
+<p>The <code>Task.prodcut()</code> makes an iterator that returns runs from cartesian product of input parameters.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+# verbose=0: No progress bar.
+runs = task.product(fold=range(2), factor=[0.5, 0.7], verbose=0)
+runs</code></pre></div>
+<div class="report"><p><span class="count">[3]</span>
+<span class="start">2020-05-27 11:20:17</span> (<span class="time">43.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">3.51s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.product at 0x0000012E5FBE9DC8&gt;</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
+  pass  # Do somthing, for example, run.start()</code></pre></div>
+<div class="report"><p><span class="count">[4]</span>
+<span class="start">2020-05-27 11:20:17</span> (<span class="time">413ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">3.92s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#0] fold=0 factor=0.5
+[run#1] fold=0 factor=0.7
+[run#2] fold=1 factor=0.5
+[run#3] fold=1 factor=0.7</code></pre></div></div></div>
+
+<p>You can specify other parameters which don't change during iteration.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+runs = task.product(fold=range(2), factor=[0.5, 0.7], lr=1e-4, verbose=0)
+for run in runs:
+  pass  # Do somthing, for example, run.start()</code></pre></div>
+<div class="report"><p><span class="count">[5]</span>
+<span class="start">2020-05-27 11:20:18</span> (<span class="time">506ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">4.43s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#4] lr=0.0001 fold=0 factor=0.5
+[run#5] lr=0.0001 fold=0 factor=0.7
+[run#6] lr=0.0001 fold=1 factor=0.5
+[run#7] lr=0.0001 fold=1 factor=0.7</code></pre></div></div></div>
+
+<h3 id="chain"><span class="pheasant-header"><span class="header"><span class="title">Chain</span></span></span></h3>
+<p>The <code>Task.chain()</code> maks an iterator that returns runs from the first input paramter until it is exhausted, then proceeds to the next parameter, until all of the parameters are exhausted. Other parameters have default values if they don't be specified by additional key-value pairs.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+runs = task.chain(
+    fold=range(2),
+    factor=[0.5, 0.7],
+    lr=[1e-4, 1e-3],
+    batch_size=32,
+    use_best_param=False,
+    verbose=0)
+runs</code></pre></div>
+<div class="report"><p><span class="count">[6]</span>
+<span class="start">2020-05-27 11:20:18</span> (<span class="time">68.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">4.49s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.chain at 0x0000012E60BE10C8&gt;</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
+  pass  # Do somthing, for example, run.start()</code></pre></div>
+<div class="report"><p><span class="count">[7]</span>
+<span class="start">2020-05-27 11:20:18</span> (<span class="time">764ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">5.26s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#8] batch_size=32 fold=0
+[run#9] batch_size=32 fold=1
+[run#10] batch_size=32 factor=0.5
+[run#11] batch_size=32 factor=0.7
+[run#12] batch_size=32 lr=0.0001
+[run#13] batch_size=32 lr=0.001</code></pre></div></div></div>
+
+<p>The <code>use_best_param</code> keyword argument is useful for dynamic updating of parameters. If <code>True</code> (default), the parameter which got the best score is used during the following iterations.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+runs = task.chain(
+    fold=range(2),
+    factor=[0.5, 0.7],
+    lr=[1e-4, 1e-3],
+    use_best_param=True,
+    verbose=0)
+for run in runs:
+  pass  # Do somthing, for example, run.start()
+  # We do nothing, so the first values are used.</code></pre></div>
+<div class="report"><p><span class="count">[8]</span>
+<span class="start">2020-05-27 11:20:19</span> (<span class="time">932ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.19s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#14] fold=0
+[run#15] fold=1
+[run#16] factor=0.5 fold=0
+[run#17] factor=0.7 fold=0
+[run#18] lr=0.0001 fold=0 factor=0.5
+[run#19] lr=0.001 fold=0 factor=0.5</code></pre></div></div></div>
+
+<h2 id="tracking"><span class="pheasant-header"><span class="header"><span class="title">Tracking</span></span></span></h2>
+<p>If the <code>Client</code> instace has a <code>Tracker</code> instance, the multiple runs created by the tasks can be tracked. The <code>client.search_parent_run_ids()</code> method makes an iterator that returns RunIDs of runs that have nested runs. In this case, parent runs are some tasks we made above.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python"># A helper function
+def print_run_info(run_ids):
+    for run_id in run_ids:
+        print(run_id[:5], client.get_run_name(run_id))
+
+run_ids = client.search_parent_run_ids(&#39;torch&#39;)
+print_run_info(run_ids)</code></pre></div>
+<div class="report"><p><span class="count">[9]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">83.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.27s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">01adb task#4
+40d56 task#3
+38fa5 task#2
+db806 task#1</code></pre></div></div></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>task#0</code> that we made first hasn't yielded any runs yet, so that the task has not been a parent run.</p>
+</div>
+<p>The <code>client.get_run_ids()</code> makes an iterator that returns RunIDs of runs you select by run names.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.get_run_ids(&#39;torch&#39;, task=range(2,4))
+print_run_info(run_ids)</code></pre></div>
+<div class="report"><p><span class="count">[10]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">125ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.40s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">38fa5 task#2
+40d56 task#3</code></pre></div></div></div>
+
+<p>The <code>client.get_nested_run_ids()</code> makes an iterator that returns RunIDs of runs that have a parent you select by run names.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.get_nested_run_ids(&#39;torch&#39;, task=range(3, 5))
+print_run_info(run_ids)</code></pre></div>
+<div class="report"><p><span class="count">[11]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">273ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.67s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">a7468 run#13
+b473f run#12
+564c4 run#11
+e2d24 run#10
+a7900 run#9
+6d027 run#8
+9f776 run#19
+b5a51 run#18
+b6f37 run#17
+1d959 run#16
+3d41d run#15
+85ad6 run#14</code></pre></div></div></div>
+
+<p>On the other hand, the <code>client.get_parent_run_id()</code> returns a RunID of a run that is refered by a nested run.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_id = client.get_parent_run_id(&#39;torch&#39;, run=14)
+print_run_info([run_id])</code></pre></div>
+<div class="report"><p><span class="count">[12]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">69.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.74s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">01adb task#4</code></pre></div></div></div>
+
+<h2 id="range"><span class="pheasant-header"><span class="header"><span class="title">Range</span></span></span></h2>
+<p>Ivory provides the <code>ivory.utils.range.Range</code> class for parameter setting. This
+class can be used as the standard <code>range</code>, but more flexible, expecially for float type.</p>
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">from ivory.utils.range import Range
+
+# Normal usage
+list(Range(3, 6))  # The stop value is included.</code></pre></div>
+<div class="report"><p><span class="count">[13]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.75s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6]</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, 2))  # Step size.</code></pre></div>
+<div class="report"><p><span class="count">[14]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.75s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7, 9]</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, num=4))  # Sampling size.</code></pre></div>
+<div class="report"><p><span class="count">[15]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.75s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 8, 10]</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, 0.25))  # float type.</code></pre></div>
+<div class="report"><p><span class="count">[16]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.76s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, num=5))  # Sampling size</code></pre></div>
+<div class="report"><p><span class="count">[17]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.76s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(1e-3, 1e2, num=6, log=True))  # Log scale</code></pre></div>
+<div class="report"><p><span class="count">[18]</span>
+<span class="start">2020-05-27 11:20:20</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.77s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../core/" title="Ivory Core Entities"><span>Previous</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/mkapi.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

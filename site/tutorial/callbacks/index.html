@@ -32,7 +32,7 @@
                 <div class="title">
                     <button class="hamburger"></button>
                     <a href="../.." class="site-name"> Ivory</a>
-                </div><div class="version">0.2.1</div>
+                </div><div class="version">0.2.2</div>
                 <div class="search">
                     <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -60,6 +60,7 @@
     <li class="toctree-l2"><a class="nav-item" href="../trainer/">Training a Model</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../core/">Ivory Core Entities</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../task/">Multiple Runs</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../tuning/">Hyperparameter Tuning</a></li>
 </ul></li>
                 </ul>
             </nav>
@@ -91,9 +92,9 @@
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory.core.base
 
 ivory.core.base.Callback.METHODS</code></pre></div>
-<div class="report"><p><span class="count">[1]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">795ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;on_init_begin&#39;,
+<div class="report"><p><span class="count">[2]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.88s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;on_init_begin&#39;,
  &#39;on_init_end&#39;,
  &#39;on_fit_begin&#39;,
  &#39;on_epoch_begin&#39;,
@@ -112,35 +113,35 @@ ivory.core.base.Callback.METHODS</code></pre></div>
     def  on_fit_begin(self, run):  # Must have a `run` argument.
         print(f&#39;on_fit_begin is called from id={id(run)}&#39;)
         # Do something with `run`.</code></pre></div>
-<div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">798ms</span>)</span></p></div></div></div>
+<div class="report"><p><span class="count">[3]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.89s</span>)</span></p></div></div></div>
 
 <p>To invoke callback functions, create a <code>CallbackCaller</code> instance.</p>
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller = ivory.core.base.CallbackCaller(simple=SimpleCallback())
 caller</code></pre></div>
-<div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">802ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">CallbackCaller(num_objects=1)</code></pre></div></div></div>
+<div class="report"><p><span class="count">[4]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.89s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">CallbackCaller(num_objects=1)</code></pre></div></div></div>
 
 <p>The number of registerd objects is 1.</p>
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(caller)</code></pre></div>
-<div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">806ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;simple&#39;]</code></pre></div></div></div>
+<div class="report"><p><span class="count">[5]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.89s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;simple&#39;]</code></pre></div></div></div>
 
 <p>Then call the <code>CallbackCaller.create_callbacks()</code> method to build a callback network.</p>
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller.create_callbacks()
 caller</code></pre></div>
-<div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">809ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">CallbackCaller(num_objects=13)</code></pre></div></div></div>
+<div class="report"><p><span class="count">[6]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.90s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">CallbackCaller(num_objects=13)</code></pre></div></div></div>
 
 <p>The number of objects increased up to 13.</p>
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(caller)</code></pre></div>
-<div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">812ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;simple&#39;,
+<div class="report"><p><span class="count">[7]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.90s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;simple&#39;,
  &#39;on_init_begin&#39;,
  &#39;on_init_end&#39;,
  &#39;on_fit_begin&#39;,
@@ -156,27 +157,27 @@ caller</code></pre></div>
 
 <p>Callback functions are added to the caller instance. Inspect each callback funtion.</p>
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller.on_init_begin</code></pre></div>
-<div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">815ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Callback([])</code></pre></div></div></div>
+<div class="report"><p><span class="count">[8]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.90s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Callback([])</code></pre></div></div></div>
 
 <p>This is an empty callback because the caller has no objects that define the <code>on_init_begin()</code> function. On the other hand,</p>
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller.on_fit_begin</code></pre></div>
-<div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">818ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Callback([&#39;simple&#39;])</code></pre></div></div></div>
+<div class="report"><p><span class="count">[9]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.91s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Callback([&#39;simple&#39;])</code></pre></div></div></div>
 
 <p>The <code>simple</code> object is registerd as a receiver for the <code>on_fit_begin()</code> function. We can call this.</p>
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller.on_fit_begin()</code></pre></div>
-<div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">822ms</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">on_fit_begin is called from id=1298403967432</code></pre></div></div></div>
+<div class="report"><p><span class="count">[10]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.91s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">on_fit_begin is called from id=2173798106696</code></pre></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">id(caller)</code></pre></div>
-<div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">825ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">1298403967432</code></pre></div></div></div>
+<div class="report"><p><span class="count">[11]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.91s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">2173798106696</code></pre></div></div></div>
 
 <p>This caller-receiver network among arbitrary object collection builds a complex machine learning workflow.</p>
 <p>The <code>Run</code> class is a subclass of the <code>CallbackCaller</code> class and performs more library-specific process. We uses this <code>Run</code> class below.</p>
@@ -204,9 +205,9 @@ model:
 &#34;&#34;&#34;
 dataloaders = create(doc, &#39;dataloaders&#39;)
 model = create(doc, &#39;model&#39;)</code></pre></div>
-<div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">8.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">833ms</span>)</span></p></div></div></div>
+<div class="report"><p><span class="count">[12]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">9.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.92s</span>)</span></p></div></div></div>
 
 <h2 id="results"><span class="pheasant-header"><span class="header"><span class="title">Results</span></span></span></h2>
 <p>The <code>Results</code> callback stores index, output, and target data. To save memory, a <code>Results</code> instance ignores input data.</p>
@@ -215,9 +216,9 @@ import ivory.torch.results
 
 results = ivory.torch.results.Results()
 results</code></pre></div>
-<div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">838ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Results()</code></pre></div></div></div>
+<div class="report"><p><span class="count">[13]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.93s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Results()</code></pre></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory.core.run
 
@@ -228,9 +229,9 @@ run = ivory.core.run.Run(
 )
 run.create_callbacks()
 run</code></pre></div>
-<div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">6.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">844ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(num_objects=15)</code></pre></div></div></div>
+<div class="report"><p><span class="count">[14]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.93s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(num_objects=15)</code></pre></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python"># A helper function
 def print_callbacks(obj):
@@ -239,9 +240,9 @@ def print_callbacks(obj):
             print(func)
 
 print_callbacks(results)  </code></pre></div>
-<div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">849ms</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<div class="report"><p><span class="count">[15]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">8.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.94s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">on_train_begin
 on_train_end
 on_val_end
@@ -268,49 +269,49 @@ run.on_val_end()
 run.on_epoch_end()
 
 results</code></pre></div>
-<div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">10.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">859ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Results(&#39;train&#39;, &#39;val&#39;)</code></pre></div></div></div>
+<div class="report"><p><span class="count">[16]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">8.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.95s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Results(&#39;train&#39;, &#39;val&#39;)</code></pre></div></div></div>
 
 <p>We performed a train and validation loop so that the <code>Results</code> instance has these data, but doesn't have test data. We can get data by nested dot-notation.</p>
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.train</code></pre></div>
-<div class="report"><p><span class="count">[16]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">864ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dict(&#39;index&#39;, &#39;output&#39;, &#39;target&#39;)</code></pre></div></div></div>
+<div class="report"><p><span class="count">[17]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.95s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dict(&#39;index&#39;, &#39;output&#39;, &#39;target&#39;)</code></pre></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.train.index  # Shuffled. The length is batch_size (4) x 3.</code></pre></div>
-<div class="report"><p><span class="count">[17]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">868ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([865, 752, 944, 132, 191,  44, 700, 945, 973, 743,  64, 484])</code></pre></div></div></div>
+<div class="report"><p><span class="count">[18]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.96s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([940, 460, 346, 433, 730, 989, 166, 842, 145, 686, 419, 402])</code></pre></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.val.index  # Not shuffled. The length is batch_size (4) x 2.</code></pre></div>
-<div class="report"><p><span class="count">[18]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">871ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([ 1,  8, 14, 27, 30, 31, 34, 45])</code></pre></div></div></div>
+<div class="report"><p><span class="count">[19]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.96s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([ 1,  8, 14, 27, 30, 31, 34, 45])</code></pre></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.val.output  # Actually, no learning.</code></pre></div>
-<div class="report"><p><span class="count">[19]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">875ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[0.21222956],
-       [0.1928317 ],
-       [0.20290865],
-       [0.1803765 ],
-       [0.18458796],
-       [0.18455654],
-       [0.21058798],
-       [0.20718005]], dtype=float32)</code></pre></div></div></div>
+<div class="report"><p><span class="count">[20]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.96s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[-0.04234976],
+       [-0.05683768],
+       [-0.0305914 ],
+       [-0.03906339],
+       [-0.0390932 ],
+       [-0.0305914 ],
+       [-0.0305914 ],
+       [-0.07992584]], dtype=float32)</code></pre></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.val.target</code></pre></div>
-<div class="report"><p><span class="count">[20]</span>
-<span class="start">2020-05-27 11:20:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">878ms</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[ 3.8259084],
-       [10.152728 ],
-       [ 6.6943808],
-       [15.837504 ],
-       [13.444315 ],
-       [12.519631 ],
-       [ 4.0379057],
-       [ 5.1663475]], dtype=float32)</code></pre></div></div></div>
+<div class="report"><p><span class="count">[21]</span>
+<span class="start">2020-05-27 23:18:26</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.97s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[14.530574 ],
+       [16.429028 ],
+       [ 7.05365  ],
+       [12.901388 ],
+       [ 4.232388 ],
+       [ 1.188243 ],
+       [ 3.8026145],
+       [ 7.906225 ]], dtype=float32)</code></pre></div></div></div>
 
 <h2 id="other-callback"><span class="pheasant-header"><span class="header"><span class="title">Other Callback</span></span></span></h2>
 <p>There are several callback such as <code>Metrics</code>, <code>Monitor</code>, <em>etc</em>. We will learn about them in next <a href="../trainer">'Training a Model'</a> section.</p></div>

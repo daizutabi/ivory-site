@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Tracking UI &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.2.2</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../instance/">Creating Instances</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../model/">Model Structure</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../callbacks/">Callback System</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../trainer/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../core/">Ivory Core Entities</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../task/">Multiple Runs</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Tracking UI</a>
+<ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#tracking-ui_1">Tracking UI</a></li>
+</ul></li>
+    <li class="toctree-l2"><a class="nav-item" href="../tracking/">Tracking Runs with Ivory</a></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../tuning/">&laquo; Previous</a></div>
+    <div class="next"><a href="../tracking/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tutorial</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="tracking-ui"><span class="pheasant-header"><span class="header"><span class="title">Tracking UI</span></span></span></h1>
+<p>Ivory uses <a href="https://mlflow.org/docs/latest/tracking.html">MLFlow Tracking</a> for the workflow tracking and model saving. For this feature, the <code>Client</code> instace has to have a <code>Tracker</code> instance.</p>
+<p>First create several runs for demonstration.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
+
+client = ivory.create_client(&#34;examples&#34;)
+run = client.create_run(&#39;torch&#39;)
+run.start(&#39;both&#39;)</code></pre></div>
+<div class="report"><p><span class="count">[3]</span>
+<span class="start">2020-05-28 23:46:41</span> (<span class="time">1.26s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">39.2s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200528 23:46:41 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[epoch#0] loss=30.05 val_loss=6.77 lr=0.001 best
+[epoch#1] loss=7.079 val_loss=6.307 lr=0.001 best
+[epoch#2] loss=6.431 val_loss=5.825 lr=0.001 best
+[epoch#3] loss=5.776 val_loss=5.254 lr=0.001 best
+[epoch#4] loss=5.117 val_loss=4.432 lr=0.001 best
+[epoch#5] loss=4.356 val_loss=3.67 lr=0.001 best
+[epoch#6] loss=3.749 val_loss=3.01 lr=0.001 best
+[epoch#7] loss=2.952 val_loss=2.371 lr=0.001 best
+[epoch#8] loss=2.354 val_loss=1.825 lr=0.001 best
+[epoch#9] loss=1.808 val_loss=1.384 lr=0.001 best</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+runs = task.product(fold=range(3), verbose=0)
+for run in runs:
+    run.start(&#39;both&#39;)</code></pre></div>
+<div class="report"><p><span class="count">[4]</span>
+<span class="start">2020-05-28 23:46:43</span> (<span class="time">3.98s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">43.2s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#1] fold=0
+[run#2] fold=1
+[run#3] fold=2</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+runs = task.chain(lr=[1e-4, 1e-3], batch_size=[16, 32], verbose=0)
+for run in runs:
+    run.start(&#39;both&#39;)</code></pre></div>
+<div class="report"><p><span class="count">[5]</span>
+<span class="start">2020-05-28 23:46:47</span> (<span class="time">5.03s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">48.2s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#4] lr=0.0001
+[run#5] lr=0.001
+[run#6] batch_size=16 lr=0.001
+[run#7] batch_size=32 lr=0.001</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">from ivory.utils.range import Range
+
+study = client.create_study(&#39;torch&#39;, lr=Range(1e-5, 1e-3, log=True))
+study.optimize(n_trials=5, verbose=0)</code></pre></div>
+<div class="report"><p><span class="count">[6]</span>
+<span class="start">2020-05-28 23:46:52</span> (<span class="time">6.98s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">55.2s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 23:46:52,209] A new study created with name: torch.lr.study#0</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#8] lr=1.364e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 23:46:53,589] Finished trial#0 with value: 70.26964445114136 with parameters: {&#39;lr&#39;: 1.3636404047956838e-05}. Best is trial#0 with value: 70.26964445114136.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#9] lr=1.266e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 23:46:54,971] Finished trial#1 with value: 42.05571928024292 with parameters: {&#39;lr&#39;: 1.2661633931324009e-05}. Best is trial#1 with value: 42.05571928024292.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#10] lr=4.468e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 23:46:56,334] Finished trial#2 with value: 9.032695889472961 with parameters: {&#39;lr&#39;: 4.467564664450915e-05}. Best is trial#2 with value: 9.032695889472961.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#11] lr=2.794e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 23:46:57,715] Finished trial#3 with value: 29.401192450523375 with parameters: {&#39;lr&#39;: 2.7942551973225483e-05}. Best is trial#2 with value: 9.032695889472961.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#12] lr=0.0001887</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 23:46:59,096] Finished trial#4 with value: 8.175034308433533 with parameters: {&#39;lr&#39;: 0.000188731505585742}. Best is trial#4 with value: 8.175034308433533.</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;optuna.study.Study at 0x27f21650308&gt;</code></pre></div></div></div></div>
+
+<h2 id="tracking-ui_1"><span class="pheasant-header"><span class="header"><span class="title">Tracking UI</span></span></span></h2>
+<p>Optionally, you can update missing parameters:</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">client.update_params(&#39;torch&#39;)</code></pre></div>
+<div class="report"><p><span class="count">[7]</span>
+<span class="start">2020-05-28 23:46:59</span> (<span class="time">356ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">55.5s</span>)</span></p></div></div></div></div>
+
+<p>In a terminal, move to the working directory (<code>examples</code>), then run</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="bash">$ ivory ui</code></pre></div>
+<div class="report"><p><span class="count">[8]</span>
+<span class="start"></span> (<span class="time"></span>)
+<span class="right"><span class="kernel"></span> (<span class="total"></span>)</span></p></div></div></div></div>
+
+<p>You can view the UI using URL http://localhost:5000 in your browser.</p>
+<div class="pheasant-header"><div class="table"><p class="caption"><span class="prefix">Table</span> <span class="number">1</span>
+<span class="title">A collection of runs. Parameters, metrics, tags are logged.</span></p>
+<div class="content"><p><img alt="png" src="/img/img1.png" /></p></div></div></div>
+
+<p>You can compare the training results among runs.</p>
+<div class="pheasant-header"><div class="figure"><div class="content"><p><img alt="png" src="/img/img2.png" /></p></div>
+<p class="caption"><span class="prefix">Figure</span> <span class="number">1</span>
+<span class="title">Comparison of training curves</span></p></div></div>
+
+<p>See also <a href="https://mlflow.org/docs/latest/tracking.html#tracking-ui">the official MLFlow documentation</a>.</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../tuning/" title="Hyperparameter Tuning"><span>Previous</span></a></div>
+        <div class="next"><a href="../tracking/" title="Tracking Runs with Ivory"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/mkapi.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

@@ -48,19 +48,20 @@
                     <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
 <ul class="subnav">
     <li class="toctree-l2"><a class="nav-item" href="../data/">Set of Data classes</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../instance/">Creating Instance</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../instance/">Creating Instances</a></li>
     <li class="toctree-l2 current"><a class="nav-item current" href="./">Model Structure</a>
 <ul class="subnav">
 <li class="toctree-l3"><a class="nav-item toc" href="#model">Model</a></li>
 <li class="toctree-l3"><a class="nav-item toc" href="#optimizer">Optimizer</a></li>
 <li class="toctree-l3"><a class="nav-item toc" href="#scheduler">Scheduler</a></li>
 </ul></li>
-    <li class="toctree-l2"><a class="nav-item" href="../callbacks/">Callbacks</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../callbacks/">Callback System</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../trainer/">Training a Model</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../core/">Ivory Core Entities</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../task/">Multiple Runs</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../tuning/">Hyperparameter Tuning</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../tracking/">Tracking</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../ui/">Tracking UI</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../tracking/">Tracking Runs with Ivory</a></li>
 </ul></li>
                 </ul>
             </nav>
@@ -89,7 +90,7 @@
 <h2 id="model"><span class="pheasant-header"><span class="header"><span class="title">Model</span></span></span></h2>
 <p>We have prepared a <code>DataLoaders</code> instance for PyTorch. Now define a MLP model that works with the <code>DataLoaders</code>.</p>
 <p>The model is defined in <code>rectangle/torch.py</code></p>
-<div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> <span class="number">4</span>
+<div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> <span class="number">6</span>
 <span class="title">rectangle/torch.py</span></p>
 <div class="content">
 
@@ -137,8 +138,8 @@ dataloaders = create(doc, &#39;dataloaders&#39;)
 model = create(doc, &#39;model&#39;)
 model</code></pre></div>
 <div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-05-28 14:04:59</span> (<span class="time">11.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.38s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+<span class="start">2020-05-28 23:46:11</span> (<span class="time">11.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">7.73s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
   (layers): ModuleList(
     (0): Linear(in_features=2, out_features=3, bias=True)
     (1): Linear(in_features=3, out_features=4, bias=True)
@@ -151,19 +152,19 @@ model</code></pre></div>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">index, input, target = next(iter(dataloaders.train))
 input</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-28 14:04:59</span> (<span class="time">6.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.39s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[2.8833, 2.7999],
-        [2.4303, 4.8014],
-        [4.0537, 1.1563],
-        [4.8641, 2.9741]])</code></pre></div></div></div></div>
+<span class="start">2020-05-28 23:46:11</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">7.74s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[4.1154, 3.5333],
+        [2.0037, 3.7226],
+        [3.3716, 3.1244],
+        [3.3246, 3.6926]])</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">model(input)</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-28 14:04:59</span> (<span class="time">6.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.39s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[0.2142],
-        [0.2177],
-        [0.2083],
-        [0.2072]], grad_fn=&lt;AddmmBackward&gt;)</code></pre></div></div></div></div>
+<span class="start">2020-05-28 23:46:11</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">7.74s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[-0.0706],
+        [-0.0098],
+        [-0.0255],
+        [-0.0202]], grad_fn=&lt;AddmmBackward&gt;)</code></pre></div></div></div></div>
 
 <h2 id="optimizer"><span class="pheasant-header"><span class="header"><span class="title">Optimizer</span></span></span></h2>
 <p>To train a model, we need an optimizer. For example</p>
@@ -172,8 +173,8 @@ input</code></pre></div>
 optimizer = torch.optim.SGD(params=model.parameters(), lr=1e-3)
 optimizer</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-28 14:04:59</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.40s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+<span class="start">2020-05-28 23:46:11</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">7.75s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
 Parameter Group 0
     dampening: 0
     lr: 0.001
@@ -182,7 +183,7 @@ Parameter Group 0
     weight_decay: 0
 )</code></pre></div></div></div></div>
 
-<p>Now try to describe this optimizer in a dictionary style. However, the argument <code>params</code> is not a simple literal but an iterable of learnable parameters. Ivory provides "<strong><code>$</code>-notation</strong>" to tackle this problem.</p>
+<p>Now try to describe this optimizer in a dictionary style. However, the first argument <code>params</code> is not a simple literal but an iterable of learnable parameters. Ivory provides "<strong><code>$</code>-notation</strong>" to tackle this problem.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
 optimizer:
   class: torch.optim.SGD
@@ -192,8 +193,8 @@ optimizer:
 optimizer = create(doc, &#39;optimizer&#39;, globals={&#39;model&#39;: model})
 optimizer</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-28 14:04:59</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.40s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+<span class="start">2020-05-28 23:46:11</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">7.75s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
 Parameter Group 0
     dampening: 0
     lr: 0.001
@@ -202,9 +203,9 @@ Parameter Group 0
     weight_decay: 0
 )</code></pre></div></div></div></div>
 
-<p>A "<strong><code>$</code></strong>" is a starting point to refer other instance stored in a <code>globals</code> dictionary. In this case, <code>$.model</code> is replaced by the <code>model</code> instance in <code>globals</code>, then <code>.parameters()</code> invokes a call of the <code>model.parameters()</code> method.</p>
+<p>A "<strong><code>$</code></strong>" is a starting point to refer other instance stored in the <code>globals</code> dictionary. In this case, <code>$.model</code> is replaced by the <code>model</code> instance in <code>globals</code>, then <code>.parameters()</code> invokes a call of the <code>model.parameters()</code> method.</p>
 <h2 id="scheduler"><span class="pheasant-header"><span class="header"><span class="title">Scheduler</span></span></span></h2>
-<p>A Scheduler controls the learning rate of an optimizer.</p>
+<p>A scheduler controls the learning rate of an optimizer.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
 scheduler:
   class: torch.optim.lr_scheduler.ReduceLROnPlateau
@@ -215,18 +216,19 @@ scheduler:
 scheduler = create(doc, &#39;scheduler&#39;, globals={&#39;optimizer&#39;: optimizer})
 scheduler</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-28 14:04:59</span> (<span class="time">6.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.41s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x2250a9544c8&gt;</code></pre></div></div></div></div>
+<span class="start">2020-05-28 23:46:11</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">7.76s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x27f203113c8&gt;</code></pre></div></div></div></div>
 
-<p>If a <code>$</code>-notation has no suffix, the value becomes its key itself. The following two example are equivalent:</p>
-<pre><code>optimizer: $
-optimizer: $.optimizer
-</code></pre>
+<p>If a <code>$</code>-notation has no suffix, the value becomes its key itself. The following two examples are equivalent:</p>
+<div class="pheasant-fenced-code"><div class="cell embed source"><div class="code"><pre><code class="yaml">optimizer: $</code></pre></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cell embed source"><div class="code"><pre><code class="yaml">optimizer: $.optimizer</code></pre></div></div></div>
+
 <p>Now we have had both data and model.</p></div>
                 <footer>
     <div class="footer-buttons">
-        <div class="previous"><a href="../instance/" title="Creating Instance"><span>Previous</span></a></div>
-        <div class="next"><a href="../callbacks/" title="Callbacks"><span>Next</span></a></div>
+        <div class="previous"><a href="../instance/" title="Creating Instances"><span>Previous</span></a></div>
+        <div class="next"><a href="../callbacks/" title="Callback System"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>

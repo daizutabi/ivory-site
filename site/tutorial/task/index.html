@@ -56,10 +56,10 @@
     <li class="toctree-l2 current"><a class="nav-item current" href="./">Multiple Runs</a>
 <ul class="subnav">
 <li class="toctree-l3"><a class="nav-item toc" href="#task">Task</a></li>
-<li class="toctree-l3"><a class="nav-item toc" href="#tracking">Tracking</a></li>
 <li class="toctree-l3"><a class="nav-item toc" href="#range">Range</a></li>
 </ul></li>
     <li class="toctree-l2"><a class="nav-item" href="../tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../tracking/">Tracking</a></li>
 </ul></li>
                 </ul>
             </nav>
@@ -87,53 +87,53 @@
 <h1 id="multiple-runs"><span class="pheasant-header"><span class="header"><span class="title">Multiple Runs</span></span></span></h1>
 <h2 id="task"><span class="pheasant-header"><span class="header"><span class="title">Task</span></span></span></h2>
 <p>Ivory implements a special run type called <strong>Task</strong> which controls multiple nested runs. A task is useful for parameter search or cross validation.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
 
 client = ivory.create_client(&#34;examples&#34;)  # Set the working directory
 task = client.create_task(&#39;torch&#39;)  # Or, experiment.create_task()
 task</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-27 23:18:28</span> (<span class="time">46.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.72s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 200527 23:18:28 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Task(id=&#39;8a47595d5c5d4c5e9be561f6ee0369ed&#39;, name=&#39;task#0&#39;, num_objects=3)</code></pre></div></div></div>
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">45.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">8.48s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200528 14:04:59 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Task(id=&#39;5005a761db4a4493bdb1b1ae2f5cf89b&#39;, name=&#39;task#0&#39;, num_objects=3)</code></pre></div></div></div></div>
 
 <p>The <code>Task</code> class has two methods to generate multiple runs: <code>prodcut()</code> and <code>chain()</code>. These two methods have the same functionality as <a href="https://docs.python.org/3/library/itertools.html"><code>itertools</code></a> of Python starndard library.</p>
 <h3 id="product"><span class="pheasant-header"><span class="header"><span class="title">Product</span></span></span></h3>
 <p>The <code>Task.prodcut()</code> makes an iterator that returns runs from cartesian product of input parameters.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
 # verbose=0: No progress bar.
 runs = task.product(fold=range(2), factor=[0.5, 0.7], verbose=0)
 runs</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-27 23:18:28</span> (<span class="time">43.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.76s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.product at 0x000001FA218745C8&gt;</code></pre></div></div></div>
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">37.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">8.52s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.product at 0x000002250A943448&gt;</code></pre></div></div></div></div>
 
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
   pass  # Do somthing, for example, run.start()</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-27 23:18:28</span> (<span class="time">417ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">9.18s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">415ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">8.94s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#0] fold=0 factor=0.5
 [run#1] fold=0 factor=0.7
 [run#2] fold=1 factor=0.5
-[run#3] fold=1 factor=0.7</code></pre></div></div></div>
+[run#3] fold=1 factor=0.7</code></pre></div></div></div></div>
 
 <p>You can specify other parameters which don't change during iteration.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
 runs = task.product(fold=range(2), factor=[0.5, 0.7], lr=1e-4, verbose=0)
 for run in runs:
   pass  # Do somthing, for example, run.start()</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-27 23:18:28</span> (<span class="time">515ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">9.69s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">510ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">9.45s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#4] lr=0.0001 fold=0 factor=0.5
 [run#5] lr=0.0001 fold=0 factor=0.7
 [run#6] lr=0.0001 fold=1 factor=0.5
-[run#7] lr=0.0001 fold=1 factor=0.7</code></pre></div></div></div>
+[run#7] lr=0.0001 fold=1 factor=0.7</code></pre></div></div></div></div>
 
 <h3 id="chain"><span class="pheasant-header"><span class="header"><span class="title">Chain</span></span></span></h3>
 <p>The <code>Task.chain()</code> maks an iterator that returns runs from the first input paramter until it is exhausted, then proceeds to the next parameter, until all of the parameters are exhausted. Other parameters have default values if they don't be specified by additional key-value pairs.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
 runs = task.chain(
     fold=range(2),
     factor=[0.5, 0.7],
@@ -143,23 +143,23 @@ runs = task.chain(
     verbose=0)
 runs</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-27 23:18:29</span> (<span class="time">72.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">9.77s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.chain at 0x000001FA218741C8&gt;</code></pre></div></div></div>
+<span class="start">2020-05-28 14:05:00</span> (<span class="time">66.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">9.51s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.chain at 0x000002250A943148&gt;</code></pre></div></div></div></div>
 
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
   pass  # Do somthing, for example, run.start()</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-05-27 23:18:29</span> (<span class="time">777ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.5s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-28 14:05:00</span> (<span class="time">780ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">10.3s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#8] batch_size=32 fold=0
 [run#9] batch_size=32 fold=1
 [run#10] batch_size=32 factor=0.5
 [run#11] batch_size=32 factor=0.7
 [run#12] batch_size=32 lr=0.0001
-[run#13] batch_size=32 lr=0.001</code></pre></div></div></div>
+[run#13] batch_size=32 lr=0.001</code></pre></div></div></div></div>
 
 <p>The <code>use_best_param</code> keyword argument is useful for dynamic updating of parameters. If <code>True</code> (default), the parameter which got the best score is used during the following iterations.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
 runs = task.chain(
     fold=range(2),
     factor=[0.5, 0.7],
@@ -170,107 +170,75 @@ for run in runs:
   pass  # Do somthing, for example, run.start()
   # We do nothing, so the first values are used.</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-05-27 23:18:30</span> (<span class="time">951ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">11.5s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-28 14:05:01</span> (<span class="time">936ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.2s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#14] fold=0
 [run#15] fold=1
 [run#16] factor=0.5 fold=0
 [run#17] factor=0.7 fold=0
 [run#18] lr=0.0001 fold=0 factor=0.5
-[run#19] lr=0.001 fold=0 factor=0.5</code></pre></div></div></div>
-
-<h2 id="tracking"><span class="pheasant-header"><span class="header"><span class="title">Tracking</span></span></span></h2>
-<p>If the <code>Client</code> instace has a <code>Tracker</code> instance, the multiple runs created by the tasks can be tracked. The <code>client.search_parent_run_ids()</code> method makes an iterator that returns RunIDs of runs that have nested runs. In this case, parent runs are some tasks we made above.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python"># A helper function
-def print_run_info(run_ids):
-    for run_id in run_ids:
-        print(run_id[:5], client.get_run_name(run_id))
-
-run_ids = client.search_parent_run_ids(&#39;torch&#39;)
-print_run_info(run_ids)</code></pre></div>
-<div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">84.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">11.6s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">2c3eb task#4
-a00d2 task#3
-0c7a3 task#2
-087e8 task#1</code></pre></div></div></div>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code>task#0</code> that we made first hasn't yielded any runs yet, so that the task has not been a parent run.</p>
-</div>
-<p>The <code>client.get_run_ids()</code> makes an iterator that returns RunIDs of runs you select by run names.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.get_run_ids(&#39;torch&#39;, task=range(2,4))
-print_run_info(run_ids)</code></pre></div>
-<div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">128ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">11.7s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">0c7a3 task#2
-a00d2 task#3</code></pre></div></div></div>
-
-<p>The <code>client.get_nested_run_ids()</code> makes an iterator that returns RunIDs of runs that have a parent you select by run names.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.get_nested_run_ids(&#39;torch&#39;, task=range(3, 5))
-print_run_info(run_ids)</code></pre></div>
-<div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">280ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">12.0s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">6bfe3 run#13
-b9e98 run#12
-29f5f run#11
-5efca run#10
-6fa94 run#9
-ca494 run#8
-7e6be run#19
-85ef4 run#18
-f4e58 run#17
-66d83 run#16
-8b7be run#15
-2ae7b run#14</code></pre></div></div></div>
-
-<p>On the other hand, the <code>client.get_parent_run_id()</code> returns a RunID of a run that is refered by a nested run.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_id = client.get_parent_run_id(&#39;torch&#39;, run=14)
-print_run_info([run_id])</code></pre></div>
-<div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">65.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">12.1s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">2c3eb task#4</code></pre></div></div></div>
+[run#19] lr=0.001 fold=0 factor=0.5</code></pre></div></div></div></div>
 
 <h2 id="range"><span class="pheasant-header"><span class="header"><span class="title">Range</span></span></span></h2>
-<p>Ivory provides the <code>ivory.utils.range.Range</code> class for parameter setting. This
-class can be used as the standard <code>range</code>, but more flexible, expecially for float type.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">from ivory.utils.range import Range
+<p>Ivory provides the <code>ivory.utils.range.Range</code> class for parameter ranging. This
+class can be used as the standard <code>range</code>, but more flexible, especially for the float type.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">from ivory.utils.range import Range
 
-# Normal usage
-list(Range(3, 6))  # The stop value is included.</code></pre></div>
+list(Range(6))  # The stop value is included.</code></pre></div>
+<div class="report"><p><span class="count">[10]</span>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0, 1, 2, 3, 4, 5, 6]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 6))  # Start and stop.</code></pre></div>
+<div class="report"><p><span class="count">[11]</span>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, 2))  # Step size.</code></pre></div>
+<div class="report"><p><span class="count">[12]</span>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7, 9]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, num=4))  # Sampling size.</code></pre></div>
+<div class="report"><p><span class="count">[13]</span>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 8, 10]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, 0.25))  # float type.</code></pre></div>
 <div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">12.1s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6]</code></pre></div></div></div>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
 
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, 2))  # Step size.</code></pre></div>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, num=5))  # Sampling size</code></pre></div>
 <div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">12.1s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7, 9]</code></pre></div></div></div>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">4.31ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
 
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, num=4))  # Sampling size.</code></pre></div>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(1e-3, 1e2, num=6, log=True))  # Log scale</code></pre></div>
 <div class="report"><p><span class="count">[16]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">12.1s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 8, 10]</code></pre></div></div></div>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">3.98ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div>
 
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, 0.25))  # float type.</code></pre></div>
+<p>A <code>Range</code> instance can be created from a string.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;3-7&#39;))  # &lt;start&gt;-&lt;stop&gt;</code></pre></div>
 <div class="report"><p><span class="count">[17]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">12.1s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">4.39ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6, 7]</code></pre></div></div></div></div>
 
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, num=5))  # Sampling size</code></pre></div>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;3-7-2&#39;)) # &lt;start&gt;-&lt;stop&gt;-&lt;step&gt;</code></pre></div>
 <div class="report"><p><span class="count">[18]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">12.1s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">5.14ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7]</code></pre></div></div></div></div>
 
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(1e-3, 1e2, num=6, log=True))  # Log scale</code></pre></div>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;0.0-1.0:5&#39;)) # &lt;start&gt;-&lt;stop&gt;:&lt;num&gt;</code></pre></div>
 <div class="report"><p><span class="count">[19]</span>
-<span class="start">2020-05-27 23:18:31</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">12.1s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;1e-3_1e2:6.log&#39;))  # &#39;_&#39; instead of &#39;-&#39;, log scale</code></pre></div>
+<div class="report"><p><span class="count">[20]</span>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">3.98ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">11.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../core/" title="Ivory Core Entities"><span>Previous</span></a></div>

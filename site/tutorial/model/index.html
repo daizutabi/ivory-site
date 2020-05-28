@@ -60,6 +60,7 @@
     <li class="toctree-l2"><a class="nav-item" href="../core/">Ivory Core Entities</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../task/">Multiple Runs</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../tracking/">Tracking</a></li>
 </ul></li>
                 </ul>
             </nav>
@@ -112,7 +113,7 @@ class Model(nn.Module):
 </div></div></div>
 
 <p>We again use Ivory's <a href="../instance">instance creation system</a>.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import yaml
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import yaml
 
 # A helper function.
 def create(doc, name, **kwargs):
@@ -136,53 +137,53 @@ dataloaders = create(doc, &#39;dataloaders&#39;)
 model = create(doc, &#39;model&#39;)
 model</code></pre></div>
 <div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-05-27 23:18:26</span> (<span class="time">10.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.84s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">11.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">8.38s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
   (layers): ModuleList(
     (0): Linear(in_features=2, out_features=3, bias=True)
     (1): Linear(in_features=3, out_features=4, bias=True)
     (2): Linear(in_features=4, out_features=5, bias=True)
     (3): Linear(in_features=5, out_features=1, bias=True)
   )
-)</code></pre></div></div></div>
+)</code></pre></div></div></div></div>
 
 <p>We can uses this model as usual.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">index, input, target = next(iter(dataloaders.train))
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">index, input, target = next(iter(dataloaders.train))
 input</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-27 23:18:26</span> (<span class="time">7.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.85s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[4.3387, 3.4454],
-        [4.7279, 3.9121],
-        [1.2816, 2.5626],
-        [1.5204, 1.1074]])</code></pre></div></div></div>
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">8.39s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[2.8833, 2.7999],
+        [2.4303, 4.8014],
+        [4.0537, 1.1563],
+        [4.8641, 2.9741]])</code></pre></div></div></div></div>
 
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">model(input)</code></pre></div>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">model(input)</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-27 23:18:26</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.85s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[0.1654],
-        [0.1620],
-        [0.1762],
-        [0.1988]], grad_fn=&lt;AddmmBackward&gt;)</code></pre></div></div></div>
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">8.39s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[0.2142],
+        [0.2177],
+        [0.2083],
+        [0.2072]], grad_fn=&lt;AddmmBackward&gt;)</code></pre></div></div></div></div>
 
 <h2 id="optimizer"><span class="pheasant-header"><span class="header"><span class="title">Optimizer</span></span></span></h2>
 <p>To train a model, we need an optimizer. For example</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">import torch.optim
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import torch.optim
 
 optimizer = torch.optim.SGD(params=model.parameters(), lr=1e-3)
 optimizer</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-27 23:18:26</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.86s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">8.40s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
 Parameter Group 0
     dampening: 0
     lr: 0.001
     momentum: 0
     nesterov: False
     weight_decay: 0
-)</code></pre></div></div></div>
+)</code></pre></div></div></div></div>
 
 <p>Now try to describe this optimizer in a dictionary style. However, the argument <code>params</code> is not a simple literal but an iterable of learnable parameters. Ivory provides "<strong><code>$</code>-notation</strong>" to tackle this problem.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
 optimizer:
   class: torch.optim.SGD
   params: $.model.parameters()
@@ -191,20 +192,20 @@ optimizer:
 optimizer = create(doc, &#39;optimizer&#39;, globals={&#39;model&#39;: model})
 optimizer</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-27 23:18:26</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.86s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">8.40s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
 Parameter Group 0
     dampening: 0
     lr: 0.001
     momentum: 0
     nesterov: False
     weight_decay: 0
-)</code></pre></div></div></div>
+)</code></pre></div></div></div></div>
 
 <p>A "<strong><code>$</code></strong>" is a starting point to refer other instance stored in a <code>globals</code> dictionary. In this case, <code>$.model</code> is replaced by the <code>model</code> instance in <code>globals</code>, then <code>.parameters()</code> invokes a call of the <code>model.parameters()</code> method.</p>
 <h2 id="scheduler"><span class="pheasant-header"><span class="header"><span class="title">Scheduler</span></span></span></h2>
 <p>A Scheduler controls the learning rate of an optimizer.</p>
-<div class="pheasant-fenced-code"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
 scheduler:
   class: torch.optim.lr_scheduler.ReduceLROnPlateau
   optimizer: $
@@ -214,8 +215,8 @@ scheduler:
 scheduler = create(doc, &#39;scheduler&#39;, globals={&#39;optimizer&#39;: optimizer})
 scheduler</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-27 23:18:26</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.87s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x1fa2075df88&gt;</code></pre></div></div></div>
+<span class="start">2020-05-28 14:04:59</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">8.41s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x2250a9544c8&gt;</code></pre></div></div></div></div>
 
 <p>If a <code>$</code>-notation has no suffix, the value becomes its key itself. The following two example are equivalent:</p>
 <pre><code>optimizer: $

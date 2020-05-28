@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Tracking &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.2.2</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../instance/">Creating Instance</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../model/">Model Structure</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../callbacks/">Callbacks</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../trainer/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../core/">Ivory Core Entities</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../task/">Multiple Runs</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Tracking</a>
+<ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#creating-runs">Creating Runs</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#tracking_1">Tracking</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#range">Range</a></li>
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../tuning/">&laquo; Previous</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Tutorial</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="tracking"><span class="pheasant-header"><span class="header"><span class="title">Tracking</span></span></span></h1>
+<p>Ivory uses <a href="https://mlflow.org/docs/latest/tracking.html">MLFlow Tracking</a> for the workflow tracking and model saving.</p>
+<h2 id="creating-runs"><span class="pheasant-header"><span class="header"><span class="title">Creating Runs</span></span></span></h2>
+<p>First create several runs for demonstration.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
+
+client = ivory.create_client(&#34;examples&#34;)
+run = client.create_run(&#39;torch&#39;)
+run.start(&#39;both&#39;)</code></pre></div>
+<div class="report"><p><span class="count">[3]</span>
+<span class="start">2020-05-28 14:05:02</span> (<span class="time">1.32s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">12.6s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200528 14:05:02 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[epoch#0] loss=12.71 val_loss=6.703 lr=0.001 best
+[epoch#1] loss=5.958 val_loss=5.031 lr=0.001 best
+[epoch#2] loss=4.277 val_loss=3.356 lr=0.001 best
+[epoch#3] loss=2.656 val_loss=2.158 lr=0.001 best
+[epoch#4] loss=1.788 val_loss=1.636 lr=0.001 best
+[epoch#5] loss=1.227 val_loss=0.9263 lr=0.001 best
+[epoch#6] loss=0.854 val_loss=0.9299 lr=0.001
+[epoch#7] loss=0.7173 val_loss=0.5881 lr=0.001 best
+[epoch#8] loss=0.5962 val_loss=0.6373 lr=0.001
+[epoch#9] loss=0.5757 val_loss=0.5965 lr=0.001</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
+
+client = ivory.create_client(&#34;examples&#34;)
+task = client.create_task(&#39;torch&#39;)
+runs = task.product(fold=range(3), verbose=0)
+for run in runs:
+    run.start(&#39;both&#39;)</code></pre></div>
+<div class="report"><p><span class="count">[4]</span>
+<span class="start">2020-05-28 14:05:03</span> (<span class="time">4.39s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">17.0s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#1] fold=0
+[run#2] fold=1
+[run#3] fold=2</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
+runs = task.chain(lr=[1e-4, 1e-3], batch_size=[16, 32], verbose=0)
+for run in runs:
+    run.start(&#39;both&#39;)</code></pre></div>
+<div class="report"><p><span class="count">[5]</span>
+<span class="start">2020-05-28 14:05:07</span> (<span class="time">5.48s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">22.5s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#4] lr=0.0001
+[run#5] lr=0.001
+[run#6] batch_size=16 lr=0.001
+[run#7] batch_size=32 lr=0.001</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">from ivory.utils.range import Range
+
+study = client.create_study(&#39;torch&#39;, lr=Range(1e-5, 1e-3, log=True))
+study.optimize(n_trials=5, verbose=0)</code></pre></div>
+<div class="report"><p><span class="count">[6]</span>
+<span class="start">2020-05-28 14:05:13</span> (<span class="time">7.48s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.0s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 14:05:13,515] A new study created with name: torch.lr.study#0</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#8] lr=2.543e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 14:05:14,981] Finished trial#0 with value: 8.303562009334565 with parameters: {&#39;lr&#39;: 2.542797289084562e-05}. Best is trial#0 with value: 8.303562009334565.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#9] lr=2.202e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 14:05:16,442] Finished trial#1 with value: 8.426873636245727 with parameters: {&#39;lr&#39;: 2.202271311364737e-05}. Best is trial#0 with value: 8.303562009334565.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#10] lr=0.000113</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 14:05:17,911] Finished trial#2 with value: 6.021162259578705 with parameters: {&#39;lr&#39;: 0.00011303083258447847}. Best is trial#2 with value: 6.021162259578705.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#11] lr=0.0002941</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 14:05:19,396] Finished trial#3 with value: 4.402597904205322 with parameters: {&#39;lr&#39;: 0.00029409959449792385}. Best is trial#3 with value: 4.402597904205322.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#12] lr=3.105e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-28 14:05:20,887] Finished trial#4 with value: 8.13041273355484 with parameters: {&#39;lr&#39;: 3.104708621290407e-05}. Best is trial#3 with value: 4.402597904205322.</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;optuna.study.Study at 0x2250a950fc8&gt;</code></pre></div></div></div></div>
+
+<h2 id="tracking_1"><span class="pheasant-header"><span class="header"><span class="title">Tracking</span></span></span></h2>
+<p>If the <code>Client</code> instace has a <code>Tracker</code> instance, the multiple runs created by the tasks can be tracked. The <code>client.search_parent_run_ids()</code> method makes an iterator that returns RunIDs of runs that have nested runs. In this case, parent runs are some tasks we made above.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python"># A helper function
+def print_run_info(run_ids):
+    for run_id in run_ids:
+        print(run_id[:5], client.get_run_name(run_id))
+
+run_ids = client.search_parent_run_ids(&#39;torch&#39;)
+print_run_info(run_ids)</code></pre></div>
+<div class="report"><p><span class="count">[7]</span>
+<span class="start">2020-05-28 14:05:20</span> (<span class="time">71.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.1s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">75e69 study#0
+749b2 task#1
+8b895 task#0</code></pre></div></div></div></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>task#0</code> that we made first hasn't yielded any runs yet, so that the task has not been a parent run.</p>
+</div>
+<p>The <code>client.get_run_ids()</code> makes an iterator that returns RunIDs of runs you select by run names.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.get_run_ids(&#39;torch&#39;, task=range(2,4))
+print_run_info(run_ids)</code></pre></div>
+<div class="report"><p><span class="count">[8]</span>
+<span class="start">2020-05-28 14:05:20</span> (<span class="time">56.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.1s</span>)</span></p></div></div><div class="cell jupyter error"><div class="code"><pre><code class="nohighlight">TypeError: &#39;NoneType&#39; object is not subscriptable</code></pre></div>
+      <div class="report"><pre><code class="nohighlight">TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-188-64ca24d6ed75&gt; in &lt;module&gt;
+      1 run_ids = client.get_run_ids(&#39;torch&#39;, task=range(2,4))
+----&gt; 2 print_run_info(run_ids)
+
+&lt;ipython-input-187-3165e3ebc9bb&gt; in print_run_info(run_ids)
+      2 def print_run_info(run_ids):
+      3     for run_id in run_ids:
+----&gt; 4         print(run_id[:5], client.get_run_name(run_id))
+      5 
+      6 run_ids = client.search_parent_run_ids(&#39;torch&#39;)</code></pre></div></div></div></div>
+
+<p>The <code>client.get_nested_run_ids()</code> makes an iterator that returns RunIDs of runs that have a parent you select by run names.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.get_nested_run_ids(&#39;torch&#39;, task=range(3, 5))
+print_run_info(run_ids)</code></pre></div>
+<div class="report"><p><span class="count">[9]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">202ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.3s</span>)</span></p></div></div><div class="cell jupyter error"><div class="code"><pre><code class="nohighlight">TypeError: &#39;NoneType&#39; object is not iterable</code></pre></div>
+      <div class="report"><pre><code class="nohighlight">TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-189-47717412bb1c&gt; in &lt;module&gt;
+      1 run_ids = client.get_nested_run_ids(&#39;torch&#39;, task=range(3, 5))
+----&gt; 2 print_run_info(run_ids)
+
+&lt;ipython-input-187-3165e3ebc9bb&gt; in print_run_info(run_ids)
+      1 # A helper function
+      2 def print_run_info(run_ids):
+----&gt; 3     for run_id in run_ids:
+      4         print(run_id[:5], client.get_run_name(run_id))
+      5 
+
+~\Documents\github\ivory\ivory\core\client.py in get_nested_run_ids(self, name, **kwargs)
+    135         run_numbers = kwargs.pop(run_name)
+    136         parent_run_ids = self.get_run_ids(name, **{run_name: run_numbers})
+--&gt; 137         yield from self.search_run_ids(name, parent_run_id=parent_run_ids, **kwargs)
+    138 
+    139     def set_parent_run_id(self, name: str, **kwargs):
+
+~\Documents\github\ivory\ivory\core\client.py in search_run_ids(self, name, run_name, parent_run_id, parent_only, nested_only, exclude_parent, best_score_limit, **query)
+    186                 exclude_parent,
+    187                 best_score_limit,
+--&gt; 188                 **query,
+    189             )
+    190 
+
+~\Documents\github\ivory\ivory\core\tracker.py in search_run_ids(self, experiment_id, run_name, parent_run_id, parent_only, nested_only, exclude_parent, best_score_limit, **query)
+    145         else:
+    146             run_ids = self.list_run_ids(experiment_id, parent_run_id, exclude_parent)
+--&gt; 147         for run_id in run_ids:
+    148             if run_name and not re.match(run_name, self.get_run_name(run_id)):
+    149                 continue
+
+~\Documents\github\ivory\ivory\core\tracker.py in list_run_ids(self, experiment_id, parent_run_id, exclude_parent)
+     81     ) -&gt; Iterator[str]:
+     82         if parent_run_id:
+---&gt; 83             yield from self.list_nested_run_ids(experiment_id, parent_run_id)
+     84         else:
+     85             if exclude_parent:
+
+~\Documents\github\ivory\ivory\core\tracker.py in list_nested_run_ids(self, experiment_id, parent_run_id)
+     95         if not isinstance(parent_run_id, str):
+     96             for parent_run_id in list(parent_run_id):
+---&gt; 97                 yield from self.list_nested_run_ids(experiment_id, parent_run_id)
+     98             return
+     99         filter_string = &#34;&#34;
+
+~\Documents\github\ivory\ivory\core\tracker.py in list_nested_run_ids(self, experiment_id, parent_run_id)
+     94     ) -&gt; Iterator[str]:
+     95         if not isinstance(parent_run_id, str):
+---&gt; 96             for parent_run_id in list(parent_run_id):
+     97                 yield from self.list_nested_run_ids(experiment_id, parent_run_id)
+     98             return</code></pre></div></div></div></div>
+
+<p>On the other hand, the <code>client.get_parent_run_id()</code> returns a RunID of a run that is refered by a nested run.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_id = client.get_parent_run_id(&#39;torch&#39;, run=14)
+print_run_info([run_id])</code></pre></div>
+<div class="report"><p><span class="count">[10]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">158ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.5s</span>)</span></p></div></div><div class="cell jupyter error"><div class="code"><pre><code class="nohighlight">TypeError: expected string or bytes-like object</code></pre></div>
+      <div class="report"><pre><code class="nohighlight">TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-190-0268c37c43d4&gt; in &lt;module&gt;
+----&gt; 1 run_id = client.get_parent_run_id(&#39;torch&#39;, run=14)
+      2 print_run_info([run_id])
+
+~\Documents\github\ivory\ivory\core\client.py in get_parent_run_id(self, name, **kwargs)
+    129     def get_parent_run_id(self, name: str, **kwargs) -&gt; str:
+    130         run_id = self.get_run_id(name, **kwargs)
+--&gt; 131         return self.tracker.get_parent_run_id(run_id)
+    132 
+    133     def get_nested_run_ids(self, name: str, **kwargs) -&gt; Iterator[str]:
+
+~\Documents\github\ivory\ivory\core\tracker.py in get_parent_run_id(self, run_id)
+    172 
+    173     def get_parent_run_id(self, run_id: str) -&gt; str:
+--&gt; 174         return get_parent_run_id(self.client.get_run(run_id))
+    175 
+    176     def get_run_status(self, run_id: str) -&gt; str:
+
+~\miniconda3\envs\daizu\lib\site-packages\mlflow\tracking\client.py in get_run(self, run_id)
+     94                  raises an exception.
+     95         &#34;&#34;&#34;
+---&gt; 96         return self._tracking_client.get_run(run_id)
+     97 
+     98     def get_metric_history(self, run_id, key):
+
+~\miniconda3\envs\daizu\lib\site-packages\mlflow\tracking\_tracking_service\client.py in get_run(self, run_id)
+     46                  raises an exception.
+     47         &#34;&#34;&#34;
+---&gt; 48         _validate_run_id(run_id)
+     49         return self.store.get_run(run_id)
+     50 
+
+~\miniconda3\envs\daizu\lib\site-packages\mlflow\utils\validation.py in _validate_run_id(run_id)
+    141 def _validate_run_id(run_id):
+    142     &#34;&#34;&#34;Check that `run_id` is a valid run ID and raise an exception if it isn&#39;t.&#34;&#34;&#34;
+--&gt; 143     if _RUN_ID_REGEX.match(run_id) is None:
+    144         raise MlflowException(&#34;Invalid run ID: &#39;%s&#39;&#34; % run_id, error_code=INVALID_PARAMETER_VALUE)
+    145</code></pre></div></div></div></div>
+
+<h2 id="range"><span class="pheasant-header"><span class="header"><span class="title">Range</span></span></span></h2>
+<p>Ivory provides the <code>ivory.utils.range.Range</code> class for parameter setting. This
+class can be used as the standard <code>range</code>, but more flexible, expecially for float type.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">from ivory.utils.range import Range
+
+# Normal usage
+list(Range(3, 6))  # The stop value is included.</code></pre></div>
+<div class="report"><p><span class="count">[11]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">104ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, 2))  # Step size.</code></pre></div>
+<div class="report"><p><span class="count">[12]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7, 9]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, num=4))  # Sampling size.</code></pre></div>
+<div class="report"><p><span class="count">[13]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 8, 10]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, 0.25))  # float type.</code></pre></div>
+<div class="report"><p><span class="count">[14]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, num=5))  # Sampling size</code></pre></div>
+<div class="report"><p><span class="count">[15]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(1e-3, 1e2, num=6, log=True))  # Log scale</code></pre></div>
+<div class="report"><p><span class="count">[16]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div>
+
+<p>A <code>Range</code> instance can be created from a <code>str</code>.</p>
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;3-7&#39;))  # &lt;start&gt;-&lt;stop&gt;</code></pre></div>
+<div class="report"><p><span class="count">[17]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6, 7]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;3-7-2&#39;)) # &lt;start&gt;-&lt;stop&gt;-&lt;step&gt;</code></pre></div>
+<div class="report"><p><span class="count">[18]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;0.0-1.0:4&#39;)) # &lt;start&gt;-&lt;stop&gt;:&lt;num&gt;</code></pre></div>
+<div class="report"><p><span class="count">[19]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.3333333333333333, 0.6666666666666666, 1.0]</code></pre></div></div></div></div>
+
+<div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;1e-3_1e2:6.log&#39;))  # &#39;_&#39; instead of &#39;-&#39;, log scale</code></pre></div>
+<div class="report"><p><span class="count">[20]</span>
+<span class="start">2020-05-28 14:05:21</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">30.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../tuning/" title="Hyperparameter Tuning"><span>Previous</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/mkapi.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

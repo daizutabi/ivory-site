@@ -1,51 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://ivory.daizutabi.net/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/quickstart/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/data/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/instance/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/model/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://ivory.daizutabi.net/tutorial/callbacks/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <loc>https://ivory.daizutabi.net/tutorial/callback/</loc>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://ivory.daizutabi.net/tutorial/trainer/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <loc>https://ivory.daizutabi.net/tutorial/training/</loc>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/core/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/task/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/tuning/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/ui/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/tracking/</loc>
-     <lastmod>2020-05-28</lastmod>
+     <lastmod>2020-05-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/tutorial/library/</loc>
+     <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

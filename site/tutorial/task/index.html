@@ -32,7 +32,7 @@
                 <div class="title">
                     <button class="hamburger"></button>
                     <a href="../.." class="site-name"> Ivory</a>
-                </div><div class="version">0.2.2</div>
+                </div><div class="version">0.3.0</div>
                 <div class="search">
                     <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -50,8 +50,8 @@
     <li class="toctree-l2"><a class="nav-item" href="../data/">Set of Data classes</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../instance/">Creating Instances</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../model/">Model Structure</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../callbacks/">Callback System</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../trainer/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../callback/">Callback System</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../training/">Training a Model</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../core/">Ivory Core Entities</a></li>
     <li class="toctree-l2 current"><a class="nav-item current" href="./">Multiple Runs</a>
 <ul class="subnav">
@@ -61,6 +61,7 @@
     <li class="toctree-l2"><a class="nav-item" href="../tuning/">Hyperparameter Tuning</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../ui/">Tracking UI</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../tracking/">Tracking Runs with Ivory</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../library/">Library Comparison</a></li>
 </ul></li>
                 </ul>
             </nav>
@@ -94,9 +95,9 @@ client = ivory.create_client(&#34;examples&#34;)  # Set the working directory
 task = client.create_task(&#39;torch&#39;)  # Or, experiment.create_task()
 task</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-28 23:46:11</span> (<span class="time">44.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">7.83s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 200528 23:46:11 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Task(id=&#39;f45c987d381f41e7b0fcb3ef39129d8d&#39;, name=&#39;task#0&#39;, num_objects=3)</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:20</span> (<span class="time">43.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">14.8s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200529 20:34:20 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Task(id=&#39;91eb4abc5b7b44d9972dc150e0410db6&#39;, name=&#39;task#0&#39;, num_objects=3)</code></pre></div></div></div></div>
 
 <p>The <code>Task</code> class has two methods to generate multiple runs: <code>Task.prodcut()</code> and <code>Task.chain()</code>. These two methods have the same functionality as <a href="https://docs.python.org/3/library/itertools.html"><code>itertools</code></a> of Python starndard library.</p>
 <h3 id="product"><span class="pheasant-header"><span class="header"><span class="title">Product</span></span></span></h3>
@@ -106,14 +107,14 @@ task</code></pre></div>
 runs = task.product(fold=range(2), factor=[0.5, 0.7], verbose=0)
 runs</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-28 23:46:11</span> (<span class="time">36.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">7.87s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.product at 0x0000027F20464348&gt;</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:20</span> (<span class="time">38.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">14.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.product at 0x000002240EE48AC8&gt;</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
     pass  # Do somthing, for example, run.start()</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-28 23:46:11</span> (<span class="time">407ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.27s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-29 20:34:20</span> (<span class="time">512ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.3s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#0] fold=0 factor=0.5
 [run#1] fold=0 factor=0.7
 [run#2] fold=1 factor=0.5
@@ -125,8 +126,8 @@ runs = task.product(fold=range(2), factor=[0.5, 0.7], lr=1e-4, verbose=0)
 for run in runs:
     pass  # Do somthing, for example, run.start()</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-28 23:46:12</span> (<span class="time">511ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.79s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-29 20:34:21</span> (<span class="time">600ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.9s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#4] lr=0.0001 fold=0 factor=0.5
 [run#5] lr=0.0001 fold=0 factor=0.7
 [run#6] lr=0.0001 fold=1 factor=0.5
@@ -144,14 +145,14 @@ runs = task.chain(
     verbose=0)
 runs</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-28 23:46:12</span> (<span class="time">65.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">8.85s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.chain at 0x0000027F20464848&gt;</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:21</span> (<span class="time">63.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">16.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.chain at 0x000002240EE48948&gt;</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
     pass  # Do somthing, for example, run.start()</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-05-28 23:46:12</span> (<span class="time">754ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">9.60s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-29 20:34:21</span> (<span class="time">908ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">16.9s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#8] batch_size=32 fold=0
 [run#9] batch_size=32 fold=1
 [run#10] batch_size=32 factor=0.5
@@ -171,8 +172,8 @@ for run in runs:
     pass  # Do somthing, for example, run.start()
     # We do nothing, so the first values are used.</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-05-28 23:46:13</span> (<span class="time">921ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.5s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-29 20:34:22</span> (<span class="time">1.08s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#14] fold=0
 [run#15] fold=1
 [run#16] factor=0.5 fold=0
@@ -187,59 +188,59 @@ class can be used as the standard <code>range</code>, but more flexible, especia
 
 list(Range(6))  # The stop value is included.</code></pre></div>
 <div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0, 1, 2, 3, 4, 5, 6]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0, 1, 2, 3, 4, 5, 6]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 6))  # Start and stop.</code></pre></div>
 <div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, 2))  # Step size.</code></pre></div>
 <div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7, 9]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7, 9]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, num=4))  # Sampling size.</code></pre></div>
 <div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 8, 10]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 8, 10]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, 0.25))  # float type.</code></pre></div>
 <div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, num=5))  # Sampling size</code></pre></div>
 <div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(1e-3, 1e2, num=6, log=True))  # Log scale</code></pre></div>
 <div class="report"><p><span class="count">[16]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div>
 
 <p>A <code>Range</code> instance can be created from a string.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;3-7&#39;))  # &lt;start&gt;-&lt;stop&gt;</code></pre></div>
 <div class="report"><p><span class="count">[17]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6, 7]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6, 7]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;3-7-2&#39;)) # &lt;start&gt;-&lt;stop&gt;-&lt;step&gt;</code></pre></div>
 <div class="report"><p><span class="count">[18]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;0.0-1.0:5&#39;)) # &lt;start&gt;-&lt;stop&gt;:&lt;num&gt;</code></pre></div>
 <div class="report"><p><span class="count">[19]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;1e-3_1e2:6.log&#39;))  # &#39;_&#39; instead of &#39;-&#39;, log scale</code></pre></div>
 <div class="report"><p><span class="count">[20]</span>
-<span class="start">2020-05-28 23:46:14</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">10.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div></div>
+<span class="start">2020-05-29 20:34:23</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../core/" title="Ivory Core Entities"><span>Previous</span></a></div>

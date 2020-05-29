@@ -32,7 +32,7 @@
                 <div class="title">
                     <button class="hamburger"></button>
                     <a href="../.." class="site-name"> Ivory</a>
-                </div><div class="version">0.2.2</div>
+                </div><div class="version">0.3.0</div>
                 <div class="search">
                     <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -50,8 +50,8 @@
     <li class="toctree-l2"><a class="nav-item" href="../data/">Set of Data classes</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../instance/">Creating Instances</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../model/">Model Structure</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../callbacks/">Callback System</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../trainer/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../callback/">Callback System</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../training/">Training a Model</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../core/">Ivory Core Entities</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../task/">Multiple Runs</a></li>
     <li class="toctree-l2 current"><a class="nav-item current" href="./">Hyperparameter Tuning</a>
@@ -66,6 +66,7 @@
 </ul></li>
     <li class="toctree-l2"><a class="nav-item" href="../ui/">Tracking UI</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../tracking/">Tracking Runs with Ivory</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../library/">Library Comparison</a></li>
 </ul></li>
                 </ul>
             </nav>
@@ -121,8 +122,8 @@ from rectangle.suggest import suggest_lr, suggest_hidden_sizes
 lr = partial(suggest_lr, min=1e-5, max=1e-2)
 hidden_sizes = partial(suggest_hidden_sizes, max_num_layers=3)</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-28 23:46:19</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">16.0s</span>)</span></p></div></div></div></div>
+<span class="start">2020-05-29 20:34:29</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.6s</span>)</span></p></div></div></div></div>
 
 <h2 id="study"><span class="pheasant-header"><span class="header"><span class="title">Study</span></span></span></h2>
 <p>Ivory implements a special run type called <strong>Study</strong> which controls hyperparameter tuning using Optuna.</p>
@@ -133,9 +134,9 @@ study_lr = client.create_study(&#39;torch&#39;, lr=lr)
 study_hs = client.create_study(&#39;torch&#39;, hidden_sizes=hidden_sizes)
 study_lr</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-28 23:46:19</span> (<span class="time">94.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">16.1s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 200528 23:46:19 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Study(id=&#39;c3f60cf97da84fc791a3de3f8372a129&#39;, name=&#39;study#0&#39;, num_objects=5)</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:29</span> (<span class="time">94.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.7s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200529 20:34:29 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Study(id=&#39;be6b85ac4c2a4f39a602d7b0ba4adc91&#39;, name=&#39;study#0&#39;, num_objects=5)</code></pre></div></div></div></div>
 
 <p>In the <code>client.create_study()</code> function, you can pass a keyword argument in which the key is a suggest name and the value is a <em>pure</em> suggest function.</p>
 <h2 id="objective"><span class="pheasant-header"><span class="header"><span class="title">Objective</span></span></span></h2>
@@ -143,57 +144,57 @@ study_lr</code></pre></div>
 <p>A <code>Study</code> instance has an <code>Objective</code> instance.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">study_lr.objective</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-28 23:46:19</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">16.1s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Objective([&#39;lr&#39;])</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:29</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Objective([&#39;lr&#39;])</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">study_hs.objective</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-28 23:46:19</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">16.1s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Objective([&#39;hidden_sizes&#39;])</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:29</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Objective([&#39;hidden_sizes&#39;])</code></pre></div></div></div></div>
 
 <h2 id="optimization"><span class="pheasant-header"><span class="header"><span class="title">Optimization</span></span></span></h2>
 <p>Then "optimize" the learning rate and hidden sizes just for fun.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">optuna_study_lr = study_lr.optimize(n_trials=3, fold=3, epochs=3)</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-28 23:46:19</span> (<span class="time">1.77s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">17.9s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:19,993] A new study created with name: torch.lr.study#0</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#0] lr=0.005194 fold=3 epochs=3
-[epoch#0] loss=15.43 val_loss=5.562 lr=0.005194 best
-[epoch#1] loss=13.35 val_loss=5.036 lr=0.005194 best
-[epoch#2] loss=12 val_loss=5.179 lr=0.005194</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:20,557] Finished trial#0 with value: 5.0358130693435665 with parameters: {&#39;lr&#39;: 0.005194466595695567}. Best is trial#0 with value: 5.0358130693435665.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#1] lr=2.086e-05 fold=3 epochs=3
-[epoch#0] loss=104.7 val_loss=89.83 lr=2.086e-05 best
-[epoch#1] loss=100.7 val_loss=86.39 lr=2.086e-05 best
-[epoch#2] loss=96.98 val_loss=82.98 lr=2.086e-05 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:21,140] Finished trial#1 with value: 82.97911491394044 with parameters: {&#39;lr&#39;: 2.0856762872202717e-05}. Best is trial#0 with value: 5.0358130693435665.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#2] lr=0.003232 fold=3 epochs=3
-[epoch#0] loss=15.22 val_loss=6.339 lr=0.003232 best
-[epoch#1] loss=7.073 val_loss=3.972 lr=0.003232 best
-[epoch#2] loss=4.115 val_loss=1.776 lr=0.003232 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:21,718] Finished trial#2 with value: 1.7756432503461839 with parameters: {&#39;lr&#39;: 0.003231900637889071}. Best is trial#2 with value: 1.7756432503461839.</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:29</span> (<span class="time">1.94s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">25.7s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:29,820] A new study created with name: torch.lr.study#0</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#0] lr=2.782e-05 fold=3 epochs=3
+[epoch#0] loss=110 val_loss=117.6 lr=2.782e-05 best
+[epoch#1] loss=105.6 val_loss=112.9 lr=2.782e-05 best
+[epoch#2] loss=101.2 val_loss=108.1 lr=2.782e-05 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:30,465] Finished trial#0 with value: 108.13607521057129 with parameters: {&#39;lr&#39;: 2.7823665226603807e-05}. Best is trial#0 with value: 108.13607521057129.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#1] lr=0.00338 fold=3 epochs=3
+[epoch#0] loss=16.44 val_loss=6.619 lr=0.00338 best
+[epoch#1] loss=7.228 val_loss=4.654 lr=0.00338 best
+[epoch#2] loss=3.354 val_loss=1.821 lr=0.00338 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:31,085] Finished trial#1 with value: 1.8207666099071502 with parameters: {&#39;lr&#39;: 0.0033800374625653135}. Best is trial#1 with value: 1.8207666099071502.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#2] lr=7.886e-05 fold=3 epochs=3
+[epoch#0] loss=75.43 val_loss=59.58 lr=7.886e-05 best
+[epoch#1] loss=34.23 val_loss=19.42 lr=7.886e-05 best
+[epoch#2] loss=12.74 val_loss=10.27 lr=7.886e-05 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:31,716] Finished trial#2 with value: 10.269266629219056 with parameters: {&#39;lr&#39;: 7.886118655687438e-05}. Best is trial#1 with value: 1.8207666099071502.</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">optuna_study_hs = study_hs.optimize(n_trials=3, epochs=3)</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-05-28 23:46:21</span> (<span class="time">1.90s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">19.8s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:21,749] A new study created with name: torch.hidden_sizes.study#1</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#3] hidden_sizes:0=19 hidden_sizes:1=16 hidden_sizes:2=21 num_layers=3 epochs=3
-[epoch#0] loss=31.1 val_loss=9.325 lr=0.001 best
-[epoch#1] loss=8.487 val_loss=7.247 lr=0.001 best
-[epoch#2] loss=6.825 val_loss=5.478 lr=0.001 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:22,395] Finished trial#0 with value: 5.478004050254822 with parameters: {&#39;hidden_sizes:0&#39;: 19, &#39;hidden_sizes:1&#39;: 16, &#39;hidden_sizes:2&#39;: 21, &#39;num_layers&#39;: 3}. Best is trial#0 with value: 5.478004050254822.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#4] hidden_sizes:0=17 hidden_sizes:1=17 num_layers=2 epochs=3
-[epoch#0] loss=20.41 val_loss=7.095 lr=0.001 best
-[epoch#1] loss=7.373 val_loss=6.544 lr=0.001 best
-[epoch#2] loss=6.791 val_loss=5.817 lr=0.001 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:22,980] Finished trial#1 with value: 5.816688930988311 with parameters: {&#39;hidden_sizes:0&#39;: 17, &#39;hidden_sizes:1&#39;: 17, &#39;num_layers&#39;: 2}. Best is trial#0 with value: 5.478004050254822.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#5] hidden_sizes:0=14 hidden_sizes:1=24 hidden_sizes:2=14 num_layers=3 epochs=3
-[epoch#0] loss=34.25 val_loss=7.857 lr=0.001 best
-[epoch#1] loss=7.602 val_loss=6.221 lr=0.001 best
-[epoch#2] loss=6.165 val_loss=5.591 lr=0.001 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:23,620] Finished trial#2 with value: 5.5912551283836365 with parameters: {&#39;hidden_sizes:0&#39;: 14, &#39;hidden_sizes:1&#39;: 24, &#39;hidden_sizes:2&#39;: 14, &#39;num_layers&#39;: 3}. Best is trial#0 with value: 5.478004050254822.</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:31</span> (<span class="time">2.01s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">27.7s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:31,748] A new study created with name: torch.hidden_sizes.study#1</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#3] hidden_sizes:0=15 hidden_sizes:1=28 num_layers=2 epochs=3
+[epoch#0] loss=31.65 val_loss=7.685 lr=0.001 best
+[epoch#1] loss=8.053 val_loss=7.727 lr=0.001
+[epoch#2] loss=7.17 val_loss=6.205 lr=0.001 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:32,413] Finished trial#0 with value: 6.205225610733033 with parameters: {&#39;hidden_sizes:0&#39;: 15, &#39;hidden_sizes:1&#39;: 28, &#39;num_layers&#39;: 2}. Best is trial#0 with value: 6.205225610733033.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#4] hidden_sizes:0=18 hidden_sizes:1=14 num_layers=2 epochs=3
+[epoch#0] loss=28.91 val_loss=7.883 lr=0.001 best
+[epoch#1] loss=8.34 val_loss=7.014 lr=0.001 best
+[epoch#2] loss=7.6 val_loss=5.929 lr=0.001 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:33,052] Finished trial#1 with value: 5.928996455669403 with parameters: {&#39;hidden_sizes:0&#39;: 18, &#39;hidden_sizes:1&#39;: 14, &#39;num_layers&#39;: 2}. Best is trial#1 with value: 5.928996455669403.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#5] hidden_sizes:0=16 hidden_sizes:1=25 hidden_sizes:2=29 num_layers=3 epochs=3
+[epoch#0] loss=35.82 val_loss=8.441 lr=0.001 best
+[epoch#1] loss=7.438 val_loss=5.45 lr=0.001 best
+[epoch#2] loss=5.88 val_loss=5.406 lr=0.001 best</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:33,724] Finished trial#2 with value: 5.405827164649963 with parameters: {&#39;hidden_sizes:0&#39;: 16, &#39;hidden_sizes:1&#39;: 25, &#39;hidden_sizes:2&#39;: 29, &#39;num_layers&#39;: 3}. Best is trial#2 with value: 5.405827164649963.</code></pre></div></div></div></div>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -202,46 +203,46 @@ study_lr</code></pre></div>
 <p>The returned value of the <code>study.optimize()</code> is an Optuna's <code>Study</code> instance (not Ivory's one).</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">optuna_study_lr</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-05-28 23:46:23</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">19.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;optuna.study.Study at 0x27f2158d9c8&gt;</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:33</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">27.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;optuna.study.Study at 0x224151c8a88&gt;</code></pre></div></div></div></div>
 
 <p>The <code>Study</code> instance is named after the experiment name, suggest name, and run name.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">optuna_study_lr.study_name</code></pre></div>
 <div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-05-28 23:46:23</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">19.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&#39;torch.lr.study#0&#39;</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:33</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">27.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&#39;torch.lr.study#0&#39;</code></pre></div></div></div></div>
 
 <p>In <a href="https://optuna.readthedocs.io/en/latest/tutorial/attributes.html">user attributes</a> that Optuna's <code>Study</code> and <code>Trial</code> instances provide, RunID is saved.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">optuna_study_lr.user_attrs</code></pre></div>
 <div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-05-28 23:46:23</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">19.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{&#39;run_id&#39;: &#39;c3f60cf97da84fc791a3de3f8372a129&#39;}</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:33</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">27.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{&#39;run_id&#39;: &#39;be6b85ac4c2a4f39a602d7b0ba4adc91&#39;}</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">optuna_study_lr.trials[0].user_attrs</code></pre></div>
 <div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-05-28 23:46:23</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">19.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{&#39;run_id&#39;: &#39;aabc07fd02a845bb99772afce91d634b&#39;}</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:33</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">27.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{&#39;run_id&#39;: &#39;0e38f9b8f98943c3a0e7639a5780e39f&#39;}</code></pre></div></div></div></div>
 
 <p>On the other hand, MLFlow Tracking's run (not Ivory's one) has a tag to refer Optuna's study and trial.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">mlflow_client = client.tracker.client
 mlflow_client</code></pre></div>
 <div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-05-28 23:46:23</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">19.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;mlflow.tracking.client.MlflowClient at 0x27f204a20c8&gt;</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:33</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">27.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;mlflow.tracking.client.MlflowClient at 0x2226c0aad08&gt;</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_id = optuna_study_lr.user_attrs[&#39;run_id&#39;]
 run = mlflow_client.get_run(run_id)  
 run.data.tags[&#39;study_name&#39;]</code></pre></div>
 <div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-05-28 23:46:23</span> (<span class="time">7.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">19.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&#39;torch.lr.study#0&#39;</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:33</span> (<span class="time">9.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">27.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&#39;torch.lr.study#0&#39;</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_id = optuna_study_lr.trials[0].user_attrs[&#39;run_id&#39;]
 run = mlflow_client.get_run(run_id)  
 run.data.tags[&#39;trial_number&#39;]</code></pre></div>
 <div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-05-28 23:46:23</span> (<span class="time">11.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">19.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&#39;0&#39;</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:33</span> (<span class="time">11.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">27.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&#39;0&#39;</code></pre></div></div></div></div>
 
 <p>You may have a question. How does Optuna optimize the parameters without any score? The answer is the <code>Monitor</code> instance. An <code>Objective</code> instance gets the monitoring score from <code>run.monitor</code> and sends it to Optuna so that Optuna can determine the next suggestion. All you need is to make your <code>Run</code> instance have a <code>Monitor</code> instance. Check the YAML parameter file:</p>
 <div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> <span class="number">10</span>
@@ -249,16 +250,15 @@ run.data.tags[&#39;trial_number&#39;]</code></pre></div>
 <div class="content">
 
 <div class="pheasant-fenced-code"><div class="cell embed file"><div class="code"><pre><code class="yaml">library: torch
-dataloaders:
+datasets:
   data:
     class: rectangle.data.Data
     n_splits: 4
   dataset:
-  batch_size: 10
   fold: 0
 model:
   class: rectangle.torch.Model
-  hidden_sizes: [10, 20]
+  hidden_sizes: [20, 30]
 optimizer:
   class: torch.optim.SGD
   params: $.model.parameters()
@@ -276,6 +276,7 @@ early_stopping:
   patience: 10
 trainer:
   loss: torch.nn.functional.mse_loss
+  batch_size: 10
   epochs: 10
   verbose: 2</code></pre></div></div></div>
 
@@ -303,63 +304,63 @@ def suggest_hidden_sizes(trial, max_num_layers, min_size=10, max_size=30):
 
 </div></div></div>
 
-<p>The <code>suggest_hidden_sizes()</code> function has some logic but the <code>suggest_lr()</code> function is too simple to define a function. You may not want to write such a function. Ivory can do that for you. You can pass key-iterable pairs to the <code>client.create_study()</code> function instead of key-callable pairs.</p>
+<p>The <code>suggest_hidden_sizes()</code> function has some logic but the code of the <code>suggest_lr()</code> function is too simple to define a function. You may not want to write such a function. Ivory can do that for you. You can pass key-iterable pairs to the <code>client.create_study()</code> function instead of key-callable pairs.</p>
 <h3 id="tuple-range-range"><span class="pheasant-header"><span class="header"><span class="title">tuple, range, Range</span></span></span></h3>
-<p>A tuple, range, or <a href="../task#range">Range</a> instance represent parameter ranges.</p>
+<p>A tuple, range, or <a href="../task#range">Range</a> instance represents parameter range.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">study = client.create_study(&#39;torch&#39;, lr=(1e-3, 1e-2))
 _ = study.optimize(n_trials=5, epochs=1, verbose=0)</code></pre></div>
 <div class="report"><p><span class="count">[16]</span>
-<span class="start">2020-05-28 23:46:23</span> (<span class="time">1.88s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">21.7s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:23,760] A new study created with name: torch.lr.study#2</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#6] lr=0.003897 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:24,120] Finished trial#0 with value: 5.564012479782105 with parameters: {&#39;lr&#39;: 0.0038968481704175118}. Best is trial#0 with value: 5.564012479782105.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#7] lr=0.006028 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:24,469] Finished trial#1 with value: 16.655317759513856 with parameters: {&#39;lr&#39;: 0.00602766006981855}. Best is trial#0 with value: 5.564012479782105.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#8] lr=0.003465 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:24,828] Finished trial#2 with value: 7.40464186668396 with parameters: {&#39;lr&#39;: 0.003465065450546867}. Best is trial#0 with value: 5.564012479782105.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#9] lr=0.007108 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:25,192] Finished trial#3 with value: 8.237301933765412 with parameters: {&#39;lr&#39;: 0.007107500005975995}. Best is trial#0 with value: 5.564012479782105.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#10] lr=0.008414 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:25,555] Finished trial#4 with value: 39.057876634597775 with parameters: {&#39;lr&#39;: 0.008413637982373542}. Best is trial#0 with value: 5.564012479782105.</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:33</span> (<span class="time">2.14s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">29.9s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:33,868] A new study created with name: torch.lr.study#2</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#6] lr=0.003817 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:34,292] Finished trial#0 with value: 6.724217677116394 with parameters: {&#39;lr&#39;: 0.0038165621015317456}. Best is trial#0 with value: 6.724217677116394.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#7] lr=0.001608 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:34,695] Finished trial#1 with value: 9.406348037719727 with parameters: {&#39;lr&#39;: 0.0016082820123206674}. Best is trial#0 with value: 6.724217677116394.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#8] lr=0.007213 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:35,101] Finished trial#2 with value: 8.854091572761536 with parameters: {&#39;lr&#39;: 0.007212624239451758}. Best is trial#0 with value: 6.724217677116394.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#9] lr=0.004525 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:35,516] Finished trial#3 with value: 4.90163768529892 with parameters: {&#39;lr&#39;: 0.004524862789085077}. Best is trial#3 with value: 4.90163768529892.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#10] lr=0.005351 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:35,927] Finished trial#4 with value: 10.177465295791626 with parameters: {&#39;lr&#39;: 0.005351173070601332}. Best is trial#3 with value: 4.90163768529892.</code></pre></div></div></div></div>
 
 <p>In the above cell, <code>lr=Range(1e-3, 1e-2)</code> also works. For integer parameters, you can use normal <code>range</code> as well as <code>tuple</code> or <code>Range</code>.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">params = {&#39;hidden_sizes.0&#39;: range(10, 20)}
 study = client.create_study(&#39;torch&#39;, params)
 _ = study.optimize(n_trials=5, epochs=1, verbose=0)</code></pre></div>
 <div class="report"><p><span class="count">[17]</span>
-<span class="start">2020-05-28 23:46:25</span> (<span class="time">1.98s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">23.7s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:25,660] A new study created with name: torch.hidden_sizes.0.study#3</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#11] hidden_sizes.0=13 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:26,045] Finished trial#0 with value: 8.93752281665802 with parameters: {&#39;hidden_sizes.0&#39;: 13}. Best is trial#0 with value: 8.93752281665802.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#12] hidden_sizes.0=18 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:26,408] Finished trial#1 with value: 7.373192298412323 with parameters: {&#39;hidden_sizes.0&#39;: 18}. Best is trial#1 with value: 7.373192298412323.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-29 20:34:35</span> (<span class="time">2.23s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">32.1s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:36,033] A new study created with name: torch.hidden_sizes.0.study#3</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#11] hidden_sizes.0=19 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:36,454] Finished trial#0 with value: 7.200991988182068 with parameters: {&#39;hidden_sizes.0&#39;: 19}. Best is trial#0 with value: 7.200991988182068.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#12] hidden_sizes.0=13 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:36,880] Finished trial#1 with value: 7.469034790992737 with parameters: {&#39;hidden_sizes.0&#39;: 13}. Best is trial#0 with value: 7.200991988182068.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#13] hidden_sizes.0=18 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:26,778] Finished trial#2 with value: 6.97048305273056 with parameters: {&#39;hidden_sizes.0&#39;: 18}. Best is trial#2 with value: 6.97048305273056.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#14] hidden_sizes.0=17 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:27,156] Finished trial#3 with value: 7.062327575683594 with parameters: {&#39;hidden_sizes.0&#39;: 17}. Best is trial#2 with value: 6.97048305273056.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#15] hidden_sizes.0=11 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:27,535] Finished trial#4 with value: 7.365246510505676 with parameters: {&#39;hidden_sizes.0&#39;: 11}. Best is trial#2 with value: 6.97048305273056.</code></pre></div></div></div></div>
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:37,303] Finished trial#2 with value: 7.291278266906739 with parameters: {&#39;hidden_sizes.0&#39;: 18}. Best is trial#0 with value: 7.200991988182068.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#14] hidden_sizes.0=11 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:37,726] Finished trial#3 with value: 7.414752197265625 with parameters: {&#39;hidden_sizes.0&#39;: 11}. Best is trial#0 with value: 7.200991988182068.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#15] hidden_sizes.0=14 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:38,160] Finished trial#4 with value: 7.7936012744903564 with parameters: {&#39;hidden_sizes.0&#39;: 14}. Best is trial#0 with value: 7.200991988182068.</code></pre></div></div></div></div>
 
 <p>You can specify a step</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">params = {&#39;hidden_sizes.0&#39;: range(10, 20, 3)}
 study = client.create_study(&#39;torch&#39;, params)
 _ = study.optimize(n_trials=5, epochs=1, verbose=0)</code></pre></div>
 <div class="report"><p><span class="count">[18]</span>
-<span class="start">2020-05-28 23:46:27</span> (<span class="time">2.07s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">25.7s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:27,656] A new study created with name: torch.hidden_sizes.0.study#4</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#16] hidden_sizes.0=13 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:28,050] Finished trial#0 with value: 8.381470620632172 with parameters: {&#39;hidden_sizes.0&#39;: 13}. Best is trial#0 with value: 8.381470620632172.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#17] hidden_sizes.0=13 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:28,431] Finished trial#1 with value: 7.425333392620087 with parameters: {&#39;hidden_sizes.0&#39;: 13}. Best is trial#1 with value: 7.425333392620087.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#18] hidden_sizes.0=13 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:28,821] Finished trial#2 with value: 8.1587468624115 with parameters: {&#39;hidden_sizes.0&#39;: 13}. Best is trial#1 with value: 7.425333392620087.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#19] hidden_sizes.0=13 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:29,210] Finished trial#3 with value: 8.73443545103073 with parameters: {&#39;hidden_sizes.0&#39;: 13}. Best is trial#1 with value: 7.425333392620087.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-29 20:34:38</span> (<span class="time">2.32s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">34.4s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:38,282] A new study created with name: torch.hidden_sizes.0.study#4</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#16] hidden_sizes.0=10 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:38,725] Finished trial#0 with value: 7.414659702777863 with parameters: {&#39;hidden_sizes.0&#39;: 10}. Best is trial#0 with value: 7.414659702777863.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#17] hidden_sizes.0=19 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:39,155] Finished trial#1 with value: 7.253012156486511 with parameters: {&#39;hidden_sizes.0&#39;: 19}. Best is trial#1 with value: 7.253012156486511.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#18] hidden_sizes.0=16 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:39,595] Finished trial#2 with value: 10.004411220550537 with parameters: {&#39;hidden_sizes.0&#39;: 16}. Best is trial#1 with value: 7.253012156486511.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#19] hidden_sizes.0=10 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:40,032] Finished trial#3 with value: 6.423274993896484 with parameters: {&#39;hidden_sizes.0&#39;: 10}. Best is trial#3 with value: 6.423274993896484.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#20] hidden_sizes.0=10 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:29,610] Finished trial#4 with value: 8.085492253303528 with parameters: {&#39;hidden_sizes.0&#39;: 10}. Best is trial#1 with value: 7.425333392620087.</code></pre></div></div></div></div>
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:40,486] Finished trial#4 with value: 8.344632196426392 with parameters: {&#39;hidden_sizes.0&#39;: 10}. Best is trial#3 with value: 6.423274993896484.</code></pre></div></div></div></div>
 
 <p>If you need sampling in log scale, use <code>Range</code> with <code>log=True</code>.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">from ivory.utils.range import Range
@@ -367,19 +368,19 @@ _ = study.optimize(n_trials=5, epochs=1, verbose=0)</code></pre></div>
 study = client.create_study(&#39;torch&#39;, lr=Range(1e-3, 1e-2, log=True))
 _ = study.optimize(n_trials=5, epochs=1, verbose=0)</code></pre></div>
 <div class="report"><p><span class="count">[19]</span>
-<span class="start">2020-05-28 23:46:29</span> (<span class="time">2.16s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">27.9s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:29,747] A new study created with name: torch.lr.study#5</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#21] lr=0.006363 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:30,153] Finished trial#0 with value: 6.123318982124329 with parameters: {&#39;lr&#39;: 0.00636257147018688}. Best is trial#0 with value: 6.123318982124329.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#22] lr=0.001038 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:30,558] Finished trial#1 with value: 6.713453078269959 with parameters: {&#39;lr&#39;: 0.0010381095009589496}. Best is trial#0 with value: 6.123318982124329.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#23] lr=0.00922 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:30,961] Finished trial#2 with value: 14.55729923248291 with parameters: {&#39;lr&#39;: 0.009219870376543331}. Best is trial#0 with value: 6.123318982124329.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#24] lr=0.001972 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:31,365] Finished trial#3 with value: 7.628524327278138 with parameters: {&#39;lr&#39;: 0.001971939491861153}. Best is trial#0 with value: 6.123318982124329.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#25] lr=0.001588 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:31,773] Finished trial#4 with value: 9.122584760189056 with parameters: {&#39;lr&#39;: 0.0015878345742164352}. Best is trial#0 with value: 6.123318982124329.</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:40</span> (<span class="time">2.43s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">36.9s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:40,631] A new study created with name: torch.lr.study#5</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#21] lr=0.001857 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:41,092] Finished trial#0 with value: 6.665395021438599 with parameters: {&#39;lr&#39;: 0.0018572151881695962}. Best is trial#0 with value: 6.665395021438599.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#22] lr=0.003598 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:41,547] Finished trial#1 with value: 5.3330565929412845 with parameters: {&#39;lr&#39;: 0.0035976732199463493}. Best is trial#1 with value: 5.3330565929412845.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#23] lr=0.002665 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:42,005] Finished trial#2 with value: 5.376270353794098 with parameters: {&#39;lr&#39;: 0.0026652638297477095}. Best is trial#1 with value: 5.3330565929412845.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#24] lr=0.003199 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:42,461] Finished trial#3 with value: 8.928943228721618 with parameters: {&#39;lr&#39;: 0.003199333167469278}. Best is trial#1 with value: 5.3330565929412845.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#25] lr=0.001059 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:42,920] Finished trial#4 with value: 7.55088050365448 with parameters: {&#39;lr&#39;: 0.0010592243004422996}. Best is trial#1 with value: 5.3330565929412845.</code></pre></div></div></div></div>
 
 <h3 id="list"><span class="pheasant-header"><span class="header"><span class="title">list</span></span></span></h3>
 <p>A list represents parameter choice.</p>
@@ -387,19 +388,19 @@ _ = study.optimize(n_trials=5, epochs=1, verbose=0)</code></pre></div>
 study = client.create_study(&#39;torch&#39;, params)
 _ = study.optimize(n_trials=5, epochs=1, verbose=0)</code></pre></div>
 <div class="report"><p><span class="count">[20]</span>
-<span class="start">2020-05-28 23:46:31</span> (<span class="time">2.27s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">30.2s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:31,926] A new study created with name: torch.hidden_sizes.0.study#6</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#26] hidden_sizes.0=20 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:32,359] Finished trial#0 with value: 7.470162141323089 with parameters: {&#39;hidden_sizes.0&#39;: 20}. Best is trial#0 with value: 7.470162141323089.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#27] hidden_sizes.0=10 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:32,772] Finished trial#1 with value: 6.954097592830658 with parameters: {&#39;hidden_sizes.0&#39;: 10}. Best is trial#1 with value: 6.954097592830658.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#28] hidden_sizes.0=20 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:33,194] Finished trial#2 with value: 7.650672686100006 with parameters: {&#39;hidden_sizes.0&#39;: 20}. Best is trial#1 with value: 6.954097592830658.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#29] hidden_sizes.0=20 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:33,614] Finished trial#3 with value: 7.715379524230957 with parameters: {&#39;hidden_sizes.0&#39;: 20}. Best is trial#1 with value: 6.954097592830658.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-29 20:34:42</span> (<span class="time">2.52s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">39.4s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:43,077] A new study created with name: torch.hidden_sizes.0.study#6</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#26] hidden_sizes.0=30 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:43,555] Finished trial#0 with value: 7.655133485794067 with parameters: {&#39;hidden_sizes.0&#39;: 30}. Best is trial#0 with value: 7.655133485794067.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#27] hidden_sizes.0=30 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:44,021] Finished trial#1 with value: 7.5933616876602175 with parameters: {&#39;hidden_sizes.0&#39;: 30}. Best is trial#1 with value: 7.5933616876602175.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#28] hidden_sizes.0=10 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:44,499] Finished trial#2 with value: 10.737643671035766 with parameters: {&#39;hidden_sizes.0&#39;: 10}. Best is trial#1 with value: 7.5933616876602175.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#29] hidden_sizes.0=10 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:44,964] Finished trial#3 with value: 9.677990984916686 with parameters: {&#39;hidden_sizes.0&#39;: 10}. Best is trial#1 with value: 7.5933616876602175.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#30] hidden_sizes.0=20 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:34,042] Finished trial#4 with value: 8.896236252784728 with parameters: {&#39;hidden_sizes.0&#39;: 20}. Best is trial#1 with value: 6.954097592830658.</code></pre></div></div></div></div>
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:45,440] Finished trial#4 with value: 9.117081594467162 with parameters: {&#39;hidden_sizes.0&#39;: 20}. Best is trial#1 with value: 7.5933616876602175.</code></pre></div></div></div></div>
 
 <h3 id="product"><span class="pheasant-header"><span class="header"><span class="title">Product</span></span></span></h3>
 <p>If a key and value are tuples, the entry means cartesian product of suggest functions like <a href="../task#product"><code>Task.product()</code></a>.</p>
@@ -407,29 +408,29 @@ _ = study.optimize(n_trials=5, epochs=1, verbose=0)</code></pre></div>
 study = client.create_study(&#39;torch&#39;, params)
 optuna_study = study.optimize(n_trials=10, epochs=1, verbose=0)</code></pre></div>
 <div class="report"><p><span class="count">[21]</span>
-<span class="start">2020-05-28 23:46:34</span> (<span class="time">5.05s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">35.2s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:34,211] A new study created with name: torch.hidden_sizes.lr.study#7</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#31] hidden_sizes:0=20 hidden_sizes:1=17 lr=0.0008048 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:34,684] Finished trial#0 with value: 8.242799758911133 with parameters: {&#39;hidden_sizes:0&#39;: 20, &#39;hidden_sizes:1&#39;: 17, &#39;lr&#39;: 0.000804777479530587, &#39;num_layers&#39;: 2}. Best is trial#0 with value: 8.242799758911133.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#32] hidden_sizes:0=14 hidden_sizes:1=28 lr=0.0006883 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:35,151] Finished trial#1 with value: 7.228139710426331 with parameters: {&#39;hidden_sizes:0&#39;: 14, &#39;hidden_sizes:1&#39;: 28, &#39;lr&#39;: 0.0006883445396672199, &#39;num_layers&#39;: 2}. Best is trial#1 with value: 7.228139710426331.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#33] hidden_sizes:0=28 hidden_sizes:1=10 hidden_sizes:2=23 lr=0.0008212 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:35,638] Finished trial#2 with value: 78.25893650054931 with parameters: {&#39;hidden_sizes:0&#39;: 28, &#39;hidden_sizes:1&#39;: 10, &#39;hidden_sizes:2&#39;: 23, &#39;lr&#39;: 0.0008211534618914595, &#39;num_layers&#39;: 3}. Best is trial#1 with value: 7.228139710426331.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#34] hidden_sizes:0=26 hidden_sizes:1=18 lr=0.0002201 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:36,117] Finished trial#3 with value: 12.129535555839539 with parameters: {&#39;hidden_sizes:0&#39;: 26, &#39;hidden_sizes:1&#39;: 18, &#39;lr&#39;: 0.00022012664414972365, &#39;num_layers&#39;: 2}. Best is trial#1 with value: 7.228139710426331.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#35] hidden_sizes:0=18 hidden_sizes:1=12 hidden_sizes:2=13 lr=0.0008277 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:36,606] Finished trial#4 with value: 8.850380980968476 with parameters: {&#39;hidden_sizes:0&#39;: 18, &#39;hidden_sizes:1&#39;: 12, &#39;hidden_sizes:2&#39;: 13, &#39;lr&#39;: 0.0008276751047406439, &#39;num_layers&#39;: 3}. Best is trial#1 with value: 7.228139710426331.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#36] hidden_sizes:0=22 hidden_sizes:1=19 hidden_sizes:2=23 lr=0.000518 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:37,111] Finished trial#5 with value: 8.674307537078857 with parameters: {&#39;hidden_sizes:0&#39;: 22, &#39;hidden_sizes:1&#39;: 19, &#39;hidden_sizes:2&#39;: 23, &#39;lr&#39;: 0.0005179921155957258, &#39;num_layers&#39;: 3}. Best is trial#1 with value: 7.228139710426331.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#37] hidden_sizes:0=26 hidden_sizes:1=16 lr=0.0003911 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:37,589] Finished trial#6 with value: 9.011315846443177 with parameters: {&#39;hidden_sizes:0&#39;: 26, &#39;hidden_sizes:1&#39;: 16, &#39;lr&#39;: 0.00039111540965691374, &#39;num_layers&#39;: 2}. Best is trial#1 with value: 7.228139710426331.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#38] hidden_sizes:0=21 hidden_sizes:1=24 hidden_sizes:2=29 lr=0.0006105 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:38,085] Finished trial#7 with value: 7.624202597141266 with parameters: {&#39;hidden_sizes:0&#39;: 21, &#39;hidden_sizes:1&#39;: 24, &#39;hidden_sizes:2&#39;: 29, &#39;lr&#39;: 0.0006104671473771957, &#39;num_layers&#39;: 3}. Best is trial#1 with value: 7.228139710426331.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#39] hidden_sizes:0=21 hidden_sizes:1=21 lr=0.0008265 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:38,583] Finished trial#8 with value: 7.89803649187088 with parameters: {&#39;hidden_sizes:0&#39;: 21, &#39;hidden_sizes:1&#39;: 21, &#39;lr&#39;: 0.0008264614273293893, &#39;num_layers&#39;: 2}. Best is trial#1 with value: 7.228139710426331.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#40] hidden_sizes:0=24 hidden_sizes:1=15 hidden_sizes:2=13 lr=0.0005692 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:39,090] Finished trial#9 with value: 8.323257803916931 with parameters: {&#39;hidden_sizes:0&#39;: 24, &#39;hidden_sizes:1&#39;: 15, &#39;hidden_sizes:2&#39;: 13, &#39;lr&#39;: 0.0005692212510631943, &#39;num_layers&#39;: 3}. Best is trial#1 with value: 7.228139710426331.</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:45</span> (<span class="time">5.45s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">44.8s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:45,611] A new study created with name: torch.hidden_sizes.lr.study#7</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#31] hidden_sizes:0=16 hidden_sizes:1=15 hidden_sizes:2=29 lr=0.0001225 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:46,148] Finished trial#0 with value: 96.2370470046997 with parameters: {&#39;hidden_sizes:0&#39;: 16, &#39;hidden_sizes:1&#39;: 15, &#39;hidden_sizes:2&#39;: 29, &#39;lr&#39;: 0.00012249243550301143, &#39;num_layers&#39;: 3}. Best is trial#0 with value: 96.2370470046997.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#32] hidden_sizes:0=25 hidden_sizes:1=14 hidden_sizes:2=11 lr=0.0002203 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:46,686] Finished trial#1 with value: 84.41999835968018 with parameters: {&#39;hidden_sizes:0&#39;: 25, &#39;hidden_sizes:1&#39;: 14, &#39;hidden_sizes:2&#39;: 11, &#39;lr&#39;: 0.00022029305577637873, &#39;num_layers&#39;: 3}. Best is trial#1 with value: 84.41999835968018.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#33] hidden_sizes:0=27 hidden_sizes:1=26 hidden_sizes:2=28 lr=0.0005015 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:47,225] Finished trial#2 with value: 8.741120171546935 with parameters: {&#39;hidden_sizes:0&#39;: 27, &#39;hidden_sizes:1&#39;: 26, &#39;hidden_sizes:2&#39;: 28, &#39;lr&#39;: 0.0005015159059545347, &#39;num_layers&#39;: 3}. Best is trial#2 with value: 8.741120171546935.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#34] hidden_sizes:0=30 hidden_sizes:1=12 hidden_sizes:2=21 lr=0.000525 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:47,765] Finished trial#3 with value: 9.744052982330322 with parameters: {&#39;hidden_sizes:0&#39;: 30, &#39;hidden_sizes:1&#39;: 12, &#39;hidden_sizes:2&#39;: 21, &#39;lr&#39;: 0.0005250248070246437, &#39;num_layers&#39;: 3}. Best is trial#2 with value: 8.741120171546935.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#35] hidden_sizes:0=30 hidden_sizes:1=10 lr=0.0005476 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:48,287] Finished trial#4 with value: 8.139109492301941 with parameters: {&#39;hidden_sizes:0&#39;: 30, &#39;hidden_sizes:1&#39;: 10, &#39;lr&#39;: 0.00054756939263164, &#39;num_layers&#39;: 2}. Best is trial#4 with value: 8.139109492301941.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#36] hidden_sizes:0=30 hidden_sizes:1=25 lr=0.0002333 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:48,812] Finished trial#5 with value: 9.731663036346436 with parameters: {&#39;hidden_sizes:0&#39;: 30, &#39;hidden_sizes:1&#39;: 25, &#39;lr&#39;: 0.00023330933571687353, &#39;num_layers&#39;: 2}. Best is trial#4 with value: 8.139109492301941.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#37] hidden_sizes:0=28 hidden_sizes:1=19 lr=0.0004628 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:49,344] Finished trial#6 with value: 9.92760705947876 with parameters: {&#39;hidden_sizes:0&#39;: 28, &#39;hidden_sizes:1&#39;: 19, &#39;lr&#39;: 0.00046281100060566855, &#39;num_layers&#39;: 2}. Best is trial#4 with value: 8.139109492301941.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#38] hidden_sizes:0=13 hidden_sizes:1=26 lr=0.0002287 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:49,875] Finished trial#7 with value: 92.88459148406983 with parameters: {&#39;hidden_sizes:0&#39;: 13, &#39;hidden_sizes:1&#39;: 26, &#39;lr&#39;: 0.0002287342972775713, &#39;num_layers&#39;: 2}. Best is trial#4 with value: 8.139109492301941.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#39] hidden_sizes:0=12 hidden_sizes:1=11 lr=0.0003726 num_layers=2 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:50,375] Finished trial#8 with value: 95.10794048309326 with parameters: {&#39;hidden_sizes:0&#39;: 12, &#39;hidden_sizes:1&#39;: 11, &#39;lr&#39;: 0.0003726371431933588, &#39;num_layers&#39;: 2}. Best is trial#4 with value: 8.139109492301941.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#40] hidden_sizes:0=11 hidden_sizes:1=16 hidden_sizes:2=16 lr=0.0005656 num_layers=3 epochs=1</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:50,888] Finished trial#9 with value: 64.8310935974121 with parameters: {&#39;hidden_sizes:0&#39;: 11, &#39;hidden_sizes:1&#39;: 16, &#39;hidden_sizes:2&#39;: 16, &#39;lr&#39;: 0.0005656169849548571, &#39;num_layers&#39;: 3}. Best is trial#4 with value: 8.139109492301941.</code></pre></div></div></div></div>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -437,21 +438,21 @@ optuna_study = study.optimize(n_trials=10, epochs=1, verbose=0)</code></pre></di
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You may feel that "<code>params = {'hidden_sizes.1': hidden_sizes, 'lr': Range(1e-4, 1e-3)}</code>" must be better, but the above style is intentional.</p>
+<p>You may feel that "<code>params = {'hidden_sizes.1': hidden_sizes, 'lr': Range(1e-4, 1e-3)}</code>" is better, but the above style is intentional.</p>
 </div>
 <p>In parametric optimization, the name of Optuna's <code>Study</code> instance is <em>dot-joint style</em>:</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">optuna_study.study_name</code></pre></div>
 <div class="report"><p><span class="count">[22]</span>
-<span class="start">2020-05-28 23:46:39</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">35.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&#39;torch.hidden_sizes.lr.study#7&#39;</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:50</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">44.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&#39;torch.hidden_sizes.lr.study#7&#39;</code></pre></div></div></div></div>
 
 <h2 id="study-from-yaml-file"><span class="pheasant-header"><span class="header"><span class="title">Study from YAML file</span></span></span></h2>
 <p>As a normal <code>Run</code>, a <code>Study</code> instance also can be created from a YAML file. Pass an extra keyword argument to the <code>client.create_experiment()</code> function. The key is the instance name (in this case <code>study</code>) and value is a YAML file name without its extension.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">experiment = client.create_experiment(&#39;torch&#39;, study=&#39;study&#39;)
 experiment</code></pre></div>
 <div class="report"><p><span class="count">[23]</span>
-<span class="start">2020-05-28 23:46:39</span> (<span class="time">11.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">35.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(id=&#39;1&#39;, name=&#39;torch&#39;, num_objects=1)</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:50</span> (<span class="time">10.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">44.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(id=&#39;1&#39;, name=&#39;torch&#39;, num_objects=1)</code></pre></div></div></div></div>
 
 <p>Here is the contents of <code>study.yml</code> file.</p>
 <div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> <span class="number">12</span>
@@ -468,36 +469,36 @@ experiment</code></pre></div>
 
 </div></div></div>
 
-<p>Suggest functions should be callable, <code>hidden_sizes</code> uses <code>def</code> keyword to create a callable. On the other hand, <code>lr</code> is just one line. If a suggest funtion can be called without additional parameters, you can omit the <code>def</code> keyword. Using this experiment, we can create <code>Study</code> instances with a suggest function.</p>
+<p>Suggest functions should be callable, <code>hidden_sizes</code> uses <code>def</code> keyword to create a callable. On the other hand, <code>lr</code> is just one line. If a suggest funtion can be called without additional arguments, you can omit the <code>def</code> keyword. Using this experiment, we can create <code>Study</code> instances with a suggest function.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">study_lr = client.create_study(&#39;torch&#39;, &#39;lr&#39;)
 study_lr.objective</code></pre></div>
 <div class="report"><p><span class="count">[24]</span>
-<span class="start">2020-05-28 23:46:39</span> (<span class="time">178ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">35.4s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Objective([&#39;lr&#39;])</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:50</span> (<span class="time">175ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">45.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Objective([&#39;lr&#39;])</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">study_hs = client.create_study(&#39;torch&#39;, &#39;hidden_sizes&#39;)
 study_hs.objective</code></pre></div>
 <div class="report"><p><span class="count">[25]</span>
-<span class="start">2020-05-28 23:46:39</span> (<span class="time">171ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">35.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Objective([&#39;hidden_sizes&#39;])</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:51</span> (<span class="time">170ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">45.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Objective([&#39;hidden_sizes&#39;])</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">study_hs.objective.hidden_sizes</code></pre></div>
 <div class="report"><p><span class="count">[26]</span>
-<span class="start">2020-05-28 23:46:39</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">35.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">functools.partial(&lt;function suggest_hidden_sizes at 0x0000027F1928B708&gt;, max_num_layers=3, min_size=10, max_size=30)</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:51</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">45.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">functools.partial(&lt;function suggest_hidden_sizes at 0x000002240EE5F168&gt;, max_num_layers=3, min_size=10, max_size=30)</code></pre></div></div></div></div>
 
 <p>For <code>min_size</code> and <code>max_size</code>, default values are inspected from the signature.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">study_lr.optimize(n_trials=3, epochs=3, verbose=0)</code></pre></div>
 <div class="report"><p><span class="count">[27]</span>
-<span class="start">2020-05-28 23:46:39</span> (<span class="time">2.12s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">37.7s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:39,500] A new study created with name: torch.lr.study#8</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#41] lr=1.053e-05 epochs=3</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:40,211] Finished trial#0 with value: 104.4784309387207 with parameters: {&#39;lr&#39;: 1.0532650000436869e-05}. Best is trial#0 with value: 104.4784309387207.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#42] lr=4.108e-05 epochs=3</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:40,901] Finished trial#1 with value: 26.72133207321167 with parameters: {&#39;lr&#39;: 4.107856471290739e-05}. Best is trial#1 with value: 26.72133207321167.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#43] lr=1.952e-05 epochs=3</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-28 23:46:41,588] Finished trial#2 with value: 101.80704765319824 with parameters: {&#39;lr&#39;: 1.9515331907395328e-05}. Best is trial#1 with value: 26.72133207321167.</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;optuna.study.Study at 0x27f216a5948&gt;</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:34:51</span> (<span class="time">2.30s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">47.5s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:51,291] A new study created with name: torch.lr.study#8</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#41] lr=0.0003015 epochs=3</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:52,044] Finished trial#0 with value: 9.101425123214721 with parameters: {&#39;lr&#39;: 0.00030151475465681334}. Best is trial#0 with value: 9.101425123214721.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#42] lr=0.0005232 epochs=3</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:52,793] Finished trial#1 with value: 8.188230180740357 with parameters: {&#39;lr&#39;: 0.0005232302617310319}. Best is trial#1 with value: 8.188230180740357.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#43] lr=0.0004855 epochs=3</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-29 20:34:53,558] Finished trial#2 with value: 7.090483903884888 with parameters: {&#39;lr&#39;: 0.0004855101983602795}. Best is trial#2 with value: 7.090483903884888.</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;optuna.study.Study at 0x2241530a288&gt;</code></pre></div></div></div></div>
 
 <h2 id="pruning"><span class="pheasant-header"><span class="header"><span class="title">Pruning</span></span></span></h2>
 <p>Optuna provides <a href="https://optuna.readthedocs.io/en/latest/tutorial/pruning.html">the pruning functionality</a>. Ivory can uses this feature seamlessly.</p>
@@ -519,7 +520,7 @@ objective:
 
 </div></div></div>
 
-<p>The <code>Tuner</code> instance has Optuna's <code>MedianPruner</code>. (Off course, you can use <a href="https://optuna.readthedocs.io/en/latest/reference/pruners.html">other pruners</a>.) A <code>Study</code> instance give an <code>ivory.callbacks.Pruning</code> instance to a run when the run is created, then with Ivory's <a href="../callbacks">callback system</a>, the <code>Pruning</code> instance communicates with Optuna in order to determine pruning.</p>
+<p>The <code>Tuner</code> instance has Optuna's <code>MedianPruner</code>. (Off course, you can use <a href="https://optuna.readthedocs.io/en/latest/reference/pruners.html">other pruners</a>.) A <code>Study</code> instance give an <code>ivory.callbacks.Pruning</code> instance to a run when the run is created, then with Ivory's <a href="../callback">callback system</a>, the <code>Pruning</code> instance communicates with Optuna in order to determine the step of pruning.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Pruning is supported for PyTorch and TensorFlow now.</p>

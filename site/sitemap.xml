@@ -51,5 +51,9 @@
      <loc>https://ivory.daizutabi.net/tutorial/library/</loc>
      <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/tutorial/cli/</loc>
+     <lastmod>2020-05-29</lastmod>
+     <changefreq>daily</changefreq>
     </url>
 </urlset>

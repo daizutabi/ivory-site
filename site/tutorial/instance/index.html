@@ -104,16 +104,16 @@ params = {&#39;data&#39;: {&#39;class&#39;: &#39;rectangle.data.Data&#39;, &#39;
 data = create_instance(params, &#39;data&#39;)
 data</code></pre></div>
 <div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-05-29 20:34:12</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.84s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Data(train_size=834, test_size=166)</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:43:42</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.86s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Data(train_size=834, test_size=166)</code></pre></div></div></div></div>
 
 <p>Here, the <code>create_instance()</code> function requires the second argument <code>name</code> to specify a key because the first argument <code>params</code> can have multiple keys. Note that we added a <code>n_splits</code> parameter which is different from the default value 5. Let's see unique values of fold.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import numpy as np
 
 np.unique(data.fold)  # 5-fold for train and 1-fold for test.</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-29 20:34:12</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.84s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([-1,  0,  1,  2,  3,  4], dtype=int8)</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:43:42</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.86s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([-1,  0,  1,  2,  3,  4], dtype=int8)</code></pre></div></div></div></div>
 
 <p>For writing a dictionary easily, we use <a href="https://pyyaml.org/wiki/PyYAMLDocumentation">PyYAML library</a>.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import yaml
@@ -130,8 +130,8 @@ data:
 &#34;&#34;&#34;
 create(doc, &#39;data&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-29 20:34:12</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.85s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Data(train_size=834, test_size=166)</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:43:42</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.87s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Data(train_size=834, test_size=166)</code></pre></div></div></div></div>
 
 <h2 id="hierarchal-structure"><span class="pheasant-header"><span class="header"><span class="title">Hierarchal Structure</span></span></span></h2>
 <p>Next create a <code>Dataset</code> instance. The <code>Dataset</code> class requires a <code>Data</code> instance as the first argument so that the corresponding dictionary have hierarchal structure.</p>
@@ -146,8 +146,8 @@ dataset:
 &#34;&#34;&#34;
 create(doc, &#39;dataset&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-29 20:34:12</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.85s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dataset(mode=&#39;train&#39;, num_samples=667)</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:43:42</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.87s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dataset(mode=&#39;train&#39;, num_samples=667)</code></pre></div></div></div></div>
 
 <p>As you can see, Ivory can treat this hierarchal structure correctly. Next, create a <code>Datasets</code> instance.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
@@ -162,8 +162,8 @@ datasets:
 &#34;&#34;&#34;
 create(doc, &#39;datasets&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-29 20:34:12</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.86s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Datasets(data=Data(train_size=834, test_size=166), dataset=&lt;class &#39;ivory.core.data.Dataset&#39;&gt;, fold=0)</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:43:42</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.88s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Datasets(data=Data(train_size=834, test_size=166), dataset=&lt;class &#39;ivory.core.data.Dataset&#39;&gt;, fold=0)</code></pre></div></div></div></div>
 
 <p>Remember that the argument <code>dataset</code> for the <code>Datasets</code> class is not an instance but a callable that returns a <code>Dataset</code> instance (See <a href="../data#datasets">the previous section</a>). To describe this behavior, we use a new <code>def</code> key instead of <code>class</code> to create a callable.</p>
 <h2 id="default-class"><span class="pheasant-header"><span class="header"><span class="title">Default Class</span></span></span></h2>
@@ -176,8 +176,8 @@ for library, values in DEFAULT_CLASS.items():
     for name, value in values.items():
         print(&#34;    &#34;, name, &#34;---&#34;, value)</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-29 20:34:12</span> (<span class="time">69.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.93s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-29 20:43:42</span> (<span class="time">69.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.95s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">library: core
      client --- ivory.core.client.Client
      tracker --- ivory.core.tracker.Tracker
@@ -221,8 +221,8 @@ datasets:
 datasets  = create(doc, &#39;datasets&#39;)
 isinstance(datasets.train, torch.utils.data.Dataset)</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-05-29 20:34:12</span> (<span class="time">7.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.93s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">True</code></pre></div></div></div></div>
+<span class="start">2020-05-29 20:43:43</span> (<span class="time">7.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.95s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">True</code></pre></div></div></div></div>
 
 <h2 id="default-value"><span class="pheasant-header"><span class="header"><span class="title">Default Value</span></span></span></h2>
 <p>If a callable has arguments with default value, you can use <code>__default__</code> to get default values from the callable signature.</p>
@@ -237,8 +237,8 @@ datasets:
 datasets = create(doc, &#39;datasets&#39;)
 datasets.data.n_splits</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-05-29 20:34:12</span> (<span class="time">6.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.94s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">4</code></pre></div></div></div></div></div>
+<span class="start">2020-05-29 20:43:43</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.96s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">4</code></pre></div></div></div></div></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../data/" title="Set of Data classes"><span>Previous</span></a></div>

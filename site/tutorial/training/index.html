@@ -153,7 +153,7 @@ params</code></pre></div>
 <p class="admonition-title">Note</p>
 <p>Key-order in the <code>params</code> dictionary is meaningful, because the callback functions are called by this order. For example, <code>Monitor</code> uses the results of <code>Metrics</code> so that <code>Monitor</code> should appear later than <code>Metrics</code>.</p>
 </div>
-<p>The <code>ivory.core.instance.create_base_instance()</code> function is more useful to create a run from a dictionary than the <code>ivory.core.instance.create_instance()</code> function because it can create multiple objects by one step.</p>
+<p>The <code>ivory.core.instance.create_base_instance()</code> function is more useful to create a run from a dictionary than the <code>ivory.core.instance.create_instance()</code> function because it can create multiple objects by one step processing <strong><code>$</code>-notation</strong> properly.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory.core.instance
 
 run = ivory.core.instance.create_base_instance(params, &#39;run&#39;)

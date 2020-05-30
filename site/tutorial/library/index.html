@@ -207,7 +207,7 @@ trainer:
 
 </div></div></div>
 
-<p>These YAML files have a very similar structure. The first difference comes from that, in PyTorch, an optimizer needs model parameters at the time of instantiation and a scheduler needs an optimizer too, while, in TensorFlow, an optimizer and scheduler can be instantiated without other related instances. These instances are connected to each other when a model is complied. (A <code>Trainer</code> internally invokes the <code>model.complie()</code> to complie a model with an optimizer and scheduler.) The second difference is <code>loss</code> functions. The Pytorch YAML file writes the fullname, while the TensorFlow one writes an abbreviation.</p>
+<p>These YAML files have a very similar structure. The first difference comes from that, in PyTorch, an optimizer needs model parameters at the time of instantiation and a scheduler needs an optimizer too, while, in TensorFlow, an optimizer and scheduler can be instantiated without other related instances.  The second difference is <code>loss</code> functions. The Pytorch YAML file writes the fullname, while the TensorFlow one writes an abbreviation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code>model</code> for TensorFlow is a function. A new <code>call</code> key is used. (But you can use <code>class</code>, too, or <code>call</code> for a class, vice versa, because both a class and function are <em>callable</em>.)</p>

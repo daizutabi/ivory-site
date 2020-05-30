@@ -91,7 +91,7 @@
 <h1 id="callback-system"><span class="pheasant-header"><span class="header"><span class="title">Callback System</span></span></span></h1>
 <h2 id="basics"><span class="pheasant-header"><span class="header"><span class="title">Basics</span></span></span></h2>
 <p>Ivory implements a simple but powerful callback system.</p>
-<p>Here is the list of callback functions:</p>
+<p>Here is the list of callback functions in the order of invocation:</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory.core.base
 
 ivory.core.base.Callback.METHODS</code></pre></div>
@@ -185,7 +185,7 @@ caller</code></pre></div>
 <p>This caller-receiver network among arbitrary instance collection builds a complex machine learning workflow.</p>
 <p>The <code>Run</code> class is a subclass of the <code>CallbackCaller</code> class and performs more library-specific process. We uses this <code>Run</code> class below.</p>
 <h2 id="example-callback-results"><span class="pheasant-header"><span class="header"><span class="title">Example Callback: Results</span></span></span></h2>
-<p>To work with the <code>Results</code> callback, we create data and model set. For more details about the following code, see <a href="../instance">Creating Instance</a> section.</p>
+<p>To work with the <code>Results</code> callback, we create a set of data and a model. For more details about the following code, see <a href="../instance">Creating Instance</a> section.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import yaml
 from ivory.core.instance import create_instance
 

@@ -90,7 +90,7 @@
                 <div id="content">
 <h1 id="model-structure"><span class="pheasant-header"><span class="header"><span class="title">Model Structure</span></span></span></h1>
 <h2 id="model"><span class="pheasant-header"><span class="header"><span class="title">Model</span></span></span></h2>
-<p>We have prepared a <code>DataLoaders</code> instance for PyTorch. Now define a MLP model that works with the <code>DataLoaders</code>.</p>
+<p>We have prepared a <code>Datasets</code> instance for PyTorch. Now define a MLP model that works with this <code>Datasets</code>.</p>
 <p>The model is defined in <code>rectangle/torch.py</code></p>
 <div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> <span class="number">6</span>
 <span class="title">rectangle/torch.py</span></p>
@@ -188,7 +188,7 @@ Parameter Group 0
     weight_decay: 0
 )</code></pre></div></div></div></div>
 
-<p>Now try to describe this optimizer in a dictionary style. However, the first argument <code>params</code> is not a simple literal but an iterable of learnable parameters. Ivory provides "<strong><code>$</code>-notation</strong>" to tackle this problem.</p>
+<p>Now try to describe this optimizer in a dictionary style. However, the first argument <code>params</code> is neigher a simple literal nor an other instance. It is an iterable of learnable parameters obtained from a model. Ivory provides "<strong><code>$</code>-notation</strong>" to tackle this problem.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
 optimizer:
   class: torch.optim.SGD

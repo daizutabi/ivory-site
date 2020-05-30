@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../../css/pheasant.css">
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script> 
@@ -64,6 +65,16 @@
     <li class="toctree-l2"><a class="nav-item" href="../library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../cli/">Command Line Interface</a></li>
 </ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+<ul class="subnav">
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
+<ul class="subnav hide">
+    <li class="toctree-l3">
+<a class="nav-item" href="../../api/ivory.core.data/">Ivory.core.data</a></li>
+    <li class="toctree-l3">
+<a class="nav-item" href="../../api/ivory.core.client/">Ivory.core.client</a></li>
+</ul></li>
+</ul></li>
                 </ul>
             </nav>
             <div class="repo">
@@ -95,35 +106,35 @@ client = ivory.create_client(&#34;examples&#34;)
 run = client.create_run(&#39;torch&#39;, fold=2)
 run.start()</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-30 10:42:37</span> (<span class="time">1.24s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">40.3s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 200530 10:42:37 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[epoch#0] loss=19.96 val_loss=9.749 lr=0.001 best
-[epoch#1] loss=6.29 val_loss=9.066 lr=0.001 best
-[epoch#2] loss=5.677 val_loss=9.067 lr=0.001
-[epoch#3] loss=5.292 val_loss=7.069 lr=0.001 best
-[epoch#4] loss=4.535 val_loss=6.639 lr=0.001 best
-[epoch#5] loss=3.878 val_loss=5.612 lr=0.001 best
-[epoch#6] loss=3.313 val_loss=4.413 lr=0.001 best
-[epoch#7] loss=2.654 val_loss=3.457 lr=0.001 best
-[epoch#8] loss=2.165 val_loss=2.931 lr=0.001 best
-[epoch#9] loss=1.555 val_loss=2.583 lr=0.001 best</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:20:57</span> (<span class="time">1.23s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">19.6s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200530 16:20:57 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[epoch#0] loss=25.92 val_loss=7.71 lr=0.001 best
+[epoch#1] loss=7.975 val_loss=6.841 lr=0.001 best
+[epoch#2] loss=7.107 val_loss=5.95 lr=0.001 best
+[epoch#3] loss=6.098 val_loss=5.075 lr=0.001 best
+[epoch#4] loss=5.124 val_loss=4.049 lr=0.001 best
+[epoch#5] loss=4.055 val_loss=3.141 lr=0.001 best
+[epoch#6] loss=3.075 val_loss=2.382 lr=0.001 best
+[epoch#7] loss=2.198 val_loss=1.692 lr=0.001 best
+[epoch#8] loss=1.62 val_loss=1.321 lr=0.001 best
+[epoch#9] loss=1.226 val_loss=1.102 lr=0.001 best</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = client.create_run(&#39;torch&#39;, fold=3)
 run.start(&#39;both&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-30 10:42:38</span> (<span class="time">1.26s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">41.6s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[epoch#0] loss=18.95 val_loss=7.419 lr=0.001 best
-[epoch#1] loss=7.752 val_loss=6.653 lr=0.001 best
-[epoch#2] loss=6.615 val_loss=5.593 lr=0.001 best
-[epoch#3] loss=5.552 val_loss=4.632 lr=0.001 best
-[epoch#4] loss=4.516 val_loss=3.699 lr=0.001 best
-[epoch#5] loss=3.429 val_loss=2.897 lr=0.001 best
-[epoch#6] loss=2.471 val_loss=1.797 lr=0.001 best
-[epoch#7] loss=1.615 val_loss=1.235 lr=0.001 best
-[epoch#8] loss=0.9934 val_loss=0.8526 lr=0.001 best
-[epoch#9] loss=0.7911 val_loss=0.6478 lr=0.001 best</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:20:58</span> (<span class="time">1.27s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">20.9s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[epoch#0] loss=22.48 val_loss=9.112 lr=0.001 best
+[epoch#1] loss=8.12 val_loss=7.637 lr=0.001 best
+[epoch#2] loss=7.301 val_loss=7.048 lr=0.001 best
+[epoch#3] loss=6.601 val_loss=6.56 lr=0.001 best
+[epoch#4] loss=6.084 val_loss=6.514 lr=0.001 best
+[epoch#5] loss=5.32 val_loss=5.228 lr=0.001 best
+[epoch#6] loss=4.78 val_loss=4.339 lr=0.001 best
+[epoch#7] loss=4.044 val_loss=3.617 lr=0.001 best
+[epoch#8] loss=3.415 val_loss=3.179 lr=0.001 best
+[epoch#9] loss=2.854 val_loss=2.558 lr=0.001 best</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
 runs = task.product(fold=range(3), verbose=0)
@@ -131,8 +142,8 @@ for run in runs:
     pass
     # Do something</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-30 10:42:39</span> (<span class="time">358ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">42.0s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-30 16:21:00</span> (<span class="time">444ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">21.3s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#2] fold=0
 [run#3] fold=1
 [run#4] fold=2</code></pre></div></div></div></div>
@@ -143,8 +154,8 @@ for run in runs:
     pass
     # Do something</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-30 10:42:40</span> (<span class="time">277ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">42.2s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-30 16:21:00</span> (<span class="time">323ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">21.6s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#5] n_splits=3
 [run#6] n_splits=4</code></pre></div></div></div></div>
 
@@ -154,8 +165,8 @@ for run in runs:
     pass
     # Do something</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-30 10:42:40</span> (<span class="time">541ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">42.8s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-30 16:21:00</span> (<span class="time">631ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">22.3s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#7] lr=0.0001
 [run#8] lr=0.001
 [run#9] batch_size=16 lr=0.0001
@@ -172,121 +183,121 @@ def print_run_info(run_ids):
 run_ids = client.search_run_ids(&#39;torch&#39;)
 print_run_info(run_ids)</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">100ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">42.9s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">36f15 run#10
-4e37c run#9
-07d3c run#8
-56f2d run#7
-c2649 task#2
-f99b0 run#6
-5a153 run#5
-44dc3 task#1
-a17bd run#4
-d96e6 run#3
-be8a8 run#2
-e1f1b task#0
-6d331 run#1
-3da6b run#0</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:01</span> (<span class="time">115ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">22.4s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">ac5c1 run#10
+bf1b8 run#9
+4993b run#8
+9c72b run#7
+fc4ab task#2
+a413e run#6
+83aa8 run#5
+63ed3 task#1
+b29c2 run#4
+3da97 run#3
+e8a93 run#2
+411a1 task#0
+a559f run#1
+28011 run#0</code></pre></div></div></div></div>
 
 <p>You can filtering runs by passing keyword arguments.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.search_run_ids(&#39;torch&#39;, lr=1e-4, batch_size=32)
 print_run_info(run_ids)</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">202ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">43.1s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">36f15 run#10</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:01</span> (<span class="time">195ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">22.6s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">ac5c1 run#10</code></pre></div></div></div></div>
 
 <p>The <code>client.search_nested_run_ids()</code> method makes an iterator that returns RunIDs of runs that have a parent run. Optionally, you can filter runs.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.search_nested_run_ids(&#39;torch&#39;)
 print_run_info(run_ids)</code></pre></div>
 <div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">72.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">43.1s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">36f15 run#10
-4e37c run#9
-07d3c run#8
-56f2d run#7
-f99b0 run#6
-5a153 run#5
-a17bd run#4
-d96e6 run#3
-be8a8 run#2</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:01</span> (<span class="time">78.7ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">22.6s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">ac5c1 run#10
+bf1b8 run#9
+4993b run#8
+9c72b run#7
+a413e run#6
+83aa8 run#5
+b29c2 run#4
+3da97 run#3
+e8a93 run#2</code></pre></div></div></div></div>
 
 <p>Note that the <code>run#0</code> isn't returned because it was created by <code>client.create_run()</code> directly.</p>
 <p>The <code>client.search_parent_run_ids()</code> method makes an iterator that returns RunIDs of runs that have nested runs. In this case, parent runs are three tasks we made above.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.search_parent_run_ids(&#39;torch&#39;)
 print_run_info(run_ids)</code></pre></div>
 <div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">45.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">43.2s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">c2649 task#2
-44dc3 task#1
-e1f1b task#0</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:01</span> (<span class="time">46.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">22.7s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">fc4ab task#2
+63ed3 task#1
+411a1 task#0</code></pre></div></div></div></div>
 
 <h3 id="get-methods"><span class="pheasant-header"><span class="header"><span class="title">Get methods</span></span></span></h3>
 <p>The <code>client.get_run_id()</code> returns a RunID of runs you select by run name.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_id = client.get_run_id(&#39;torch&#39;, run=0)
 print_run_info([run_id])</code></pre></div>
 <div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">38.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">43.2s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">3da6b run#0</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:01</span> (<span class="time">39.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">22.7s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">28011 run#0</code></pre></div></div></div></div>
 
 <p>The <code>client.get_run_ids()</code> makes an iterator that returns RunIDs of runs you select by run names.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.get_run_ids(&#39;torch&#39;, task=range(1, 3))
 print_run_info(run_ids)</code></pre></div>
 <div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">72.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">43.3s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">44dc3 task#1
-c2649 task#2</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:01</span> (<span class="time">76.7ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">22.8s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">63ed3 task#1
+fc4ab task#2</code></pre></div></div></div></div>
 
 <p>The <code>client.get_nested_run_ids()</code> makes an iterator that returns RunIDs of runs that have a parent you select by run names.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.get_nested_run_ids(&#39;torch&#39;, task=range(2))
 print_run_info(run_ids)</code></pre></div>
 <div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">154ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">43.5s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">a17bd run#4
-d96e6 run#3
-be8a8 run#2
-f99b0 run#6
-5a153 run#5</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">142ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.0s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">b29c2 run#4
+3da97 run#3
+e8a93 run#2
+a413e run#6
+83aa8 run#5</code></pre></div></div></div></div>
 
 <p>The <code>client.get_parent_run_id()</code> returns a RunID of a run that is refered by a nested run.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_id = client.get_parent_run_id(&#39;torch&#39;, run=5)
 print_run_info([run_id])</code></pre></div>
 <div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">39.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">43.5s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">44dc3 task#1</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">40.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.0s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">63ed3 task#1</code></pre></div></div></div></div>
 
 <h3 id="set-method"><span class="pheasant-header"><span class="header"><span class="title">Set method</span></span></span></h3>
 <p>Sometimes, you may want to change a parent for nested runs. Use the <code>client.set_parent_run_id()</code> method.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run_ids = client.get_nested_run_ids(&#39;torch&#39;, task=2)
 print_run_info(run_ids)</code></pre></div>
 <div class="report"><p><span class="count">[16]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">86.7ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">43.6s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">36f15 run#10
-4e37c run#9
-07d3c run#8
-56f2d run#7</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">78.7ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.1s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">ac5c1 run#10
+bf1b8 run#9
+4993b run#8
+9c72b run#7</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">client.set_parent_run_id(&#39;torch&#39;, run=(0, 2, 3), task=2)
 run_ids = client.get_nested_run_ids(&#39;torch&#39;, task=2)
 print_run_info(run_ids)</code></pre></div>
 <div class="report"><p><span class="count">[17]</span>
-<span class="start">2020-05-30 10:42:41</span> (<span class="time">216ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">43.8s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">36f15 run#10
-4e37c run#9
-07d3c run#8
-56f2d run#7
-d96e6 run#3
-be8a8 run#2
-3da6b run#0</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">236ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.3s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">ac5c1 run#10
+bf1b8 run#9
+4993b run#8
+9c72b run#7
+3da97 run#3
+e8a93 run#2
+28011 run#0</code></pre></div></div></div></div>
 
 <h2 id="next-step"><span class="pheasant-header"><span class="header"><span class="title">Next Step</span></span></span></h2>
 <p>Once you got RunID(s), you can load a run, a member of a run, or collect results of multiple runs for an ensemble. See <a href="../../quickstart#load-runs-and-results">the quickstart</a>.</p></div>

@@ -55,5 +55,13 @@
      <loc>https://ivory.daizutabi.net/tutorial/cli/</loc>
      <lastmod>2020-05-30</lastmod>
      <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.data/</loc>
+     <lastmod>2020-05-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.client/</loc>
+     <lastmod>2020-05-30</lastmod>
+     <changefreq>daily</changefreq>
     </url>
 </urlset>

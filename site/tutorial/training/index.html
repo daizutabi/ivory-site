@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../../css/pheasant.css">
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script> 
@@ -64,6 +65,16 @@
     <li class="toctree-l2"><a class="nav-item" href="../tracking/">Tracking Runs with Ivory</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../cli/">Command Line Interface</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+<ul class="subnav">
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
+<ul class="subnav hide">
+    <li class="toctree-l3">
+<a class="nav-item" href="../../api/ivory.core.data/">Ivory.core.data</a></li>
+    <li class="toctree-l3">
+<a class="nav-item" href="../../api/ivory.core.client/">Ivory.core.client</a></li>
+</ul></li>
 </ul></li>
                 </ul>
             </nav>
@@ -127,8 +138,8 @@ run:
 &#34;&#34;&#34;)
 params</code></pre></div>
 <div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-05-29 20:43:58</span> (<span class="time">8.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">22.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{&#39;library&#39;: &#39;torch&#39;,
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">8.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{&#39;library&#39;: &#39;torch&#39;,
  &#39;run&#39;: {&#39;datasets&#39;: {&#39;data&#39;: {&#39;class&#39;: &#39;rectangle.data.Data&#39;, &#39;n_splits&#39;: 4},
    &#39;dataset&#39;: None,
    &#39;fold&#39;: 0},
@@ -159,8 +170,8 @@ params</code></pre></div>
 run = ivory.core.instance.create_base_instance(params, &#39;run&#39;)
 list(run)</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-29 20:43:58</span> (<span class="time">6.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">22.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;datasets&#39;,
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">8.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;datasets&#39;,
  &#39;model&#39;,
  &#39;optimizer&#39;,
  &#39;scheduler&#39;,
@@ -184,8 +195,8 @@ for name, obj in run.items():
     print(f&#39;[{name}]&#39;)
     print_callbacks(obj)</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-29 20:43:58</span> (<span class="time">34.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">22.6s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">40.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.4s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[datasets]
 [model]
 [optimizer]
@@ -218,58 +229,58 @@ for name, obj in run.items():
 <p>The role of <code>Metrics</code> class is to record a set of metric for evaluation of model performance. The metirics are updated at each epoch end.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.metrics  # Now, metrics are empty.</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-29 20:43:58</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">22.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Metrics()</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.4s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Metrics()</code></pre></div></div></div></div>
 
 <h3 id="monitor"><span class="pheasant-header"><span class="header"><span class="title">Monitor</span></span></span></h3>
 <p>The <code>Monitor</code> class is monitoring the most important metric to measure the model score or to determine the training logic (early stopping or pruning).</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.monitor  # Monitoring `val_loss`.  Lower is better.</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-29 20:43:58</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">22.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Monitor(metric=&#39;val_loss&#39;, mode=&#39;min&#39;)</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.4s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Monitor(metric=&#39;val_loss&#39;, mode=&#39;min&#39;)</code></pre></div></div></div></div>
 
 <h3 id="earlystopping"><span class="pheasant-header"><span class="header"><span class="title">EarlyStopping</span></span></span></h3>
 <p>The <code>EarlyStopping</code> class is to stop the training loop when a monitored metric has stopped improving.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.early_stopping  # Early stopping occurs when `wait` &gt; `patience`.</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-29 20:43:58</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">22.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">EarlyStopping(patience=10, wait=0)</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.4s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">EarlyStopping(patience=10, wait=0)</code></pre></div></div></div></div>
 
 <h3 id="trainer"><span class="pheasant-header"><span class="header"><span class="title">Trainer</span></span></span></h3>
 <p>The <code>Tainer</code> class controls the model training. This is a callback, but at the same time, invokes callback functions at each step of training, validation, and test loop.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.trainer  # Training hasn&#39;t started yet, so epoch = -1.</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-05-29 20:43:58</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">22.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Trainer(epoch=-1, epochs=10, global_step=-1, verbose=2, loss=&lt;function mse_loss at 0x0000023AF75E7288&gt;, batch_size=10, shuffle=True, gpu=False, precision=32, amp_level=&#39;O1&#39;, scheduler_step_mode=&#39;epoch&#39;)</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.4s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Trainer(epoch=-1, epochs=10, global_step=-1, verbose=2, loss=&lt;function mse_loss at 0x000002682FBE4288&gt;, batch_size=10, shuffle=True, gpu=False, precision=32, amp_level=&#39;O1&#39;, scheduler_step_mode=&#39;epoch&#39;)</code></pre></div></div></div></div>
 
 <h2 id="using-a-trainer"><span class="pheasant-header"><span class="header"><span class="title">Using a Trainer</span></span></span></h2>
 <p>A <code>Run</code> instance invokes its trainer by <code>Run.start()</code> method.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.start()  # create_callbacks() is called automatically.</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-05-29 20:43:58</span> (<span class="time">575ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">23.2s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[epoch#0] loss=15.02 val_loss=7.922 lr=0.001 best
-[epoch#1] loss=6.747 val_loss=7.868 lr=0.001 best
-[epoch#2] loss=5.416 val_loss=4.412 lr=0.001 best
-[epoch#3] loss=3.881 val_loss=3.042 lr=0.001 best
-[epoch#4] loss=2.763 val_loss=1.939 lr=0.001 best
-[epoch#5] loss=1.717 val_loss=1.248 lr=0.001 best
-[epoch#6] loss=1.179 val_loss=0.8376 lr=0.001 best
-[epoch#7] loss=0.8795 val_loss=0.7485 lr=0.001 best
-[epoch#8] loss=0.7128 val_loss=0.5383 lr=0.001 best
-[epoch#9] loss=0.6385 val_loss=0.5081 lr=0.001 best</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:02</span> (<span class="time">540ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">23.9s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[epoch#0] loss=12.3 val_loss=9.073 lr=0.001 best
+[epoch#1] loss=6.368 val_loss=5.331 lr=0.001 best
+[epoch#2] loss=5.405 val_loss=3.963 lr=0.001 best
+[epoch#3] loss=3.881 val_loss=2.8 lr=0.001 best
+[epoch#4] loss=2.688 val_loss=1.784 lr=0.001 best
+[epoch#5] loss=1.793 val_loss=2.064 lr=0.001
+[epoch#6] loss=1.134 val_loss=1.35 lr=0.001 best
+[epoch#7] loss=0.8556 val_loss=0.6147 lr=0.001 best
+[epoch#8] loss=0.635 val_loss=0.5546 lr=0.001 best
+[epoch#9] loss=0.6089 val_loss=0.4768 lr=0.001 best</code></pre></div></div></div></div>
 
 <p>You can update attributes of run's objects at any time.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.trainer.epochs = 5
 run.start()</code></pre></div>
 <div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-05-29 20:43:59</span> (<span class="time">291ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">23.5s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[epoch#10] loss=0.6038 val_loss=0.454 lr=0.001 best
-[epoch#11] loss=0.5686 val_loss=0.4361 lr=0.001 best
-[epoch#12] loss=0.5087 val_loss=0.4168 lr=0.001 best
-[epoch#13] loss=0.4229 val_loss=0.3551 lr=0.001 best
-[epoch#14] loss=0.3845 val_loss=0.3159 lr=0.001 best</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:03</span> (<span class="time">288ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">24.2s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[epoch#10] loss=0.5159 val_loss=0.6315 lr=0.001
+[epoch#11] loss=0.5438 val_loss=0.5054 lr=0.001
+[epoch#12] loss=0.4831 val_loss=0.3839 lr=0.001 best
+[epoch#13] loss=0.4455 val_loss=0.3534 lr=0.001 best
+[epoch#14] loss=0.4898 val_loss=0.3954 lr=0.001</code></pre></div></div></div></div>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -279,42 +290,42 @@ run.start()</code></pre></div>
 <p>After training, the callbacks changes their states.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.metrics  # Show metrics at current epoch.</code></pre></div>
 <div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-05-29 20:43:59</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">23.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Metrics(loss=0.3845, val_loss=0.3159, lr=0.001)</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:03</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">24.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Metrics(loss=0.4898, val_loss=0.3954, lr=0.001)</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.metrics.history.val_loss  # Metrics history.</code></pre></div>
 <div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-05-29 20:43:59</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">23.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{0: 7.9218872547149655,
- 1: 7.8684142351150514,
- 2: 4.411666941642761,
- 3: 3.0417939007282255,
- 4: 1.9388263553380967,
- 5: 1.2481913983821868,
- 6: 0.8376013934612274,
- 7: 0.748484893143177,
- 8: 0.5383104585111141,
- 9: 0.5081345245242119,
- 10: 0.45400402694940567,
- 11: 0.43608351349830626,
- 12: 0.41681078895926477,
- 13: 0.3551490344107151,
- 14: 0.3159255500882864}</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:03</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">24.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{0: 9.07283158302307,
+ 1: 5.330642098188401,
+ 2: 3.963082951307297,
+ 3: 2.7999730914831162,
+ 4: 1.7839402288198472,
+ 5: 2.0641077041625975,
+ 6: 1.3496331840753555,
+ 7: 0.6146575763821602,
+ 8: 0.5545605823397637,
+ 9: 0.47675749361515046,
+ 10: 0.6315262600779533,
+ 11: 0.5053925298154354,
+ 12: 0.3838960863649845,
+ 13: 0.353401317819953,
+ 14: 0.3953550048172474}</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.monitor  # Store the best score and its epoch.</code></pre></div>
 <div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-05-29 20:43:59</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">23.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Monitor(metric=&#39;val_loss&#39;, mode=&#39;min&#39;, best_score=0.316, best_epoch=14)</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:03</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">24.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Monitor(metric=&#39;val_loss&#39;, mode=&#39;min&#39;, best_score=0.353, best_epoch=13)</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.early_stopping  # Current `wait`.</code></pre></div>
 <div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-05-29 20:43:59</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">23.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">EarlyStopping(patience=10, wait=0)</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:03</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">24.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">EarlyStopping(patience=10, wait=1)</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run.trainer  # Current epoch is 14 (0-indexed).</code></pre></div>
 <div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-05-29 20:43:59</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">23.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Trainer(epoch=14, epochs=5, global_step=899, verbose=2, loss=&lt;function mse_loss at 0x0000023AF75E7288&gt;, batch_size=10, shuffle=True, gpu=False, precision=32, amp_level=&#39;O1&#39;, scheduler_step_mode=&#39;epoch&#39;)</code></pre></div></div></div></div></div>
+<span class="start">2020-05-30 16:21:03</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">24.2s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Trainer(epoch=14, epochs=5, global_step=899, verbose=2, loss=&lt;function mse_loss at 0x000002682FBE4288&gt;, batch_size=10, shuffle=True, gpu=False, precision=32, amp_level=&#39;O1&#39;, scheduler_step_mode=&#39;epoch&#39;)</code></pre></div></div></div></div></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../callback/" title="Callback System"><span>Previous</span></a></div>

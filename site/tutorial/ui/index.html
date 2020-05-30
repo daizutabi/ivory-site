@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../../css/pheasant.css">
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script> 
@@ -63,6 +64,16 @@
     <li class="toctree-l2"><a class="nav-item" href="../library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../cli/">Command Line Interface</a></li>
 </ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+<ul class="subnav">
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
+<ul class="subnav hide">
+    <li class="toctree-l3">
+<a class="nav-item" href="../../api/ivory.core.data/">Ivory.core.data</a></li>
+    <li class="toctree-l3">
+<a class="nav-item" href="../../api/ivory.core.client/">Ivory.core.client</a></li>
+</ul></li>
+</ul></li>
                 </ul>
             </nav>
             <div class="repo">
@@ -95,27 +106,27 @@ client = ivory.create_client(&#34;examples&#34;)
 run = client.create_run(&#39;torch&#39;)
 run.start(&#39;both&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-29 20:44:23</span> (<span class="time">1.28s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">48.8s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 200529 20:44:23 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[epoch#0] loss=25.84 val_loss=8.076 lr=0.001 best
-[epoch#1] loss=7.584 val_loss=7.118 lr=0.001 best
-[epoch#2] loss=6.635 val_loss=6.585 lr=0.001 best
-[epoch#3] loss=5.87 val_loss=6.365 lr=0.001 best
-[epoch#4] loss=5.071 val_loss=4.819 lr=0.001 best
-[epoch#5] loss=4.331 val_loss=4.07 lr=0.001 best
-[epoch#6] loss=3.516 val_loss=3.238 lr=0.001 best
-[epoch#7] loss=2.916 val_loss=2.417 lr=0.001 best
-[epoch#8] loss=2.09 val_loss=2.003 lr=0.001 best
-[epoch#9] loss=1.576 val_loss=1.394 lr=0.001 best</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:28</span> (<span class="time">1.31s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">50.0s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200530 16:21:28 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[epoch#0] loss=20.97 val_loss=7.083 lr=0.001 best
+[epoch#1] loss=7.361 val_loss=6.422 lr=0.001 best
+[epoch#2] loss=6.72 val_loss=6.383 lr=0.001 best
+[epoch#3] loss=5.779 val_loss=4.946 lr=0.001 best
+[epoch#4] loss=4.918 val_loss=4.104 lr=0.001 best
+[epoch#5] loss=4.103 val_loss=3.951 lr=0.001 best
+[epoch#6] loss=3.405 val_loss=3.131 lr=0.001 best
+[epoch#7] loss=2.541 val_loss=1.988 lr=0.001 best
+[epoch#8] loss=1.988 val_loss=1.553 lr=0.001 best
+[epoch#9] loss=1.606 val_loss=1.453 lr=0.001 best</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
 runs = task.product(fold=range(3), verbose=0)
 for run in runs:
     run.start(&#39;both&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-29 20:44:25</span> (<span class="time">3.97s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">52.8s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-30 16:21:29</span> (<span class="time">4.22s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">54.2s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#1] fold=0
 [run#2] fold=1
 [run#3] fold=2</code></pre></div></div></div></div>
@@ -125,8 +136,8 @@ runs = task.chain(lr=[1e-4, 1e-3], batch_size=[16, 32], verbose=0)
 for run in runs:
     run.start(&#39;both&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-29 20:44:29</span> (<span class="time">4.96s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">57.8s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-05-30 16:21:33</span> (<span class="time">5.24s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">59.5s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#4] lr=0.0001
 [run#5] lr=0.001
 [run#6] batch_size=16 lr=0.001
@@ -137,26 +148,26 @@ for run in runs:
 study = client.create_study(&#39;torch&#39;, lr=Range(1e-5, 1e-3, log=True))
 study.optimize(n_trials=5, verbose=0)</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-29 20:44:34</span> (<span class="time">7.03s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1min5s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-29 20:44:34,204] A new study created with name: torch.lr.study#0</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#8] lr=6.106e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-29 20:44:35,589] Finished trial#0 with value: 8.565682291984558 with parameters: {&#39;lr&#39;: 6.106214851238423e-05}. Best is trial#0 with value: 8.565682291984558.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#9] lr=0.0002221</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-29 20:44:36,969] Finished trial#1 with value: 6.7033668756484985 with parameters: {&#39;lr&#39;: 0.00022214397699709285}. Best is trial#1 with value: 6.7033668756484985.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#10] lr=1.899e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-29 20:44:38,352] Finished trial#2 with value: 53.628534603118894 with parameters: {&#39;lr&#39;: 1.8986657590835633e-05}. Best is trial#1 with value: 6.7033668756484985.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#11] lr=0.0005006</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-29 20:44:39,737] Finished trial#3 with value: 4.008862447738648 with parameters: {&#39;lr&#39;: 0.0005006445416592231}. Best is trial#3 with value: 4.008862447738648.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">[run#12] lr=0.0003669</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 2020-05-29 20:44:41,149] Finished trial#4 with value: 5.895332098007202 with parameters: {&#39;lr&#39;: 0.00036694665278427677}. Best is trial#3 with value: 4.008862447738648.</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;optuna.study.Study at 0x23c93bec408&gt;</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:21:38</span> (<span class="time">7.44s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1min7s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-30 16:21:38,869] A new study created with name: torch.lr.study#0</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#8] lr=0.0003525</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-30 16:21:40,348] Finished trial#0 with value: 5.444503486156464 with parameters: {&#39;lr&#39;: 0.00035245015545868805}. Best is trial#0 with value: 5.444503486156464.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#9] lr=1.512e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-30 16:21:41,796] Finished trial#1 with value: 46.889670753479 with parameters: {&#39;lr&#39;: 1.511972584755075e-05}. Best is trial#0 with value: 5.444503486156464.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#10] lr=2.699e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-30 16:21:43,244] Finished trial#2 with value: 7.843799555301667 with parameters: {&#39;lr&#39;: 2.6985302099561763e-05}. Best is trial#0 with value: 5.444503486156464.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#11] lr=1.573e-05</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-30 16:21:44,741] Finished trial#3 with value: 50.56015796661377 with parameters: {&#39;lr&#39;: 1.5732324426281996e-05}. Best is trial#0 with value: 5.444503486156464.</code></pre></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">[run#12] lr=0.0007275</code></pre></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 2020-05-30 16:21:46,225] Finished trial#4 with value: 1.652654379606247 with parameters: {&#39;lr&#39;: 0.0007275201467120322}. Best is trial#4 with value: 1.652654379606247.</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;optuna.study.Study at 0x2683735f688&gt;</code></pre></div></div></div></div>
 
 <h2 id="tracking-ui_1"><span class="pheasant-header"><span class="header"><span class="title">Tracking UI</span></span></span></h2>
 <p>Optionally, you can update missing parameters:</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">client.update_params(&#39;torch&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-29 20:44:41</span> (<span class="time">350ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1min5s</span>)</span></p></div></div></div></div>
+<span class="start">2020-05-30 16:21:46</span> (<span class="time">356ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">1min7s</span>)</span></p></div></div></div></div>
 
 <p>In a terminal, move to the working directory (<code>examples</code>), then run</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="bash">$ ivory ui</code></pre></div>

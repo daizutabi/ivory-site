@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../../css/pheasant.css">
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
     </script> 
@@ -64,6 +65,16 @@
     <li class="toctree-l2"><a class="nav-item" href="../tracking/">Tracking Runs with Ivory</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../cli/">Command Line Interface</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+<ul class="subnav">
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
+<ul class="subnav hide">
+    <li class="toctree-l3">
+<a class="nav-item" href="../../api/ivory.core.data/">Ivory.core.data</a></li>
+    <li class="toctree-l3">
+<a class="nav-item" href="../../api/ivory.core.client/">Ivory.core.client</a></li>
+</ul></li>
 </ul></li>
                 </ul>
             </nav>
@@ -139,8 +150,8 @@ datasets = create(doc, &#39;datasets&#39;)
 model = create(doc, &#39;model&#39;)
 model</code></pre></div>
 <div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-05-29 20:43:50</span> (<span class="time">8.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+<span class="start">2020-05-30 16:20:54</span> (<span class="time">9.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
   (layers): ModuleList(
     (0): Linear(in_features=2, out_features=3, bias=True)
     (1): Linear(in_features=3, out_features=4, bias=True)
@@ -155,21 +166,21 @@ model</code></pre></div>
 index, input, target = datasets.train[:5]
 input</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-29 20:43:50</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[3.666907 , 4.3155937],
-       [3.555059 , 4.9251103],
-       [3.1595163, 4.4133806],
-       [1.1663918, 4.6412845],
-       [3.914458 , 1.5501423]], dtype=float32)</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:20:54</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[4.8919764, 1.1556569],
+       [3.1259346, 4.7114463],
+       [1.65477  , 1.1083779],
+       [1.732354 , 1.0978193],
+       [3.0221472, 2.3750997]], dtype=float32)</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">model(torch.tensor(input))</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-29 20:43:50</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[-0.4544],
-        [-0.4798],
-        [-0.4172],
-        [-0.2904],
-        [-0.3174]], grad_fn=&lt;AddmmBackward&gt;)</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:20:54</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[-0.1884],
+        [-0.1923],
+        [-0.1904],
+        [-0.1904],
+        [-0.1904]], grad_fn=&lt;AddmmBackward&gt;)</code></pre></div></div></div></div>
 
 <h2 id="optimizer"><span class="pheasant-header"><span class="header"><span class="title">Optimizer</span></span></span></h2>
 <p>To train a model, we need an optimizer. For example</p>
@@ -178,8 +189,8 @@ input</code></pre></div>
 optimizer = torch.optim.SGD(params=model.parameters(), lr=1e-3)
 optimizer</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-29 20:43:50</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+<span class="start">2020-05-30 16:20:54</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
 Parameter Group 0
     dampening: 0
     lr: 0.001
@@ -198,8 +209,8 @@ optimizer:
 optimizer = create(doc, &#39;optimizer&#39;, globals={&#39;model&#39;: model})
 optimizer</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-29 20:43:50</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+<span class="start">2020-05-30 16:20:54</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
 Parameter Group 0
     dampening: 0
     lr: 0.001
@@ -221,8 +232,8 @@ scheduler:
 scheduler = create(doc, &#39;scheduler&#39;, globals={&#39;optimizer&#39;: optimizer})
 scheduler</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-29 20:43:50</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x23c8f5c7f88&gt;</code></pre></div></div></div></div>
+<span class="start">2020-05-30 16:20:54</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x2683ced9d88&gt;</code></pre></div></div></div></div>
 
 <p>If a <code>$</code>-notation has no suffix, the value becomes its key itself. The following two examples are equivalent:</p>
 <div class="pheasant-fenced-code"><div class="cell embed source"><div class="code"><pre><code class="yaml">optimizer: $</code></pre></div></div></div>

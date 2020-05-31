@@ -67,10 +67,14 @@
 <ul class="subnav">
     <li class="toctree-l3">
 <a class="nav-item" href="../ivory.core.data/">Ivory.core.data</a></li>
+    <li class="toctree-l3">
+<a class="nav-item" href="../ivory.core.base/">Ivory.core.base</a></li>
     <li class="toctree-l3 current">
 <a class="nav-item current" href="./">Ivory.core.client</a>
 <ul class="subnav">
 </ul></li>
+    <li class="toctree-l3">
+<a class="nav-item" href="../ivory.core.run/">Ivory.core.run</a></li>
 </ul></li>
 </ul></li>
                 </ul>
@@ -79,7 +83,8 @@
     <div class="link">
         <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
     </div>
-    <div class="previous"><a href="../ivory.core.data/">&laquo; Previous</a></div>
+    <div class="previous"><a href="../ivory.core.base/">&laquo; Previous</a></div>
+    <div class="next"><a href="../ivory.core.run/">Next &raquo;</a></div>
 </div>
         </aside>
         <div id="spacer"><button class="arrow"></button></div>
@@ -218,7 +223,7 @@ working directory.</p>
       <div class="mkapi-section-body mkapi-section-body-examples"><p><strong>Positional argument style</strong>:</p>
 <pre><code>experiment = client.create_experiment('example', 'study')
 </code></pre>
-<p>In this case, <code>study.yml</code> is like this:</p>
+<p>In this case, <code>study.yml</code> is like this, including the instance name <code>study</code>:</p>
 <pre><code>study:
   tuner:
     pruner:
@@ -229,7 +234,7 @@ working directory.</p>
 <p><strong>Keyword argument style</strong>:</p>
 <pre><code>experiment = client.create_experiment('example', study='study')
 </code></pre>
-<p>In this case, <code>study.yml</code> is like this:</p>
+<p>In this case, <code>study.yml</code> is like this, omitting the instance name <code>study</code>:</p>
 <pre><code>tuner:
   pruner:
     class: optuna.pruners.MedianPruner
@@ -291,7 +296,7 @@ of <code>Experiment</code>.</spin></li>
       <div class="mkapi-section-body mkapi-section-body-examples"><p>To update a fold number:</p>
 <pre><code>run = client.create_run('example', fold=3)
 </code></pre>
-<p>To update a model class:</p>
+<p>If a parameter name includes dots:</p>
 <pre><code>run = client.create_run('example', {'model.class': 'your.new.Model'})
 </code></pre></div>
     </div>
@@ -316,7 +321,7 @@ of <code>Experiment</code>.</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Creates a <code>Task</code> for multiple runs.</p></div>
+      <div class="mkapi-section-body"><p>Creates a <code>Task</code> instance for multiple runs.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -341,7 +346,7 @@ creating a new one.</spin></li>
     <div class="mkapi-section mkapi-section-named mkapi-section-see also">
       <div class="mkapi-section-name mkapi-section-name-see-also">
       <span class="mkapi-section-name-body">See Also</span></div>
-      <div class="mkapi-section-body mkapi-section-body-see also"><p><a href="/tutorial/task">Multiple Runs</a></p></div>
+      <div class="mkapi-section-body mkapi-section-body-see also"><p><a href="/tutorial/task">Multiple Runs</a> in Tutorial</p></div>
     </div>
   
 </div>
@@ -364,7 +369,7 @@ creating a new one.</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Creates a <code>Study</code> for hyperparameter tuning.</p></div>
+      <div class="mkapi-section-body"><p>Creates a <code>Study</code> instance for hyperparameter tuning.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -405,7 +410,7 @@ creating a new one.</spin></li>
 <p>For parametric optimization:</p>
 <pre><code>study = client.create_study('example', lr=(1e-5, 1e-3))
 </code></pre>
-<p>If a parameter includes dots:</p>
+<p>If a parameter name includes dots:</p>
 <pre><code>study = client.create_study('example', {'hidden_sizes.0': range(5, 20)})
 </code></pre></div>
     </div>
@@ -413,7 +418,7 @@ creating a new one.</spin></li>
     <div class="mkapi-section mkapi-section-named mkapi-section-see also">
       <div class="mkapi-section-name mkapi-section-name-see-also">
       <span class="mkapi-section-name-body">See Also</span></div>
-      <div class="mkapi-section-body mkapi-section-body-see also"><p><a href="/tutorial/tuning">Hyperparameter Tuning</a></p></div>
+      <div class="mkapi-section-body mkapi-section-body-see also"><p><a href="/tutorial/tuning">Hyperparameter Tuning</a> in Tutorial</p></div>
     </div>
   
 </div>
@@ -1319,7 +1324,8 @@ working directory by MLFlow Tracking.</p></div>
 </div></div>
                 <footer>
     <div class="footer-buttons">
-        <div class="previous"><a href="../ivory.core.data/" title="Ivory.core.data"><span>Previous</span></a></div>
+        <div class="previous"><a href="../ivory.core.base/" title="Ivory.core.base"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.core.run/" title="Ivory.core.run"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>

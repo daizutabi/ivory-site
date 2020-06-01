@@ -76,6 +76,10 @@
 <ul class="subnav">
 </ul></li>
 </ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks/">Callbacks</a></li>
+</ul></li>
 </ul></li>
                 </ul>
             </nav>
@@ -84,6 +88,7 @@
         <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
     </div>
     <div class="previous"><a href="../ivory.core.client/">&laquo; Previous</a></div>
+    <div class="next"><a href="../ivory.callbacks/">Next &raquo;</a></div>
 </div>
         </aside>
         <div id="spacer"><button class="arrow"></button></div>
@@ -111,7 +116,7 @@
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>This module provides the <code>Run</code> class which is one of the main classes of
+      <div class="mkapi-section-body"><p>This module provides the <code>Run</code> class that is one of the main classes of
 Ivory library. In addition, <code>Task</code> and <code>Study</code> classes are defined, which manages
 multiple runs for cross validation, hyperparameter tuning, and so on.</p>
 <p>To create an <code>Run</code> instance:</p>
@@ -125,7 +130,7 @@ working directory.</p>
 <p>You can comfirm the client's working directory by:</p>
 <pre><code>os.path.dirname(client.source_name)
 </code></pre>
-<p>One you got a <code>Run</code> instance. call <code>Run.start()</code> method to start training. For test,
+<p>One you got a <code>Run</code> instance. call <code>Run.start()</code> to start training. For test,
 call <code>Run.start('test')</code> instead. Also, you can perform traing and test by one step
 with <code>Run.start('both')</code>.</p></div>
     </div>
@@ -149,7 +154,7 @@ with <code>Run.start('both')</code>.</p></div>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Run class, which is one of the main classes of Ivory library.</p></div>
+      <div class="mkapi-section-body"><p>Run class is one of the main classes of Ivory library.</p></div>
     </div>
   
 </div>
@@ -522,7 +527,7 @@ key-value pairs.</p></div>
          <span class="mkapi-args-dash">&mdash;</span>
          <span class="mkapi-args-desc">Parameter range. Key is a parameter name and
 value is an iterable of parameter's value.
-use_best_param: If True (default), the parameter which got the best
+use_best_param: If True (default), the parameter that got the best
 score is used during the following iterations.</spin></li>
 
   <li><code class="mkapi-args-name">**kwargs</code>
@@ -629,6 +634,7 @@ score is used during the following iterations.</spin></li>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../ivory.core.client/" title="Ivory.core.client"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.callbacks/" title="Callbacks"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>

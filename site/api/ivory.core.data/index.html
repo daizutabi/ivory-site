@@ -76,6 +76,10 @@
     <li class="toctree-l3">
 <a class="nav-item" href="../ivory.core.run/">Ivory.core.run</a></li>
 </ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks/">Callbacks</a></li>
+</ul></li>
 </ul></li>
                 </ul>
             </nav>
@@ -131,7 +135,7 @@ and use original <code>Dataset</code> and <code>Datasets</code>. An example para
     def: your.Dataset  # a subclass of ivory.core.data.Dataset
   fold: 0
 </code></pre>
-<p>The <code>DataLoaders</code> class is used internally by <code>ivory.torch.trainer.Trainer</code> or
+<p>The <code>DataLoaders</code> is used internally by <code>ivory.torch.trainer.Trainer</code> or
 <code>ivory.nnabla.trainer.Trainer</code> classes to yield a minibatch in training loop.</p></div>
     </div>
   
@@ -163,7 +167,7 @@ See <a href="/tutorial/data">Tutorial</a></p></div>
       
       <div class="mkapi-section-body"><p>Base class to provide data to a <code>Dataset</code> instance.</p>
 <p>To make a subclass, you need to assign the following attributes in
-the <code>Data.init()</code> method:</p>
+the <code>Data.init()</code>:</p>
 <ul>
 <li><code>index</code>: Index of samples.</li>
 <li><code>input</code>: Input data.</li>
@@ -278,7 +282,7 @@ the <code>Data.init()</code> method:</p>
     <div class="mkapi-section">
       
       <div class="mkapi-section-body"><p>Returns input data.</p>
-<p>By default, this method returns <code>self.input[index]</code>. You can override this
+<p>By default, this function returns <code>self.input[index]</code>. You can override this
 behavior in a subclass.</p></div>
     </div>
   
@@ -316,7 +320,7 @@ behavior in a subclass.</p></div>
     <div class="mkapi-section">
       
       <div class="mkapi-section-body"><p>Returns target data.</p>
-<p>By default, this method returns <code>self.target[index]</code>. You can override this
+<p>By default, this function returns <code>self.target[index]</code>. You can override this
 behavior in a subclass.</p></div>
     </div>
   

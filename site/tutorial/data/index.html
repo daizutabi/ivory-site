@@ -80,6 +80,10 @@
     <li class="toctree-l3">
 <a class="nav-item" href="../../api/ivory.core.run/">Ivory.core.run</a></li>
 </ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks/">Callbacks</a></li>
+</ul></li>
 </ul></li>
                 </ul>
             </nav>
@@ -160,80 +164,80 @@ def transform(mode, input, target):
 data = rectangle.data.Data()
 data</code></pre></div>
 <div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.69s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Data(train_size=800, test_size=200)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.89s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Data(train_size=800, test_size=200)</code></pre></div></div></div></div>
 
-<p>In the <code>Data.init()</code> method, we need to define 4 attributes:</p>
+<p>In <code>Data.init()</code>, we need to define 4 attributes:</p>
 <ul>
 <li><code>index</code>: Index of samples.</li>
 <li><code>input</code>: Input data.</li>
 <li><code>target</code>: Target data.</li>
 <li><code>fold</code>: Fold number.</li>
 </ul>
-<p>A <code>Data.get()</code> method returns a tuple of (<code>index</code>, <code>input</code>, <code>target</code>). This method is called from the <code>Dataset</code> instance when the dataset is indexed.</p>
+<p><code>Data.get()</code> returns a tuple of (<code>index</code>, <code>input</code>, <code>target</code>). This function is called from <code>Dataset</code> instances when the dataset is indexed.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">data.get(0)  # Integer index.</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.69s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(0,
- array([3.0628135, 1.1084057], dtype=float32),
- array([3.2361968], dtype=float32))</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.90s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(0,
+ array([3.0982542, 1.4571707], dtype=float32),
+ array([4.5988407], dtype=float32))</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">data.get([0, 10, 20])  # Array-like index. list or np.ndarray</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.70s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(array([ 0, 10, 20]),
- array([[3.0628135, 1.1084057],
-        [2.1002347, 2.1572082],
-        [2.5557587, 2.4020648]], dtype=float32),
- array([[3.2361968],
-        [4.6139073],
-        [5.9317513]], dtype=float32))</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.90s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(array([ 0, 10, 20]),
+ array([[3.0982542, 1.4571707],
+        [4.3325844, 3.4936657],
+        [1.4830701, 3.4862447]], dtype=float32),
+ array([[ 4.5988407],
+        [15.210848 ],
+        [ 4.9986   ]], dtype=float32))</code></pre></div></div></div></div>
 
 <h2 id="dataset-class"><span class="pheasant-header"><span class="header"><span class="title">Dataset Class</span></span></span></h2>
-<p>An instance of the <code>Dataset</code> class holds one of train, validation, and test dataset. We use the Ivory's default <code>Dataset</code> class here instead of defining a subclass. The <code>Dataset()</code> initializer requires three arguments: A <code>Data</code> instance, <code>mode</code>, and <code>fold</code>.</p>
+<p>An instance of the <code>Dataset</code> class holds one of train, validation, and test dataset. We use the Ivory's default <code>Dataset</code> here instead of defining a subclass. <code>Dataset()</code> initializer requires three arguments: A <code>Data</code> instance, <code>mode</code>, and <code>fold</code>.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory.core.data
 
 dataset = ivory.core.data.Dataset(data, &#39;train&#39;, 0)
 dataset</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.70s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dataset(mode=&#39;train&#39;, num_samples=600)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.91s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dataset(mode=&#39;train&#39;, num_samples=600)</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">ivory.core.data.Dataset(data, &#39;val&#39;, 1)  # Another mode is `test`.</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.70s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dataset(mode=&#39;val&#39;, num_samples=200)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.91s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dataset(mode=&#39;val&#39;, num_samples=200)</code></pre></div></div></div></div>
 
-<p>As the <code>Data</code> class, the <code>Dataset</code> class has a <code>init()</code> method without any arguments and no returned value.  You can define any code to modify data.</p>
-<p>To get data from an dataset. use normal indexing</p>
+<p>As the <code>Data</code>, the <code>Dataset</code> has <code>init()</code> without any arguments and returned value.  You can define any code to modify data.</p>
+<p>To get data from an <code>Dataset</code> instance, use normal indexing</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">dataset[0]  # Integer index.</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.71s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(0,
- array([3.0628135, 1.1084057], dtype=float32),
- array([3.2361968], dtype=float32))</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.92s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(0,
+ array([3.0982542, 1.4571707], dtype=float32),
+ array([4.5988407], dtype=float32))</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">dataset[[0, 10, 20]]  # Array-like index. list or np.ndarray</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.71s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(array([ 0, 16, 33]),
- array([[3.0628135, 1.1084057],
-        [4.544373 , 1.1501533],
-        [1.4926239, 3.7475893]], dtype=float32),
- array([[3.2361968],
-        [5.3124447],
-        [5.837007 ]], dtype=float32))</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.92s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(array([ 0, 16, 33]),
+ array([[3.0982542, 1.4571707],
+        [4.867591 , 1.3126242],
+        [1.9519043, 2.3075185]], dtype=float32),
+ array([[4.5988407],
+        [6.2698073],
+        [4.6178045]], dtype=float32))</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">index, *_ = dataset[:]  # Get all data.
 print(len(index))
 index[:10]</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.72s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.93s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">600</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([ 0,  2,  3,  4,  6,  7, 10, 12, 13, 15])</code></pre></div></div></div></div>
 
-<p>These data come from a subset of the <code>data</code> instance according to the mode and fold.</p>
-<p>The <code>Dataset</code> class takes an opptional and callable argument: <code>transform</code>.</p>
+<p>These data come from a subset of the <code>Data</code> instance according to the mode and fold.</p>
+<p>The <code>Dataset</code> takes an optional and callable argument: <code>transform</code>.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">def transform(mode: str, input, target):
     if mode == &#39;train&#39;:
         input = input * 2
@@ -243,37 +247,37 @@ index[:10]</code></pre></div>
 dataset_transformed = ivory.core.data.Dataset(data, &#39;train&#39;, 0, transform)
 dataset_transformed[0]</code></pre></div>
 <div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.72s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(0,
- array([6.125627 , 2.2168114], dtype=float32),
- array([6.4723935], dtype=float32))</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.93s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(0,
+ array([6.1965084, 2.9143414], dtype=float32),
+ array([9.197681], dtype=float32))</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">2 * dataset[0][1], 2 * dataset[0][2]</code></pre></div>
 <div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.72s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(array([6.125627 , 2.2168114], dtype=float32),
- array([6.4723935], dtype=float32))</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.93s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(array([6.1965084, 2.9143414], dtype=float32),
+ array([9.197681], dtype=float32))</code></pre></div></div></div></div>
 
-<p>Usually, we don't instantiate the <code>Dataset</code> class directly. Instead, the <code>Datasets</code> class create dataset instances.</p>
+<p>Usually, we don't instantiate the <code>Dataset</code> directly. Instead, the <code>Datasets</code> class create dataset instances.</p>
 <h2 id="datasets-class"><span class="pheasant-header"><span class="header"><span class="title">Datasets Class</span></span></span></h2>
-<p>An instance of the <code>Datasets</code> class holds a set of train, validation, and test dataset. We use the Ivory's default <code>Datasets</code> class here instead of defining a subclass. The <code>Datasets()</code> initializer requires three arguments: A <code>Data</code> instance, <code>Dataset</code> factory, and <code>fold</code>.</p>
+<p>An instance of the <code>Datasets</code> class holds a set of train, validation, and test dataset. We use the Ivory's default <code>Datasets</code> here instead of defining a subclass. The <code>Datasets()</code> initializer requires three arguments: A <code>Data</code> instance, <code>Dataset</code> factory, and <code>fold</code>.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">from ivory.core.data import Dataset
 
 datasets = ivory.core.data.Datasets(data, Dataset, 0)
 datasets</code></pre></div>
 <div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.73s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Datasets(data=Data(train_size=800, test_size=200), dataset=&lt;class &#39;ivory.core.data.Dataset&#39;&gt;, fold=0)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.94s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Datasets(data=Data(train_size=800, test_size=200), dataset=&lt;class &#39;ivory.core.data.Dataset&#39;&gt;, fold=0)</code></pre></div></div></div></div>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The second argument (<code>dataset</code>) is not a <code>Dataset</code> instance but its factory that returns a <code>Dataset</code> instance. It may be a <code>Dataset</code> class itself or any function that returns a <code>Dataset</code> instance.</p>
+<p>The second argument (<code>dataset</code>) is not a <code>Dataset</code> instance but its factory that returns a <code>Dataset</code> instance. It may be a <code>Dataset</code> itself or any other function that returns a <code>Dataset</code> instance.</p>
 </div>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for mode, dataset in datasets.items():
     print(mode, dataset)</code></pre></div>
 <div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.73s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">7.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.95s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">train Dataset(mode=&#39;train&#39;, num_samples=600)
 val Dataset(mode=&#39;val&#39;, num_samples=200)
 test Dataset(mode=&#39;test&#39;, num_samples=200)</code></pre></div></div></div></div>
@@ -281,10 +285,10 @@ test Dataset(mode=&#39;test&#39;, num_samples=200)</code></pre></div></div></div
 <p>Each dataset can be accessed by indexing or attributes.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">datasets[&#39;train&#39;], datasets.val</code></pre></div>
 <div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.74s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(Dataset(mode=&#39;train&#39;, num_samples=600), Dataset(mode=&#39;val&#39;, num_samples=200))</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.95s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(Dataset(mode=&#39;train&#39;, num_samples=600), Dataset(mode=&#39;val&#39;, num_samples=200))</code></pre></div></div></div></div>
 
-<p>Using the <code>Datasets</code> class, we can easily split a whole data stored in a <code>Data</code> instance into three train, validation, and test dataset.</p>
+<p>Using the <code>Datasets</code>, we can easily split a whole data stored in a <code>Data</code> instance into three train, validation, and test dataset.</p>
 <h2 id="dataloaders-class"><span class="pheasant-header"><span class="header"><span class="title">DataLoaders Class</span></span></span></h2>
 <p>The <code>DataLoaders</code> class is used internally by <code>ivory.torch.trainer.Trainer</code> or
 <code>ivory.nnabla.trainer.Trainer</code> classes to yield a minibatch in training loop.</p>
@@ -293,52 +297,52 @@ test Dataset(mode=&#39;test&#39;, num_samples=200)</code></pre></div></div></div
 dataloaders = DataLoaders(datasets, batch_size=4, shuffle=True)
 dataloaders</code></pre></div>
 <div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.74s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">DataLoaders([&#39;train&#39;, &#39;val&#39;, &#39;test&#39;])</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.96s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">DataLoaders([&#39;train&#39;, &#39;val&#39;, &#39;test&#39;])</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for mode, dataloader in dataloaders.items():
     print(mode, dataloader)</code></pre></div>
 <div class="report"><p><span class="count">[16]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.74s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">train &lt;torch.utils.data.dataloader.DataLoader object at 0x0000021B06612708&gt;
-val &lt;torch.utils.data.dataloader.DataLoader object at 0x0000021B066122C8&gt;
-test &lt;torch.utils.data.dataloader.DataLoader object at 0x0000021B066125C8&gt;</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">10.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.97s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">train &lt;torch.utils.data.dataloader.DataLoader object at 0x00000107B6D92E08&gt;
+val &lt;torch.utils.data.dataloader.DataLoader object at 0x00000107B6D92B48&gt;
+test &lt;torch.utils.data.dataloader.DataLoader object at 0x00000107B6D92B08&gt;</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">next(iter(dataloaders.train))  # Shuffled</code></pre></div>
 <div class="report"><p><span class="count">[17]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.75s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[tensor([194, 352, 678, 673], dtype=torch.int32),
- tensor([[1.0611, 3.7368],
-         [4.8021, 1.5971],
-         [1.1885, 1.0272],
-         [3.4045, 3.8366]]),
- tensor([[ 3.8045],
-         [ 7.5618],
-         [ 1.2125],
-         [13.0487]])]</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.97s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[tensor([626, 618,  44, 792], dtype=torch.int32),
+ tensor([[1.7760, 3.0362],
+         [4.1682, 3.4665],
+         [3.0888, 3.6565],
+         [4.5250, 2.5966]]),
+ tensor([[ 5.3801],
+         [14.5551],
+         [11.3598],
+         [11.6566]])]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">next(iter(dataloaders.val))  # Not shuffled, regardless of `shuffle` argument</code></pre></div>
 <div class="report"><p><span class="count">[18]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.75s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[tensor([ 1,  5,  8, 14], dtype=torch.int32),
- tensor([[1.6201, 4.3590],
-         [3.5998, 3.3764],
-         [2.1642, 3.7052],
-         [2.5727, 3.0594]]),
- tensor([[ 7.2597],
-         [12.1373],
-         [ 8.0526],
-         [ 7.7637]])]</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.98s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[tensor([ 1,  5,  8, 14], dtype=torch.int32),
+ tensor([[1.1789, 1.7669],
+         [2.1315, 3.6630],
+         [2.7098, 4.0919],
+         [3.5862, 3.1368]]),
+ tensor([[ 2.0069],
+         [ 7.6866],
+         [11.3008],
+         [11.2228]])]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">next(iter(dataloaders.test))  # Not shuffled, regardless of `shuffle` argument</code></pre></div>
 <div class="report"><p><span class="count">[19]</span>
-<span class="start">2020-06-01 11:21:56</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">1.75s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[tensor([ 9, 11, 19, 23], dtype=torch.int32),
- tensor([[3.9465, 2.2699],
-         [2.4314, 2.8328],
-         [1.2208, 4.3160],
-         [3.9263, 2.0377]]),
+<span class="start">2020-06-01 16:02:04</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.98s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[tensor([ 9, 11, 19, 23], dtype=torch.int32),
+ tensor([[3.5803, 2.4080],
+         [2.4829, 4.4213],
+         [3.2646, 1.4327],
+         [1.8463, 3.9107]]),
  tensor([[nan],
          [nan],
          [nan],

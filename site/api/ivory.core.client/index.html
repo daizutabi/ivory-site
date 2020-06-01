@@ -76,6 +76,10 @@
     <li class="toctree-l3">
 <a class="nav-item" href="../ivory.core.run/">Ivory.core.run</a></li>
 </ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks/">Callbacks</a></li>
+</ul></li>
 </ul></li>
                 </ul>
             </nav>
@@ -112,7 +116,7 @@
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>This module provides the Ivory Client class which is one of the main classes of
+      <div class="mkapi-section-body"><p>This module provides the Ivory Client class that is one of the main classes of
 Ivory library.</p>
 <p>To create an <code>Client</code> instance:</p>
 <pre><code>import ivory
@@ -441,7 +445,7 @@ creating a new one.</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Returns a RunID.</p></div>
+      <div class="mkapi-section-body"><p>Returns a Run ID.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -460,10 +464,10 @@ creating a new one.</spin></li>
     <div class="mkapi-section mkapi-section-named mkapi-section-examples">
       <div class="mkapi-section-name mkapi-section-name-examples">
       <span class="mkapi-section-name-body">Examples</span></div>
-      <div class="mkapi-section-body mkapi-section-body-examples"><p>To get a RunID of run#4.</p>
+      <div class="mkapi-section-body mkapi-section-body-examples"><p>To get a Run ID of run#4.</p>
 <pre><code>client.get_run_id('example', run=4)
 </code></pre>
-<p>To get a RunID of task#10.</p>
+<p>To get a Run ID of task#10.</p>
 <pre><code>client.get_run_id('example', task=10)
 </code></pre></div>
     </div>
@@ -488,7 +492,7 @@ creating a new one.</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Returns an iterator that yields RunIDs.</p></div>
+      <div class="mkapi-section-body"><p>Returns an iterator that yields Run IDs.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -507,10 +511,10 @@ creating a new one.</spin></li>
     <div class="mkapi-section mkapi-section-named mkapi-section-examples">
       <div class="mkapi-section-name mkapi-section-name-examples">
       <span class="mkapi-section-name-body">Examples</span></div>
-      <div class="mkapi-section-body mkapi-section-body-examples"><p>To get an iterator that yields RunIDs for Runs.</p>
+      <div class="mkapi-section-body mkapi-section-body-examples"><p>To get an iterator that yields Run IDs for Runs.</p>
 <pre><code>client.get_run_id('example', run=[1, 2, 3])
 </code></pre>
-<p>To get an iterator that yields RunIDs for Tasks.</p>
+<p>To get an iterator that yields Run IDs for Tasks.</p>
 <pre><code>client.get_run_id('example', task=range(3, 8))
 </code></pre></div>
     </div>
@@ -535,7 +539,7 @@ creating a new one.</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Returns a parent RunID of a nested run.</p></div>
+      <div class="mkapi-section-body"><p>Returns a parent Run ID of a nested run.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -554,7 +558,7 @@ creating a new one.</spin></li>
     <div class="mkapi-section mkapi-section-named mkapi-section-examples">
       <div class="mkapi-section-name mkapi-section-name-examples">
       <span class="mkapi-section-name-body">Examples</span></div>
-      <div class="mkapi-section-body mkapi-section-body-examples"><p>To get a prarent RunID of run#5.</p>
+      <div class="mkapi-section-body mkapi-section-body-examples"><p>To get a prarent Run ID of run#5.</p>
 <pre><code>client.get_parent_run_id('example', run=5)
 </code></pre></div>
     </div>
@@ -579,7 +583,7 @@ creating a new one.</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Returns an iterator that yields nested RunIDs of parent runs.</p></div>
+      <div class="mkapi-section-body"><p>Returns an iterator that yields nested Run IDs of parent runs.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -598,7 +602,7 @@ creating a new one.</spin></li>
     <div class="mkapi-section mkapi-section-named mkapi-section-examples">
       <div class="mkapi-section-name mkapi-section-name-examples">
       <span class="mkapi-section-name-body">Examples</span></div>
-      <div class="mkapi-section-body mkapi-section-body-examples"><p>To get an iterator that yields RunIDs of runs whose parent is task#2.</p>
+      <div class="mkapi-section-body mkapi-section-body-examples"><p>To get an iterator that yields Run IDs of runs whose parent is task#2.</p>
 <pre><code>client.get_nested_run_ids('example', task=2)
 </code></pre>
 <p>Multiple parents can be specified.</p>
@@ -626,7 +630,7 @@ creating a new one.</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Sets parent RunID to runs.</p></div>
+      <div class="mkapi-section-body"><p>Sets parent Run ID to runs.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -673,7 +677,7 @@ creating a new one.</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Returns a run name (<code>run#XXX</code>, <code>task#XXX</code>, <em>etc</em>.) for RunID.</p></div>
+      <div class="mkapi-section-body"><p>Returns a run name (<code>run#XXX</code>, <code>task#XXX</code>, <em>etc</em>.) for Run ID.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -684,7 +688,7 @@ creating a new one.</spin></li>
   <li><code class="mkapi-args-name">run_id</code>
          <span class="mkapi-args-type">(str)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">RunID</spin></li>
+         <span class="mkapi-args-desc">Run ID</spin></li>
 
 </ul></div>
     </div>
@@ -720,7 +724,7 @@ creating a new one.</spin></li>
   <li><code class="mkapi-args-name">run_id</code>
          <span class="mkapi-args-type">(str)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">RunID</spin></li>
+         <span class="mkapi-args-desc">Run ID</spin></li>
 
 </ul></div>
     </div>
@@ -745,7 +749,7 @@ creating a new one.</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Returns an iterator that yields matching RunIDs.</p></div>
+      <div class="mkapi-section-body"><p>Returns an iterator that yields matching Run IDs.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -767,7 +771,7 @@ creating a new one.</spin></li>
          <span class="mkapi-args-type">(str or iterable of str)</span>
          <span class="mkapi-args-dash">&mdash;</span>
          <span class="mkapi-args-desc">If specified, search from runs
-which have the parent id(s).</spin></li>
+that have the parent id(s).</spin></li>
 
   <li><code class="mkapi-args-name">parent_only</code>
          <span class="mkapi-args-type">(bool, optional)</span>
@@ -817,7 +821,7 @@ which have the parent id(s).</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Returns an iterator that yields matching parent RunIDs.</p></div>
+      <div class="mkapi-section-body"><p>Returns an iterator that yields matching parent Run IDs.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -858,7 +862,7 @@ which have the parent id(s).</spin></li>
   
     <div class="mkapi-section">
       
-      <div class="mkapi-section-body"><p>Returns an iterator that yields matching nested RunIDs.</p></div>
+      <div class="mkapi-section-body"><p>Returns an iterator that yields matching nested Run IDs.</p></div>
     </div>
   
     <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
@@ -1008,7 +1012,7 @@ Defaults to “FINISHED”.</spin></li>
   <li><code class="mkapi-args-name">run_id</code>
          <span class="mkapi-args-type">(str)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">RunID for a run to be loaded.</spin></li>
+         <span class="mkapi-args-desc">Run ID for a run to be loaded.</spin></li>
 
 </ul></div>
     </div>
@@ -1045,7 +1049,7 @@ Tracking.</p></div>
   <li><code class="mkapi-args-name">run_id</code>
          <span class="mkapi-args-type">(str)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">RunID for a run to be loaded.</spin></li>
+         <span class="mkapi-args-desc">Run ID for a run to be loaded.</spin></li>
 
   <li><code class="mkapi-args-name">mode</code>
          <span class="mkapi-args-type">(str, optional)</span>
@@ -1138,7 +1142,7 @@ Tracking.</p></div>
   <li><code class="mkapi-args-name">run_id</code>
          <span class="mkapi-args-type">(str)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">RunID for a run to be loaded.</spin></li>
+         <span class="mkapi-args-desc">Run ID for a run to be loaded.</spin></li>
 
   <li><code class="mkapi-args-name">instance_name</code>
          <span class="mkapi-args-type">(str)</span>
@@ -1264,7 +1268,7 @@ a <code>(index, output, target)</code> and return a tuple with the same signatur
     <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
     <div class="mkapi-node-name">
       
-        <code class="mkapi-node-prefix">ivory.core.client.</code><code class="mkapi-node-basename">create_client</code><code class="mkapi-node-signature">(directory=&#39;&#39;, name=&#39;client&#39;, tracker=True)</code>
+        <code class="mkapi-node-prefix">ivory.core.client.</code><code class="mkapi-node-basename">create_client</code><code class="mkapi-node-signature">(directory=&#39;&#39;, name=&#39;client&#39;, tracker=True, tuner=True)</code>
         
       
     </div>
@@ -1296,7 +1300,12 @@ this directory is automatically inserted to <code>sys.path</code>.</spin></li>
   <li><code class="mkapi-args-name">tracker</code>
          <span class="mkapi-args-type">(bool, optional)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">If true, the client instance has a tracker.</spin></li>
+         <span class="mkapi-args-desc">If True, the client instance has a tracker.</spin></li>
+
+  <li><code class="mkapi-args-name">tuner</code>
+         <span class="mkapi-args-type">(bool, optional)</span>
+         <span class="mkapi-args-dash">&mdash;</span>
+         <span class="mkapi-args-desc">If True, the client instance has a tuner.</spin></li>
 
 </ul></div>
     </div>

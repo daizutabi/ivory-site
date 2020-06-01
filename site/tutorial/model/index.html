@@ -79,6 +79,10 @@
     <li class="toctree-l3">
 <a class="nav-item" href="../../api/ivory.core.run/">Ivory.core.run</a></li>
 </ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks/">Callbacks</a></li>
+</ul></li>
 </ul></li>
                 </ul>
             </nav>
@@ -154,8 +158,8 @@ datasets = create(doc, &#39;datasets&#39;)
 model = create(doc, &#39;model&#39;)
 model</code></pre></div>
 <div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-06-01 09:54:17</span> (<span class="time">9.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+<span class="start">2020-06-01 16:02:13</span> (<span class="time">9.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
   (layers): ModuleList(
     (0): Linear(in_features=2, out_features=3, bias=True)
     (1): Linear(in_features=3, out_features=4, bias=True)
@@ -170,21 +174,21 @@ model</code></pre></div>
 index, input, target = datasets.train[:5]
 input</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-06-01 09:54:17</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[2.3092778, 3.8929958],
-       [2.604726 , 3.0974758],
-       [4.0521336, 3.3636267],
-       [4.7745414, 3.8449461],
-       [2.0770545, 1.3376426]], dtype=float32)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:13</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[3.0982542, 1.4571707],
+       [3.0498803, 1.5447568],
+       [3.925663 , 1.1112826],
+       [1.0297081, 2.1787055],
+       [2.1314638, 3.66297  ]], dtype=float32)</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">model(torch.tensor(input))</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-06-01 09:54:17</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[0.3045],
-        [0.2725],
-        [0.3094],
-        [0.3441],
-        [0.1815]], grad_fn=&lt;AddmmBackward&gt;)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:13</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">tensor([[0.3322],
+        [0.3325],
+        [0.3271],
+        [0.3092],
+        [0.3211]], grad_fn=&lt;AddmmBackward&gt;)</code></pre></div></div></div></div>
 
 <h2 id="optimizer"><span class="pheasant-header"><span class="header"><span class="title">Optimizer</span></span></span></h2>
 <p>To train a model, we need an optimizer. For example</p>
@@ -193,8 +197,8 @@ input</code></pre></div>
 optimizer = torch.optim.SGD(params=model.parameters(), lr=1e-3)
 optimizer</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-06-01 09:54:17</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+<span class="start">2020-06-01 16:02:13</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
 Parameter Group 0
     dampening: 0
     lr: 0.001
@@ -213,8 +217,8 @@ optimizer:
 optimizer = create(doc, &#39;optimizer&#39;, globals={&#39;model&#39;: model})
 optimizer</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-06-01 09:54:17</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+<span class="start">2020-06-01 16:02:13</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
 Parameter Group 0
     dampening: 0
     lr: 0.001
@@ -223,7 +227,7 @@ Parameter Group 0
     weight_decay: 0
 )</code></pre></div></div></div></div>
 
-<p>A "<strong><code>$</code></strong>" is a starting point to refer other instance stored in the <code>globals</code> dictionary. In this case, <code>$.model</code> is replaced by the <code>model</code> instance in <code>globals</code>, then <code>.parameters()</code> invokes a call of the <code>model.parameters()</code> method.</p>
+<p>A "<strong><code>$</code></strong>" is a starting point to refer other instance stored in the <code>globals</code> dictionary. In this case, <code>$.model</code> is replaced by the <code>model</code> instance in <code>globals</code>, then <code>.parameters()</code> invokes a call of <code>Model.parameters()</code>.</p>
 <h2 id="scheduler"><span class="pheasant-header"><span class="header"><span class="title">Scheduler</span></span></span></h2>
 <p>A scheduler controls the learning rate of an optimizer.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">doc = &#34;&#34;&#34;
@@ -236,15 +240,15 @@ scheduler:
 scheduler = create(doc, &#39;scheduler&#39;, globals={&#39;optimizer&#39;: optimizer})
 scheduler</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-06-01 09:54:17</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">14.3s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x1fc0d0f6208&gt;</code></pre></div></div></div></div>
+<span class="start">2020-06-01 16:02:13</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.5s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;torch.optim.lr_scheduler.ReduceLROnPlateau at 0x10990d1a3c8&gt;</code></pre></div></div></div></div>
 
 <p>If a <code>$</code>-notation has no suffix, the value becomes its key itself. The following two examples are equivalent:</p>
 <div class="pheasant-fenced-code"><div class="cell embed source"><div class="code"><pre><code class="yaml">optimizer: $</code></pre></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cell embed source"><div class="code"><pre><code class="yaml">optimizer: $.optimizer</code></pre></div></div></div>
 
-<p>Now we have had both data and model.</p></div>
+<p>Now we have had both data and a model.</p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../instance/" title="Creating Instances"><span>Previous</span></a></div>

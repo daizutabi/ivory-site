@@ -48,7 +48,7 @@
                     <li class="toctree-l1 current"><a class="nav-item current" href="./">Quickstart</a>
 <ul class="subnav">
 <li class="toctree-l2"><a class="nav-item toc" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="nav-item toc" href="#using-an-ivory-client">Using an Ivory Client</a></li>
+<li class="toctree-l2"><a class="nav-item toc" href="#ivory-client">Ivory Client</a></li>
 <li class="toctree-l2"><a class="nav-item toc" href="#create-numpy-data">Create NumPy data</a></li>
 <li class="toctree-l2"><a class="nav-item toc" href="#set-of-data-classes">Set of Data Classes</a></li>
 <li class="toctree-l2"><a class="nav-item toc" href="#define-a-model">Define a model</a></li>
@@ -121,8 +121,8 @@
 <p>Install Ivory using <code>pip</code>.</p>
 <div class="pheasant-fenced-code"><div class="cell embed terminal"><div class="code"><pre><code class="bash">$ pip install ivory</code></pre></div></div></div>
 
-<h2 id="using-an-ivory-client"><span class="pheasant-header"><span class="header"><span class="title">Using an Ivory Client</span></span></span></h2>
-<p>Ivory has the <code>Client</code> class that manages the workflow of machine learning. Let's create your first <code>Client</code> instance. In this quickstart, we are working with examples under the <code>examples</code> directory.</p>
+<h2 id="ivory-client"><span class="pheasant-header"><span class="header"><span class="title">Ivory Client</span></span></span></h2>
+<p>Ivory has the <code>Client</code> class that manages the workflow of machine learning. Let's create your first <code>Client</code> instance. In this quickstart, we are working with examples under the <code>examples</code> directory. Pass <code>examples</code> to the first argument of <code>ivory.create_client()</code>:</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
 
 client = ivory.create_client(&#34;examples&#34;)
@@ -131,20 +131,20 @@ client</code></pre></div>
 <span class="start">2020-06-01 16:01:57</span> (<span class="time">1.03s</span>)
 <span class="right"><span class="kernel">python3</span> (<span class="total">1.08s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Client(num_instances=2)</code></pre></div></div></div></div>
 
-<p>The representation of the <code>client</code> shows that it has two objects. These objects can be accessed by <em>index notation</em> or <em>dot notation</em>.</p>
+<p>The representation of the <code>client</code> shows that it has two instances. These instances can be accessed by <em>index notation</em> or <em>dot notation</em>.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">client[0]  # or client[&#39;tracker&#39;], or client.tracker</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
 <span class="start">2020-06-01 16:01:58</span> (<span class="time">4.00ms</span>)
 <span class="right"><span class="kernel">python3</span> (<span class="total">1.09s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Tracker(tracking_uri=&#39;file:///C:/Users/daizu/Documents/github/ivory/examples/mlruns&#39;, artifact_location=None)</code></pre></div></div></div></div>
 
-<p>The first object is a <code>Tracker</code> instance that connects Ivory to <a href="https://mlflow.org/docs/latest/tracking.html">MLFlow Tracking</a>.</p>
-<p>Because a <code>Client</code> instance is an iterable, you can get all of the objects by applying <code>list()</code> to it.</p>
+<p>The first instance is a <code>Tracker</code> instance that connects Ivory to <a href="https://mlflow.org/docs/latest/tracking.html">MLFlow Tracking</a>.</p>
+<p>Because a <code>Client</code> instance is an iterable, you can get all of the instances by applying <code>list()</code> to it.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(client)</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
 <span class="start">2020-06-01 16:01:58</span> (<span class="time">5.00ms</span>)
 <span class="right"><span class="kernel">python3</span> (<span class="total">1.09s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;tracker&#39;, &#39;tuner&#39;]</code></pre></div></div></div></div>
 
-<p>The second objects is named <code>tuner</code>.</p>
+<p>The second instance is named <code>tuner</code>.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">client.tuner</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
 <span class="start">2020-06-01 16:01:58</span> (<span class="time">4.00ms</span>)

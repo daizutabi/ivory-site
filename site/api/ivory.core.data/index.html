@@ -33,7 +33,7 @@
                 <div class="title">
                     <button class="hamburger"></button>
                     <a href="../.." class="site-name"> Ivory</a>
-                </div><div class="version">0.3.0</div>
+                </div><div class="version">0.3.1</div>
                 <div class="search">
                     <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -603,6 +603,75 @@ behavior in a subclass.</p></div>
          <span class="mkapi-args-type">(int)</span>
          <span class="mkapi-args-dash">&mdash;</span>
          <span class="mkapi-args-desc">Fold number.</spin></li>
+
+</ul></div>
+    </div>
+  
+</div>
+  
+</div>
+        </div>
+      
+        <div class="mkapi-member">
+          <div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.DataLoaders">
+  <div class="mkapi-node-header mkapi-node-header-class">
+    <div class="mkapi-node-kind mkapi-node-kind-class">CLASS</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-prefix">ivory.core.data.</code><code class="mkapi-node-basename">DataLoaders</code><code class="mkapi-node-signature">(datasets, batch_size, shuffle)</code>
+        
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>DataLoaders class represents a collection of <code>DataLoader</code>.</p></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
+      <div class="mkapi-section-name mkapi-section-name-parameters">
+      <span class="mkapi-section-name-body">Parameters</span></div>
+      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+
+  <li><code class="mkapi-args-name">datasets</code>
+         <span class="mkapi-args-type">(Datasets)</span>
+         <span class="mkapi-args-dash">&mdash;</span>
+         <span class="mkapi-args-desc"><code>Datasets</code> instance.</spin></li>
+
+  <li><code class="mkapi-args-name">batch_size</code>
+         <span class="mkapi-args-type">(int)</span>
+         <span class="mkapi-args-dash">&mdash;</span>
+         <span class="mkapi-args-desc">Batch_size</spin></li>
+
+  <li><code class="mkapi-args-name">shuffle</code>
+         <span class="mkapi-args-type">(bool)</span>
+         <span class="mkapi-args-dash">&mdash;</span>
+         <span class="mkapi-args-desc">If True, train dataset is shuffled.</spin></li>
+
+</ul></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-attributes">
+      <div class="mkapi-section-name mkapi-section-name-attributes">
+      <span class="mkapi-section-name-body">Attributes</span></div>
+      <div class="mkapi-section-body mkapi-section-body-attributes"><ul class="mkapi-args-list">
+
+  <li><code class="mkapi-args-name">train</code>
+         <span class="mkapi-args-type">(Dataset)</span>
+         <span class="mkapi-args-dash">&mdash;</span>
+         <span class="mkapi-args-desc">Train dataset.</spin></li>
+
+  <li><code class="mkapi-args-name">val</code>
+         <span class="mkapi-args-type">(Dataset)</span>
+         <span class="mkapi-args-dash">&mdash;</span>
+         <span class="mkapi-args-desc">Validation dataset.</spin></li>
+
+  <li><code class="mkapi-args-name">test</code>
+         <span class="mkapi-args-type">(Dataset)</span>
+         <span class="mkapi-args-dash">&mdash;</span>
+         <span class="mkapi-args-desc">Test dataset.</spin></li>
 
 </ul></div>
     </div>

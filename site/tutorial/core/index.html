@@ -33,7 +33,7 @@
                 <div class="title">
                     <button class="hamburger"></button>
                     <a href="../.." class="site-name"> Ivory</a>
-                </div><div class="version">0.3.0</div>
+                </div><div class="version">0.3.1</div>
                 <div class="search">
                     <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -112,13 +112,13 @@
 client = ivory.create_client(&#34;examples&#34;)  # Set the working directory
 client</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">6.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.31s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Client(num_objects=2)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">6.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.19s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Client(num_instances=2)</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(client)</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.31s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;tracker&#39;, &#39;tuner&#39;]</code></pre></div></div></div></div>
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.19s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;tracker&#39;, &#39;tuner&#39;]</code></pre></div></div></div></div>
 
 <p>The first object is a <code>Tracker</code> instance which connects Ivory to <a href="https://mlflow.org/docs/latest/tracking.html">MLFlow Tracking</a>. The second objects is named <code>tuner</code>. A <code>Tuner</code> instance connects Ivory to <a href="https://preferred.jp/en/projects/optuna/">Optuna</a>.</p>
 <p>Show files in the working directory <code>examples</code>.</p>
@@ -126,17 +126,22 @@ client</code></pre></div>
 
 os.listdir(&#39;examples&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.32s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;.coverage&#39;,
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.20s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;.coverage&#39;,
+ &#39;base.yml&#39;,
  &#39;client.yml&#39;,
+ &#39;data.yml&#39;,
+ &#39;data2.yml&#39;,
  &#39;lgb.yml&#39;,
  &#39;mlruns&#39;,
+ &#39;nnabla.yml&#39;,
  &#39;rectangle&#39;,
  &#39;rfr.yml&#39;,
  &#39;ridge.yml&#39;,
  &#39;study.yml&#39;,
- &#39;tf.yml&#39;,
- &#39;torch.yml&#39;]</code></pre></div></div></div></div>
+ &#39;tensorflow.yml&#39;,
+ &#39;torch.yml&#39;,
+ &#39;torch2.yml&#39;]</code></pre></div></div></div></div>
 
 <p><code>rectangle</code> is a Python package that contains our examples. YAML files with extension of <code>.yml</code> or possibly <code>.yaml</code> are parameter files to define a machine learning workflow. Basically, one YAML file is corresponding to one <code>Experiment</code> as discussed later, except the <code>client.yml</code> file. A YAML file name without the extension becomes an experiment name. <code>mlruns</code> is a directory automatically created by MLFlow Tracking in which our trained model and callbacks instances are saved.</p>
 <p>The <code>client.yml</code> is a configuration file for a <code>Client</code> instance. In our case, the file just contains the minimum settings.</p>
@@ -160,9 +165,9 @@ os.listdir(&#39;examples&#39;)</code></pre></div>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">experiment = client.create_experiment(&#39;torch&#39;)  # Read torch.yml as params.
 experiment</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">11.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.33s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 200530 16:20:45 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(id=&#39;1&#39;, name=&#39;torch&#39;, num_objects=1)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">12.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.21s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200601 09:54:09 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Experiment(id=&#39;1&#39;, name=&#39;torch&#39;, num_instances=1)</code></pre></div></div></div></div>
 
 <p>The ID for this experiment was given by MLFlow Tracking. The <code>Client.create_experiment()</code> function loads a corresponding YAML file to the first argument from the working directory.</p>
 <div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> <span class="number">8</span>
@@ -195,9 +200,10 @@ monitor:
 early_stopping:
   patience: 10
 trainer:
-  loss: torch.nn.functional.mse_loss
+  loss: mse
   batch_size: 10
   epochs: 10
+  shuffle: true
   verbose: 2</code></pre></div></div></div>
 
 </div></div></div>
@@ -205,8 +211,8 @@ trainer:
 <p>After loading, the <code>Experiment</code> instance setups the parameters for creating runs later. The parameters are stored in the <code>params</code> attribute.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">experiment.params</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.34s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{&#39;run&#39;: {&#39;datasets&#39;: {&#39;data&#39;: {&#39;class&#39;: &#39;rectangle.data.Data&#39;, &#39;n_splits&#39;: 4},
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.21s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">{&#39;run&#39;: {&#39;datasets&#39;: {&#39;data&#39;: {&#39;class&#39;: &#39;rectangle.data.Data&#39;, &#39;n_splits&#39;: 4},
    &#39;dataset&#39;: {&#39;def&#39;: &#39;ivory.torch.data.Dataset&#39;},
    &#39;fold&#39;: 0,
    &#39;class&#39;: &#39;ivory.core.data.Datasets&#39;},
@@ -224,9 +230,10 @@ trainer:
    &#39;class&#39;: &#39;ivory.callbacks.monitor.Monitor&#39;},
   &#39;early_stopping&#39;: {&#39;patience&#39;: 10,
    &#39;class&#39;: &#39;ivory.callbacks.early_stopping.EarlyStopping&#39;},
-  &#39;trainer&#39;: {&#39;loss&#39;: &#39;torch.nn.functional.mse_loss&#39;,
+  &#39;trainer&#39;: {&#39;loss&#39;: &#39;mse&#39;,
    &#39;batch_size&#39;: 10,
    &#39;epochs&#39;: 10,
+   &#39;shuffle&#39;: True,
    &#39;verbose&#39;: 2,
    &#39;class&#39;: &#39;ivory.torch.trainer.Trainer&#39;},
   &#39;class&#39;: &#39;ivory.torch.run.Run&#39;},
@@ -247,8 +254,8 @@ trainer:
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run()
 run</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">37.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.37s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(id=&#39;47becf3f67e4433791b46a9eea73b8e4&#39;, name=&#39;run#0&#39;, num_objects=12)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">35.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.25s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(id=&#39;62c321cfc1d541ed83fee2e38db9fad4&#39;, name=&#39;run#0&#39;, num_instances=12)</code></pre></div></div></div></div>
 
 <p>Here, the ID for this run is given by MLFlow Tracking. On the other hand, the name is given by Ivory as a form of "<code>(run class name in lower case)#(run number)</code>".</p>
 <h3 id="simple-literal-int-float-str"><span class="pheasant-header"><span class="header"><span class="title">Simple literal (int, float, str)</span></span></span></h3>
@@ -256,33 +263,33 @@ run</code></pre></div>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run(fold=1)
 run.datasets.fold</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">36.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.41s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">1</code></pre></div></div></div></div>
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">43.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.29s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">1</code></pre></div></div></div></div>
 
 <p>But the type of parameter must be equal, otherwise a <code>ValueError</code> is raised.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run(fold=0.5)
 run.datasets.fold</code></pre></div>
 <div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">141ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.55s</span>)</span></p></div></div><div class="cell jupyter error"><div class="code"><pre><code class="nohighlight">ValueError: different type: &lt;class &#39;int&#39;&gt; != &lt;class &#39;float&#39;&gt;</code></pre></div>
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">132ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.42s</span>)</span></p></div></div><div class="cell jupyter error"><div class="code"><pre><code class="nohighlight">ValueError: different type: &lt;class &#39;int&#39;&gt; != &lt;class &#39;float&#39;&gt;</code></pre></div>
       <div class="report"><pre><code class="nohighlight">ValueError                                Traceback (most recent call last)
-&lt;ipython-input-100-db3b6dd1af57&gt; in &lt;module&gt;
+&lt;ipython-input-109-db3b6dd1af57&gt; in &lt;module&gt;
 ----&gt; 1 run = experiment.create_run(fold=0.5)
       2 run.datasets.fold
 
 ~\Documents\github\ivory\ivory\core\base.py in create_run(self, args, name, **kwargs)
-     55 
-     56     def create_run(self, args=None, name: str = &#34;run&#34;, **kwargs):
----&gt; 57         params, args = self.create_params(args, name, **kwargs)
-     58         run = instance.create_base_instance(params, name, self.source_name)
-     59         if self.tracker:
+    103                 [`create_params()`](#ivory.core.base.Creator.create_params) method.
+    104         &#34;&#34;&#34;
+--&gt; 105         params, args = self.create_params(args, name, **kwargs)
+    106         run = instance.create_base_instance(params, name, self.source_name)
+    107         if self.tracker:
 
 ~\Documents\github\ivory\ivory\core\base.py in create_params(self, args, name, **kwargs)
-     51             params.update(default.get(name))
-     52         update, args = utils.params.create_update(params[name], args, **kwargs)
----&gt; 53         utils.params.update_dict(params[name], update)
-     54         return params, args
-     55 
+     87             params.update(default.get(name))
+     88         update, args = utils.params.create_update(params[name], args, **kwargs)
+---&gt; 89         utils.params.update_dict(params[name], update)
+     90         return params, args
+     91 
 
 ~\Documents\github\ivory\ivory\utils\params.py in update_dict(org, update)
      28             x[k] = value
@@ -296,8 +303,8 @@ run.datasets.fold</code></pre></div>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run(hidden_sizes=[2, 3, 4])
 run.model</code></pre></div>
 <div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">137ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.69s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">139ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.56s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
   (layers): ModuleList(
     (0): Linear(in_features=2, out_features=2, bias=True)
     (1): Linear(in_features=2, out_features=3, bias=True)
@@ -315,8 +322,8 @@ run.model</code></pre></div>
 run = experiment.create_run(params)
 run.model</code></pre></div>
 <div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">43.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.73s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">45.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.61s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
   (layers): ModuleList(
     (0): Linear(in_features=2, out_features=10, bias=True)
     (1): Linear(in_features=10, out_features=20, bias=True)
@@ -331,8 +338,8 @@ run.model</code></pre></div>
 run = experiment.create_run(params)
 run.model</code></pre></div>
 <div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">44.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.77s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">46.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.65s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Model(
   (layers): ModuleList(
     (0): Linear(in_features=2, out_features=20, bias=True)
     (1): Linear(in_features=20, out_features=5, bias=True)
@@ -345,8 +352,8 @@ run.model</code></pre></div>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run(patience=5)
 run.scheduler.patience, run.early_stopping.patience</code></pre></div>
 <div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">44.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.82s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(5, 5)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 09:54:09</span> (<span class="time">44.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.70s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(5, 5)</code></pre></div></div></div></div>
 
 <p>This behavior is natural to update the parameters with the same meaning. But in the above example, the patience of early stopping becomes equal to that of scheduler, so the scheduler doesn't work at all.</p>
 <h3 id="scoping-by-dots"><span class="pheasant-header"><span class="header"><span class="title">Scoping by dots</span></span></span></h3>
@@ -355,16 +362,16 @@ run.scheduler.patience, run.early_stopping.patience</code></pre></div>
 run = experiment.create_run(params)
 run.scheduler.patience, run.early_stopping.patience</code></pre></div>
 <div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">48.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.86s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(8, 20)</code></pre></div></div></div></div>
+<span class="start">2020-06-01 09:54:10</span> (<span class="time">47.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.74s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">(8, 20)</code></pre></div></div></div></div>
 
 <h3 id="object-type"><span class="pheasant-header"><span class="header"><span class="title">Object type</span></span></span></h3>
 <p>Parameters are not limited to a literal such as <code>int</code>, <code>float</code>, or <code>str</code>. For example,</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run()
 run.optimizer</code></pre></div>
 <div class="report"><p><span class="count">[16]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">50.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.91s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
+<span class="start">2020-06-01 09:54:10</span> (<span class="time">49.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.79s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">SGD (
 Parameter Group 0
     dampening: 0
     lr: 0.001
@@ -376,8 +383,8 @@ Parameter Group 0
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">run = experiment.create_run({&#39;optimizer.class&#39;: &#39;torch.optim.Adam&#39;})
 run.optimizer</code></pre></div>
 <div class="report"><p><span class="count">[17]</span>
-<span class="start">2020-05-30 16:20:45</span> (<span class="time">54.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.97s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Adam (
+<span class="start">2020-06-01 09:54:10</span> (<span class="time">54.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.85s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Adam (
 Parameter Group 0
     amsgrad: False
     betas: (0.9, 0.999)

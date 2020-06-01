@@ -168,8 +168,8 @@ client</code></pre></div>
 <p>If you don't need a tracker and/or tuner, for example in debugging, use <code>ivory.create_client(tracker=False, tuner=False)</code>.</p>
 </div>
 <h2 id="create-numpy-data"><span class="pheasant-header"><span class="header"><span class="title">Create NumPy data</span></span></span></h2>
-<p>In this quickstart, we try to predict rectangles area from their width and height using <a href="https://pytorch.org/">PyTorch</a>. First, prepare the data as <a href="https://numpy.org/">NumPy</a> arrays. In <code>rectangle/data.py</code> under the working directory, a <code>create_data()</code> is defined. The <code>ivory.create_client()</code> automatically inserts the working directory to <code>sys.path</code>, so that we can import the module regardless of the current directory.</p>
-<p>Let's check the <code>create_data()</code> defined in <code>rectangle/data.py</code> and an example output:</p>
+<p>In this quickstart, we try to predict rectangles area from their width and height using <a href="https://pytorch.org/">PyTorch</a>. First, prepare the data as <a href="https://numpy.org/">NumPy</a> arrays. In <code>rectangle/data.py</code> under the working directory, <code>create_data()</code> is defined. The <code>ivory.create_client()</code> automatically inserts the working directory to <code>sys.path</code>, so that we can import the module regardless of the current directory.</p>
+<p>Let's check the <code>create_data()</code> code and an example output:</p>
 <div class="pheasant-header"><div class="other"><p class="caption"><span class="prefix">File</span> <span class="number">2</span>
 <span class="title">rectangle/data.py</span></p>
 <div class="content">

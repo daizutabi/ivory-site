@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>ivory.utils.params &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.3.1</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/instance/">Creating Instances</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/model/">Model Structure</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/callback/">Callback System</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/training/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/core/">Ivory Core Entities</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/task/">Multiple Runs</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/ui/">Tracking UI</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/tracking/">Tracking Runs with Ivory</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/library/">Library Comparison</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/cli/">Command Line Interface</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+<ul class="subnav">
+    <li class="toctree-l2"><button class="section nav-item hide">ivory</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.main/">ivory.main</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.monitor/">ivory.callbacks.monitor</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">ivory.callbacks.results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.tracking/">ivory.callbacks.tracking</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.collections/">ivory.core.collections</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.default/">ivory.core.default</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.estimator/">ivory.core.estimator</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.exceptions/">ivory.core.exceptions</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.instance/">ivory.core.instance</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.objective/">ivory.core.objective</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.parser/">ivory.core.parser</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">ivory.core.run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.state/">ivory.core.state</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.tracker/">ivory.core.tracker</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.trainer/">ivory.core.trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.tuner/">ivory.core.tuner</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.lightgbm</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.lightgbm.estimator/">ivory.lightgbm.estimator</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.data/">ivory.nnabla.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.functions/">ivory.nnabla.functions</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.metrics/">ivory.nnabla.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.model/">ivory.nnabla.model</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.sklearn</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.sklearn.estimator/">ivory.sklearn.estimator</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.sklearn.metrics/">ivory.sklearn.metrics</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.tensorflow</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.tensorflow.callback/">ivory.tensorflow.callback</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.tensorflow.run/">ivory.tensorflow.run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.tensorflow.trainer/">ivory.tensorflow.trainer</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.torch</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.data/">ivory.torch.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.functions/">ivory.torch.functions</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.metrics/">ivory.torch.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.results/">ivory.torch.results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.run/">ivory.torch.run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.trainer/">ivory.torch.trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.utils/">ivory.torch.utils</a></li>
+</ul></li>
+    <li class="toctree-l2 current"><button class="section nav-item">ivory.utils</button>
+<ul class="subnav">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.data/">ivory.utils.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.fold/">ivory.utils.fold</a></li>
+    <li class="toctree-l3 current"><a class="nav-item current" href="./">ivory.utils.params</a>
+<ul class="subnav">
+</ul></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.path/">ivory.utils.path</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.range/">ivory.utils.range</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.tqdm/">ivory.utils.tqdm</a></li>
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../ivory.utils.fold/">&laquo; Previous</a></div>
+    <div class="next"><a href="../ivory.utils.path/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Python API &raquo; </li><li>ivory.utils</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="ivoryutilsparams"><span class="pheasant-header"><span class="header"><span class="title"><span id="ivory.utils.params">ivory.utils.params</span></span></span></span></h1>
+
+<div class="mkapi-node mkapi-node-depth-0">
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.update_dict">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.update_dict</code><code class="mkapi-node-signature">(org, update)</code>
+        
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>Update dict using dot-notation.</p></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">update_dict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]},</span> <span class="s2">&quot;b.x&quot;</span><span class="p">:</span> <span class="s2">&quot;def&quot;</span><span class="p">})</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">update_dict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;b.z.1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;b.x&quot;</span><span class="p">:</span> <span class="s2">&quot;def&quot;</span><span class="p">})</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}}</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.colon_to_list">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.colon_to_list</code><code class="mkapi-node-signature">(x)</code>
+        <span class="mkapi-args-type">&#x2192; Dict[str, Any]</span>
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>Converts suffix integers into a list.</p></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a:0&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;a:1&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;b.x:0&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;b.x:1&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">colon_to_list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;b.x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.dot_flatten">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.dot_flatten</code><code class="mkapi-node-signature">(x, flattened=None, prefix=&#39;&#39;)</code>
+        <span class="mkapi-args-type">&#x2192; Dict[str, Any]</span>
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>Flatten dict in dot-format.</p></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}}}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dot_flatten</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="p">{</span><span class="s1">&#39;model.name&#39;</span><span class="p">:</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;model.x.a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;model.x.b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.dot_get">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.dot_get</code><code class="mkapi-node-signature">(x, key)</code>
+        
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>Dot style dictionay access.</p></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dot_get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dot_get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;b.x&quot;</span><span class="p">)</span>
+<span class="s1">&#39;abc&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dot_get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;b.z.1&quot;</span><span class="p">)</span>
+<span class="mi">1</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.get_fullnames">
+  <div class="mkapi-node-header mkapi-node-header-generator">
+    <div class="mkapi-node-kind mkapi-node-kind-generator">GENERATOR</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.get_fullnames</code><code class="mkapi-node-signature">(params, name, prefix=&#39;&#39;, dict_allowed=False)</code>
+        
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>Returns a fullname found first.</p></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}},</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_fullnames</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">))</span>
+<span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_fullnames</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">))</span>
+<span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_fullnames</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">))</span>
+<span class="p">[</span><span class="s1">&#39;b.c.d&#39;</span><span class="p">,</span> <span class="s1">&#39;x.d&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_fullnames</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
+<span class="p">[</span><span class="s1">&#39;b.c.e&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_fullnames</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;b.c.d&#39;</span><span class="p">))</span>
+<span class="p">[</span><span class="s1">&#39;b.c.d&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_fullnames</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;c.d&#39;</span><span class="p">))</span>
+<span class="p">[</span><span class="s1">&#39;b.c.d&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_fullnames</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;e.2&#39;</span><span class="p">))</span>
+<span class="p">[</span><span class="s1">&#39;b.c.e.2&#39;</span><span class="p">]</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.get_value">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.get_value</code><code class="mkapi-node-signature">(params, name)</code>
+        
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}}}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">get_value</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">get_value</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">get_value</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;b.c.d&#39;</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">get_value</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;c.d&#39;</span><span class="p">)</span>
+<span class="mi">2</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.match">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.match</code><code class="mkapi-node-signature">(params, **query)</code>
+        
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>Returns if params match the query or not.</p>
+<p>Avaliable query type:
+    tuple: (start, top) range including the stop value.
+    list: [a1, a2, ..., an] parameters set.
+    other: exact match.</p></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}}}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="kc">True</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.product">
+  <div class="mkapi-node-header mkapi-node-header-generator">
+    <div class="mkapi-node-kind mkapi-node-kind-generator">GENERATOR</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.product</code><code class="mkapi-node-signature">(params)</code>
+        <span class="mkapi-args-type">&#x2192; Iterator[Dict[str, Any]]</span>
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+<span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}]</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.split_params">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.split_params</code><code class="mkapi-node-signature">(params=None, **kwargs)</code>
+        <span class="mkapi-args-type">&#x2192; (Dict[str, Iterable[Any]], Dict[str, Any])</span>
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>Returns (<code>params</code>, <code>base_params</code>).</p>
+<p><code>params</code> for variable parameters and <code>base_params</code> for fixed parameters.</p></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
+      <div class="mkapi-section-name mkapi-section-name-parameters">
+      <span class="mkapi-section-name-body">Parameters</span></div>
+      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+
+  <li><code class="mkapi-args-name">params</code>
+         <span class="mkapi-args-type">(Union[Dict[str, Iterable[Any]], NoneType], optional)</span>
+         <span class="mkapi-args-dash">&mdash;</span>
+         <span class="mkapi-args-desc">Parameter dictionay.</span></li>
+
+  <li><code class="mkapi-args-name">**kwargs</code>
+         
+         <span class="mkapi-args-dash">&mdash;</span>
+         <span class="mkapi-args-desc">Optional parameters</span></li>
+
+</ul></div>
+    </div>
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">params</span><span class="p">,</span> <span class="n">base_params</span> <span class="o">=</span> <span class="n">split_params</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">params</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">base_params</span>
+<span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;abc&#39;</span><span class="p">}</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.params.to_list">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.params.to_list</code><code class="mkapi-node-signature">(x)</code>
+        <span class="mkapi-args-type">&#x2192; list of Any</span>
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
+      <div class="mkapi-section-name mkapi-section-name-examples">
+      <span class="mkapi-section-name-body">Examples</span></div>
+      <div class="mkapi-section-body mkapi-section-body-examples"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">to_list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">to_list</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">to_list</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;abc&#39;</span><span class="p">]</span>
+</code></pre></div></div>
+    </div>
+  
+</div>
+  
+</div>
+</div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../ivory.utils.fold/" title="ivory.utils.fold"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.utils.path/" title="ivory.utils.path"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/mkapi.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

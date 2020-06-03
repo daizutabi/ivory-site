@@ -1,79 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://ivory.daizutabi.net/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/quickstart/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/data/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/instance/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/model/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/callback/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/training/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/core/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/task/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/tuning/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/ui/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/tracking/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/library/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/tutorial/cli/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://ivory.daizutabi.net/api/ivory.core.data/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <loc>https://ivory.daizutabi.net/api/ivory.main/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.callbacks.early_stopping/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.callbacks.metrics/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.callbacks.monitor/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.callbacks.pruning/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.callbacks.results/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.callbacks.tracking/</loc>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/api/ivory.core.base/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/api/ivory.core.client/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.collections/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.data/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.default/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.estimator/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.exceptions/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.instance/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.objective/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.parser/</loc>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://ivory.daizutabi.net/api/ivory.core.run/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://ivory.daizutabi.net/api/ivory.callbacks/</loc>
-     <lastmod>2020-06-01</lastmod>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.state/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.tracker/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.trainer/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.core.tuner/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.lightgbm.estimator/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.nnabla.data/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.nnabla.functions/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.nnabla.metrics/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.nnabla.model/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.nnabla.trainer/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.sklearn.estimator/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.sklearn.metrics/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.tensorflow.callback/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.tensorflow.run/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.tensorflow.trainer/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.torch.data/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.torch.functions/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.torch.metrics/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.torch.results/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.torch.run/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.torch.trainer/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.torch.utils/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.utils.data/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.utils.fold/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.utils.params/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.utils.path/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.utils.range/</loc>
+     <lastmod>2020-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://ivory.daizutabi.net/api/ivory.utils.tqdm/</loc>
+     <lastmod>2020-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

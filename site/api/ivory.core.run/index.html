@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="daizutabi">
     <link rel="shortcut icon" href="../../img/favicon.ico">
-    <title>Ivory.core.run &mdash; Ivory</title>
+    <title>ivory.core.run &mdash; Ivory</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -63,22 +63,80 @@
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Python API</button>
 <ul class="subnav">
-    <li class="toctree-l2 current"><button class="section nav-item">ivory.core</button>
-<ul class="subnav">
-    <li class="toctree-l3">
-<a class="nav-item" href="../ivory.core.data/">Ivory.core.data</a></li>
-    <li class="toctree-l3">
-<a class="nav-item" href="../ivory.core.base/">Ivory.core.base</a></li>
-    <li class="toctree-l3">
-<a class="nav-item" href="../ivory.core.client/">Ivory.core.client</a></li>
-    <li class="toctree-l3 current">
-<a class="nav-item current" href="./">Ivory.core.run</a>
-<ul class="subnav">
-</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.main/">ivory.main</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks/">Callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.monitor/">ivory.callbacks.monitor</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">ivory.callbacks.results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.tracking/">ivory.callbacks.tracking</a></li>
+</ul></li>
+    <li class="toctree-l2 current"><button class="section nav-item">ivory.core</button>
+<ul class="subnav">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.collections/">ivory.core.collections</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.default/">ivory.core.default</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.estimator/">ivory.core.estimator</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.exceptions/">ivory.core.exceptions</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.instance/">ivory.core.instance</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.objective/">ivory.core.objective</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.parser/">ivory.core.parser</a></li>
+    <li class="toctree-l3 current"><a class="nav-item current" href="./">ivory.core.run</a>
+<ul class="subnav">
+</ul></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.state/">ivory.core.state</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.tracker/">ivory.core.tracker</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.trainer/">ivory.core.trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.tuner/">ivory.core.tuner</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.lightgbm</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.lightgbm.estimator/">ivory.lightgbm.estimator</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.data/">ivory.nnabla.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.functions/">ivory.nnabla.functions</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.metrics/">ivory.nnabla.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.model/">ivory.nnabla.model</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.sklearn</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.sklearn.estimator/">ivory.sklearn.estimator</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.sklearn.metrics/">ivory.sklearn.metrics</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.tensorflow</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.tensorflow.callback/">ivory.tensorflow.callback</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.tensorflow.run/">ivory.tensorflow.run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.tensorflow.trainer/">ivory.tensorflow.trainer</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.torch</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.data/">ivory.torch.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.functions/">ivory.torch.functions</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.metrics/">ivory.torch.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.results/">ivory.torch.results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.run/">ivory.torch.run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.trainer/">ivory.torch.trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.utils/">ivory.torch.utils</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.utils</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.data/">ivory.utils.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.fold/">ivory.utils.fold</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.params/">ivory.utils.params</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.path/">ivory.utils.path</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.range/">ivory.utils.range</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.tqdm/">ivory.utils.tqdm</a></li>
 </ul></li>
 </ul></li>
                 </ul>
@@ -87,8 +145,8 @@
     <div class="link">
         <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
     </div>
-    <div class="previous"><a href="../ivory.core.client/">&laquo; Previous</a></div>
-    <div class="next"><a href="../ivory.callbacks/">Next &raquo;</a></div>
+    <div class="previous"><a href="../ivory.core.parser/">&laquo; Previous</a></div>
+    <div class="next"><a href="../ivory.core.state/">Next &raquo;</a></div>
 </div>
         </aside>
         <div id="spacer"><button class="arrow"></button></div>
@@ -104,14 +162,9 @@
 </ul>
 </nav>
                 <div id="content">
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.run">
-  <div class="mkapi-node-header mkapi-node-header-module">
-    <div class="mkapi-node-kind mkapi-node-kind-module">MODULE</div>
-    <div class="mkapi-node-name">
-      <span class="mkapi-node-basename">ivory.core.run</span>
-      
-    </div>
-  </div>
+<h1 id="ivorycorerun"><span class="pheasant-header"><span class="header"><span class="title"><span id="ivory.core.run">ivory.core.run</span></span></span></span></h1>
+
+<div class="mkapi-node mkapi-node-depth-0">
   <div class="mkapi-docstring">
   
     <div class="mkapi-section">
@@ -136,16 +189,16 @@ with <code>Run.start('both')</code>.</p></div>
     </div>
   
 </div>
-  
-    <div class="mkapi-members">
-      
-        <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run">
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.run.Run">
   <div class="mkapi-node-header mkapi-node-header-class">
     <div class="mkapi-node-kind mkapi-node-kind-class">CLASS</div>
     <div class="mkapi-node-name">
       
-        <code class="mkapi-node-prefix">ivory.core.run.</code><code class="mkapi-node-basename">Run</code><code class="mkapi-node-signature">(params=None, **instances)</code>
+        <code class="mkapi-node-basename">ivory.core.run.Run</code><code class="mkapi-node-signature">(params=None, **instances)</code>
         
       
     </div>
@@ -162,7 +215,8 @@ with <code>Run.start('both')</code>.</p></div>
     <div class="mkapi-members">
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Run.set_tracker">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.set_tracker">
   <div class="mkapi-node-header mkapi-node-header-method">
     <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
     <div class="mkapi-node-name">
@@ -190,7 +244,7 @@ instance.</p></div>
   <li><code class="mkapi-args-name">tracker</code>
          <span class="mkapi-args-type">(Tracker)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Tracker instance.</spin></li>
+         <span class="mkapi-args-desc">Tracker instance.</span></li>
 
 </ul></div>
     </div>
@@ -198,10 +252,12 @@ instance.</p></div>
 </div>
   
 </div>
+
         </div>
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Run.start">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.start">
   <div class="mkapi-node-header mkapi-node-header-method">
     <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
     <div class="mkapi-node-name">
@@ -226,7 +282,7 @@ instance.</p></div>
   <li><code class="mkapi-args-name">mode</code>
          <span class="mkapi-args-type">(str, optional)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Mode name: <code>'train'</code>, <code>'test'</code>, or <code>'both'</code>.</spin></li>
+         <span class="mkapi-args-desc">Mode name: <code>'train'</code>, <code>'test'</code>, or <code>'both'</code>.</span></li>
 
 </ul></div>
     </div>
@@ -234,10 +290,12 @@ instance.</p></div>
 </div>
   
 </div>
+
         </div>
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Run.state_dict">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.state_dict">
   <div class="mkapi-node-header mkapi-node-header-method">
     <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
     <div class="mkapi-node-name">
@@ -257,10 +315,12 @@ instance.</p></div>
 </div>
   
 </div>
+
         </div>
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Run.load_state_dict">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.load_state_dict">
   <div class="mkapi-node-header mkapi-node-header-method">
     <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
     <div class="mkapi-node-name">
@@ -285,7 +345,7 @@ instance.</p></div>
   <li><code class="mkapi-args-name">state_dict</code>
          <span class="mkapi-args-type">(dict)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">state dictionary for all of member instances.</spin></li>
+         <span class="mkapi-args-desc">state dictionary for all of member instances.</span></li>
 
 </ul></div>
     </div>
@@ -293,10 +353,12 @@ instance.</p></div>
 </div>
   
 </div>
+
         </div>
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Run.save">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.save">
   <div class="mkapi-node-header mkapi-node-header-method">
     <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
     <div class="mkapi-node-name">
@@ -321,7 +383,7 @@ instance.</p></div>
   <li><code class="mkapi-args-name">directory</code>
          <span class="mkapi-args-type">(str)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Directory where member instances are saved.</spin></li>
+         <span class="mkapi-args-desc">Directory where member instances are saved.</span></li>
 
 </ul></div>
     </div>
@@ -329,10 +391,12 @@ instance.</p></div>
 </div>
   
 </div>
+
         </div>
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Run.load">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.load">
   <div class="mkapi-node-header mkapi-node-header-method">
     <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
     <div class="mkapi-node-name">
@@ -357,7 +421,7 @@ instance.</p></div>
   <li><code class="mkapi-args-name">directory</code>
          <span class="mkapi-args-type">(str)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Directory where member instances have been saved.</spin></li>
+         <span class="mkapi-args-desc">Directory where member instances have been saved.</span></li>
 
 </ul></div>
     </div>
@@ -365,20 +429,21 @@ instance.</p></div>
 </div>
   
 </div>
+
         </div>
       
     </div>
   
 </div>
-        </div>
-      
-        <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Task">
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.run.Task">
   <div class="mkapi-node-header mkapi-node-header-class">
     <div class="mkapi-node-kind mkapi-node-kind-class">CLASS</div>
     <div class="mkapi-node-name">
       
-        <code class="mkapi-node-prefix">ivory.core.run.</code><code class="mkapi-node-basename">Task</code><code class="mkapi-node-signature">(params=None, **instances)</code>
+        <code class="mkapi-node-basename">ivory.core.run.Task</code><code class="mkapi-node-signature">(params=None, **instances)</code>
         
       
     </div>
@@ -395,7 +460,8 @@ instance.</p></div>
     <div class="mkapi-members">
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Task.create_run">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Task.create_run">
   <div class="mkapi-node-header mkapi-node-header-method">
     <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
     <div class="mkapi-node-name">
@@ -420,12 +486,12 @@ instance.</p></div>
   <li><code class="mkapi-args-name">args</code>
          <span class="mkapi-args-type">(dict, optional)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Update dictionary.</spin></li>
+         <span class="mkapi-args-desc">Update dictionary.</span></li>
 
   <li><code class="mkapi-args-name">**kwargs</code>
          
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Additional update dictionary.</spin></li>
+         <span class="mkapi-args-desc">Additional update dictionary.</span></li>
 
 </ul></div>
     </div>
@@ -439,15 +505,17 @@ instance.</p></div>
 </div>
   
 </div>
+
         </div>
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Task.product">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Task.product">
   <div class="mkapi-node-header mkapi-node-header-generator">
     <div class="mkapi-node-kind mkapi-node-kind-generator">GENERATOR</div>
     <div class="mkapi-node-name">
       
-        <code class="mkapi-node-basename">product</code><code class="mkapi-node-signature">(params=None, repeat=1, **kwargs)</code>
+        <code class="mkapi-node-prefix">ivory.core.run.Task.</code><code class="mkapi-node-basename">product</code><code class="mkapi-node-signature">(params=None, repeat=1, **kwargs)</code>
         <span class="mkapi-args-type">&#x2192; Iterator[ivory.core.run.Run]</span>
       
     </div>
@@ -469,17 +537,17 @@ instance.</p></div>
          <span class="mkapi-args-type">(dict, optional)</span>
          <span class="mkapi-args-dash">&mdash;</span>
          <span class="mkapi-args-desc">Parameter range. Key is a parameter name and
-value is an iterable of parameter's value.</spin></li>
+value is an iterable of parameter's value.</span></li>
 
   <li><code class="mkapi-args-name">repeat</code>
          <span class="mkapi-args-type">(int, optional)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Number of repeatation.</spin></li>
+         <span class="mkapi-args-desc">Number of repeatation.</span></li>
 
   <li><code class="mkapi-args-name">**kwargs</code>
          
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Additional parameter range.</spin></li>
+         <span class="mkapi-args-desc">Additional parameter range.</span></li>
 
 </ul></div>
     </div>
@@ -493,15 +561,17 @@ value is an iterable of parameter's value.</spin></li>
 </div>
   
 </div>
+
         </div>
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Task.chain">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Task.chain">
   <div class="mkapi-node-header mkapi-node-header-generator">
     <div class="mkapi-node-kind mkapi-node-kind-generator">GENERATOR</div>
     <div class="mkapi-node-name">
       
-        <code class="mkapi-node-basename">chain</code><code class="mkapi-node-signature">(params=None, use_best_param=True, **kwargs)</code>
+        <code class="mkapi-node-prefix">ivory.core.run.Task.</code><code class="mkapi-node-basename">chain</code><code class="mkapi-node-signature">(params=None, use_best_param=True, **kwargs)</code>
         <span class="mkapi-args-type">&#x2192; Iterator[ivory.core.run.Run]</span>
       
     </div>
@@ -528,12 +598,12 @@ key-value pairs.</p></div>
          <span class="mkapi-args-desc">Parameter range. Key is a parameter name and
 value is an iterable of parameter's value.
 use_best_param: If True (default), the parameter that got the best
-score is used during the following iterations.</spin></li>
+score is used during the following iterations.</span></li>
 
   <li><code class="mkapi-args-name">**kwargs</code>
          
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Additional parameter range.</spin></li>
+         <span class="mkapi-args-desc">Additional parameter range.</span></li>
 
 </ul></div>
     </div>
@@ -547,20 +617,21 @@ score is used during the following iterations.</spin></li>
 </div>
   
 </div>
+
         </div>
       
     </div>
   
 </div>
-        </div>
-      
-        <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Study">
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.run.Study">
   <div class="mkapi-node-header mkapi-node-header-class">
     <div class="mkapi-node-kind mkapi-node-kind-class">CLASS</div>
     <div class="mkapi-node-name">
       
-        <code class="mkapi-node-prefix">ivory.core.run.</code><code class="mkapi-node-basename">Study</code><code class="mkapi-node-signature">(params=None, **instances)</code>
+        <code class="mkapi-node-basename">ivory.core.run.Study</code><code class="mkapi-node-signature">(params=None, **instances)</code>
         
       
     </div>
@@ -577,7 +648,8 @@ score is used during the following iterations.</spin></li>
     <div class="mkapi-members">
       
         <div class="mkapi-member">
-          <div class="mkapi-node mkapi-node-depth-2" id="ivory.core.run.Study.optimize">
+          
+<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Study.optimize">
   <div class="mkapi-node-header mkapi-node-header-method">
     <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
     <div class="mkapi-node-name">
@@ -602,12 +674,12 @@ score is used during the following iterations.</spin></li>
   <li><code class="mkapi-args-name">suggest_name</code>
          <span class="mkapi-args-type">(str, optional)</span>
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Name of suggest function.</spin></li>
+         <span class="mkapi-args-desc">Name of suggest function.</span></li>
 
   <li><code class="mkapi-args-name">**kwargs</code>
          
          <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Key-iterable pairs for parametric optimization.</spin></li>
+         <span class="mkapi-args-desc">Key-iterable pairs for parametric optimization.</span></li>
 
 </ul></div>
     </div>
@@ -621,20 +693,17 @@ score is used during the following iterations.</spin></li>
 </div>
   
 </div>
+
         </div>
       
     </div>
   
 </div>
-        </div>
-      
-    </div>
-  
-</div></div>
+</div>
                 <footer>
     <div class="footer-buttons">
-        <div class="previous"><a href="../ivory.core.client/" title="Ivory.core.client"><span>Previous</span></a></div>
-        <div class="next"><a href="../ivory.callbacks/" title="Callbacks"><span>Next</span></a></div>
+        <div class="previous"><a href="../ivory.core.parser/" title="ivory.core.parser"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.core.state/" title="ivory.core.state"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>

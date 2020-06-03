@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>ivory.utils.path &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.3.1</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/instance/">Creating Instances</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/model/">Model Structure</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/callback/">Callback System</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/training/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/core/">Ivory Core Entities</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/task/">Multiple Runs</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/ui/">Tracking UI</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/tracking/">Tracking Runs with Ivory</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/library/">Library Comparison</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/cli/">Command Line Interface</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+<ul class="subnav">
+    <li class="toctree-l2"><button class="section nav-item hide">ivory</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.main/">ivory.main</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.monitor/">ivory.callbacks.monitor</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">ivory.callbacks.results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.tracking/">ivory.callbacks.tracking</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.collections/">ivory.core.collections</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.default/">ivory.core.default</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.estimator/">ivory.core.estimator</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.exceptions/">ivory.core.exceptions</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.instance/">ivory.core.instance</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.objective/">ivory.core.objective</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.parser/">ivory.core.parser</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">ivory.core.run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.state/">ivory.core.state</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.tracker/">ivory.core.tracker</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.trainer/">ivory.core.trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.tuner/">ivory.core.tuner</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.lightgbm</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.lightgbm.estimator/">ivory.lightgbm.estimator</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.data/">ivory.nnabla.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.functions/">ivory.nnabla.functions</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.metrics/">ivory.nnabla.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.model/">ivory.nnabla.model</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.sklearn</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.sklearn.estimator/">ivory.sklearn.estimator</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.sklearn.metrics/">ivory.sklearn.metrics</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.tensorflow</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.tensorflow.callback/">ivory.tensorflow.callback</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.tensorflow.run/">ivory.tensorflow.run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.tensorflow.trainer/">ivory.tensorflow.trainer</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.torch</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.data/">ivory.torch.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.functions/">ivory.torch.functions</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.metrics/">ivory.torch.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.results/">ivory.torch.results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.run/">ivory.torch.run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.trainer/">ivory.torch.trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.torch.utils/">ivory.torch.utils</a></li>
+</ul></li>
+    <li class="toctree-l2 current"><button class="section nav-item">ivory.utils</button>
+<ul class="subnav">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.data/">ivory.utils.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.fold/">ivory.utils.fold</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.params/">ivory.utils.params</a></li>
+    <li class="toctree-l3 current"><a class="nav-item current" href="./">ivory.utils.path</a>
+<ul class="subnav">
+</ul></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.range/">ivory.utils.range</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.utils.tqdm/">ivory.utils.tqdm</a></li>
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../ivory.utils.params/">&laquo; Previous</a></div>
+    <div class="next"><a href="../ivory.utils.range/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Python API &raquo; </li><li>ivory.utils</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="ivoryutilspath"><span class="pheasant-header"><span class="header"><span class="title"><span id="ivory.utils.path">ivory.utils.path</span></span></span></span></h1>
+
+<div class="mkapi-node mkapi-node-depth-0">
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.path.local_file_uri_to_path">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.path.local_file_uri_to_path</code><code class="mkapi-node-signature">(uri)</code>
+        
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>Convert URI to local filesystem path.
+No-op if the uri does not have the expected scheme.</p></div>
+    </div>
+  
+</div>
+  
+</div>
+
+
+
+<div class="mkapi-node mkapi-node-depth-0" id="ivory.utils.path.normpath">
+  <div class="mkapi-node-header mkapi-node-header-function">
+    <div class="mkapi-node-kind mkapi-node-kind-function">FUNCTION</div>
+    <div class="mkapi-node-name">
+      
+        <code class="mkapi-node-basename">ivory.utils.path.normpath</code><code class="mkapi-node-signature">(name, directory=&#39;&#39;)</code>
+        <span class="mkapi-args-type">&#x2192; str</span>
+      
+    </div>
+  </div>
+  <div class="mkapi-docstring">
+  
+    <div class="mkapi-section">
+      
+      <div class="mkapi-section-body"><p>Returns the absolute path with the extension.</p></div>
+    </div>
+  
+</div>
+  
+</div>
+</div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../ivory.utils.params/" title="ivory.utils.params"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.utils.range/" title="ivory.utils.range"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/mkapi.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

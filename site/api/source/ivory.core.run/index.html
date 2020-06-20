@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <title>ivory.core.run &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../../css/mkapi-ivory.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.3.1</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/instance/">Creating Instances</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/model/">Model Structure</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/callback/">Callback System</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/training/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/core/">Ivory Core Entities</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/task/">Multiple Runs</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/ui/">Tracking UI</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/tracking/">Tracking Runs with Ivory</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/library/">Library Comparison</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/cli/">Command Line Interface</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
+<ul class="subnav">
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks.results/">ivory.callbacks.results</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core.run/">ivory.core.run</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    
+</ul>
+</nav>
+                <div id="content"><div class="mkapi-node">
+<h1 id="" class="mkapi-object mkapi-object-code plain">
+<span class="mkapi-object-kind mkapi-object-kind-code">SOURCE CODE</span>
+<span class="mkapi-object-prefix">IVORY.CORE.</span><span class="mkapi-object-name">RUN</span>
+<span id="ivory.core.run"></span><a class="mkapi-docs-link" href="../../ivory.core.run">DOCS</a>
+</h1>
+
+<div class="mkapi-code">
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provides the `Run` class that is one of the main classes of</span>
+<span class="sd">Ivory library. In addition, `Task` and `Study` classes are defined, which manages</span>
+<span class="sd">multiple runs for cross validation, hyperparameter tuning, and so on.</span>
+
+<span class="sd">To create an `Run` instance:</span>
+
+<span class="sd">    import ivory</span>
+
+<span class="sd">    client = ivory.create_run(&#39;example&#39;)</span>
+
+<span class="sd">The argument `example` is an experiment name in which the created run is included.</span>
+<span class="sd">Ivory assumes that `example.yml` or `example.yaml` file exists under the client&#39;s</span>
+<span class="sd">working directory.</span>
+
+<span class="sd">You can comfirm the client&#39;s working directory by:</span>
+
+<span class="sd">    os.path.dirname(client.source_name)</span>
+
+<span class="sd">One you got a `Run` instance. call `Run.start()` to start training. For test,</span>
+<span class="sd">call `Run.start(&#39;test&#39;)` instead. Also, you can perform traing and test by one step</span>
+<span class="sd">with `Run.start(&#39;both&#39;)`.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">gc</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="kn">import</span> <span class="n">colored</span>
+
+<span class="kn">import</span> <span class="nn">ivory.core.collections</span>
+<span class="kn">import</span> <span class="nn">ivory.core.state</span>
+<span class="kn">from</span> <span class="nn">ivory</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span> <span class="nn">ivory.core.base</span> <span class="kn">import</span> <span class="n">CallbackCaller</span>
+<span class="kn">from</span> <span class="nn">ivory.utils.tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+
+<span class="k">class</span> <span class="nc">Run</span><span class="p">(</span><span class="n">CallbackCaller</span><span class="p">):</span><span id="ivory.core.run.Run"></span><a class="mkapi-docs-link" title="ivory.core.run.Run" href="../../ivory.core.run#ivory.core.run.Run">DOCS</a>
+    <span class="sd">&quot;&quot;&quot;Run class is one of the main classes of Ivory library.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">set_tracker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span><span id="ivory.core.run.Run.set_tracker"></span><a class="mkapi-docs-link" title="ivory.core.run.Run.set_tracker" href="../../ivory.core.run#ivory.core.run.Run.set_tracker">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Sets tracker for tracking.</span>
+
+<span class="sd">        By setting a tracker, a `Run` instance can be a run of MLFlow Tracking</span>
+<span class="sd">        at the same time. MLFlow Tracking gives the Run ID and name for this</span>
+<span class="sd">        instance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tracker (Tracker): Tracker instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">create_run</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">experiment_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_name</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">tracker</span><span class="o">=</span><span class="n">tracker</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">tracking</span><span class="o">=</span><span class="n">tracker</span><span class="o">.</span><span class="n">create_tracking</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;train&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_callbacks</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_init_begin</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_init_end</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;train&quot;</span><span class="p">):</span><span id="ivory.core.run.Run.start"></span><a class="mkapi-docs-link" title="ivory.core.run.Run.start" href="../../ivory.core.run#ivory.core.run.Run.start">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Starts traing and/or test.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            mode: Mode name: `&#39;train&#39;`, `&#39;test&#39;`, or `&#39;both&#39;`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;both&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracker</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tracker</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;best&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">start</span><span class="p">):</span>
+                    <span class="n">obj</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span><span id="ivory.core.run.Run.state_dict"></span><a class="mkapi-docs-link" title="ivory.core.run.Run.state_dict" href="../../ivory.core.run#ivory.core.run.Run.state_dict">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Returns a state dictionary for all of member instances.&quot;&quot;&quot;</span>
+        <span class="n">state_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;state_dict&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">state_dict</span><span class="p">):</span>
+                <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>  <span class="c1"># for torch LambdaLR scheduler</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+                    <span class="n">state_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">state_dict</span>
+
+    <span class="k">def</span> <span class="nf">load_state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span><span id="ivory.core.run.Run.load_state_dict"></span><a class="mkapi-docs-link" title="ivory.core.run.Run.load_state_dict" href="../../ivory.core.run#ivory.core.run.Run.load_state_dict">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Loads a state dictionary to all of member instances.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state_dict (dict): state dictionary for all of member instances.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">state_dict</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>  <span class="c1"># for torch LambdaLR scheduler</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span><span id="ivory.core.run.Run.save"></span><a class="mkapi-docs-link" title="ivory.core.run.Run.save" href="../../ivory.core.run#ivory.core.run.Run.save">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Saves member instances.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            directory: Directory where member instances are saved.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">state_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="s2">&quot;save&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">):</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">state_dict</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">ivory</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">State</span><span class="p">):</span>
+                <span class="n">ivory</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">state_dict</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">save_instance</span><span class="p">(</span><span class="n">state_dict</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">save_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span><span id="ivory.core.run.Run.load"></span><a class="mkapi-docs-link" title="ivory.core.run.Run.load" href="../../ivory.core.run#ivory.core.run.Run.load">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Loads member instances.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            directory: Directory where member instances have been saved.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">state_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="s2">&quot;load&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">):</span>
+                <span class="n">state_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">ivory</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">State</span><span class="p">):</span>
+                <span class="n">state_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ivory</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">instance_state_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_instance</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">instance_state_dict</span><span class="p">:</span>
+                    <span class="n">state_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">instance_state_dict</span>
+        <span class="k">return</span> <span class="n">state_dict</span>
+
+    <span class="k">def</span> <span class="nf">load_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+
+<span class="k">class</span> <span class="nc">Task</span><span class="p">(</span><span class="n">Run</span><span class="p">):</span><span id="ivory.core.run.Task"></span><a class="mkapi-docs-link" title="ivory.core.run.Task" href="../../ivory.core.run#ivory.core.run.Task">DOCS</a>
+    <span class="sd">&quot;&quot;&quot;Task class creates a parent run that generates multiple runs.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">create_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Run</span><span class="p">:</span>  <span class="c1"># type:ignore</span><span id="ivory.core.run.Task.create_run"></span><a class="mkapi-docs-link" title="ivory.core.run.Task.create_run" href="../../ivory.core.run#ivory.core.run.Task.create_run">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Create a nested run according to arguments</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args (dict, optional): Update dictionary.</span>
+<span class="sd">            **kwargs: Additional update dictionary.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Run: Created nested `Run` instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">run</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create_run</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">run_name</span> <span class="o">=</span> <span class="n">colored</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">run</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">to_str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">tqdm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">run_name</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">set_parent_run_id</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">run</span>
+
+    <span class="k">def</span> <span class="nf">terminate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">set_terminated</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">product</span><span class="p">(</span><span id="ivory.core.run.Task.product"></span><a class="mkapi-docs-link" title="ivory.core.run.Task.product" href="../../ivory.core.run#ivory.core.run.Task.product">DOCS</a>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">repeat</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Run</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Makes a product iterator.</span>
+
+<span class="sd">        This iterator returns runs from cartesian product of input parameters.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            params (dict, optional): Parameter range. Key is a parameter name and</span>
+<span class="sd">                value is an iterable of parameter&#39;s value.</span>
+<span class="sd">            repeat: Number of repeatation.</span>
+<span class="sd">            **kwargs: Additional parameter range.</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            [Product section](/tutorial/task#product) in Multiple Runs Tutorial</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span><span class="p">,</span> <span class="n">base_params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">split_params</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">base_params</span><span class="p">)</span>
+        <span class="n">params_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">params</span><span class="p">))</span> <span class="o">*</span> <span class="n">repeat</span>
+        <span class="k">if</span> <span class="s2">&quot;verbose&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">base_params</span> <span class="ow">or</span> <span class="n">base_params</span><span class="p">[</span><span class="s2">&quot;verbose&quot;</span><span class="p">]:</span>
+            <span class="n">params_list</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">params_list</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Prod &quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">args_</span> <span class="ow">in</span> <span class="n">params_list</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">base_params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">args_</span><span class="p">)</span>
+            <span class="n">run</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_run</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">run</span>
+            <span class="k">del</span> <span class="n">run</span>
+            <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">chain</span><span class="p">(</span><span id="ivory.core.run.Task.chain"></span><a class="mkapi-docs-link" title="ivory.core.run.Task.chain" href="../../ivory.core.run#ivory.core.run.Task.chain">DOCS</a>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">use_best_param</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Run</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Makes a chain iterator.</span>
+
+<span class="sd">        This iterator returns runs from the first input paramter until it is exhausted,</span>
+<span class="sd">        then proceeds to the next parameter, until all of the parameters are exhausted.</span>
+<span class="sd">        Other parameters have default values if they don&#39;t be specified by additional</span>
+<span class="sd">        key-value pairs.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            params (dict, optional): Parameter range. Key is a parameter name and</span>
+<span class="sd">                value is an iterable of parameter&#39;s value.</span>
+<span class="sd">                use_best_param: If True (default), the parameter that got the best</span>
+<span class="sd">                score is used during the following iterations.</span>
+<span class="sd">            **kwargs: Additional parameter range.</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            [Chain section](/tutorial/task#chain) in Multiple Runs Tutorial</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span><span class="p">,</span> <span class="n">base_params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">split_params</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">base_params</span><span class="p">)</span>
+        <span class="n">params_list</span> <span class="o">=</span> <span class="p">{</span><span class="n">arg</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params_list</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">if</span> <span class="s2">&quot;verbose&quot;</span> <span class="ow">in</span> <span class="n">base_params</span> <span class="ow">and</span> <span class="n">base_params</span><span class="p">[</span><span class="s2">&quot;verbose&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">bar</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Chain&quot;</span><span class="p">)</span>
+        <span class="n">best_params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">arg</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">params_list</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">best_param</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="n">base_params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">arg</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span>
+                <span class="k">if</span> <span class="n">use_best_param</span><span class="p">:</span>
+                    <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">best_params</span><span class="p">)</span>
+                <span class="n">run</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_run</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">run</span>
+                <span class="k">if</span> <span class="n">run</span><span class="o">.</span><span class="n">monitor</span><span class="p">:</span>
+                    <span class="n">current_score</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">best_score</span>
+                    <span class="k">if</span> <span class="n">best_param</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">best_score</span> <span class="o">=</span> <span class="n">current_score</span>
+                        <span class="n">best_param</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="k">elif</span> <span class="n">run</span><span class="o">.</span><span class="n">monitor</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span> <span class="ow">and</span> <span class="n">current_score</span> <span class="o">&lt;</span> <span class="n">best_score</span><span class="p">:</span>
+                        <span class="n">best_score</span> <span class="o">=</span> <span class="n">current_score</span>
+                        <span class="n">best_param</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="k">if</span> <span class="n">current_score</span> <span class="o">&gt;</span> <span class="n">best_score</span><span class="p">:</span>
+                        <span class="n">best_score</span> <span class="o">=</span> <span class="n">current_score</span>
+                        <span class="n">best_param</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="k">del</span> <span class="n">run</span>
+                <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">best_param</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">best_params</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_param</span>
+            <span class="k">if</span> <span class="n">bar</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">bar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">Study</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span><span id="ivory.core.run.Study"></span><a class="mkapi-docs-link" title="ivory.core.run.Study" href="../../ivory.core.run#ivory.core.run.Study">DOCS</a>
+    <span class="sd">&quot;&quot;&quot;Study class create a parent run to manage hyperparameter tuning.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">suggest_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span><span id="ivory.core.run.Study.optimize"></span><a class="mkapi-docs-link" title="ivory.core.run.Study.optimize" href="../../ivory.core.run#ivory.core.run.Study.optimize">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Performs parameter optimizations using Optuna.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            suggest_name: Name of suggest function.</span>
+<span class="sd">            **kwargs: Key-iterable pairs for parametric optimization.</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            [Hyperparameter Tuning](/tutorial/tuning) in Tutorial</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">suggest_name</span><span class="p">:</span>
+            <span class="n">suggest_name</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">objective</span><span class="o">.</span><span class="n">suggests</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">study_name</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">experiment_name</span><span class="p">,</span> <span class="n">suggest_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_instance</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mode</span>
+        <span class="n">study</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tuner</span><span class="o">.</span><span class="n">create_study</span><span class="p">(</span><span class="n">study_name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;study_name&quot;</span><span class="p">:</span> <span class="n">study_name</span><span class="p">})</span>
+            <span class="n">study</span><span class="o">.</span><span class="n">set_user_attr</span><span class="p">(</span><span class="s2">&quot;run_id&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">has_pruning</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tuner</span><span class="o">.</span><span class="n">pruner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">optimize_args</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">study</span><span class="o">.</span><span class="n">optimize</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">optimize_args</span><span class="p">:</span>
+                <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">create_run</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_run</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">objective</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="n">suggest_name</span><span class="p">,</span> <span class="n">create_run</span><span class="p">,</span> <span class="n">has_pruning</span><span class="p">)</span>
+        <span class="n">study</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">study</span>
+</code></pre></div>
+</div>
+</div></div>
+                <footer>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js"></script>
+    <script src="../../../js/mkapi.js"></script>
+    <script src="../../../js/pheasant.js"></script>
+    <script src="../../../search/main.js"></script>
+</body>
+
+</html>

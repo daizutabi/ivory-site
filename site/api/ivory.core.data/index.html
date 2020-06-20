@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="daizutabi">
     <link rel="shortcut icon" href="../../img/favicon.ico">
-    <title>data &mdash; Ivory</title>
+    <title>ivory.core.data &mdash; Ivory</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/theme.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../css/mkapi-ivory.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/pheasant.css">
@@ -61,27 +62,34 @@
     <li class="toctree-l2"><a class="nav-item" href="../../tutorial/library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../../tutorial/cli/">Command Line Interface</a></li>
 </ul></li>
-                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
 <ul class="subnav">
     <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">early_stopping</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">metrics</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">pruning</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">ivory.callbacks.results</a></li>
 </ul></li>
     <li class="toctree-l2 current"><button class="section nav-item">ivory.core</button>
 <ul class="subnav">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">base</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">client</a></li>
-    <li class="toctree-l3 current"><a class="nav-item current" href="./">data</a>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3 current"><a class="nav-item current" href="./">ivory.core.data</a>
 <ul class="subnav">
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycoredatadata">Data</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycoredatadataset">Dataset</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycoredatadatasets">Datasets</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycoredatadataloaders">DataLoaders</a></li>
 </ul></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">ivory.core.run</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
 </ul></li>
 </ul></li>
                 </ul>
@@ -103,17 +111,22 @@
             <div id="main">
                 <nav class="breadcrumbs">
 <ul>
-    <li>Python API &raquo; </li><li>ivory.core</li>
+    <li>API &raquo; </li><li>ivory.core</li>
 </ul>
 </nav>
                 <div id="content">
-<h1 id="ivorycoredata"><span class="pheasant-header"><span class="header"><span class="title"><span class="mkapi-header mkapi-header-module" id="ivory.core.data">IVORY.CORE.DATA</span></span></span></span></h1>
-
-<div class="mkapi-node mkapi-headless mkapi-node-depth-0">
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
+<div class="mkapi-node" id="ivory.core.data">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h1 id="ivorycoredata" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="../ivory.core/#ivory.core">IVORY.CORE</a>.</span><span class="mkapi-object-name">DATA</span></h1>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data" title="Source for ivory.core.data">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Ivory uses four classes for data presentation: <code>Data</code>, <code>Dataset</code>, <code>Datasets</code>,
 and <code>DataLoaders</code>.</p>
 <p>Basically, you only need to define a class that is a subclass of <code>Data</code>
@@ -136,33 +149,53 @@ and use original <code>Dataset</code> and <code>Datasets</code>. An example para
 <p>The <code>DataLoaders</code> is used internally by <code>ivory.torch.trainer.Trainer</code> or
 <code>ivory.nnabla.trainer.Trainer</code> classes to yield a minibatch in training loop.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-note">
-      <div class="mkapi-section-name mkapi-section-name-note">
-      <span class="mkapi-section-name-body">Note</span></div>
-      <div class="mkapi-section-body mkapi-section-body-note"><p>Use a <code>'def'</code> key for <code>dataset</code> instead of <code>'class'</code>.
+  <div class="mkapi-section note">
+      <div class="mkapi-section-name note">
+          <span class="mkapi-section-name-body note">Note</span> 
+        </div>
+      <div class="mkapi-section-body note"><p>Use a <code>'def'</code> key for <code>dataset</code> instead of <code>'class'</code>.
 See <a href="/tutorial/data">Tutorial</a></p></div>
     </div>
-  
-</div>
-</div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="dataclass"><code class="mkapi-item-name"><a href="#ivory.core.data.Data">Data</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Base class to provide data to a <code>Dataset</code> instance.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data" title="Source for ivory.core.data.Data">&lt;/&gt;</a></span></li>
+
+<li class="dataclass"><code class="mkapi-item-name"><a href="#ivory.core.data.Dataset">Dataset</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Dataset class represents a set of data for a mode and fold.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Dataset" title="Source for ivory.core.data.Dataset">&lt;/&gt;</a></span></li>
+
+<li class="dataclass"><code class="mkapi-item-name"><a href="#ivory.core.data.Datasets">Datasets</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Dataset class represents a collection of <code>Dataset</code> for a fold.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Datasets" title="Source for ivory.core.data.Datasets">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="#ivory.core.data.DataLoaders">DataLoaders</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">DataLoaders class represents a collection of <code>DataLoader</code>.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.DataLoaders" title="Source for ivory.core.data.DataLoaders">&lt;/&gt;</a></span></li>
 
 
-
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.data.Data">
-  <div class="mkapi-node-header mkapi-node-header-dataclass">
-    <div class="mkapi-node-kind mkapi-node-kind-dataclass">DATACLASS</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">ivory.core.data.Data</code><code class="mkapi-node-signature">()</code>
-        
-      
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.data.Data">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object dataclass code top">
+    <div class="mkapi-object-kind dataclass top">dataclass</div>
+    <h2 id="ivorycoredatadata" class="mkapi-object-body dataclass top"><code class="mkapi-object-prefix"><a href="#ivory.core.data">ivory.core.data</a>.</code><code class="mkapi-object-name">Data</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data" title="Source for ivory.core.data.Data">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Base class to provide data to a <code>Dataset</code> instance.</p>
 <p>To make a subclass, you need to assign the following attributes in
 the <code>Data.init()</code>:</p>
@@ -173,35 +206,59 @@ the <code>Data.init()</code>:</p>
 <li><code>fold</code>: Fold number.</li>
 </ul></div>
     </div>
-  
-</div>
-  
-    <div class="mkapi-members">
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.Data.init">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">init</code><code class="mkapi-node-signature">()</code>
-        
-      
+  <div class="mkapi-section methods">
+      <div class="mkapi-section-name methods">
+          <span class="mkapi-section-name-body methods">Methods</span> 
+        </div>
+      <div class="mkapi-section-body methods"><ul class="mkapi-items">
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.data.Data.get">get</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">index</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(tuple)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a tuple of (<code>index</code>, <code>input</code>, <code>target</code>) according to the index.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.get" title="Source for ivory.core.data.Data.get">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.data.Data.get_index">get_index</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">mode</code>, <code class="mkapi-object-signature">fold</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(ndarray)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns index according to the mode and fold.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.get_index" title="Source for ivory.core.data.Data.get_index">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.data.Data.get_input">get_input</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">index</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns input data.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.get_input" title="Source for ivory.core.data.Data.get_input">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.data.Data.get_target">get_target</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">index</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns target data.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.get_target" title="Source for ivory.core.data.Data.get_target">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.data.Data.init">init</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Initializes <code>index</code>, <code>input</code>, <code>target</code>, and <code>fold</code> attributes.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.init" title="Source for ivory.core.data.Data.init">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
+
+  <div class="mkapi-members">
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.data.Data.init">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoredatadatainit" class="mkapi-object-body method"><code class="mkapi-object-name">init</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.init" title="Source for ivory.core.data.Data.init">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Initializes <code>index</code>, <code>input</code>, <code>target</code>, and <code>fold</code> attributes.</p>
 <p>The fold number of test data must be <code>-1</code>.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-examples">
-      <div class="mkapi-section-name mkapi-section-name-examples">
-      <span class="mkapi-section-name-body">Examples</span></div>
-      <div class="mkapi-section-body mkapi-section-body-examples"><p>For regression</p>
+  <div class="mkapi-section examples">
+      <div class="mkapi-section-name examples">
+          <span class="mkapi-section-name-body examples">Examples</span> 
+        </div>
+      <div class="mkapi-section-body examples"><p>For regression</p>
 <pre><code>def init(self):
     self.index = np.range(100)
     self.input = np.random.randn(100, 5)
@@ -218,523 +275,482 @@ the <code>Data.init()</code>:</p>
     self.fold[80:] = -1
 </code></pre></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.Data.get_index">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">get_index</code><code class="mkapi-node-signature">(mode, fold)</code>
-        <span class="mkapi-args-type">&#x2192; ndarray</span>
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.data.Data.get_index">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoredatadataget_index" class="mkapi-object-body method"><code class="mkapi-object-name">get_index</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">mode</code>, <code class="mkapi-object-signature">fold</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; ndarray</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.get_index" title="Source for ivory.core.data.Data.get_index">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Returns index according to the mode and fold.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">mode</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Mode name: <code>'train'</code>, <code>'val'</code>, or <code>'test'</code>.</span></li>
 
-  <li><code class="mkapi-args-name">mode</code>
-         <span class="mkapi-args-type">(str)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Mode name: <code>'train'</code>, <code>'val'</code>, or <code>'test'</code>.</span></li>
+<li><code class="mkapi-item-name">fold</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Fold number.</span></li>
 
-  <li><code class="mkapi-args-name">fold</code>
-         <span class="mkapi-args-type">(int)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Fold number.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.Data.get_input">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">get_input</code><code class="mkapi-node-signature">(index)</code>
-        
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.data.Data.get_input">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoredatadataget_input" class="mkapi-object-body method"><code class="mkapi-object-name">get_input</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">index</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.get_input" title="Source for ivory.core.data.Data.get_input">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Returns input data.</p>
 <p>By default, this function returns <code>self.input[index]</code>. You can override this
 behavior in a subclass.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">index</code>
+<span class="mkapi-item-type">(int or 1D-array)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Index.</span></li>
 
-  <li><code class="mkapi-args-name">index</code>
-         <span class="mkapi-args-type">(int or 1D-array)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Index.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.Data.get_target">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">get_target</code><code class="mkapi-node-signature">(index)</code>
-        
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.data.Data.get_target">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoredatadataget_target" class="mkapi-object-body method"><code class="mkapi-object-name">get_target</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">index</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.get_target" title="Source for ivory.core.data.Data.get_target">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Returns target data.</p>
 <p>By default, this function returns <code>self.target[index]</code>. You can override this
 behavior in a subclass.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">index</code>
+<span class="mkapi-item-type">(int or 1D-array)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Index.</span></li>
 
-  <li><code class="mkapi-args-name">index</code>
-         <span class="mkapi-args-type">(int or 1D-array)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Index.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.Data.get">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">get</code><code class="mkapi-node-signature">(index)</code>
-        <span class="mkapi-args-type">&#x2192; tuple</span>
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.data.Data.get">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoredatadataget" class="mkapi-object-body method"><code class="mkapi-object-name">get</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">index</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; tuple</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data.get" title="Source for ivory.core.data.Data.get">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Returns a tuple of (<code>index</code>, <code>input</code>, <code>target</code>) according to the index.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">index</code>
+<span class="mkapi-item-type">(int or 1D-array)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Index.</span></li>
 
-  <li><code class="mkapi-args-name">index</code>
-         <span class="mkapi-args-type">(int or 1D-array)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Index.</span></li>
 
 </ul></div>
-    </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-    </div>
-  
-</div>
-
-
-
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.data.Dataset">
-  <div class="mkapi-node-header mkapi-node-header-dataclass">
-    <div class="mkapi-node-kind mkapi-node-kind-dataclass">DATACLASS</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">ivory.core.data.Dataset</code><code class="mkapi-node-signature">(data, mode, fold, transform=None)</code>
-        
-      
     </div>
   </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
-      <div class="mkapi-section-body"><p>Dataset class represents a set of data for a mode and fold.</p></div>
+
+</div>
     </div>
   
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  </div>
 
-  <li><code class="mkapi-args-name">data</code>
-         <span class="mkapi-args-type">(Data)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc"><code>Data</code> instance that provides data to <code>Dataset</code> instance.</span></li>
+</div>
 
-  <li><code class="mkapi-args-name">mode</code>
-         <span class="mkapi-args-type">(str)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Mode name: <code>'train'</code>, <code>'val'</code>, or <code>'test'</code>.</span></li>
+<div class="mkapi-node" id="ivory.core.data.Dataset">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object dataclass code top">
+    <div class="mkapi-object-kind dataclass top">dataclass</div>
+    <h2 id="ivorycoredatadataset" class="mkapi-object-body dataclass top"><code class="mkapi-object-prefix"><a href="#ivory.core.data">ivory.core.data</a>.</code><code class="mkapi-object-name">Dataset</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">data</code>, <code class="mkapi-object-signature">mode</code>, <code class="mkapi-object-signature">fold</code>, <code class="mkapi-object-signature">transform=None</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Dataset" title="Source for ivory.core.data.Dataset">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Dataset class represents a set of data for a mode and fold.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">data</code>
+<span class="mkapi-item-type">(<a href="./#ivory.core.data.Data">Data</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"><code>Data</code> instance that provides data to <code>Dataset</code> instance.</span></li>
 
-  <li><code class="mkapi-args-name">fold</code>
-         <span class="mkapi-args-type">(int)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Fold number.</span></li>
+<li><code class="mkapi-item-name">mode</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Mode name: <code>'train'</code>, <code>'val'</code>, or <code>'test'</code>.</span></li>
 
-  <li><code class="mkapi-args-name">transform</code>
-         <span class="mkapi-args-type">(callable, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Callable to transform the data.</span></li>
+<li><code class="mkapi-item-name">fold</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Fold number.</span></li>
+
+<li><code class="mkapi-item-name">transform</code>
+<span class="mkapi-item-type">(callable, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Callable to transform the data.</span></li>
+
 
 </ul></div>
     </div>
-  
-    <div class="mkapi-section">
-      
+  <div class="mkapi-section">
       <div class="mkapi-section-body"><p>The <code>transform</code> must take 2 or 3 arguments: (<code>mode</code>, <code>input</code>, optional
 <code>target</code>) and return a tuple of (<code>input</code>, optional <code>target</code>).</p></div>
     </div>
-  
-</div>
-  
-    <div class="mkapi-members">
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.Dataset.init">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">init</code><code class="mkapi-node-signature">()</code>
-        
-      
+  <div class="mkapi-section attributes">
+      <div class="mkapi-section-name attributes">
+          <span class="mkapi-section-name-body attributes">Attributes</span> 
+        </div>
+      <div class="mkapi-section-body attributes"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">data</code>
+<span class="mkapi-item-type">(<a href="./#ivory.core.data.Data">Data</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"><code>Data</code> instance that provides data to <code>Dataset</code> instance.</span></li>
+
+<li><code class="mkapi-item-name">fold</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Fold number.</span></li>
+
+<li><code class="mkapi-item-name">mode</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Mode name: <code>'train'</code>, <code>'val'</code>, or <code>'test'</code>.</span></li>
+
+<li><code class="mkapi-item-name">transform</code>
+<span class="mkapi-item-type">(callable, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Callable to transform the data.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section methods">
+      <div class="mkapi-section-name methods">
+          <span class="mkapi-section-name-body methods">Methods</span> 
+        </div>
+      <div class="mkapi-section-body methods"><ul class="mkapi-items">
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.data.Dataset.get">get</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">index</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(tuple)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a tuple of (<code>index</code>, <code>input</code>, <code>target</code>) according to the index.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Dataset.get" title="Source for ivory.core.data.Dataset.get">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.data.Dataset.init">init</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Called at initialization. You can add any process in a subclass.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Dataset.init" title="Source for ivory.core.data.Dataset.init">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.data.Dataset.sample">sample</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">n</code>, <code class="mkapi-object-signature">frac</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(tuple)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a tuple of (<code>index</code>, <code>input</code>, <code>target</code>) randomly sampled.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Dataset.sample" title="Source for ivory.core.data.Dataset.sample">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
+
+  <div class="mkapi-members">
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.data.Dataset.init">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoredatadatasetinit" class="mkapi-object-body method"><code class="mkapi-object-name">init</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Dataset.init" title="Source for ivory.core.data.Dataset.init">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Called at initialization. You can add any process in a subclass.</p></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.Dataset.get">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">get</code><code class="mkapi-node-signature">(index=None)</code>
-        <span class="mkapi-args-type">&#x2192; tuple</span>
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.data.Dataset.get">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoredatadatasetget" class="mkapi-object-body method"><code class="mkapi-object-name">get</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">index=None</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; tuple</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Dataset.get" title="Source for ivory.core.data.Dataset.get">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Returns a tuple of (<code>index</code>, <code>input</code>, <code>target</code>) according to the index.</p>
 <p>If index is <code>None</code>, reutrns all of the data.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">index</code>
+<span class="mkapi-item-type">(int or 1D-array, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Index.</span></li>
 
-  <li><code class="mkapi-args-name">index</code>
-         <span class="mkapi-args-type">(int or 1D-array, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Index.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.Dataset.sample">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">sample</code><code class="mkapi-node-signature">(n=0, frac=0.0)</code>
-        <span class="mkapi-args-type">&#x2192; tuple</span>
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.data.Dataset.sample">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoredatadatasetsample" class="mkapi-object-body method"><code class="mkapi-object-name">sample</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">n=0</code>, <code class="mkapi-object-signature">frac=0.0</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; tuple</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Dataset.sample" title="Source for ivory.core.data.Dataset.sample">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Returns a tuple of (<code>index</code>, <code>input</code>, <code>target</code>) randomly sampled.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">n</code>
+<span class="mkapi-item-type">(int, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Size of sampling.</span></li>
 
-  <li><code class="mkapi-args-name">n</code>
-         <span class="mkapi-args-type">(int, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Size of sampling.</span></li>
+<li><code class="mkapi-item-name">frac</code>
+<span class="mkapi-item-type">(float, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Ratio of sampling.</span></li>
 
-  <li><code class="mkapi-args-name">frac</code>
-         <span class="mkapi-args-type">(float, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Ratio of sampling.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-    </div>
-  
-</div>
-
-
-
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.data.Datasets">
-  <div class="mkapi-node-header mkapi-node-header-dataclass">
-    <div class="mkapi-node-kind mkapi-node-kind-dataclass">DATACLASS</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">ivory.core.data.Datasets</code><code class="mkapi-node-signature">(data, dataset, fold)</code>
-        
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.data.Datasets">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object dataclass code top">
+    <div class="mkapi-object-kind dataclass top">dataclass</div>
+    <h2 id="ivorycoredatadatasets" class="mkapi-object-body dataclass top"><code class="mkapi-object-prefix"><a href="#ivory.core.data">ivory.core.data</a>.</code><code class="mkapi-object-name">Datasets</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">data</code>, <code class="mkapi-object-signature">dataset</code>, <code class="mkapi-object-signature">fold</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Datasets" title="Source for ivory.core.data.Datasets">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section bases">
+      <div class="mkapi-section-name bases">
+          <span class="mkapi-section-name-body bases">Bases</span> 
+        </div>
+      <div class="mkapi-section-body bases">
+<span class="mkapi-base"><a href="../ivory.core/#ivory.core.collections.Dict">ivory.core.collections.Dict</a></span>
+</div>
+    </div>
+  <div class="mkapi-section">
       <div class="mkapi-section-body"><p>Dataset class represents a collection of <code>Dataset</code> for a fold.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">data</code>
+<span class="mkapi-item-type">(<a href="./#ivory.core.data.Data">Data</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"><code>Data</code> instance that provides data to <code>Dataset</code> instance.</span></li>
 
-  <li><code class="mkapi-args-name">data</code>
-         <span class="mkapi-args-type">(Data)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc"><code>Data</code> instance that provides data to <code>Dataset</code> instance.</span></li>
+<li><code class="mkapi-item-name">dataset</code>
+<span class="mkapi-item-type">(callable)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Dataset factory.</span></li>
 
-  <li><code class="mkapi-args-name">dataset</code>
-         <span class="mkapi-args-type">(Callable)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Dataset factory.</span></li>
+<li><code class="mkapi-item-name">fold</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Fold number.</span></li>
 
-  <li><code class="mkapi-args-name">fold</code>
-         <span class="mkapi-args-type">(int)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Fold number.</span></li>
 
 </ul></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-attributes">
-      <div class="mkapi-section-name mkapi-section-name-attributes">
-      <span class="mkapi-section-name-body">Attributes</span></div>
-      <div class="mkapi-section-body mkapi-section-body-attributes"><ul class="mkapi-args-list">
+  <div class="mkapi-section attributes">
+      <div class="mkapi-section-name attributes">
+          <span class="mkapi-section-name-body attributes">Attributes</span> 
+        </div>
+      <div class="mkapi-section-body attributes"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">data</code>
+<span class="mkapi-item-type">(<a href="./#ivory.core.data.Data">Data</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"><code>Data</code> instance that provides data to <code>Dataset</code> instance.</span></li>
 
-  <li><code class="mkapi-args-name">train</code>
-         <span class="mkapi-args-type">(Dataset)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Train dataset.</span></li>
+<li><code class="mkapi-item-name">dataset</code>
+<span class="mkapi-item-type">(callable)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Dataset factory.</span></li>
 
-  <li><code class="mkapi-args-name">val</code>
-         <span class="mkapi-args-type">(Dataset)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Validation dataset.</span></li>
+<li><code class="mkapi-item-name">fold</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Fold number.</span></li>
 
-  <li><code class="mkapi-args-name">test</code>
-         <span class="mkapi-args-type">(Dataset)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Test dataset.</span></li>
+<li><code class="mkapi-item-name">test</code>
+<span class="mkapi-item-type">(Dataset)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Test dataset.</span></li>
 
-  <li><code class="mkapi-args-name">fold</code>
-         <span class="mkapi-args-type">(int)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Fold number.</span></li>
+<li><code class="mkapi-item-name">train</code>
+<span class="mkapi-item-type">(Dataset)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Train dataset.</span></li>
+
+<li><code class="mkapi-item-name">val</code>
+<span class="mkapi-item-type">(Dataset)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Validation dataset.</span></li>
+
 
 </ul></div>
-    </div>
-  
-</div>
-  
-</div>
-
-
-
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.data.DataLoaders">
-  <div class="mkapi-node-header mkapi-node-header-class">
-    <div class="mkapi-node-kind mkapi-node-kind-class">CLASS</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">ivory.core.data.DataLoaders</code><code class="mkapi-node-signature">(datasets, batch_size, shuffle)</code>
-        
-      
     </div>
   </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.data.DataLoaders">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object class code top">
+    <div class="mkapi-object-kind class top">class</div>
+    <h2 id="ivorycoredatadataloaders" class="mkapi-object-body class top"><code class="mkapi-object-prefix"><a href="#ivory.core.data">ivory.core.data</a>.</code><code class="mkapi-object-name">DataLoaders</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">datasets</code>, <code class="mkapi-object-signature">batch_size</code>, <code class="mkapi-object-signature">shuffle</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.DataLoaders" title="Source for ivory.core.data.DataLoaders">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section bases">
+      <div class="mkapi-section-name bases">
+          <span class="mkapi-section-name-body bases">Bases</span> 
+        </div>
+      <div class="mkapi-section-body bases">
+<span class="mkapi-base"><a href="../ivory.core/#ivory.core.collections.Dict">ivory.core.collections.Dict</a></span>
+</div>
+    </div>
+  <div class="mkapi-section">
       <div class="mkapi-section-body"><p>DataLoaders class represents a collection of <code>DataLoader</code>.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">datasets</code>
+<span class="mkapi-item-type">(<a href="./#ivory.core.data.Datasets">Datasets</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"><code>Datasets</code> instance.</span></li>
 
-  <li><code class="mkapi-args-name">datasets</code>
-         <span class="mkapi-args-type">(Datasets)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc"><code>Datasets</code> instance.</span></li>
+<li><code class="mkapi-item-name">batch_size</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Batch_size</span></li>
 
-  <li><code class="mkapi-args-name">batch_size</code>
-         <span class="mkapi-args-type">(int)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Batch_size</span></li>
-
-  <li><code class="mkapi-args-name">shuffle</code>
-         <span class="mkapi-args-type">(bool)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">If True, train dataset is shuffled. Validation and test dataset are
+<li><code class="mkapi-item-name">shuffle</code>
+<span class="mkapi-item-type">(bool)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">If True, train dataset is shuffled. Validation and test dataset are
 not shuffled regardless of this value.</span></li>
 
-</ul></div>
-    </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-attributes">
-      <div class="mkapi-section-name mkapi-section-name-attributes">
-      <span class="mkapi-section-name-body">Attributes</span></div>
-      <div class="mkapi-section-body mkapi-section-body-attributes"><ul class="mkapi-args-list">
-
-  <li><code class="mkapi-args-name">train</code>
-         <span class="mkapi-args-type">(Dataset)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Train dataset.</span></li>
-
-  <li><code class="mkapi-args-name">val</code>
-         <span class="mkapi-args-type">(Dataset)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Validation dataset.</span></li>
-
-  <li><code class="mkapi-args-name">test</code>
-         <span class="mkapi-args-type">(Dataset)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Test dataset.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-    <div class="mkapi-members">
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.data.DataLoaders.__init__">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">__init__</code><code class="mkapi-node-signature">(datasets, batch_size, shuffle)</code>
-        
-      
+  <div class="mkapi-section attributes">
+      <div class="mkapi-section-name attributes">
+          <span class="mkapi-section-name-body attributes">Attributes</span> 
+        </div>
+      <div class="mkapi-section-body attributes"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">test</code>
+<span class="mkapi-item-type">(Dataset)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Test dataset.</span></li>
+
+<li><code class="mkapi-item-name">train</code>
+<span class="mkapi-item-type">(Dataset)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Train dataset.</span></li>
+
+<li><code class="mkapi-item-name">val</code>
+<span class="mkapi-item-type">(Dataset)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Validation dataset.</span></li>
+
+
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
-      <div class="mkapi-section-body"><p>Initialize self.  See help(type(self)) for accurate signature.</p></div>
-    </div>
-  
-</div>
-  
-</div>
 
-        </div>
-      
-    </div>
-  
-</div>
-</div>
+</div></div>
                 <footer>
     <div class="footer-buttons">
-        <div class="previous"><a href="../ivory.core.client/" title="client"><span>Previous</span></a></div>
-        <div class="next"><a href="../ivory.core.run/" title="run"><span>Next</span></a></div>
+        <div class="previous"><a href="../ivory.core.client/" title="ivory.core.client"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.core.run/" title="ivory.core.run"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>

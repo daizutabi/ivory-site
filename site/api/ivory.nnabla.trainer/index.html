@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="daizutabi">
     <link rel="shortcut icon" href="../../img/favicon.ico">
-    <title>trainer &mdash; Ivory</title>
+    <title>ivory.nnabla.trainer &mdash; Ivory</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/theme.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../css/mkapi-ivory.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/pheasant.css">
@@ -61,26 +62,30 @@
     <li class="toctree-l2"><a class="nav-item" href="../../tutorial/library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../../tutorial/cli/">Command Line Interface</a></li>
 </ul></li>
-                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
 <ul class="subnav">
     <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">early_stopping</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">metrics</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">pruning</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">ivory.callbacks.results</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">base</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">client</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">data</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">ivory.core.run</a></li>
 </ul></li>
     <li class="toctree-l2 current"><button class="section nav-item">ivory.nnabla</button>
 <ul class="subnav">
-    <li class="toctree-l3 current"><a class="nav-item current" href="./">trainer</a>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3 current"><a class="nav-item current" href="./">ivory.nnabla.trainer</a>
 <ul class="subnav">
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorynnablatrainertrainer">Trainer</a></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -90,7 +95,7 @@
     <div class="link">
         <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
     </div>
-    <div class="previous"><a href="../ivory.core.run/">&laquo; Previous</a></div>
+    <div class="previous"><a href="../ivory.nnabla/">&laquo; Previous</a></div>
 </div>
         </aside>
         <div id="spacer"><button class="arrow"></button></div>
@@ -102,166 +107,366 @@
             <div id="main">
                 <nav class="breadcrumbs">
 <ul>
-    <li>Python API &raquo; </li><li>ivory.nnabla</li>
+    <li>API &raquo; </li><li>ivory.nnabla</li>
 </ul>
 </nav>
                 <div id="content">
-<h1 id="ivorynnablatrainer"><span class="pheasant-header"><span class="header"><span class="title"><span class="mkapi-header mkapi-header-module" id="ivory.nnabla.trainer">IVORY.NNABLA.TRAINER</span></span></span></span></h1>
-
-<div class="mkapi-node mkapi-headless mkapi-node-depth-0">
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
+<div class="mkapi-node" id="ivory.nnabla.trainer">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h1 id="ivorynnablatrainer" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="../ivory.nnabla/#ivory.nnabla">IVORY.NNABLA</a>.</span><span class="mkapi-object-name">TRAINER</span></h1>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.nnabla.trainer#ivory.nnabla.trainer" title="Source for ivory.nnabla.trainer">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>The <code>ivory.nnabla.trainer</code> module provides the <code>Trainer</code> class for nnable.</p></div>
     </div>
-  
-</div>
-</div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="dataclass"><code class="mkapi-item-name"><a href="#ivory.nnabla.trainer.Trainer">Trainer</a></code>
 
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Trainer(epoch: int = -1, epochs: int = 1, global_step: int = -1, batch_size: int = 32, shuffle: bool = True, dataloaders: str = 'ivory.nnabla.data.DataLoaders', verbose: int = 1, loss: Union[Callable, NoneType] = None, gpu: bool = False, precision: int = 32, amp_level: str = 'O1')<a class="mkapi-src-link" href="../source/ivory.nnabla.trainer#ivory.nnabla.trainer.Trainer" title="Source for ivory.nnabla.trainer.Trainer">&lt;/&gt;</a></span></li>
 
-
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.nnabla.trainer.Trainer">
-  <div class="mkapi-node-header mkapi-node-header-dataclass">
-    <div class="mkapi-node-kind mkapi-node-kind-dataclass">DATACLASS</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">ivory.nnabla.trainer.Trainer</code><code class="mkapi-node-signature">(epoch=-1, epochs=1, global_step=-1, batch_size=32, shuffle=True, dataloaders=&#39;ivory.nnabla.data.DataLoaders&#39;, verbose=1, loss=None, gpu=False, precision=32, amp_level=&#39;O1&#39;)</code>
-        
-      
-    </div>
-  </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
-      <div class="mkapi-section-body"><p>Trainer(epoch: int = -1, epochs: int = 1, global_step: int = -1, batch_size: int = 32, shuffle: bool = True, dataloaders: str = 'ivory.nnabla.data.DataLoaders', verbose: int = 1, loss: Union[Callable, NoneType] = None, gpu: bool = False, precision: int = 32, amp_level: str = 'O1')</p></div>
-    </div>
-  
-</div>
-  
-    <div class="mkapi-members">
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.nnabla.trainer.Trainer.start">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">start</code><code class="mkapi-node-signature">(run)</code>
-        
-      
-    </div>
-  </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
-      <div class="mkapi-section-body"><p>Starts a train or test loop.</p></div>
-    </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
-
-  <li><code class="mkapi-args-name">run</code>
-         <span class="mkapi-args-type">(Run)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">a run instance.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
+  </div>
+
 </div>
 
+<div class="mkapi-node" id="ivory.nnabla.trainer.Trainer">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object dataclass code top">
+    <div class="mkapi-object-kind dataclass top">dataclass</div>
+    <h2 id="ivorynnablatrainertrainer" class="mkapi-object-body dataclass top"><code class="mkapi-object-prefix"><a href="#ivory.nnabla.trainer">ivory.nnabla.trainer</a>.</code><code class="mkapi-object-name">Trainer</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">epoch=-1</code>, <code class="mkapi-object-signature">epochs=1</code>, <code class="mkapi-object-signature">global_step=-1</code>, <code class="mkapi-object-signature">batch_size=32</code>, <code class="mkapi-object-signature">shuffle=True</code>, <code class="mkapi-object-signature">dataloaders=&#39;ivory.nnabla.data.DataLoaders&#39;</code>, <code class="mkapi-object-signature">verbose=1</code>, <code class="mkapi-object-signature">loss=None</code>, <code class="mkapi-object-signature">gpu=False</code>, <code class="mkapi-object-signature">precision=32</code>, <code class="mkapi-object-signature">amp_level=&#39;O1&#39;</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.nnabla.trainer#ivory.nnabla.trainer.Trainer" title="Source for ivory.nnabla.trainer.Trainer">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section bases">
+      <div class="mkapi-section-name bases">
+          <span class="mkapi-section-name-body bases">Bases</span> 
         </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.nnabla.trainer.Trainer.train_step">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">train_step</code><code class="mkapi-node-signature">(run, index, input, target)</code>
-        
-      
+      <div class="mkapi-section-body bases">
+<span class="mkapi-base"><a href="../ivory.core/#ivory.core.trainer.Trainer">ivory.core.trainer.Trainer</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core/#ivory.core.state.State">ivory.core.state.State</a></span>
+</div>
+    </div>
+  <div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Trainer(epoch: int = -1, epochs: int = 1, global_step: int = -1, batch_size: int = 32, shuffle: bool = True, dataloaders: str = 'ivory.nnabla.data.DataLoaders', verbose: int = 1, loss: Union[Callable, NoneType] = None, gpu: bool = False, precision: int = 32, amp_level: str = 'O1')</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">epoch</code>
+<span class="mkapi-item-type">(int, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">epochs</code>
+<span class="mkapi-item-type">(int, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">global_step</code>
+<span class="mkapi-item-type">(int, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">batch_size</code>
+<span class="mkapi-item-type">(int, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">shuffle</code>
+<span class="mkapi-item-type">(bool, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">dataloaders</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">verbose</code>
+<span class="mkapi-item-type">(int, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">loss</code>
+<span class="mkapi-item-type">(callable, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">gpu</code>
+<span class="mkapi-item-type">(bool, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">precision</code>
+<span class="mkapi-item-type">(int, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">amp_level</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section attributes">
+      <div class="mkapi-section-name attributes">
+          <span class="mkapi-section-name-body attributes">Attributes</span> 
+        </div>
+      <div class="mkapi-section-body attributes"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">amp_level</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">batch_size</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">dataloaders</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">epoch</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">epochs</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">global_step</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">gpu</code>
+<span class="mkapi-item-type">(bool)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">loss</code>
+<span class="mkapi-item-type">(callable, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">precision</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">shuffle</code>
+<span class="mkapi-item-type">(bool)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">verbose</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section methods">
+      <div class="mkapi-section-name methods">
+          <span class="mkapi-section-name-body methods">Methods</span> 
+        </div>
+      <div class="mkapi-section-body methods"><ul class="mkapi-items">
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.trainer.Trainer.start">start</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">run</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Starts a train or test loop.<a class="mkapi-src-link" href="../source/ivory.core.trainer#ivory.core.trainer.Trainer.start" title="Source for ivory.core.trainer.Trainer.start">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.nnabla.trainer.Trainer.test_step">test_step</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">run</code>, <code class="mkapi-object-signature">index</code>, <code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">target</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Performs a single test step.<a class="mkapi-src-link" href="../source/ivory.nnabla.trainer#ivory.nnabla.trainer.Trainer.test_step" title="Source for ivory.nnabla.trainer.Trainer.test_step">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.nnabla.trainer.Trainer.train_step">train_step</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">run</code>, <code class="mkapi-object-signature">index</code>, <code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">target</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Performs a single train step.<a class="mkapi-src-link" href="../source/ivory.nnabla.trainer#ivory.nnabla.trainer.Trainer.train_step" title="Source for ivory.nnabla.trainer.Trainer.train_step">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.nnabla.trainer.Trainer.val_step">val_step</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">run</code>, <code class="mkapi-object-signature">index</code>, <code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">target</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Performs a single validation step.<a class="mkapi-src-link" href="../source/ivory.nnabla.trainer#ivory.nnabla.trainer.Trainer.val_step" title="Source for ivory.nnabla.trainer.Trainer.val_step">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
+
+  <div class="mkapi-members">
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.trainer.Trainer.start">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoretrainertrainerstart" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core/#ivory.core.trainer.Trainer.start">start</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">run</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.trainer#ivory.core.trainer.Trainer.start" title="Source for ivory.core.trainer.Trainer.start">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Starts a train or test loop.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">run</code>
+<span class="mkapi-item-type">(<a href="../ivory.core.run/#ivory.core.run.Run">Run</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">a run instance.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.nnabla.trainer.Trainer.train_step">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorynnablatrainertrainertrain_step" class="mkapi-object-body method"><code class="mkapi-object-name">train_step</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">run</code>, <code class="mkapi-object-signature">index</code>, <code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">target</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.nnabla.trainer#ivory.nnabla.trainer.Trainer.train_step" title="Source for ivory.nnabla.trainer.Trainer.train_step">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Performs a single train step.</p></div>
     </div>
-  
-</div>
-  
-</div>
-
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
         </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.nnabla.trainer.Trainer.val_step">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">val_step</code><code class="mkapi-node-signature">(run, index, input, target)</code>
-        
-      
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">run</code>
+<span class="mkapi-item-type">(<a href="../ivory.core.run/#ivory.core.run.Run">Run</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">index</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">input</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">target</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.nnabla.trainer.Trainer.val_step">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorynnablatrainertrainerval_step" class="mkapi-object-body method"><code class="mkapi-object-name">val_step</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">run</code>, <code class="mkapi-object-signature">index</code>, <code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">target</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.nnabla.trainer#ivory.nnabla.trainer.Trainer.val_step" title="Source for ivory.nnabla.trainer.Trainer.val_step">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Performs a single validation step.</p></div>
     </div>
-  
-</div>
-  
-</div>
-
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
         </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.nnabla.trainer.Trainer.test_step">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">test_step</code><code class="mkapi-node-signature">(run, index, input, target)</code>
-        
-      
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">run</code>
+<span class="mkapi-item-type">(<a href="../ivory.core.run/#ivory.core.run.Run">Run</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">index</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">input</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">target</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.nnabla.trainer.Trainer.test_step">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorynnablatrainertrainertest_step" class="mkapi-object-body method"><code class="mkapi-object-name">test_step</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">run</code>, <code class="mkapi-object-signature">index</code>, <code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">target</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.nnabla.trainer#ivory.nnabla.trainer.Trainer.test_step" title="Source for ivory.nnabla.trainer.Trainer.test_step">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Performs a single test step.</p></div>
     </div>
-  
-</div>
-  
-</div>
-
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
         </div>
-      
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">run</code>
+<span class="mkapi-item-type">(<a href="../ivory.core.run/#ivory.core.run.Run">Run</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">index</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">input</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">target</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
     </div>
   
-</div>
-</div>
+  </div>
+
+</div></div>
                 <footer>
     <div class="footer-buttons">
-        <div class="previous"><a href="../ivory.core.run/" title="run"><span>Previous</span></a></div>
+        <div class="previous"><a href="../ivory.nnabla/" title="ivory.nnabla"><span>Previous</span></a></div>
     </div>
     <div class="footer-note">
         <p>

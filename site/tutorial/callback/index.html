@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/theme.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../css/mkapi-ivory.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/pheasant.css">
@@ -66,25 +67,28 @@
     <li class="toctree-l2"><a class="nav-item" href="../library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../cli/">Command Line Interface</a></li>
 </ul></li>
-                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
 <ul class="subnav">
     <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.early_stopping/">early_stopping</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.metrics/">metrics</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.pruning/">pruning</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.results/">results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.results/">ivory.callbacks.results</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.base/">base</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.client/">client</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.data/">data</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.run/">run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.run/">ivory.core.run</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.nnabla.trainer/">trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
 </ul></li>
 </ul></li>
                 </ul>
@@ -110,16 +114,16 @@
 </ul>
 </nav>
                 <div id="content">
-<h1 id="callback-system"><span class="pheasant-header"><span class="header"><span class="title">Callback System</span></span></span></h1>
-<h2 id="basics"><span class="pheasant-header"><span class="header"><span class="title">Basics</span></span></span></h2>
+<h1 id="callback-system">Callback System</h1>
+<h2 id="basics">Basics</h2>
 <p>Ivory implements a simple but powerful callback system.</p>
 <p>Here is the list of callback functions in the order of invocation:</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory.core.base
 
 ivory.core.base.Callback.METHODS</code></pre></div>
 <div class="report"><p><span class="count">[2]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.08s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;on_init_begin&#39;,
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.37s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;on_init_begin&#39;,
  &#39;on_init_end&#39;,
  &#39;on_fit_begin&#39;,
  &#39;on_epoch_begin&#39;,
@@ -139,34 +143,34 @@ ivory.core.base.Callback.METHODS</code></pre></div>
         print(f&#39;on_fit_begin is called from id={id(run)}&#39;)
         # Do something with `run`.</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.09s</span>)</span></p></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.38s</span>)</span></p></div></div></div></div>
 
 <p>To invoke callback functions, create a <code>CallbackCaller</code> instance.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller = ivory.core.base.CallbackCaller(simple=SimpleCallback())
 caller</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.09s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">CallbackCaller(num_instances=1)</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.38s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">CallbackCaller(num_instances=1)</code></pre></div></div></div></div>
 
 <p>The number of registered instances is 1.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(caller)</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.09s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;simple&#39;]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.38s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;simple&#39;]</code></pre></div></div></div></div>
 
 <p>Then call <code>CallbackCaller.create_callbacks()</code> to build a callback network.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller.create_callbacks()
 caller</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.10s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">CallbackCaller(num_instances=13)</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.39s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">CallbackCaller(num_instances=13)</code></pre></div></div></div></div>
 
 <p>The number of instances increased up to 13.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(caller)</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.10s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;simple&#39;,
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.39s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[&#39;simple&#39;,
  &#39;on_init_begin&#39;,
  &#39;on_init_end&#39;,
  &#39;on_fit_begin&#39;,
@@ -183,30 +187,30 @@ caller</code></pre></div>
 <p>Callback functions are added to the caller instance. Let's inspect some callback functions.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller.on_init_begin</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.10s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Callback([])</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.40s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Callback([])</code></pre></div></div></div></div>
 
 <p>This is an empty callback because the caller has no instances that define the <code>on_init_begin()</code>. On the other hand,</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller.on_fit_begin</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.11s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Callback([&#39;simple&#39;])</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.40s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Callback([&#39;simple&#39;])</code></pre></div></div></div></div>
 
 <p>The <code>simple</code> instance is registered as a receiver of the <code>on_fit_begin()</code>. We can call this.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">caller.on_fit_begin()</code></pre></div>
 <div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.11s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
-      <pre><code class="nohighlight">on_fit_begin is called from id=1132642829000</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.40s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+      <pre><code class="nohighlight">on_fit_begin is called from id=1375756371208</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">id(caller)</code></pre></div>
 <div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.12s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">1132642829000</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.41s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">1375756371208</code></pre></div></div></div></div>
 
 <p>This caller-receiver network among arbitrary instance collection builds a complex machine learning workflow.</p>
 <p><code>Run</code> class is a subclass of the <code>CallbackCaller</code> and performs more library-specific process. We uses <code>Run</code> below.</p>
-<h2 id="example-callback-results"><span class="pheasant-header"><span class="header"><span class="title">Example Callback: Results</span></span></span></h2>
+<h2 id="example-callback-results">Example Callback: Results</h2>
 <p>To work with the <code>Results</code> callback, we create a set of data and a model. For more details about the following code, see <a href="../instance">Creating Instance</a> section.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import yaml
 from ivory.core.instance import create_instance
@@ -231,8 +235,8 @@ model:
 datasets = create(doc, &#39;datasets&#39;)
 model = create(doc, &#39;model&#39;)</code></pre></div>
 <div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">7.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.12s</span>)</span></p></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">8.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.42s</span>)</span></p></div></div></div></div>
 
 <p>The <code>Results</code> callback stores index, output, and target data. To save memory, a <code>Results</code> instance ignores input data.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python"># import ivory.callbacks.results  # For Scikit-learn or TensorFlow.
@@ -241,8 +245,8 @@ import ivory.torch.results
 results = ivory.torch.results.Results()
 results</code></pre></div>
 <div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.13s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Results([])</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.42s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Results([])</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory.core.run
 
@@ -254,8 +258,8 @@ run = ivory.core.run.Run(
 run.create_callbacks()
 run</code></pre></div>
 <div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.13s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(num_instances=15)</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.43s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Run(num_instances=15)</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python"># A helper function
 def print_callbacks(obj):
@@ -265,8 +269,8 @@ def print_callbacks(obj):
 
 print_callbacks(results)  </code></pre></div>
 <div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">9.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.14s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">8.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.43s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">on_train_begin
 on_train_end
 on_val_end
@@ -298,50 +302,50 @@ run.on_epoch_end()
 
 results</code></pre></div>
 <div class="report"><p><span class="count">[16]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">9.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.15s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Results([&#39;train&#39;, &#39;val&#39;])</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">10.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.44s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Results([&#39;train&#39;, &#39;val&#39;])</code></pre></div></div></div></div>
 
 <p>We performed a train and validation loop so that the <code>Results</code> instance has these data, but doesn't have test data. </p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.train</code></pre></div>
 <div class="report"><p><span class="count">[17]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.15s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dict([&#39;index&#39;, &#39;output&#39;, &#39;target&#39;])</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.45s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Dict([&#39;index&#39;, &#39;output&#39;, &#39;target&#39;])</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.train.index  # The length is 4 x 3.</code></pre></div>
 <div class="report"><p><span class="count">[18]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.16s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([ 0,  2,  3,  4,  5,  6,  7, 10, 12, 13, 15, 16])</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.45s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([ 0,  2,  3,  4,  5,  6,  7, 10, 12, 13, 15, 16])</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.val.index  # The length is 4 x 2.</code></pre></div>
 <div class="report"><p><span class="count">[19]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.16s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([ 1,  8, 14, 27, 30, 31, 34, 45])</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">3.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.45s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([ 1,  8, 14, 27, 30, 31, 34, 45])</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.val.output</code></pre></div>
 <div class="report"><p><span class="count">[20]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.16s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[-0.00151214],
-       [-0.00800011],
-       [ 0.00620469],
-       [-0.00066443],
-       [ 0.01552606],
-       [-0.00894655],
-       [-0.00894655],
-       [ 0.03874946]], dtype=float32)</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.46s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[-0.19664028],
+       [-0.18804704],
+       [-0.18011682],
+       [-0.1660739 ],
+       [-0.19168824],
+       [-0.1673036 ],
+       [-0.20202819],
+       [-0.18093993]], dtype=float32)</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">results.val.target</code></pre></div>
 <div class="report"><p><span class="count">[21]</span>
-<span class="start">2020-06-01 16:02:03</span> (<span class="time">3.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">6.17s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[ 2.0068963],
-       [11.300791 ],
-       [11.222835 ],
-       [15.203695 ],
-       [13.074032 ],
-       [ 5.0099564],
-       [ 9.623201 ],
-       [ 3.5006502]], dtype=float32)</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:39</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">6.46s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">array([[ 9.582911 ],
+       [ 8.156037 ],
+       [ 5.7045836],
+       [ 3.401937 ],
+       [ 7.614189 ],
+       [ 3.2392535],
+       [15.3450165],
+       [ 4.47484  ]], dtype=float32)</code></pre></div></div></div></div>
 
-<h2 id="other-callback"><span class="pheasant-header"><span class="header"><span class="title">Other Callback</span></span></span></h2>
+<h2 id="other-callback">Other Callback</h2>
 <p>There are several callback such as <code>Metrics</code>, <code>Monitor</code>, <em>etc.</em> We will learn about them in next <a href="../training">Training a Model</a> tutorial.</p></div>
                 <footer>
     <div class="footer-buttons">

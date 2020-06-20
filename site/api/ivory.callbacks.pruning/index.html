@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="daizutabi">
     <link rel="shortcut icon" href="../../img/favicon.ico">
-    <title>pruning &mdash; Ivory</title>
+    <title>ivory.callbacks.pruning &mdash; Ivory</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/theme.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../css/mkapi-ivory.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/pheasant.css">
@@ -61,27 +62,31 @@
     <li class="toctree-l2"><a class="nav-item" href="../../tutorial/library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../../tutorial/cli/">Command Line Interface</a></li>
 </ul></li>
-                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
 <ul class="subnav">
     <li class="toctree-l2 current"><button class="section nav-item">ivory.callbacks</button>
 <ul class="subnav">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">early_stopping</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">metrics</a></li>
-    <li class="toctree-l3 current"><a class="nav-item current" href="./">pruning</a>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3 current"><a class="nav-item current" href="./">ivory.callbacks.pruning</a>
 <ul class="subnav">
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycallbackspruningpruning">Pruning</a></li>
 </ul></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">ivory.callbacks.results</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">base</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">client</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">data</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">ivory.core.run</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
 </ul></li>
 </ul></li>
                 </ul>
@@ -103,69 +108,95 @@
             <div id="main">
                 <nav class="breadcrumbs">
 <ul>
-    <li>Python API &raquo; </li><li>ivory.callbacks</li>
+    <li>API &raquo; </li><li>ivory.callbacks</li>
 </ul>
 </nav>
                 <div id="content">
-<h1 id="ivorycallbackspruning"><span class="pheasant-header"><span class="header"><span class="title"><span class="mkapi-header mkapi-header-module" id="ivory.callbacks.pruning">IVORY.CALLBACKS.PRUNING</span></span></span></span></h1>
-
-<div class="mkapi-node mkapi-headless mkapi-node-depth-0">
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
+<div class="mkapi-node" id="ivory.callbacks.pruning">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h1 id="ivorycallbackspruning" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="../ivory.callbacks/#ivory.callbacks">IVORY.CALLBACKS</a>.</span><span class="mkapi-object-name">PRUNING</span></h1>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.callbacks.pruning#ivory.callbacks.pruning" title="Source for ivory.callbacks.pruning">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Pruning class to prune unpromising trials.</p></div>
     </div>
-  
-</div>
-</div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="dataclass"><code class="mkapi-item-name"><a href="#ivory.callbacks.pruning.Pruning">Pruning</a></code>
 
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Callback to prune unpromising trials.<a class="mkapi-src-link" href="../source/ivory.callbacks.pruning#ivory.callbacks.pruning.Pruning" title="Source for ivory.callbacks.pruning.Pruning">&lt;/&gt;</a></span></li>
 
-
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.callbacks.pruning.Pruning">
-  <div class="mkapi-node-header mkapi-node-header-dataclass">
-    <div class="mkapi-node-kind mkapi-node-kind-dataclass">DATACLASS</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">ivory.callbacks.pruning.Pruning</code><code class="mkapi-node-signature">(trial=None, metric=&#39;&#39;)</code>
-        
-      
-    </div>
-  </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
-      <div class="mkapi-section-body"><p>Callback to prune unpromising trials.</p></div>
-    </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
-
-  <li><code class="mkapi-args-name">trial</code>
-         <span class="mkapi-args-type">(Union[optuna.trial.Trial, NoneType], optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">e
-.</span></li>
-
-  <li><code class="mkapi-args-name">metric</code>
-         <span class="mkapi-args-type">(str, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">`</span></li>
 
 </ul></div>
     </div>
-  
+  </div>
+
 </div>
-  
+
+<div class="mkapi-node" id="ivory.callbacks.pruning.Pruning">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object dataclass code top">
+    <div class="mkapi-object-kind dataclass top">dataclass</div>
+    <h2 id="ivorycallbackspruningpruning" class="mkapi-object-body dataclass top"><code class="mkapi-object-prefix"><a href="#ivory.callbacks.pruning">ivory.callbacks.pruning</a>.</code><code class="mkapi-object-name">Pruning</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">trial=None</code>, <code class="mkapi-object-signature">metric=&#39;&#39;</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.callbacks.pruning#ivory.callbacks.pruning.Pruning" title="Source for ivory.callbacks.pruning.Pruning">&lt;/&gt;</a>
+  </div>
 </div>
-</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Callback to prune unpromising trials.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">trial</code>
+<span class="mkapi-item-type">(Trial, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">A <code>Trial</code> corresponding to the current evaluation of the
+objective function.</span></li>
+
+<li><code class="mkapi-item-name">metric</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">An evaluation metric for pruning, e.g., <code>val_loss</code></span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section attributes">
+      <div class="mkapi-section-name attributes">
+          <span class="mkapi-section-name-body attributes">Attributes</span> 
+        </div>
+      <div class="mkapi-section-body attributes"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">metric</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">An evaluation metric for pruning, e.g., <code>val_loss</code></span></li>
+
+<li><code class="mkapi-item-name">trial</code>
+<span class="mkapi-item-type">(Trial, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">A <code>Trial</code> corresponding to the current evaluation of the
+objective function.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div></div>
                 <footer>
     <div class="footer-buttons">
-        <div class="previous"><a href="../ivory.callbacks.metrics/" title="metrics"><span>Previous</span></a></div>
-        <div class="next"><a href="../ivory.callbacks.results/" title="results"><span>Next</span></a></div>
+        <div class="previous"><a href="../ivory.callbacks.metrics/" title="ivory.callbacks.metrics"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.callbacks.results/" title="ivory.callbacks.results"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>

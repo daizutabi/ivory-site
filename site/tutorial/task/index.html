@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/theme.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../css/mkapi-ivory.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/pheasant.css">
@@ -65,25 +66,28 @@
     <li class="toctree-l2"><a class="nav-item" href="../library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../cli/">Command Line Interface</a></li>
 </ul></li>
-                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
 <ul class="subnav">
     <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.early_stopping/">early_stopping</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.metrics/">metrics</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.pruning/">pruning</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.results/">results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.results/">ivory.callbacks.results</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.base/">base</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.client/">client</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.data/">data</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.run/">run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.run/">ivory.core.run</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.nnabla.trainer/">trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
 </ul></li>
 </ul></li>
                 </ul>
@@ -109,8 +113,8 @@
 </ul>
 </nav>
                 <div id="content">
-<h1 id="multiple-runs"><span class="pheasant-header"><span class="header"><span class="title">Multiple Runs</span></span></span></h1>
-<h2 id="task"><span class="pheasant-header"><span class="header"><span class="title">Task</span></span></span></h2>
+<h1 id="multiple-runs">Multiple Runs</h1>
+<h2 id="task">Task</h2>
 <p>Ivory implements a special run class <code>Task</code> that controls multiple nested runs. <code>Task</code> is useful for parameter search or cross validation.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">import ivory
 
@@ -118,26 +122,26 @@ client = ivory.create_client(&#34;examples&#34;)  # Set the working directory
 task = client.create_task(&#39;torch&#39;)  # Or, experiment.create_task()
 task</code></pre></div>
 <div class="report"><p><span class="count">[3]</span>
-<span class="start">2020-06-01 16:02:13</span> (<span class="time">46.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">15.6s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
-      <pre><code class="nohighlight">[I 200601 16:02:13 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Task(id=&#39;36b41cdfb32f4251a60a4937f400d825&#39;, name=&#39;task#0&#39;, num_instances=3)</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:48</span> (<span class="time">45.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.7s</span>)</span></p></div></div><div class="cell jupyter stderr"><div class="code">
+      <pre><code class="nohighlight">[I 200620 15:23:48 tracker:48] A new experiment created with name: &#39;torch&#39;</code></pre></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">Task(id=&#39;ff42564ad6bf4384a93355441e17e3ae&#39;, name=&#39;task#0&#39;, num_instances=3)</code></pre></div></div></div></div>
 
 <p>The <code>Task</code> class has two functions to generate multiple runs: <code>Task.prodcut()</code> and <code>Task.chain()</code>. These two function have the same functionality as <a href="https://docs.python.org/3/library/itertools.html"><code>itertools</code></a> of Python starndard library.</p>
-<h3 id="product"><span class="pheasant-header"><span class="header"><span class="title">Product</span></span></span></h3>
+<h3 id="product">Product</h3>
 <p>The <code>Task.prodcut()</code> makes an iterator that returns runs from cartesian product of input parameters.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
 # verbose=0: No progress bar.
 runs = task.product(fold=range(2), factor=[0.5, 0.7], verbose=0)
 runs</code></pre></div>
 <div class="report"><p><span class="count">[4]</span>
-<span class="start">2020-06-01 16:02:13</span> (<span class="time">37.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">15.6s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.product at 0x0000010990CD9B48&gt;</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:48</span> (<span class="time">38.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">15.7s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.product at 0x0000014201493248&gt;</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
     pass  # Do somthing, for example, run.start()</code></pre></div>
 <div class="report"><p><span class="count">[5]</span>
-<span class="start">2020-06-01 16:02:13</span> (<span class="time">518ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">16.1s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-06-20 15:23:48</span> (<span class="time">514ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">16.3s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#0] fold=0 factor=0.5
 [run#1] fold=0 factor=0.7
 [run#2] fold=1 factor=0.5
@@ -149,14 +153,14 @@ runs = task.product(fold=range(2), factor=[0.5, 0.7], lr=1e-4, verbose=0)
 for run in runs:
     pass  # Do somthing, for example, run.start()</code></pre></div>
 <div class="report"><p><span class="count">[6]</span>
-<span class="start">2020-06-01 16:02:13</span> (<span class="time">608ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">16.8s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-06-20 15:23:49</span> (<span class="time">607ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">16.9s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#4] lr=0.0001 fold=0 factor=0.5
 [run#5] lr=0.0001 fold=0 factor=0.7
 [run#6] lr=0.0001 fold=1 factor=0.5
 [run#7] lr=0.0001 fold=1 factor=0.7</code></pre></div></div></div></div>
 
-<h3 id="chain"><span class="pheasant-header"><span class="header"><span class="title">Chain</span></span></span></h3>
+<h3 id="chain">Chain</h3>
 <p>The <code>Task.chain()</code> makes an iterator that returns runs from the first input paramter until it is exhausted, then proceeds to the next parameter, until all of the parameters are exhausted. Other parameters have default values if they don't be specified by additional key-value pairs.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">task = client.create_task(&#39;torch&#39;)
 runs = task.chain(
@@ -168,14 +172,14 @@ runs = task.chain(
     verbose=0)
 runs</code></pre></div>
 <div class="report"><p><span class="count">[7]</span>
-<span class="start">2020-06-01 16:02:14</span> (<span class="time">65.0ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">16.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.chain at 0x0000010990C7D9C8&gt;</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:50</span> (<span class="time">65.0ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">16.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">&lt;generator object Task.chain at 0x0000014201493148&gt;</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">for run in runs:
     pass  # Do somthing, for example, run.start()</code></pre></div>
 <div class="report"><p><span class="count">[8]</span>
-<span class="start">2020-06-01 16:02:14</span> (<span class="time">912ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">17.7s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-06-20 15:23:50</span> (<span class="time">908ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">17.8s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#8] batch_size=32 fold=0
 [run#9] batch_size=32 fold=1
 [run#10] batch_size=32 factor=0.5
@@ -195,8 +199,8 @@ for run in runs:
     pass  # Do somthing, for example, run.start()
     # We do nothing, so the first values are used.</code></pre></div>
 <div class="report"><p><span class="count">[9]</span>
-<span class="start">2020-06-01 16:02:15</span> (<span class="time">1.08s</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
+<span class="start">2020-06-20 15:23:51</span> (<span class="time">1.07s</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter stdout"><div class="code">
       <pre><code class="nohighlight">[run#14] fold=0
 [run#15] fold=1
 [run#16] factor=0.5 fold=0
@@ -204,66 +208,66 @@ for run in runs:
 [run#18] lr=0.0001 fold=0 factor=0.5
 [run#19] lr=0.001 fold=0 factor=0.5</code></pre></div></div></div></div>
 
-<h2 id="range"><span class="pheasant-header"><span class="header"><span class="title">Range</span></span></span></h2>
+<h2 id="range">Range</h2>
 <p>Ivory provides the <code>ivory.utils.range.Range</code> class for parameter ranging. This
 class can be used as the standard <code>range</code>, but more flexible, especially for the float type.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">from ivory.utils.range import Range
 
 list(Range(6))  # The stop value is included.</code></pre></div>
 <div class="report"><p><span class="count">[10]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0, 1, 2, 3, 4, 5, 6]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0, 1, 2, 3, 4, 5, 6]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 6))  # Start and stop.</code></pre></div>
 <div class="report"><p><span class="count">[11]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, 2))  # Step size.</code></pre></div>
 <div class="report"><p><span class="count">[12]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7, 9]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7, 9]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(3, 10, num=4))  # Sampling size.</code></pre></div>
 <div class="report"><p><span class="count">[13]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 8, 10]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 8, 10]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, 0.25))  # float type.</code></pre></div>
 <div class="report"><p><span class="count">[14]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(0.0, 1.0, num=5))  # Sampling size</code></pre></div>
 <div class="report"><p><span class="count">[15]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(1e-3, 1e2, num=6, log=True))  # Log scale</code></pre></div>
 <div class="report"><p><span class="count">[16]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div>
 
 <p>A <code>Range</code> instance can be created from a string.</p>
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;3-7&#39;))  # &lt;start&gt;-&lt;stop&gt;</code></pre></div>
 <div class="report"><p><span class="count">[17]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">4.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6, 7]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 4, 5, 6, 7]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;3-7-2&#39;)) # &lt;start&gt;-&lt;stop&gt;-&lt;step&gt;</code></pre></div>
 <div class="report"><p><span class="count">[18]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.8s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7]</code></pre></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">5.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[3, 5, 7]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;0.0-1.0:5&#39;)) # &lt;start&gt;-&lt;stop&gt;:&lt;num&gt;</code></pre></div>
 <div class="report"><p><span class="count">[19]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">5.00ms</span>)
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">4.00ms</span>)
 <span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.0, 0.25, 0.5, 0.75, 1.0]</code></pre></div></div></div></div>
 
 <div class="pheasant-fenced-code"><div class="cached"><div class="cell jupyter input"><div class="code"><pre><code class="python">list(Range(&#39;1e-3_1e2:6.log&#39;))  # &#39;_&#39; instead of &#39;-&#39;, log scale</code></pre></div>
 <div class="report"><p><span class="count">[20]</span>
-<span class="start">2020-06-01 16:02:16</span> (<span class="time">5.00ms</span>)
-<span class="right"><span class="kernel">python3</span> (<span class="total">18.9s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div></div>
+<span class="start">2020-06-20 15:23:52</span> (<span class="time">4.00ms</span>)
+<span class="right"><span class="kernel">python3</span> (<span class="total">19.0s</span>)</span></p></div></div><div class="cell jupyter output"><div class="code"><pre><code class="nohighlight">[0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</code></pre></div></div></div></div></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../core/" title="Ivory Core Entities"><span>Previous</span></a></div>

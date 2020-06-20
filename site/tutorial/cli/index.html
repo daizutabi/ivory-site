@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/theme.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../css/mkapi-ivory.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/pheasant.css">
@@ -63,25 +64,28 @@
 <ul class="subnav">
 </ul></li>
 </ul></li>
-                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
 <ul class="subnav">
     <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.early_stopping/">early_stopping</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.metrics/">metrics</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.pruning/">pruning</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.results/">results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.callbacks.results/">ivory.callbacks.results</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.base/">base</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.client/">client</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.data/">data</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.run/">run</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.core.run/">ivory.core.run</a></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.nnabla.trainer/">trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../api/ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
 </ul></li>
 </ul></li>
                 </ul>
@@ -91,7 +95,7 @@
         <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
     </div>
     <div class="previous"><a href="../library/">&laquo; Previous</a></div>
-    <div class="next"><a href="../../api/ivory.callbacks.early_stopping/">Next &raquo;</a></div>
+    <div class="next"><a href="../../api/ivory.callbacks/">Next &raquo;</a></div>
 </div>
         </aside>
         <div id="spacer"><button class="arrow"></button></div>
@@ -107,7 +111,7 @@
 </ul>
 </nav>
                 <div id="content">
-<h1 id="command-line-interface"><span class="pheasant-header"><span class="header"><span class="title">Command Line Interface</span></span></span></h1>
+<h1 id="command-line-interface">Command Line Interface</h1>
 <p>If you define data and model, and prepare a YAML parameter file, you don't need to write another Python script code to invoke runs. Ivory's command line interface can do it.</p>
 <p>For cross validation:</p>
 <div class="pheasant-fenced-code"><div class="cell embed terminal"><div class="code"><pre><code class="bash">$ ivory run torch fold=0-4</code></pre></div></div></div>
@@ -125,7 +129,7 @@
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../library/" title="Library Comparison"><span>Previous</span></a></div>
-        <div class="next"><a href="../../api/ivory.callbacks.early_stopping/" title="early_stopping"><span>Next</span></a></div>
+        <div class="next"><a href="../../api/ivory.callbacks/" title="ivory.callbacks"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>

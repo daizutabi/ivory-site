@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>ivory.callbacks &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../css/mkapi-ivory.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.3.1</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/instance/">Creating Instances</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/model/">Model Structure</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/callback/">Callback System</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/training/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/core/">Ivory Core Entities</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/task/">Multiple Runs</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/ui/">Tracking UI</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/tracking/">Tracking Runs with Ivory</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/library/">Library Comparison</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/cli/">Command Line Interface</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
+<ul class="subnav">
+    <li class="toctree-l2 current"><button class="section nav-item">ivory.callbacks</button>
+<ul class="subnav">
+    <li class="toctree-l3 current"><a class="nav-item current" href="./">ivory.callbacks</a>
+<ul class="subnav">
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycallbacksearly_stopping">early_stopping</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycallbacksmetrics">metrics</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycallbackspruning">pruning</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycallbacksresults">results</a></li>
+</ul></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">ivory.callbacks.results</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">ivory.core.run</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../../tutorial/cli/">&laquo; Previous</a></div>
+    <div class="next"><a href="../ivory.callbacks.early_stopping/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>API &raquo; </li><li>ivory.callbacks</li>
+</ul>
+</nav>
+                <div id="content">
+<div class="mkapi-node" id="ivory.callbacks">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object package plain top">
+    <div class="mkapi-object-kind package top">PACKAGE</div>
+    <h1 id="ivorycallbacks" class="mkapi-object-body package top"><span class="mkapi-object-prefix">IVORY.</span><span class="mkapi-object-name">CALLBACKS</span></h1>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.callbacks#ivory.callbacks" title="Source for ivory.callbacks">&lt;/&gt;</a>
+  </div>
+</div>
+
+
+</div>
+
+<div class="mkapi-node" id="ivory.callbacks.early_stopping">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h2 id="ivorycallbacksearly_stopping" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="#ivory.callbacks">IVORY.CALLBACKS</a>.</span><span class="mkapi-object-name"><a href="../ivory.callbacks.early_stopping/#ivory.callbacks.early_stopping">EARLY_STOPPING</a></span></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.callbacks.early_stopping#ivory.callbacks.early_stopping" title="Source for ivory.callbacks.early_stopping">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Early stopping when a monitored metric has stopped improving.</p></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="dataclass"><code class="mkapi-item-name"><a href="../ivory.callbacks.early_stopping#ivory.callbacks.early_stopping.EarlyStopping">EarlyStopping</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Early stops a training loop when a monitored metric has stopped improving.<a class="mkapi-src-link" href="../source/ivory.callbacks.early_stopping#ivory.callbacks.early_stopping.EarlyStopping" title="Source for ivory.callbacks.early_stopping.EarlyStopping">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="ivory.callbacks.metrics">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h2 id="ivorycallbacksmetrics" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="#ivory.callbacks">IVORY.CALLBACKS</a>.</span><span class="mkapi-object-name"><a href="../ivory.callbacks.metrics/#ivory.callbacks.metrics">METRICS</a></span></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.callbacks.metrics#ivory.callbacks.metrics" title="Source for ivory.callbacks.metrics">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Metrics to record scores while training.</p></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.callbacks.metrics#ivory.callbacks.metrics.Metrics">Metrics</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Metrics object.<a class="mkapi-src-link" href="../source/ivory.callbacks.metrics#ivory.callbacks.metrics.Metrics" title="Source for ivory.callbacks.metrics.Metrics">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.callbacks.metrics#ivory.callbacks.metrics.BatchMetrics">BatchMetrics</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Metrics object.<a class="mkapi-src-link" href="../source/ivory.callbacks.metrics#ivory.callbacks.metrics.BatchMetrics" title="Source for ivory.callbacks.metrics.BatchMetrics">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="ivory.callbacks.pruning">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h2 id="ivorycallbackspruning" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="#ivory.callbacks">IVORY.CALLBACKS</a>.</span><span class="mkapi-object-name"><a href="../ivory.callbacks.pruning/#ivory.callbacks.pruning">PRUNING</a></span></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.callbacks.pruning#ivory.callbacks.pruning" title="Source for ivory.callbacks.pruning">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Pruning class to prune unpromising trials.</p></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="dataclass"><code class="mkapi-item-name"><a href="../ivory.callbacks.pruning#ivory.callbacks.pruning.Pruning">Pruning</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Callback to prune unpromising trials.<a class="mkapi-src-link" href="../source/ivory.callbacks.pruning#ivory.callbacks.pruning.Pruning" title="Source for ivory.callbacks.pruning.Pruning">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="ivory.callbacks.results">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h2 id="ivorycallbacksresults" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="#ivory.callbacks">IVORY.CALLBACKS</a>.</span><span class="mkapi-object-name"><a href="../ivory.callbacks.results/#ivory.callbacks.results">RESULTS</a></span></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.callbacks.results#ivory.callbacks.results" title="Source for ivory.callbacks.results">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>A container to store training, validation and test results.</p></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.callbacks.results#ivory.callbacks.results.Results">Results</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Results callback stores training, validation and test results.<a class="mkapi-src-link" href="../source/ivory.callbacks.results#ivory.callbacks.results.Results" title="Source for ivory.callbacks.results.Results">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.callbacks.results#ivory.callbacks.results.BatchResults">BatchResults</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Results callback stores training, validation and test results.<a class="mkapi-src-link" href="../source/ivory.callbacks.results#ivory.callbacks.results.BatchResults" title="Source for ivory.callbacks.results.BatchResults">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section functions">
+      <div class="mkapi-section-name functions">
+          <span class="mkapi-section-name-body functions">Functions</span> 
+        </div>
+      <div class="mkapi-section-body functions"><ul class="mkapi-items">
+<li class="function"><code class="mkapi-item-name"><a href="../ivory.callbacks.results#ivory.callbacks.results.concatenate">concatenate</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">iterable</code>, <code class="mkapi-object-signature">callback</code>, <code class="mkapi-object-signature">modes</code>, <code class="mkapi-object-signature">reduction</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(<a href="../ivory.callbacks.results/#ivory.callbacks.results.Results">Results</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a concatenated Results.<a class="mkapi-src-link" href="../source/ivory.callbacks.results#ivory.callbacks.results.concatenate" title="Source for ivory.callbacks.results.concatenate">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../../tutorial/cli/" title="Command Line Interface"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.callbacks.early_stopping/" title="ivory.callbacks.early_stopping"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/mkapi.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

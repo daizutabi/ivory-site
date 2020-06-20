@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <title>ivory.core.data &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../../css/mkapi-ivory.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.3.1</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/instance/">Creating Instances</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/model/">Model Structure</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/callback/">Callback System</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/training/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/core/">Ivory Core Entities</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/task/">Multiple Runs</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/ui/">Tracking UI</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/tracking/">Tracking Runs with Ivory</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/library/">Library Comparison</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../../tutorial/cli/">Command Line Interface</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
+<ul class="subnav">
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.callbacks.results/">ivory.callbacks.results</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.core</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.core.run/">ivory.core.run</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    
+</ul>
+</nav>
+                <div id="content"><div class="mkapi-node">
+<h1 id="" class="mkapi-object mkapi-object-code plain">
+<span class="mkapi-object-kind mkapi-object-kind-code">SOURCE CODE</span>
+<span class="mkapi-object-prefix">IVORY.CORE.</span><span class="mkapi-object-name">DATA</span>
+<span id="ivory.core.data"></span><a class="mkapi-docs-link" href="../../ivory.core.data">DOCS</a>
+</h1>
+
+<div class="mkapi-code">
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Ivory uses four classes for data presentation: `Data`, `Dataset`, `Datasets`,</span>
+<span class="sd">and `DataLoaders`.</span>
+
+<span class="sd">Basically, you only need to define a class that is a subclass of `Data`</span>
+<span class="sd">and use original `Dataset` and `Datasets`. An example parameter YAML file is:</span>
+
+<span class="sd">    datasets:</span>
+<span class="sd">      data:</span>
+<span class="sd">        class: your.Data  # a subclass of ivory.core.data.Data</span>
+<span class="sd">      dataset:</span>
+<span class="sd">      fold: 0</span>
+
+<span class="sd">But if you need, you can define your `Dataset` and/or `Datasets`.</span>
+
+<span class="sd">    datasets:</span>
+<span class="sd">      class: your.Datasets  # a subclass of ivory.core.data.Datasets</span>
+<span class="sd">      data:</span>
+<span class="sd">        class: your.Data  # a subclass of ivory.core.data.Data</span>
+<span class="sd">      dataset:</span>
+<span class="sd">        def: your.Dataset  # a subclass of ivory.core.data.Dataset</span>
+<span class="sd">      fold: 0</span>
+
+<span class="sd">The `DataLoaders` is used internally by `ivory.torch.trainer.Trainer` or</span>
+<span class="sd">`ivory.nnabla.trainer.Trainer` classes to yield a minibatch in training loop.</span>
+
+<span class="sd">Note:</span>
+<span class="sd">    Use a `&#39;def&#39;` key for `dataset` instead of `&#39;class&#39;`.</span>
+<span class="sd">    See [Tutorial](/tutorial/data)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">ivory.core.collections</span>
+<span class="kn">from</span> <span class="nn">ivory.core</span> <span class="kn">import</span> <span class="n">instance</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Data</span><span class="p">:</span><span id="ivory.core.data.Data"></span><a class="mkapi-docs-link" title="ivory.core.data.Data" href="../../ivory.core.data#ivory.core.data.Data">DOCS</a>
+    <span class="sd">&quot;&quot;&quot;Base class to provide data to a `Dataset` instance.</span>
+
+<span class="sd">    To make a subclass, you need to assign the following attributes in</span>
+<span class="sd">    the `Data.init()`:</span>
+
+<span class="sd">    * `index`: Index of samples.</span>
+<span class="sd">    * `input`: Input data.</span>
+<span class="sd">    * `target`: Target data.</span>
+<span class="sd">    * `fold`: Fold number.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cls_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cls_name</span><span class="si">}</span><span class="s2">()&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">num_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">num_test</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span> <span class="o">-</span> <span class="n">num_train</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cls_name</span><span class="si">}</span><span class="s2">(train_size=</span><span class="si">{</span><span class="n">num_train</span><span class="si">}</span><span class="s2">, test_size=</span><span class="si">{</span><span class="n">num_test</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span id="ivory.core.data.Data.init"></span><a class="mkapi-docs-link" title="ivory.core.data.Data.init" href="../../ivory.core.data#ivory.core.data.Data.init">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Initializes `index`, `input`, `target`, and `fold` attributes.</span>
+
+<span class="sd">        The fold number of test data must be `-1`.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            For regression</span>
+
+<span class="sd">                def init(self):</span>
+<span class="sd">                    self.index = np.range(100)</span>
+<span class="sd">                    self.input = np.random.randn(100, 5)</span>
+<span class="sd">                    self.target = np.random.randn(100)</span>
+<span class="sd">                    self.fold = np.random.randint(5)</span>
+<span class="sd">                    self.fold[80:] = -1</span>
+
+<span class="sd">            For classification</span>
+
+<span class="sd">                def init(self):</span>
+<span class="sd">                    self.index = np.range(100)</span>
+<span class="sd">                    self.input = np.random.randn(100, 5)</span>
+<span class="sd">                    self.target = np.random.randint(100, 10)</span>
+<span class="sd">                    self.fold = np.random.randint(5)</span>
+<span class="sd">                    self.fold[80:] = -1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">get_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fold</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span><span id="ivory.core.data.Data.get_index"></span><a class="mkapi-docs-link" title="ivory.core.data.Data.get_index" href="../../ivory.core.data#ivory.core.data.Data.get_index">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Returns index according to the mode and fold.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            mode: Mode name: `&#39;train&#39;`, `&#39;val&#39;`, or `&#39;test&#39;`.</span>
+<span class="sd">            fold: Fold number.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;train&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">index</span><span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">!=</span> <span class="n">fold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;val&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">index</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">==</span> <span class="n">fold</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">index</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span><span id="ivory.core.data.Data.get_input"></span><a class="mkapi-docs-link" title="ivory.core.data.Data.get_input" href="../../ivory.core.data#ivory.core.data.Data.get_input">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Returns input data.</span>
+
+<span class="sd">        By default, this function returns `self.input[index]`. You can override this</span>
+<span class="sd">        behavior in a subclass.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            index (int or 1D-array): Index.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span><span id="ivory.core.data.Data.get_target"></span><a class="mkapi-docs-link" title="ivory.core.data.Data.get_target" href="../../ivory.core.data#ivory.core.data.Data.get_target">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Returns target data.</span>
+
+<span class="sd">        By default, this function returns `self.target[index]`. You can override this</span>
+<span class="sd">        behavior in a subclass.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            index (int or 1D-array): Index.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span><span id="ivory.core.data.Data.get"></span><a class="mkapi-docs-link" title="ivory.core.data.Data.get" href="../../ivory.core.data#ivory.core.data.Data.get">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Returns a tuple of (`index`, `input`, `target`) according to the index.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            index (int or 1D-array): Index.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_input</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_target</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Dataset</span><span class="p">:</span><span id="ivory.core.data.Dataset"></span><a class="mkapi-docs-link" title="ivory.core.data.Dataset" href="../../ivory.core.data#ivory.core.data.Dataset">DOCS</a>
+    <span class="sd">&quot;&quot;&quot;Dataset class represents a set of data for a mode and fold.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data: `Data` instance that provides data to `Dataset` instance.</span>
+<span class="sd">        mode: Mode name: `&#39;train&#39;`, `&#39;val&#39;`, or `&#39;test&#39;`.</span>
+<span class="sd">        fold: Fold number.</span>
+<span class="sd">        transform (callable, optional): Callable to transform the data.</span>
+
+<span class="sd">    The `transform` must take 2 or 3 arguments: (`mode`, `input`, optional</span>
+<span class="sd">    `target`) and return a tuple of (`input`, optional `target`).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">data</span><span class="p">:</span> <span class="n">Data</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">fold</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span id="ivory.core.data.Dataset.init"></span><a class="mkapi-docs-link" title="ivory.core.data.Dataset.init" href="../../ivory.core.data#ivory.core.data.Dataset.init">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Called at initialization. You can add any process in a subclass.&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cls_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cls_name</span><span class="si">}</span><span class="s2">(mode=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="si">!r}</span><span class="s2">, num_samples=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">index</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="o">*</span><span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">index</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="o">*</span><span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">:</span>
+            <span class="nb">input</span><span class="p">,</span> <span class="o">*</span><span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="o">*</span><span class="n">target</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="o">*</span><span class="n">target</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="bp">self</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span><span id="ivory.core.data.Dataset.get"></span><a class="mkapi-docs-link" title="ivory.core.data.Dataset.get" href="../../ivory.core.data#ivory.core.data.Dataset.get">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Returns a tuple of (`index`, `input`, `target`) according to the index.</span>
+
+<span class="sd">        If index is `None`, reutrns all of the data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            index (int or 1D-array, optional): Index.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span><span id="ivory.core.data.Dataset.sample"></span><a class="mkapi-docs-link" title="ivory.core.data.Dataset.sample" href="../../ivory.core.data#ivory.core.data.Dataset.sample">DOCS</a>
+        <span class="sd">&quot;&quot;&quot;Returns a tuple of (`index`, `input`, `target`) randomly sampled.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            n: Size of sampling.</span>
+<span class="sd">            frac: Ratio of sampling.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">index</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="o">*</span><span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[:]</span>
+        <span class="k">if</span> <span class="n">frac</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">*</span> <span class="n">frac</span><span class="p">)</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">))[:</span><span class="n">n</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="o">*</span><span class="n">target</span><span class="p">]])</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Datasets</span><span class="p">(</span><span class="n">ivory</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">Dict</span><span class="p">):</span><span id="ivory.core.data.Datasets"></span><a class="mkapi-docs-link" title="ivory.core.data.Datasets" href="../../ivory.core.data#ivory.core.data.Datasets">DOCS</a>
+    <span class="sd">&quot;&quot;&quot;Dataset class represents a collection of `Dataset` for a fold.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data: `Data` instance that provides data to `Dataset` instance.</span>
+<span class="sd">        dataset: Dataset factory.</span>
+<span class="sd">        fold: Fold number.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        train (Dataset): Train dataset.</span>
+<span class="sd">        val (Dataset): Validation dataset.</span>
+<span class="sd">        test (Dataset): Test dataset.</span>
+<span class="sd">        fold: Fold number.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">data</span><span class="p">:</span> <span class="n">Data</span>
+    <span class="n">dataset</span><span class="p">:</span> <span class="n">Callable</span>
+    <span class="n">fold</span><span class="p">:</span> <span class="nb">int</span>
+
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DataLoaders</span><span class="p">(</span><span class="n">ivory</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">Dict</span><span class="p">):</span><span id="ivory.core.data.DataLoaders"></span><a class="mkapi-docs-link" title="ivory.core.data.DataLoaders" href="../../ivory.core.data#ivory.core.data.DataLoaders">DOCS</a>
+    <span class="sd">&quot;&quot;&quot;DataLoaders class represents a collection of `DataLoader`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        datasets: `Datasets` instance.</span>
+<span class="sd">        batch_size: Batch_size</span>
+<span class="sd">        shuffle: If True, train dataset is shuffled. Validation and test dataset are</span>
+<span class="sd">            not shuffled regardless of this value.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        train (Dataset): Train dataset.</span>
+<span class="sd">        val (Dataset): Validation dataset.</span>
+<span class="sd">        test (Dataset): Test dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">datasets</span><span class="p">:</span> <span class="n">Datasets</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">shuffle</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="n">mode</span><span class="p">],</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="p">)</span>
+            <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">get_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</code></pre></div>
+</div>
+</div></div>
+                <footer>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js"></script>
+    <script src="../../../js/mkapi.js"></script>
+    <script src="../../../js/pheasant.js"></script>
+    <script src="../../../search/main.js"></script>
+</body>
+
+</html>

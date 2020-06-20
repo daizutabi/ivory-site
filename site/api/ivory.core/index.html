@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="daizutabi">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>ivory.core &mdash; Ivory</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../css/mkapi-ivory.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> Ivory</a>
+                </div><div class="version">0.3.1</div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Ivory Documentation</a></li>
+                    <li class="toctree-l1"><a class="nav-item" href="../../quickstart/">Quickstart</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Tutorial</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/data/">Set of Data classes</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/instance/">Creating Instances</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/model/">Model Structure</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/callback/">Callback System</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/training/">Training a Model</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/core/">Ivory Core Entities</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/task/">Multiple Runs</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/tuning/">Hyperparameter Tuning</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/ui/">Tracking UI</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/tracking/">Tracking Runs with Ivory</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/library/">Library Comparison</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../tutorial/cli/">Command Line Interface</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
+<ul class="subnav">
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">ivory.callbacks.results</a></li>
+</ul></li>
+    <li class="toctree-l2 current"><button class="section nav-item">ivory.core</button>
+<ul class="subnav">
+    <li class="toctree-l3 current"><a class="nav-item current" href="./">ivory.core</a>
+<ul class="subnav">
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycorebase">base</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycoreclient">client</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycoredata">data</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycorerun">run</a></li>
+</ul></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.run/">ivory.core.run</a></li>
+</ul></li>
+    <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
+<ul class="subnav hide">
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
+</ul></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../ivory.callbacks.results/">&laquo; Previous</a></div>
+    <div class="next"><a href="../ivory.core.base/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> Ivory</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>API &raquo; </li><li>ivory.core</li>
+</ul>
+</nav>
+                <div id="content">
+<div class="mkapi-node" id="ivory.core">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object package plain top">
+    <div class="mkapi-object-kind package top">PACKAGE</div>
+    <h1 id="ivorycore" class="mkapi-object-body package top"><span class="mkapi-object-prefix">IVORY.</span><span class="mkapi-object-name">CORE</span></h1>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core#ivory.core" title="Source for ivory.core">&lt;/&gt;</a>
+  </div>
+</div>
+
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.base">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h2 id="ivorycorebase" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="#ivory.core">IVORY.CORE</a>.</span><span class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base">BASE</a></span></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base" title="Source for ivory.core.base">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>This module provides base classes for Ivory.</p></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.base#ivory.core.base.Base">Base</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Base class for an entity class such as <code>Client</code>, <code>Experiment</code>, and <code>Run</code>.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Base" title="Source for ivory.core.base.Base">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.base#ivory.core.base.Creator">Creator</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Creator class to create <code>Run</code> instances.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator" title="Source for ivory.core.base.Creator">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.base#ivory.core.base.Callback">Callback</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Callback class for the Ivory callback system.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Callback" title="Source for ivory.core.base.Callback">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.base#ivory.core.base.CallbackCaller">CallbackCaller</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Callback caller class.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.CallbackCaller" title="Source for ivory.core.base.CallbackCaller">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.base#ivory.core.base.Experiment">Experiment</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Experimet class is one of the main classes of Ivory library.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Experiment" title="Source for ivory.core.base.Experiment">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.client">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h2 id="ivorycoreclient" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="#ivory.core">IVORY.CORE</a>.</span><span class="mkapi-object-name"><a href="../ivory.core.client/#ivory.core.client">CLIENT</a></span></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.client#ivory.core.client" title="Source for ivory.core.client">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>This module provides the Ivory Client class that is one of the main classes of
+Ivory library.</p>
+<p>To create an <code>Client</code> instance:</p>
+<pre><code>import ivory
+
+client = ivory.create_client()
+</code></pre>
+<p>Here, the current directory becomes the working directory in which experiment
+YAML files exist. If you want to refer other directory, use:</p>
+<pre><code>client = ivory.create_client('path/to/working_directory')
+</code></pre></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.client#ivory.core.client.Client">Client</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">The Ivory Client class.<a class="mkapi-src-link" href="../source/ivory.core.client#ivory.core.client.Client" title="Source for ivory.core.client.Client">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section functions">
+      <div class="mkapi-section-name functions">
+          <span class="mkapi-section-name-body functions">Functions</span> 
+        </div>
+      <div class="mkapi-section-body functions"><ul class="mkapi-items">
+<li class="function"><code class="mkapi-item-name"><a href="../ivory.core.client#ivory.core.client.create_client">create_client</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code>, <code class="mkapi-object-signature">name</code>, <code class="mkapi-object-signature">tracker</code>, <code class="mkapi-object-signature">tuner</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(<a href="../ivory.core.client/#ivory.core.client.Client">Client</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Creates an Ivory Client instance.<a class="mkapi-src-link" href="../source/ivory.core.client#ivory.core.client.create_client" title="Source for ivory.core.client.create_client">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.data">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h2 id="ivorycoredata" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="#ivory.core">IVORY.CORE</a>.</span><span class="mkapi-object-name"><a href="../ivory.core.data/#ivory.core.data">DATA</a></span></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data" title="Source for ivory.core.data">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Ivory uses four classes for data presentation: <code>Data</code>, <code>Dataset</code>, <code>Datasets</code>,
+and <code>DataLoaders</code>.</p>
+<p>Basically, you only need to define a class that is a subclass of <code>Data</code>
+and use original <code>Dataset</code> and <code>Datasets</code>. An example parameter YAML file is:</p>
+<pre><code>datasets:
+  data:
+    class: your.Data  # a subclass of ivory.core.data.Data
+  dataset:
+  fold: 0
+</code></pre>
+<p>But if you need, you can define your <code>Dataset</code> and/or <code>Datasets</code>.</p>
+<pre><code>datasets:
+  class: your.Datasets  # a subclass of ivory.core.data.Datasets
+  data:
+    class: your.Data  # a subclass of ivory.core.data.Data
+  dataset:
+    def: your.Dataset  # a subclass of ivory.core.data.Dataset
+  fold: 0
+</code></pre>
+<p>The <code>DataLoaders</code> is used internally by <code>ivory.torch.trainer.Trainer</code> or
+<code>ivory.nnabla.trainer.Trainer</code> classes to yield a minibatch in training loop.</p></div>
+    </div>
+  <div class="mkapi-section note">
+      <div class="mkapi-section-name note">
+          <span class="mkapi-section-name-body note">Note</span> 
+        </div>
+      <div class="mkapi-section-body note"><p>Use a <code>'def'</code> key for <code>dataset</code> instead of <code>'class'</code>.
+See <a href="/tutorial/data">Tutorial</a></p></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="dataclass"><code class="mkapi-item-name"><a href="../ivory.core.data#ivory.core.data.Data">Data</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Base class to provide data to a <code>Dataset</code> instance.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Data" title="Source for ivory.core.data.Data">&lt;/&gt;</a></span></li>
+
+<li class="dataclass"><code class="mkapi-item-name"><a href="../ivory.core.data#ivory.core.data.Dataset">Dataset</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Dataset class represents a set of data for a mode and fold.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Dataset" title="Source for ivory.core.data.Dataset">&lt;/&gt;</a></span></li>
+
+<li class="dataclass"><code class="mkapi-item-name"><a href="../ivory.core.data#ivory.core.data.Datasets">Datasets</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Dataset class represents a collection of <code>Dataset</code> for a fold.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.Datasets" title="Source for ivory.core.data.Datasets">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.data#ivory.core.data.DataLoaders">DataLoaders</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">DataLoaders class represents a collection of <code>DataLoader</code>.<a class="mkapi-src-link" href="../source/ivory.core.data#ivory.core.data.DataLoaders" title="Source for ivory.core.data.DataLoaders">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.run">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h2 id="ivorycorerun" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="#ivory.core">IVORY.CORE</a>.</span><span class="mkapi-object-name"><a href="../ivory.core.run/#ivory.core.run">RUN</a></span></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run" title="Source for ivory.core.run">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>This module provides the <code>Run</code> class that is one of the main classes of
+Ivory library. In addition, <code>Task</code> and <code>Study</code> classes are defined, which manages
+multiple runs for cross validation, hyperparameter tuning, and so on.</p>
+<p>To create an <code>Run</code> instance:</p>
+<pre><code>import ivory
+
+client = ivory.create_run('example')
+</code></pre>
+<p>The argument <code>example</code> is an experiment name in which the created run is included.
+Ivory assumes that <code>example.yml</code> or <code>example.yaml</code> file exists under the client's
+working directory.</p>
+<p>You can comfirm the client's working directory by:</p>
+<pre><code>os.path.dirname(client.source_name)
+</code></pre>
+<p>One you got a <code>Run</code> instance. call <code>Run.start()</code> to start training. For test,
+call <code>Run.start('test')</code> instead. Also, you can perform traing and test by one step
+with <code>Run.start('both')</code>.</p></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.run#ivory.core.run.Run">Run</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Run class is one of the main classes of Ivory library.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run" title="Source for ivory.core.run.Run">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.run#ivory.core.run.Task">Task</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Task class creates a parent run that generates multiple runs.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task" title="Source for ivory.core.run.Task">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="../ivory.core.run#ivory.core.run.Study">Study</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Study class create a parent run to manage hyperparameter tuning.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Study" title="Source for ivory.core.run.Study">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../ivory.callbacks.results/" title="ivory.callbacks.results"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.core.base/" title="ivory.core.base"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/mkapi.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

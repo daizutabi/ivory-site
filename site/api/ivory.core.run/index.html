@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="daizutabi">
     <link rel="shortcut icon" href="../../img/favicon.ico">
-    <title>run &mdash; Ivory</title>
+    <title>ivory.core.run &mdash; Ivory</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/theme.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-    <link rel="stylesheet" href="../../css/mkapi.css">
+    <link rel="stylesheet" href="../../css/mkapi-common.css">
+    <link rel="stylesheet" href="../../css/mkapi-ivory.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
     <link rel="stylesheet" href="../../css/pheasant.css">
@@ -61,27 +62,33 @@
     <li class="toctree-l2"><a class="nav-item" href="../../tutorial/library/">Library Comparison</a></li>
     <li class="toctree-l2"><a class="nav-item" href="../../tutorial/cli/">Command Line Interface</a></li>
 </ul></li>
-                    <li class="toctree-l1"><button class="section nav-item">Python API</button>
+                    <li class="toctree-l1"><button class="section nav-item">API</button>
 <ul class="subnav">
     <li class="toctree-l2"><button class="section nav-item hide">ivory.callbacks</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">early_stopping</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">metrics</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">pruning</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">results</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks/">ivory.callbacks</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.early_stopping/">ivory.callbacks.early_stopping</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.metrics/">ivory.callbacks.metrics</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.pruning/">ivory.callbacks.pruning</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.callbacks.results/">ivory.callbacks.results</a></li>
 </ul></li>
     <li class="toctree-l2 current"><button class="section nav-item">ivory.core</button>
 <ul class="subnav">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">base</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">client</a></li>
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">data</a></li>
-    <li class="toctree-l3 current"><a class="nav-item current" href="./">run</a>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core/">ivory.core</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.base/">ivory.core.base</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.client/">ivory.core.client</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.core.data/">ivory.core.data</a></li>
+    <li class="toctree-l3 current"><a class="nav-item current" href="./">ivory.core.run</a>
 <ul class="subnav">
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycorerunrun">Run</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycoreruntask">Task</a></li>
+<li class="toctree-l4"><a class="nav-item toc" href="#ivorycorerunstudy">Study</a></li>
 </ul></li>
 </ul></li>
     <li class="toctree-l2"><button class="section nav-item hide">ivory.nnabla</button>
 <ul class="subnav hide">
-    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">trainer</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla/">ivory.nnabla</a></li>
+    <li class="toctree-l3"><a class="nav-item" href="../ivory.nnabla.trainer/">ivory.nnabla.trainer</a></li>
 </ul></li>
 </ul></li>
                 </ul>
@@ -91,7 +98,7 @@
         <a href="https://github.com/daizutabi/ivory/" class="fa fa-github"> GitHub</a>
     </div>
     <div class="previous"><a href="../ivory.core.data/">&laquo; Previous</a></div>
-    <div class="next"><a href="../ivory.nnabla.trainer/">Next &raquo;</a></div>
+    <div class="next"><a href="../ivory.nnabla/">Next &raquo;</a></div>
 </div>
         </aside>
         <div id="spacer"><button class="arrow"></button></div>
@@ -103,17 +110,22 @@
             <div id="main">
                 <nav class="breadcrumbs">
 <ul>
-    <li>Python API &raquo; </li><li>ivory.core</li>
+    <li>API &raquo; </li><li>ivory.core</li>
 </ul>
 </nav>
                 <div id="content">
-<h1 id="ivorycorerun"><span class="pheasant-header"><span class="header"><span class="title"><span class="mkapi-header mkapi-header-module" id="ivory.core.run">IVORY.CORE.RUN</span></span></span></span></h1>
-
-<div class="mkapi-node mkapi-headless mkapi-node-depth-0">
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
+<div class="mkapi-node" id="ivory.core.run">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">MODULE</div>
+    <h1 id="ivorycorerun" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="../ivory.core/#ivory.core">IVORY.CORE</a>.</span><span class="mkapi-object-name">RUN</span></h1>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run" title="Source for ivory.core.run">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>This module provides the <code>Run</code> class that is one of the main classes of
 Ivory library. In addition, <code>Task</code> and <code>Study</code> classes are defined, which manages
 multiple runs for cross validation, hyperparameter tuning, and so on.</p>
@@ -132,523 +144,1782 @@ working directory.</p>
 call <code>Run.start('test')</code> instead. Also, you can perform traing and test by one step
 with <code>Run.start('both')</code>.</p></div>
     </div>
-  
-</div>
-</div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name"><a href="#ivory.core.run.Run">Run</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Run class is one of the main classes of Ivory library.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run" title="Source for ivory.core.run.Run">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="#ivory.core.run.Task">Task</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Task class creates a parent run that generates multiple runs.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task" title="Source for ivory.core.run.Task">&lt;/&gt;</a></span></li>
+
+<li class="class"><code class="mkapi-item-name"><a href="#ivory.core.run.Study">Study</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Study class create a parent run to manage hyperparameter tuning.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Study" title="Source for ivory.core.run.Study">&lt;/&gt;</a></span></li>
 
 
-
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.run.Run">
-  <div class="mkapi-node-header mkapi-node-header-class">
-    <div class="mkapi-node-kind mkapi-node-kind-class">CLASS</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">ivory.core.run.Run</code><code class="mkapi-node-signature">(params=None, **instances)</code>
-        
-      
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.run.Run">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object class code top">
+    <div class="mkapi-object-kind class top">class</div>
+    <h2 id="ivorycorerunrun" class="mkapi-object-body class top"><code class="mkapi-object-prefix"><a href="#ivory.core.run">ivory.core.run</a>.</code><code class="mkapi-object-name">Run</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params=None</code>, <code class="mkapi-object-signature">**instances</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run" title="Source for ivory.core.run.Run">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section bases">
+      <div class="mkapi-section-name bases">
+          <span class="mkapi-section-name-body bases">Bases</span> 
+        </div>
+      <div class="mkapi-section-body bases">
+<span class="mkapi-base"><a href="../ivory.core.base/#ivory.core.base.CallbackCaller">ivory.core.base.CallbackCaller</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core.base/#ivory.core.base.Creator">ivory.core.base.Creator</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core.base/#ivory.core.base.Base">ivory.core.base.Base</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core/#ivory.core.collections.Dict">ivory.core.collections.Dict</a></span>
+</div>
+    </div>
+  <div class="mkapi-section">
       <div class="mkapi-section-body"><p>Run class is one of the main classes of Ivory library.</p></div>
     </div>
-  
-</div>
-  
-    <div class="mkapi-members">
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.set_tracker">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">set_tracker</code><code class="mkapi-node-signature">(tracker, name)</code>
-        
-      
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter dictionary to create this instance.</span></li>
+
+<li><code class="mkapi-item-name">**instances</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Member instances. Key is its name and value is the member instance.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section attributes">
+      <div class="mkapi-section-name attributes">
+          <span class="mkapi-section-name-body attributes">Attributes</span> 
+        </div>
+      <div class="mkapi-section-body attributes"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">dict</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">id</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Instance ID given by
+<a href="https://www.mlflow.org/docs/latest/tracking.html">MLFlow Tracking</a>.</span></li>
+
+<li><code class="mkapi-item-name">mode</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Instance name.</span></li>
+
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter dictionary that is used to to create
+this instance.</span></li>
+
+<li><code class="mkapi-item-name">source_name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Name of the YAML parameter file that is used to create
+this instance.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section methods">
+      <div class="mkapi-section-name methods">
+          <span class="mkapi-section-name-body methods">Methods</span> 
+        </div>
+      <div class="mkapi-section-body methods"><ul class="mkapi-items">
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.CallbackCaller.create_callbacks">create_callbacks</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Creates callback functions and store them in a dictionary.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.CallbackCaller.create_callbacks" title="Source for ivory.core.base.CallbackCaller.create_callbacks">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.Creator.create_instance">create_instance</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">instance_name</code>, <code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">name</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Creates an member instance of a <code>Run</code> according to arguments.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_instance" title="Source for ivory.core.base.Creator.create_instance">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.Creator.create_params">create_params</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">name</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(dict, dict)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a tuple of (parameter dictionary, update dictionary).<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_params" title="Source for ivory.core.base.Creator.create_params">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.Creator.create_run">create_run</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">name</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(Run)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Creates a <code>Run</code> instance according to arguments.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_run" title="Source for ivory.core.base.Creator.create_run">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.load">load</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(dict(str: any))</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Loads member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load" title="Source for ivory.core.run.Run.load">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.load_state_dict">load_state_dict</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">state_dict</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Loads a state dictionary to all of member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load_state_dict" title="Source for ivory.core.run.Run.load_state_dict">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.save">save</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Saves member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.save" title="Source for ivory.core.run.Run.save">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.set_tracker">set_tracker</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">tracker</code>, <code class="mkapi-object-signature">name</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Sets tracker for tracking.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.set_tracker" title="Source for ivory.core.run.Run.set_tracker">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.start">start</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">mode</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Starts traing and/or test.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.start" title="Source for ivory.core.run.Run.start">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.state_dict">state_dict</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(dict)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a state dictionary for all of member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.state_dict" title="Source for ivory.core.run.Run.state_dict">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
+
+  <div class="mkapi-members">
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.Creator.create_params">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecreatorcreate_params" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.Creator.create_params">create_params</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args=None</code>, <code class="mkapi-object-signature">name=&#39;run&#39;</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; (dict, dict)</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_params" title="Source for ivory.core.base.Creator.create_params">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Returns a tuple of (parameter dictionary, update dictionary).</p>
+<p>The parameter dictionary is deeply copied from original one, then updated
+according to the arguments. The update dictionary includes updated parameter
+only.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">args</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Update dictionary.</span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Run class name in lower case.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional update dictionary.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section examples">
+      <div class="mkapi-section-name examples">
+          <span class="mkapi-section-name-body examples">Examples</span> 
+        </div>
+      <div class="mkapi-section-body examples"><p>Use <code>args</code> for parameters including dots:</p>
+<pre><code>params, update = experiment.create_params(
+    {'hidden_sizes.0': 100}, fold=3
+)
+</code></pre>
+<p>The <code>params</code> is the full parameter dictionary, while the <code>update</code> is a
+part of <code>params</code>, i.e., <code>update = {'hidden_sizes.0': 100, 'fold': 3}</code>.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.Creator.create_run">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecreatorcreate_run" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.Creator.create_run">create_run</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args=None</code>, <code class="mkapi-object-signature">name=&#39;run&#39;</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_run" title="Source for ivory.core.base.Creator.create_run">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Creates a <code>Run</code> instance according to arguments.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">args</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Update dictionary.</span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Run class name in lower case.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional update dictionary.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(Run)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>Created <code>Run</code> instance. The parameter for this instance is the
+    returned dictionary from the
+    <a href="#ivory.core.base.Creator.create_params"><code>create_params()</code></a> function.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.Creator.create_instance">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecreatorcreate_instance" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.Creator.create_instance">create_instance</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">instance_name</code>, <code class="mkapi-object-signature">args=None</code>, <code class="mkapi-object-signature">name=&#39;run&#39;</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_instance" title="Source for ivory.core.base.Creator.create_instance">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Creates an member instance of a <code>Run</code> according to arguments.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">instance_name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Name of a member instance to create.</span></li>
+
+<li><code class="mkapi-item-name">args</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Update dictionary.</span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Run class name in lower case.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional update dictionary.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> 
+        </div>
+      <div class="mkapi-section-body returns"><p>Created instance. The parameter for this instance is the
+    returned directory from the
+    <a href="#ivory.core.base.Creator.create_params"><code>create_params()</code></a> function.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.CallbackCaller.create_callbacks">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecallbackcallercreate_callbacks" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.CallbackCaller.create_callbacks">create_callbacks</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.CallbackCaller.create_callbacks" title="Source for ivory.core.base.CallbackCaller.create_callbacks">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Creates callback functions and store them in a dictionary.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.set_tracker">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunset_tracker" class="mkapi-object-body method"><code class="mkapi-object-name">set_tracker</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">tracker</code>, <code class="mkapi-object-signature">name</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.set_tracker" title="Source for ivory.core.run.Run.set_tracker">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Sets tracker for tracking.</p>
 <p>By setting a tracker, a <code>Run</code> instance can be a run of MLFlow Tracking
 at the same time. MLFlow Tracking gives the Run ID and name for this
 instance.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">tracker</code>
+<span class="mkapi-item-type">(Tracker)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Tracker instance.</span></li>
 
-  <li><code class="mkapi-args-name">tracker</code>
-         <span class="mkapi-args-type">(Tracker)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Tracker instance.</span></li>
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.start">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">start</code><code class="mkapi-node-signature">(mode=&#39;train&#39;)</code>
-        
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.start">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunstart" class="mkapi-object-body method"><code class="mkapi-object-name">start</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">mode=&#39;train&#39;</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.start" title="Source for ivory.core.run.Run.start">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Starts traing and/or test.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">mode</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Mode name: <code>'train'</code>, <code>'test'</code>, or <code>'both'</code>.</span></li>
 
-  <li><code class="mkapi-args-name">mode</code>
-         <span class="mkapi-args-type">(str, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Mode name: <code>'train'</code>, <code>'test'</code>, or <code>'both'</code>.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.state_dict">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">state_dict</code><code class="mkapi-node-signature">()</code>
-        <span class="mkapi-args-type">&#x2192; dict</span>
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.state_dict">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunstate_dict" class="mkapi-object-body method"><code class="mkapi-object-name">state_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; dict</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.state_dict" title="Source for ivory.core.run.Run.state_dict">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Returns a state dictionary for all of member instances.</p></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.load_state_dict">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">load_state_dict</code><code class="mkapi-node-signature">(state_dict)</code>
-        
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.load_state_dict">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunload_state_dict" class="mkapi-object-body method"><code class="mkapi-object-name">load_state_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">state_dict</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load_state_dict" title="Source for ivory.core.run.Run.load_state_dict">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Loads a state dictionary to all of member instances.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">state_dict</code>
+<span class="mkapi-item-type">(dict)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">state dictionary for all of member instances.</span></li>
 
-  <li><code class="mkapi-args-name">state_dict</code>
-         <span class="mkapi-args-type">(dict)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">state dictionary for all of member instances.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.save">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">save</code><code class="mkapi-node-signature">(directory)</code>
-        
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.save">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunsave" class="mkapi-object-body method"><code class="mkapi-object-name">save</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.save" title="Source for ivory.core.run.Run.save">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Saves member instances.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">directory</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Directory where member instances are saved.</span></li>
 
-  <li><code class="mkapi-args-name">directory</code>
-         <span class="mkapi-args-type">(str)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Directory where member instances are saved.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Run.load">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">load</code><code class="mkapi-node-signature">(directory)</code>
-        <span class="mkapi-args-type">&#x2192; Dict[str, Any]</span>
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.load">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunload" class="mkapi-object-body method"><code class="mkapi-object-name">load</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; dict(str: any)</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load" title="Source for ivory.core.run.Run.load">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Loads member instances.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">directory</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Directory where member instances have been saved.</span></li>
 
-  <li><code class="mkapi-args-name">directory</code>
-         <span class="mkapi-args-type">(str)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Directory where member instances have been saved.</span></li>
 
 </ul></div>
     </div>
-  
-</div>
-  
-</div>
-
-        </div>
-      
-    </div>
-  
-</div>
-
-
-
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.run.Task">
-  <div class="mkapi-node-header mkapi-node-header-class">
-    <div class="mkapi-node-kind mkapi-node-kind-class">CLASS</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">ivory.core.run.Task</code><code class="mkapi-node-signature">(params=None, **instances)</code>
-        
-      
-    </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.run.Task">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object class code top">
+    <div class="mkapi-object-kind class top">class</div>
+    <h2 id="ivorycoreruntask" class="mkapi-object-body class top"><code class="mkapi-object-prefix"><a href="#ivory.core.run">ivory.core.run</a>.</code><code class="mkapi-object-name">Task</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params=None</code>, <code class="mkapi-object-signature">**instances</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task" title="Source for ivory.core.run.Task">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section bases">
+      <div class="mkapi-section-name bases">
+          <span class="mkapi-section-name-body bases">Bases</span> 
+        </div>
+      <div class="mkapi-section-body bases">
+<span class="mkapi-base"><a href="./#ivory.core.run.Run">ivory.core.run.Run</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core.base/#ivory.core.base.CallbackCaller">ivory.core.base.CallbackCaller</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core.base/#ivory.core.base.Creator">ivory.core.base.Creator</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core.base/#ivory.core.base.Base">ivory.core.base.Base</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core/#ivory.core.collections.Dict">ivory.core.collections.Dict</a></span>
+</div>
+    </div>
+  <div class="mkapi-section">
       <div class="mkapi-section-body"><p>Task class creates a parent run that generates multiple runs.</p></div>
     </div>
-  
-</div>
-  
-    <div class="mkapi-members">
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Task.create_run">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">create_run</code><code class="mkapi-node-signature">(args, **kwargs)</code>
-        
-      
-    </div>
-  </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
-      <div class="mkapi-section-body"><p>Create a nested run according to arguments</p></div>
-    </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter dictionary to create this instance.</span></li>
 
-  <li><code class="mkapi-args-name">args</code>
-         <span class="mkapi-args-type">(dict, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Update dictionary.</span></li>
+<li><code class="mkapi-item-name">**instances</code>
 
-  <li><code class="mkapi-args-name">**kwargs</code>
-         
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Additional update dictionary.</span></li>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Member instances. Key is its name and value is the member instance.</span></li>
+
 
 </ul></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-returns">
-      <div class="mkapi-section-name mkapi-section-name-returns">
-      <span class="mkapi-section-name-body">Returns</span> <span class="mkapi-args-type">(Run)</span></div>
-      <div class="mkapi-section-body mkapi-section-body-returns"><p>Created nested <code>Run</code> instance.</p></div>
-    </div>
-  
-</div>
-  
-</div>
-
+  <div class="mkapi-section attributes">
+      <div class="mkapi-section-name attributes">
+          <span class="mkapi-section-name-body attributes">Attributes</span> 
         </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Task.product">
-  <div class="mkapi-node-header mkapi-node-header-generator">
-    <div class="mkapi-node-kind mkapi-node-kind-generator">GENERATOR</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-prefix">ivory.core.run.Task.</code><code class="mkapi-node-basename">product</code><code class="mkapi-node-signature">(params=None, repeat=1, **kwargs)</code>
-        <span class="mkapi-args-type">&#x2192; Iterator[ivory.core.run.Run]</span>
-      
+      <div class="mkapi-section-body attributes"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">dict</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">id</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Instance ID given by
+<a href="https://www.mlflow.org/docs/latest/tracking.html">MLFlow Tracking</a>.</span></li>
+
+<li><code class="mkapi-item-name">mode</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Instance name.</span></li>
+
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter dictionary that is used to to create
+this instance.</span></li>
+
+<li><code class="mkapi-item-name">source_name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Name of the YAML parameter file that is used to create
+this instance.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section methods">
+      <div class="mkapi-section-name methods">
+          <span class="mkapi-section-name-body methods">Methods</span> 
+        </div>
+      <div class="mkapi-section-body methods"><ul class="mkapi-items">
+<li class="generator"><code class="mkapi-item-name"><a href="#ivory.core.run.Task.chain">chain</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params</code>, <code class="mkapi-object-signature">use_best_param</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(<a href="./#ivory.core.run.Run">Run</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Makes a chain iterator.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.chain" title="Source for ivory.core.run.Task.chain">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.CallbackCaller.create_callbacks">create_callbacks</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Creates callback functions and store them in a dictionary.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.CallbackCaller.create_callbacks" title="Source for ivory.core.base.CallbackCaller.create_callbacks">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.Creator.create_instance">create_instance</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">instance_name</code>, <code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">name</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Creates an member instance of a <code>Run</code> according to arguments.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_instance" title="Source for ivory.core.base.Creator.create_instance">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.Creator.create_params">create_params</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">name</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(dict, dict)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a tuple of (parameter dictionary, update dictionary).<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_params" title="Source for ivory.core.base.Creator.create_params">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Task.create_run">create_run</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(Run)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Create a nested run according to arguments<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.create_run" title="Source for ivory.core.run.Task.create_run">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.load">load</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(dict(str: any))</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Loads member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load" title="Source for ivory.core.run.Run.load">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.load_state_dict">load_state_dict</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">state_dict</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Loads a state dictionary to all of member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load_state_dict" title="Source for ivory.core.run.Run.load_state_dict">&lt;/&gt;</a></span></li>
+
+<li class="generator"><code class="mkapi-item-name"><a href="#ivory.core.run.Task.product">product</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params</code>, <code class="mkapi-object-signature">repeat</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(<a href="./#ivory.core.run.Run">Run</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Makes a product iterator.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.product" title="Source for ivory.core.run.Task.product">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.save">save</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Saves member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.save" title="Source for ivory.core.run.Run.save">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.set_tracker">set_tracker</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">tracker</code>, <code class="mkapi-object-signature">name</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Sets tracker for tracking.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.set_tracker" title="Source for ivory.core.run.Run.set_tracker">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.start">start</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">mode</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Starts traing and/or test.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.start" title="Source for ivory.core.run.Run.start">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.state_dict">state_dict</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(dict)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a state dictionary for all of member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.state_dict" title="Source for ivory.core.run.Run.state_dict">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
+
+  <div class="mkapi-members">
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.Creator.create_params">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecreatorcreate_params_1" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.Creator.create_params">create_params</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args=None</code>, <code class="mkapi-object-signature">name=&#39;run&#39;</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; (dict, dict)</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_params" title="Source for ivory.core.base.Creator.create_params">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Returns a tuple of (parameter dictionary, update dictionary).</p>
+<p>The parameter dictionary is deeply copied from original one, then updated
+according to the arguments. The update dictionary includes updated parameter
+only.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">args</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Update dictionary.</span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Run class name in lower case.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional update dictionary.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section examples">
+      <div class="mkapi-section-name examples">
+          <span class="mkapi-section-name-body examples">Examples</span> 
+        </div>
+      <div class="mkapi-section-body examples"><p>Use <code>args</code> for parameters including dots:</p>
+<pre><code>params, update = experiment.create_params(
+    {'hidden_sizes.0': 100}, fold=3
+)
+</code></pre>
+<p>The <code>params</code> is the full parameter dictionary, while the <code>update</code> is a
+part of <code>params</code>, i.e., <code>update = {'hidden_sizes.0': 100, 'fold': 3}</code>.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.Creator.create_instance">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecreatorcreate_instance_1" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.Creator.create_instance">create_instance</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">instance_name</code>, <code class="mkapi-object-signature">args=None</code>, <code class="mkapi-object-signature">name=&#39;run&#39;</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_instance" title="Source for ivory.core.base.Creator.create_instance">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Creates an member instance of a <code>Run</code> according to arguments.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">instance_name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Name of a member instance to create.</span></li>
+
+<li><code class="mkapi-item-name">args</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Update dictionary.</span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Run class name in lower case.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional update dictionary.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> 
+        </div>
+      <div class="mkapi-section-body returns"><p>Created instance. The parameter for this instance is the
+    returned directory from the
+    <a href="#ivory.core.base.Creator.create_params"><code>create_params()</code></a> function.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.CallbackCaller.create_callbacks">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecallbackcallercreate_callbacks_1" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.CallbackCaller.create_callbacks">create_callbacks</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.CallbackCaller.create_callbacks" title="Source for ivory.core.base.CallbackCaller.create_callbacks">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Creates callback functions and store them in a dictionary.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.set_tracker">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunset_tracker_1" class="mkapi-object-body method"><code class="mkapi-object-name">set_tracker</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">tracker</code>, <code class="mkapi-object-signature">name</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.set_tracker" title="Source for ivory.core.run.Run.set_tracker">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Sets tracker for tracking.</p>
+<p>By setting a tracker, a <code>Run</code> instance can be a run of MLFlow Tracking
+at the same time. MLFlow Tracking gives the Run ID and name for this
+instance.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">tracker</code>
+<span class="mkapi-item-type">(Tracker)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Tracker instance.</span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.start">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunstart_1" class="mkapi-object-body method"><code class="mkapi-object-name">start</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">mode=&#39;train&#39;</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.start" title="Source for ivory.core.run.Run.start">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Starts traing and/or test.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">mode</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Mode name: <code>'train'</code>, <code>'test'</code>, or <code>'both'</code>.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.state_dict">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunstate_dict_1" class="mkapi-object-body method"><code class="mkapi-object-name">state_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; dict</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.state_dict" title="Source for ivory.core.run.Run.state_dict">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Returns a state dictionary for all of member instances.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.load_state_dict">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunload_state_dict_1" class="mkapi-object-body method"><code class="mkapi-object-name">load_state_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">state_dict</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load_state_dict" title="Source for ivory.core.run.Run.load_state_dict">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Loads a state dictionary to all of member instances.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">state_dict</code>
+<span class="mkapi-item-type">(dict)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">state dictionary for all of member instances.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.save">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunsave_1" class="mkapi-object-body method"><code class="mkapi-object-name">save</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.save" title="Source for ivory.core.run.Run.save">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Saves member instances.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">directory</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Directory where member instances are saved.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.load">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunload_1" class="mkapi-object-body method"><code class="mkapi-object-name">load</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; dict(str: any)</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load" title="Source for ivory.core.run.Run.load">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Loads member instances.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">directory</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Directory where member instances have been saved.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Task.create_run">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoreruntaskcreate_run" class="mkapi-object-body method"><code class="mkapi-object-name">create_run</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.create_run" title="Source for ivory.core.run.Task.create_run">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Create a nested run according to arguments</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">args</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Update dictionary.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional update dictionary.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(Run)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>Created nested <code>Run</code> instance.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Task.product">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object generator code">
+    <div class="mkapi-object-kind generator">generator</div>
+    <h3 id="ivorycoreruntaskproduct" class="mkapi-object-body generator"><code class="mkapi-object-name">product</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params=None</code>, <code class="mkapi-object-signature">repeat=1</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; <a href="./#ivory.core.run.Run">Run</a></span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.product" title="Source for ivory.core.run.Task.product">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Makes a product iterator.</p>
 <p>This iterator returns runs from cartesian product of input parameters.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
-
-  <li><code class="mkapi-args-name">params</code>
-         <span class="mkapi-args-type">(dict, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Parameter range. Key is a parameter name and
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter range. Key is a parameter name and
 value is an iterable of parameter's value.</span></li>
 
-  <li><code class="mkapi-args-name">repeat</code>
-         <span class="mkapi-args-type">(int, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Number of repeatation.</span></li>
+<li><code class="mkapi-item-name">repeat</code>
+<span class="mkapi-item-type">(int, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Number of repeatation.</span></li>
 
-  <li><code class="mkapi-args-name">**kwargs</code>
-         
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Additional parameter range.</span></li>
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional parameter range.</span></li>
+
 
 </ul></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-see also">
-      <div class="mkapi-section-name mkapi-section-name-see-also">
-      <span class="mkapi-section-name-body">See Also</span></div>
-      <div class="mkapi-section-body mkapi-section-body-see also"><p><a href="/tutorial/task#product">Product section</a> in Multiple Runs Tutorial</p></div>
-    </div>
-  
-</div>
-  
-</div>
-
+  <div class="mkapi-section see-also">
+      <div class="mkapi-section-name see-also">
+          <span class="mkapi-section-name-body see-also">See Also</span> 
         </div>
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Task.chain">
-  <div class="mkapi-node-header mkapi-node-header-generator">
-    <div class="mkapi-node-kind mkapi-node-kind-generator">GENERATOR</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-prefix">ivory.core.run.Task.</code><code class="mkapi-node-basename">chain</code><code class="mkapi-node-signature">(params=None, use_best_param=True, **kwargs)</code>
-        <span class="mkapi-args-type">&#x2192; Iterator[ivory.core.run.Run]</span>
-      
+      <div class="mkapi-section-body see-also"><p><a href="/tutorial/task#product">Product section</a> in Multiple Runs Tutorial</p></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Task.chain">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object generator code">
+    <div class="mkapi-object-kind generator">generator</div>
+    <h3 id="ivorycoreruntaskchain" class="mkapi-object-body generator"><code class="mkapi-object-name">chain</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params=None</code>, <code class="mkapi-object-signature">use_best_param=True</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; <a href="./#ivory.core.run.Run">Run</a></span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.chain" title="Source for ivory.core.run.Task.chain">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
       <div class="mkapi-section-body"><p>Makes a chain iterator.</p>
 <p>This iterator returns runs from the first input paramter until it is exhausted,
 then proceeds to the next parameter, until all of the parameters are exhausted.
 Other parameters have default values if they don't be specified by additional
 key-value pairs.</p></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
-
-  <li><code class="mkapi-args-name">params</code>
-         <span class="mkapi-args-type">(dict, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Parameter range. Key is a parameter name and
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter range. Key is a parameter name and
 value is an iterable of parameter's value.
 use_best_param: If True (default), the parameter that got the best
 score is used during the following iterations.</span></li>
 
-  <li><code class="mkapi-args-name">**kwargs</code>
-         
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Additional parameter range.</span></li>
+<li><code class="mkapi-item-name">use_best_param</code>
+<span class="mkapi-item-type">(bool, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional parameter range.</span></li>
+
 
 </ul></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-see also">
-      <div class="mkapi-section-name mkapi-section-name-see-also">
-      <span class="mkapi-section-name-body">See Also</span></div>
-      <div class="mkapi-section-body mkapi-section-body-see also"><p><a href="/tutorial/task#chain">Chain section</a> in Multiple Runs Tutorial</p></div>
-    </div>
-  
-</div>
-  
-</div>
-
+  <div class="mkapi-section see-also">
+      <div class="mkapi-section-name see-also">
+          <span class="mkapi-section-name-body see-also">See Also</span> 
         </div>
-      
-    </div>
-  
-</div>
-
-
-
-<div class="mkapi-node mkapi-node-depth-0" id="ivory.core.run.Study">
-  <div class="mkapi-node-header mkapi-node-header-class">
-    <div class="mkapi-node-kind mkapi-node-kind-class">CLASS</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">ivory.core.run.Study</code><code class="mkapi-node-signature">(params=None, **instances)</code>
-        
-      
+      <div class="mkapi-section-body see-also"><p><a href="/tutorial/task#chain">Chain section</a> in Multiple Runs Tutorial</p></div>
     </div>
   </div>
-  <div class="mkapi-docstring">
+
+</div>
+    </div>
   
-    <div class="mkapi-section">
-      
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="ivory.core.run.Study">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object class code top">
+    <div class="mkapi-object-kind class top">class</div>
+    <h2 id="ivorycorerunstudy" class="mkapi-object-body class top"><code class="mkapi-object-prefix"><a href="#ivory.core.run">ivory.core.run</a>.</code><code class="mkapi-object-name">Study</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params=None</code>, <code class="mkapi-object-signature">**instances</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Study" title="Source for ivory.core.run.Study">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section bases">
+      <div class="mkapi-section-name bases">
+          <span class="mkapi-section-name-body bases">Bases</span> 
+        </div>
+      <div class="mkapi-section-body bases">
+<span class="mkapi-base"><a href="./#ivory.core.run.Task">ivory.core.run.Task</a></span>
+
+<span class="mkapi-base"><a href="./#ivory.core.run.Run">ivory.core.run.Run</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core.base/#ivory.core.base.CallbackCaller">ivory.core.base.CallbackCaller</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core.base/#ivory.core.base.Creator">ivory.core.base.Creator</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core.base/#ivory.core.base.Base">ivory.core.base.Base</a></span>
+
+<span class="mkapi-base"><a href="../ivory.core/#ivory.core.collections.Dict">ivory.core.collections.Dict</a></span>
+</div>
+    </div>
+  <div class="mkapi-section">
       <div class="mkapi-section-body"><p>Study class create a parent run to manage hyperparameter tuning.</p></div>
     </div>
-  
-</div>
-  
-    <div class="mkapi-members">
-      
-        <div class="mkapi-member">
-          
-<div class="mkapi-node mkapi-node-depth-1" id="ivory.core.run.Study.optimize">
-  <div class="mkapi-node-header mkapi-node-header-method">
-    <div class="mkapi-node-kind mkapi-node-kind-method">METHOD</div>
-    <div class="mkapi-node-name">
-      
-        <code class="mkapi-node-basename">optimize</code><code class="mkapi-node-signature">(suggest_name=&#39;&#39;, **kwargs)</code>
-        
-      
-    </div>
-  </div>
-  <div class="mkapi-docstring">
-  
-    <div class="mkapi-section">
-      
-      <div class="mkapi-section-body"><p>Performs parameter optimizations using Optuna.</p></div>
-    </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-parameters">
-      <div class="mkapi-section-name mkapi-section-name-parameters">
-      <span class="mkapi-section-name-body">Parameters</span></div>
-      <div class="mkapi-section-body mkapi-section-body-parameters"><ul class="mkapi-args-list">
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter dictionary to create this instance.</span></li>
 
-  <li><code class="mkapi-args-name">suggest_name</code>
-         <span class="mkapi-args-type">(str, optional)</span>
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Name of suggest function.</span></li>
+<li><code class="mkapi-item-name">**instances</code>
 
-  <li><code class="mkapi-args-name">**kwargs</code>
-         
-         <span class="mkapi-args-dash">&mdash;</span>
-         <span class="mkapi-args-desc">Key-iterable pairs for parametric optimization.</span></li>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Member instances. Key is its name and value is the member instance.</span></li>
+
 
 </ul></div>
     </div>
-  
-    <div class="mkapi-section mkapi-section-named mkapi-section-see also">
-      <div class="mkapi-section-name mkapi-section-name-see-also">
-      <span class="mkapi-section-name-body">See Also</span></div>
-      <div class="mkapi-section-body mkapi-section-body-see also"><p><a href="/tutorial/tuning">Hyperparameter Tuning</a> in Tutorial</p></div>
-    </div>
-  
-</div>
-  
-</div>
-
+  <div class="mkapi-section attributes">
+      <div class="mkapi-section-name attributes">
+          <span class="mkapi-section-name-body attributes">Attributes</span> 
         </div>
-      
+      <div class="mkapi-section-body attributes"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">dict</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">id</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Instance ID given by
+<a href="https://www.mlflow.org/docs/latest/tracking.html">MLFlow Tracking</a>.</span></li>
+
+<li><code class="mkapi-item-name">mode</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Instance name.</span></li>
+
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter dictionary that is used to to create
+this instance.</span></li>
+
+<li><code class="mkapi-item-name">source_name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Name of the YAML parameter file that is used to create
+this instance.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section methods">
+      <div class="mkapi-section-name methods">
+          <span class="mkapi-section-name-body methods">Methods</span> 
+        </div>
+      <div class="mkapi-section-body methods"><ul class="mkapi-items">
+<li class="generator"><code class="mkapi-item-name"><a href="#ivory.core.run.Task.chain">chain</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params</code>, <code class="mkapi-object-signature">use_best_param</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(<a href="./#ivory.core.run.Run">Run</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Makes a chain iterator.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.chain" title="Source for ivory.core.run.Task.chain">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.CallbackCaller.create_callbacks">create_callbacks</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Creates callback functions and store them in a dictionary.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.CallbackCaller.create_callbacks" title="Source for ivory.core.base.CallbackCaller.create_callbacks">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.Creator.create_instance">create_instance</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">instance_name</code>, <code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">name</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Creates an member instance of a <code>Run</code> according to arguments.<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_instance" title="Source for ivory.core.base.Creator.create_instance">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.base.Creator.create_params">create_params</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">name</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(dict, dict)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a tuple of (parameter dictionary, update dictionary).<a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_params" title="Source for ivory.core.base.Creator.create_params">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Task.create_run">create_run</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(Run)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Create a nested run according to arguments<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.create_run" title="Source for ivory.core.run.Task.create_run">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.load">load</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(dict(str: any))</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Loads member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load" title="Source for ivory.core.run.Run.load">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.load_state_dict">load_state_dict</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">state_dict</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Loads a state dictionary to all of member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load_state_dict" title="Source for ivory.core.run.Run.load_state_dict">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Study.optimize">optimize</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">suggest_name</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Performs parameter optimizations using Optuna.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Study.optimize" title="Source for ivory.core.run.Study.optimize">&lt;/&gt;</a></span></li>
+
+<li class="generator"><code class="mkapi-item-name"><a href="#ivory.core.run.Task.product">product</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params</code>, <code class="mkapi-object-signature">repeat</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(<a href="./#ivory.core.run.Run">Run</a>)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Makes a product iterator.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.product" title="Source for ivory.core.run.Task.product">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.save">save</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Saves member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.save" title="Source for ivory.core.run.Run.save">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.set_tracker">set_tracker</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">tracker</code>, <code class="mkapi-object-signature">name</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Sets tracker for tracking.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.set_tracker" title="Source for ivory.core.run.Run.set_tracker">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.start">start</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">mode</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Starts traing and/or test.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.start" title="Source for ivory.core.run.Run.start">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#ivory.core.run.Run.state_dict">state_dict</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(dict)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Returns a state dictionary for all of member instances.<a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.state_dict" title="Source for ivory.core.run.Run.state_dict">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+  <div class="mkapi-members">
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.Creator.create_params">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecreatorcreate_params_2" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.Creator.create_params">create_params</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args=None</code>, <code class="mkapi-object-signature">name=&#39;run&#39;</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; (dict, dict)</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_params" title="Source for ivory.core.base.Creator.create_params">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Returns a tuple of (parameter dictionary, update dictionary).</p>
+<p>The parameter dictionary is deeply copied from original one, then updated
+according to the arguments. The update dictionary includes updated parameter
+only.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">args</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Update dictionary.</span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Run class name in lower case.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional update dictionary.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section examples">
+      <div class="mkapi-section-name examples">
+          <span class="mkapi-section-name-body examples">Examples</span> 
+        </div>
+      <div class="mkapi-section-body examples"><p>Use <code>args</code> for parameters including dots:</p>
+<pre><code>params, update = experiment.create_params(
+    {'hidden_sizes.0': 100}, fold=3
+)
+</code></pre>
+<p>The <code>params</code> is the full parameter dictionary, while the <code>update</code> is a
+part of <code>params</code>, i.e., <code>update = {'hidden_sizes.0': 100, 'fold': 3}</code>.</p></div>
+    </div>
+  </div>
+
+</div>
     </div>
   
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.Creator.create_instance">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecreatorcreate_instance_2" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.Creator.create_instance">create_instance</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">instance_name</code>, <code class="mkapi-object-signature">args=None</code>, <code class="mkapi-object-signature">name=&#39;run&#39;</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.Creator.create_instance" title="Source for ivory.core.base.Creator.create_instance">&lt;/&gt;</a>
+  </div>
 </div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Creates an member instance of a <code>Run</code> according to arguments.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">instance_name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Name of a member instance to create.</span></li>
+
+<li><code class="mkapi-item-name">args</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Update dictionary.</span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Run class name in lower case.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional update dictionary.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> 
+        </div>
+      <div class="mkapi-section-body returns"><p>Created instance. The parameter for this instance is the
+    returned directory from the
+    <a href="#ivory.core.base.Creator.create_params"><code>create_params()</code></a> function.</p></div>
+    </div>
+  </div>
+
 </div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.base.CallbackCaller.create_callbacks">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorebasecallbackcallercreate_callbacks_2" class="mkapi-object-body method"><code class="mkapi-object-name"><a href="../ivory.core.base/#ivory.core.base.CallbackCaller.create_callbacks">create_callbacks</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.base#ivory.core.base.CallbackCaller.create_callbacks" title="Source for ivory.core.base.CallbackCaller.create_callbacks">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Creates callback functions and store them in a dictionary.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.set_tracker">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunset_tracker_2" class="mkapi-object-body method"><code class="mkapi-object-name">set_tracker</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">tracker</code>, <code class="mkapi-object-signature">name</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.set_tracker" title="Source for ivory.core.run.Run.set_tracker">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Sets tracker for tracking.</p>
+<p>By setting a tracker, a <code>Run</code> instance can be a run of MLFlow Tracking
+at the same time. MLFlow Tracking gives the Run ID and name for this
+instance.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">tracker</code>
+<span class="mkapi-item-type">(Tracker)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Tracker instance.</span></li>
+
+<li><code class="mkapi-item-name">name</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.start">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunstart_2" class="mkapi-object-body method"><code class="mkapi-object-name">start</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">mode=&#39;train&#39;</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.start" title="Source for ivory.core.run.Run.start">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Starts traing and/or test.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">mode</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Mode name: <code>'train'</code>, <code>'test'</code>, or <code>'both'</code>.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.state_dict">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunstate_dict_2" class="mkapi-object-body method"><code class="mkapi-object-name">state_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; dict</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.state_dict" title="Source for ivory.core.run.Run.state_dict">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Returns a state dictionary for all of member instances.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.load_state_dict">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunload_state_dict_2" class="mkapi-object-body method"><code class="mkapi-object-name">load_state_dict</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">state_dict</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load_state_dict" title="Source for ivory.core.run.Run.load_state_dict">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Loads a state dictionary to all of member instances.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">state_dict</code>
+<span class="mkapi-item-type">(dict)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">state dictionary for all of member instances.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.save">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunsave_2" class="mkapi-object-body method"><code class="mkapi-object-name">save</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.save" title="Source for ivory.core.run.Run.save">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Saves member instances.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">directory</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Directory where member instances are saved.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Run.load">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunrunload_2" class="mkapi-object-body method"><code class="mkapi-object-name">load</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">directory</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; dict(str: any)</span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Run.load" title="Source for ivory.core.run.Run.load">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Loads member instances.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">directory</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Directory where member instances have been saved.</span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Task.create_run">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycoreruntaskcreate_run_1" class="mkapi-object-body method"><code class="mkapi-object-name">create_run</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">args</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.create_run" title="Source for ivory.core.run.Task.create_run">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Create a nested run according to arguments</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">args</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Update dictionary.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional update dictionary.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(Run)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>Created nested <code>Run</code> instance.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Task.product">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object generator code">
+    <div class="mkapi-object-kind generator">generator</div>
+    <h3 id="ivorycoreruntaskproduct_1" class="mkapi-object-body generator"><code class="mkapi-object-name">product</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params=None</code>, <code class="mkapi-object-signature">repeat=1</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; <a href="./#ivory.core.run.Run">Run</a></span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.product" title="Source for ivory.core.run.Task.product">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Makes a product iterator.</p>
+<p>This iterator returns runs from cartesian product of input parameters.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter range. Key is a parameter name and
+value is an iterable of parameter's value.</span></li>
+
+<li><code class="mkapi-item-name">repeat</code>
+<span class="mkapi-item-type">(int, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Number of repeatation.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional parameter range.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section see-also">
+      <div class="mkapi-section-name see-also">
+          <span class="mkapi-section-name-body see-also">See Also</span> 
+        </div>
+      <div class="mkapi-section-body see-also"><p><a href="/tutorial/task#product">Product section</a> in Multiple Runs Tutorial</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Task.chain">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object generator code">
+    <div class="mkapi-object-kind generator">generator</div>
+    <h3 id="ivorycoreruntaskchain_1" class="mkapi-object-body generator"><code class="mkapi-object-name">chain</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">params=None</code>, <code class="mkapi-object-signature">use_best_param=True</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code><span class="mkapi-item-type"> &#x2192; <a href="./#ivory.core.run.Run">Run</a></span></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Task.chain" title="Source for ivory.core.run.Task.chain">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Makes a chain iterator.</p>
+<p>This iterator returns runs from the first input paramter until it is exhausted,
+then proceeds to the next parameter, until all of the parameters are exhausted.
+Other parameters have default values if they don't be specified by additional
+key-value pairs.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">params</code>
+<span class="mkapi-item-type">(dict, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Parameter range. Key is a parameter name and
+value is an iterable of parameter's value.
+use_best_param: If True (default), the parameter that got the best
+score is used during the following iterations.</span></li>
+
+<li><code class="mkapi-item-name">use_best_param</code>
+<span class="mkapi-item-type">(bool, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Additional parameter range.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section see-also">
+      <div class="mkapi-section-name see-also">
+          <span class="mkapi-section-name-body see-also">See Also</span> 
+        </div>
+      <div class="mkapi-section-body see-also"><p><a href="/tutorial/task#chain">Chain section</a> in Multiple Runs Tutorial</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="ivory.core.run.Study.optimize">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="ivorycorerunstudyoptimize" class="mkapi-object-body method"><code class="mkapi-object-name">optimize</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">suggest_name=&#39;&#39;</code>, <code class="mkapi-object-signature">**kwargs</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/ivory.core.run#ivory.core.run.Study.optimize" title="Source for ivory.core.run.Study.optimize">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Performs parameter optimizations using Optuna.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">suggest_name</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Name of suggest function.</span></li>
+
+<li><code class="mkapi-item-name">**kwargs</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Key-iterable pairs for parametric optimization.</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section see-also">
+      <div class="mkapi-section-name see-also">
+          <span class="mkapi-section-name-body see-also">See Also</span> 
+        </div>
+      <div class="mkapi-section-body see-also"><p><a href="/tutorial/tuning">Hyperparameter Tuning</a> in Tutorial</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+  </div>
+
+</div></div>
                 <footer>
     <div class="footer-buttons">
-        <div class="previous"><a href="../ivory.core.data/" title="data"><span>Previous</span></a></div>
-        <div class="next"><a href="../ivory.nnabla.trainer/" title="trainer"><span>Next</span></a></div>
+        <div class="previous"><a href="../ivory.core.data/" title="ivory.core.data"><span>Previous</span></a></div>
+        <div class="next"><a href="../ivory.nnabla/" title="ivory.nnabla"><span>Next</span></a></div>
     </div>
     <div class="footer-note">
         <p>
